@@ -1,0 +1,13 @@
+database: &database
+  db.username: postgres
+  db.password: postgres
+  db.host: localhost
+
+development:
+  <<: *database
+
+test:
+  <<: *database
+
+production:
+  <<: *database
