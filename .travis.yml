@@ -1,0 +1,35 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=077377b9592f88aa47f2447b6c025cad0193acbdb445d4011214080ad82fb1fb
+addons:
+  postgresql: 9.6
+  chrome: stable
+  apt:
+    update: true
+before_script:
+  - sudo apt-get update
+  - sudo apt-get install -y imagemagick
+  - cp config/database.yml.travis config/database.yml
+  - cp config/application.yml.travis config/application.yml
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+  - wget https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-linux64.tar.gz
+  - mkdir geckodriver
+  - tar -xzf geckodriver-v0.23.0-linux64.tar.gz -C geckodriver
+  - export PATH=$PATH:$PWD/geckodriver
+dist: trusty
+language: ruby
+rvm:
+  - 2.6.1
+install:
+  - bundle install
+  - nvm install node
+  - node -v
+script:
+  - bundle exec rails db:migrate RAILS_ENV=test
+  - bundle exec rubocop
+  - bundle exec rspec
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

@@ -1,0 +1,14 @@
+database: &database
+  db.username: postgres
+  db.password: postgres
+  db.host: localhost
+
+development:
+  <<: *database
+
+test:
+  <<: *database
+  browser.headless: 'true'
+
+production:
+  <<: *database
