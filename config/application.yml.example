@@ -8,6 +8,7 @@ development:
 
 test:
   <<: *database
+  browser.headless: 'true'
 
 production:
   <<: *database
