@@ -1,5 +1,3 @@
 class HomeController < ApplicationController
-  def index
-    asdf
-  end
+  def index; end
 end

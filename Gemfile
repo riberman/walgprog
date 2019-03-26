@@ -17,6 +17,11 @@ gem 'pg', '0.20.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  gem 'brakeman', require: false
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'bullet'
 end
 
 group :development do
