@@ -1,24 +1,21 @@
-# README
+[![Maintainability](https://api.codeclimate.com/v1/badges/f26b57e590687b502890/maintainability)](https://codeclimate.com/github/TSIDW5/walgprog/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/f26b57e590687b502890/test_coverage)](https://codeclimate.com/github/TSIDW5/walgprog/test_coverage)
+[![Build Status](https://travis-ci.org/TSIDW5/walgprog.svg?branch=master)](https://travis-ci.org/TSIDW5/walgprog)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Sistema de Gestão de Eventos para o WalgProg
 
-Things you may want to cover:
+----
+## O que é o WalgProg?
 
-* Ruby version
+O WAlgProg foi criado em resposta à ausência de um evento no Brasil que
+concentrasse pesquisas e discussões sobre o ensino de Pensamento Computacional,
+Algoritmos e Programação. O tema é recorrente em Ciência da Computação e tem se
+estendido, inclusive, por entre a educação básica. Ainda nesse contexto, muitas
+das iniciativas de pesquisa do país ocorriam de maneira esparsa e com poucas
+oportunidades de intercomunicação.
 
-* System dependencies
+----
 
-* Configuration
+## Sobre
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+O objetivo desse sistema é a gestão de eventos do WalgProg.
