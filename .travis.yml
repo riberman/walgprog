@@ -3,7 +3,7 @@ env:
     - CC_TEST_REPORTER_ID=077377b9592f88aa47f2447b6c025cad0193acbdb445d4011214080ad82fb1fb
 addons:
   postgresql: 9.6
-  firefox: '65.0'
+  chrome: stable
   apt:
     update: true
 before_script:
