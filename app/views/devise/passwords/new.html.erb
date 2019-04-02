@@ -1,11 +1,12 @@
-<% provide(:title, 'Esqueceu a senha?') %>
-<% provide(:head_title, 'Esqueceu a senha?') %>
+<% provide(:head_title, t('devise.passwords.new.forgot_your_password')) %>
+<% provide(:page_title, t('devise.passwords.new.forgot_your_password')) %>
+<% provide(:title, t('devise.passwords.new.forgot_your_password')) %>
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
 
   <p class="text-muted">
-    Entre com seu email para receber as informações para recuperação da senha
+    <%= t('devise.passwords.info.forgot') %> 
   </p>
   <div class="form-inputs">
     <%= f.input :email,
@@ -15,11 +16,13 @@
   </div>
 
   <div class="form-footer">
-    <%= f.button :submit, 'Enviar', class: 'btn btn-primary btn-block' %>
+    <%= f.button :submit,
+      t('devise.passwords.new.send_me_reset_password_instructions'),
+      class: 'btn btn-primary btn-block' %>
   </div>
 
 <% end %>
 
 <div class="text-right pt-5">
-  <%= link_to "Logar-se", new_session_path(resource_name) %>
+  <%= link_to t('devise.sessions.new.sign_in'), new_session_path(resource_name) %>
 </div>

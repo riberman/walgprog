@@ -19,6 +19,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'rails-i18n', '~> 5.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
