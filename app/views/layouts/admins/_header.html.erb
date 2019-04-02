@@ -17,7 +17,7 @@
           </a>
 
           <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-            <%= link_to '#', class: 'dropdown-item' do %>
+            <%= link_to edit_admin_registration_path, class: 'dropdown-item' do %>
               <i class="dropdown-icon fe fe-user"></i> Perfil
             <% end %>
             <%= link_to destroy_admin_session_path, method: :delete, class: 'dropdown-item' do %>

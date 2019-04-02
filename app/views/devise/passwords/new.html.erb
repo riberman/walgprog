@@ -1,0 +1,25 @@
+<% provide(:title, 'Esqueceu a senha?') %>
+<% provide(:head_title, 'Esqueceu a senha?') %>
+
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= f.error_notification %>
+
+  <p class="text-muted">
+    Entre com seu email para receber as informações para recuperação da senha
+  </p>
+  <div class="form-inputs">
+    <%= f.input :email,
+      required: true,
+      autofocus: true,
+      input_html: { autocomplete: "email" } %>
+  </div>
+
+  <div class="form-footer">
+    <%= f.button :submit, 'Enviar', class: 'btn btn-primary btn-block' %>
+  </div>
+
+<% end %>
+
+<div class="text-right pt-5">
+  <%= link_to "Logar-se", new_session_path(resource_name) %>
+</div>

@@ -1,0 +1,24 @@
+<% provide(:head_title, 'Editar perfil') %>
+<% provide(:page_title, 'Editar perfil') %>
+<% provide(:title, 'Editar perfil') %>
+
+<%= simple_form_for(resource, as: resource_name,
+                    url: admin_registration_path,
+                    html: { method: :put, multipart: true }) do |f| %>
+
+  <%= f.error_notification %>
+
+  <%= f.input :name, required: true, autofocus: true %>
+  <%= f.input :email, required: true %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+  <%= f.input :current_password,
+    hint: 'Precisamos da sua senha para realizar as alterações',
+    required: true %>
+
+  <div class="d-flex">
+    <%= link_to 'Voltar', :admins_root, class: 'btn btn-secondary' %>
+
+    <%= f.button :submit, class: 'btn-primary ml-auto' %>
+  </div>
+<% end %>
