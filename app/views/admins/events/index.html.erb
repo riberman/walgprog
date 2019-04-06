@@ -1,0 +1,47 @@
+<% provide(:head_title, t("events.index")) %>
+<% provide(:page_title, t('events.index')) %>
+<% provide(:title, t('events.index')) %>
+<div class="col-md-12">
+  <%= link_to admins_events_new_path, class: 'btn btn-success float-right', active: :exclusive do %>
+    <i class="fa fa-plus mr-2"></i>
+    <%= t('events.new') %>
+  <% end %>
+</div>
+
+<div class="mt-5 col-md-12 row card-body-scrollable">
+  <table class="table table-hover table-striped">
+    <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Iniciais</th>
+      <th>Cor</th>
+      <th>Início/Término</th>
+      <th>Local</th>
+      <th>Cidade/Estado</th>
+      <th>Criado em</th>
+      <th>Atualizado em</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Walprog</td>
+        <td>wpg</td>
+        <td>red</td>
+        <td>
+          10/04/2019 10:00
+          <br>
+          10/04/2019 22:00
+        </td>
+        <td>UTFPR - auditório 1</td>
+        <td>Guarapuava/PR</td>
+        <td><%= I18n.localize(Time.current) %></td>
+        <td><%= I18n.localize(Time.current) %></td>
+        <td class="btn-group">
+          <button class="btn btn-warning">Editar</button>
+          <button class="btn btn-danger">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
