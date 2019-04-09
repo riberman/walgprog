@@ -3,4 +3,6 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   mount_uploader :image, ProfileImageUploader
+
+  validates :name, presence: true
 end
