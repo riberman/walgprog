@@ -43,6 +43,8 @@ Metrics/LineLength:
     - 'config/environments/production.rb'
     - 'config/initializers/backtrace_silencers.rb'
     - 'config/initializers/content_security_policy.rb'
+    - 'config/initializers/simple_form.rb'
+    - 'config/initializers/simple_form_bootstrap.rb'
 
 Bundler/OrderedGems:
   Enabled: false
@@ -86,12 +88,19 @@ Layout/Tab:
 Style/FormatString:
   EnforcedStyle: 'percent'
 
+Layout/AlignHash:
+  Exclude:
+    - 'config/initializers/simple_form_bootstrap.rb'
+    - 'config/initializers/simple_form.rb'
+
+
 Metrics/BlockLength:
   Exclude:
     - 'config/environments/development.rb'
     - 'spec/**/*'
     - 'lib/tasks/populate.rake'
     - 'config/routes.rb'
+    - 'config/initializers/simple_form_bootstrap.rb'
 
 Naming/VariableNumber:
   EnforcedStyle: non_integer
@@ -106,3 +115,11 @@ RSpec/ExampleLength:
 
 RSpec/HookArgument:
   EnforcedStyle: each
+
+Style/Lambda:
+  Exclude:
+    - 'config/initializers/simple_form_bootstrap.rb'
+
+Lint/UnusedBlockArgument:
+  Exclude:
+    - 'config/initializers/simple_form_bootstrap.rb'
