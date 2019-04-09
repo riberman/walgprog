@@ -1,0 +1,67 @@
+pt-BR:
+  time:
+    formats:
+      short: '%d/%m/%Y'
+  activerecord:
+    models:
+      admin:
+        one: Administrador
+        other: Administradores
+    attributes:
+      attribute_commons: &commons
+        name: Nome
+        email: Email
+        created_at: Criado em
+        updated_at: Atualizado em
+      admin:
+        image: Imagem
+        password: Senha
+        current_password: Senha atual
+        password_confirmation: Confirmação de senha
+        remember_me: Lembre-me
+        <<: *commons
+  helpers:
+    back: Voltar
+    currently: Atualmente
+    boolean:
+      'true': Sim
+      'false': Não
+  flash:
+    actions:
+      update:
+        m: '%{resource_name} Atualizado com sucesso!'
+        f: '%{resource_name} Atualizada com sucesso!'
+      create:
+        m: '%{resource_name} criado com sucesso!'
+        f: '%{resource_name} criada com sucesso!'
+      destroy:
+        m: '%{resource_name} removido com sucesso!'
+        f: '%{resource_name} removida com sucesso!'
+        bond: Não é possível remover %{resource_name} com vínculos!'
+      errors: Existem dados incorretos!
+    not_authorized: Acesso não autorizado!
+  sessions:
+    sign_in: Login
+    sign_out: Sair
+    sign_up: Cadastrar-se
+    profile: Meu Perfil
+    guest: Convidado
+    edit_profile: Editar perfil
+    sign_in_with: Entrar com
+    register: Cadastrar
+  errors:
+    page_not_found:
+      label: Página não encontrada!
+      message: Essa página não foi encontrada...
+    internal_server_error:
+      label: Erro interno no servidor!
+      message: Nosso serviço não está disponível no momento...
+    unprocessable_entity:
+      label: Entidade não processável!
+      message: A mudança que você queria foi rejeitada...
+      details: Talvez você tentou alterar algo que você não possui acesso.
+  prompt:
+    confirm: Você tem certeza?
+    select:
+      m: Selecione um %{name}
+      f: Selecione uma %{name}
