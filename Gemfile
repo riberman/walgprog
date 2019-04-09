@@ -24,6 +24,7 @@ gem 'rails-i18n', '~> 5.1'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
+  gem 'rspec-rails', '~> 3.7'
   gem 'brakeman', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
@@ -42,10 +43,9 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
+  gem 'webdrivers'
   gem 'chromedriver-helper'
 
-  gem 'rspec-rails', '~> 3.7'
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false
   gem 'guard-rspec', require: false
