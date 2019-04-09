@@ -14,6 +14,7 @@ pt-BR:
         created_at: Criado em
         updated_at: Atualizado em
       admin:
+        image: Imagem
         password: Senha
         current_password: Senha atual
         password_confirmation: Confirmação de senha

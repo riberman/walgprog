@@ -9,6 +9,7 @@ class Admins::RegistrationsController < Devise::RegistrationsController
 
   def account_update_params
     params.require(:admin).permit(:name, :email,
+                                  :image, :image_cache,
                                   :current_password,
                                   :password,
                                   :password_confirmation)

@@ -20,5 +20,10 @@
 //= require config/namespace
 
 
+// Lib files
+//--------------------
+//= require lib/image_preview
+
+
 // App files
 //--------------------

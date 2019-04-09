@@ -8,20 +8,40 @@
 
   <%= f.error_notification %>
 
-  <%= f.input :name, required: true, autofocus: true %>
-  <%= f.input :password, autocomplete: "off",
-    hint: t("devise.registrations.edit.leave_blank_if_you_don_t_want_to_change_it"),
-    required: false %>
+  <div class="form-row">
+    <div class="col-sm-8">
+      <%= f.input :name, required: true, autofocus: true %>
+      <%= f.input :email, required: true %>
+      <%= f.input :password,
+        hint: t("devise.registrations.edit.leave_blank_if_you_don_t_want_to_change_it") %>
+      <%= f.input :password_confirmation %>
+      <%= f.input :current_password,
+        hint: t("devise.registrations.edit.leave_blank_if_you_don_t_want_to_change_it"),
+        required: true %>
+    </div>
 
-  <%= f.input :password_confirmation, required: false %>
+    <div class="col-4">
 
-  <%= f.input :current_password,
-    hint: t('devise.registrations.edit.current_password_to_confirm'),
-    required: true %> 
+      <div id="box-image-preview" data-toggle="tooltip" data-placement="left" title="Clique na imagem para alterá-la">
+        <div class="input-field image_preview">
+          <div class="box-image center">
+            <%= image_tag resource.image.url, class: 'file_preview active' %>
+            <%= f.input :image, label: false, input_html: { accept: 'image/*' } %>
+            <%= f.hidden_field :image_cache %>
+          </div>
+        </div>
+        <div class="text-box text-center">
+          <p class="text-input">Clique na imagem para alterá-la</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <div class="d-flex">
     <%= link_to t('helpers.back'), :admins_root, class: 'btn btn-secondary' %>
 
-    <%= f.button :submit, class: 'btn-primary ml-auto' %>
+    <%= f.button :submit,
+      t("devise.registrations.edit.update"), class: 'btn-primary ml-auto' %>
   </div>
 <% end %>
