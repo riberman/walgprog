@@ -7,5 +7,6 @@ RSpec.describe City, type: :model do
 
   describe 'associations' do
     it { is_expected.to belong_to(:state) }
+    it { is_expected.to have_many(:institutions).dependent(:restrict_with_error) }
   end
 end
