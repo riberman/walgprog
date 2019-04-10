@@ -17,5 +17,14 @@ namespace :db do
         City.find_or_create_by(name: row[1], state: state)
       end
     end
+
+    desc 'Populate regions, states, and cities'
+    task institutions: :environment do
+      CSV.foreach('./lib/tasks/seeds/data/institutions.csv') do |row|
+        city = City.joins(:state).find_by(name: row[2], states: { acronym: row[3] })
+
+        Institution.create_with(city: city).find_or_create_by(name: row[0], acronym: row[1])
+      end
+    end
   end
 end
