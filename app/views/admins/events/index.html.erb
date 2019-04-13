@@ -1,0 +1,75 @@
+<% provide(:head_title, t("events.index")) %>
+<% provide(:page_title, t('events.index')) %>
+<% provide(:title, t('events.index')) %>
+
+<% navigation_add t('events.index'), admin_events_path %>
+
+<div class="col-md-12">
+  <div class="row">
+    <div class="input-group col-md-8">
+      <input
+        type="text"
+        class="form-control btn-block"
+        placeholder="<%= t('helpers.search') %>"
+        aria-describedby="search-append">
+
+      <span
+        id="search-append"
+        class="input-group-append">
+
+      <span class="input-group-text">
+        <i class="fe fe-search text-info"></i>
+      </span>
+    </span>
+    </div>
+    <%= link_to admins_events_new_path, class: 'btn btn-outline-info float-right col-md-4', active: :exclusive do %>
+      <i class="fe fe-plus mr-2"></i>
+      <%= t('events.new') %>
+    <% end %>
+  </div>
+</div>
+
+<div class="mt-5 col-md-12 row card-body-scrollable mt-5">
+  <table class="table table-hover table-outline table-vcenter card-table">
+    <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Cor</th>
+      <th>Início/Término</th>
+      <th>Local</th>
+      <th>Criado em</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Walprog(wpg)</td>
+      <td><i class="fas fa-circle text-danger"></i></td>
+      <td>
+        <%= Time.now.strftime("%m/%d/%Y %H:%M") %>
+        /
+        <%= Time.now.strftime("%m/%d/%Y %H:%M") %>
+      </td>
+
+      <td>UTFPR - auditório 1 (Guarapuava/PR)</td>
+      <td><%= Time.now.strftime("%m/%d/%Y") %></td>
+      <td>
+        <div class="">
+          <a class="icon">
+            <i
+              data-toggle="tooltip"
+              title="Editar"
+              class="fas fa-edit"></i>
+          </a>
+          <a class="icon text-danger">
+            <i
+              data-toggle="tooltip"
+              title="Apagar"
+              class="fa fa-trash"></i>
+          </a>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

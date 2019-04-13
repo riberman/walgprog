@@ -13,7 +13,7 @@
 
 // Vendors
 //--------------------
-
+//= require bootstrap-colorpicker
 
 // Config files
 //--------------------

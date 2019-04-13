@@ -2,11 +2,16 @@ pt-BR:
   time:
     formats:
       short: '%d/%m/%Y'
+      default: "%A, %d de %B de %Y, %H:%M h"
+      long: "%A, %d de %B de %Y, %H:%M h"
   activerecord:
     models:
       admin:
         one: Administrador
         other: Administradores
+      event:
+        one: Evento
+        other: Eventos
     attributes:
       attribute_commons: &commons
         name: Nome
@@ -18,10 +23,21 @@ pt-BR:
         current_password: Senha atual
         password_confirmation: Confirmação de senha
         remember_me: Lembre-me
+      event:
+        name: Nome
+        initials: Iniciais
+        color: Cor
+        beginning_date: Data de início
+        end_date: Data de término
+        local: Local
+        city_id: Cidade
+        state_id: Estado
         <<: *commons
   helpers:
     back: Voltar
+    search: Procurar...
     currently: Atualmente
+    home: Página inicial
     boolean:
       'true': Sim
       'false': Não
@@ -64,3 +80,8 @@ pt-BR:
     select:
       m: Selecione um %{name}
       f: Selecione uma %{name}
+  events:
+    index: Eventos
+    new: Novo Evento
+    edit: Editar Evento
+    name: Nome

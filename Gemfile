@@ -28,6 +28,9 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
   gem 'bullet'
+
+  gem 'bootstrap-colorpicker-rails'
+
 end
 
 group :development do

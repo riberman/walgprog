@@ -32,3 +32,6 @@
 
 /config/application.yml
 coverage
+
+# Ignore RubyMine files
+/.idea/*
