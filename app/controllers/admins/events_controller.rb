@@ -10,14 +10,18 @@ class Admins::EventsController < ApplicationController
   public
 
   def index
+    @navigation = [ { :title => t('events.index'), :url => admin_events_path } ]
+
     @events = Event.all.order("created_at desc")
   end
 
   def new
+    @navigation = [ { :title => t('events.index'), :url => admin_events_path } ]
     @event = Event.new
   end
 
   def create
+    @navigation = [ { :title => t('events.index'), :url => admin_events_path } ]
     @event = Event.new(event_params)
     if @event.save
       flash[:success] = t('events.success.new')
@@ -30,6 +34,7 @@ class Admins::EventsController < ApplicationController
   def show; end
 
   def edit
+    @navigation = [ { :title => t('events.index'), :url => admin_events_path } ]
     @event = Event.find(params[:id])
   end
 
