@@ -20,10 +20,12 @@
       </span>
     </span>
     </div>
-    <%= link_to admins_events_new_path, class: 'btn btn-outline-info float-right col-md-4', active: :exclusive do %>
-      <i class="fe fe-plus mr-2"></i>
-      <%= t('events.new') %>
-    <% end %>
+    <div class="col-md-4 col-sm-12">
+      <%= link_to admins_events_new_path, class: 'btn btn-outline-info btn-block', active: :exclusive do %>
+        <i class="fe fe-plus mr-2"></i>
+        <%= t('events.new') %>
+      <% end %>
+    </div>
   </div>
 </div>
 
