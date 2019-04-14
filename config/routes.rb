@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :institutions
   authenticate :admin do
     namespace :institutions do
-      get 'dashboard#index'
+      root 'dashboard#index'
     end
   end
   root to: 'home#index'
@@ -21,5 +22,8 @@ Rails.application.routes.draw do
     put '/admins',
         to: 'admins/registrations#update',
         as: 'admin_registration'
+  end
+
+  as :institution do
   end
 end
