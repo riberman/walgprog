@@ -29,19 +29,19 @@ Rails.application.routes.draw do
          to: 'admins/events#create',
          as: 'admins_events_create'
 
-    get 'admins/events/edit',
+    get 'admins/events/:id/edit',
         to: 'admins/events#edit',
         as: 'admins_events_edit'
 
-    put 'admins/events/update',
+    patch 'admins/events/:id/update',
         to: 'admins/events#update',
         as: 'admins_events_update'
 
-    get 'admins/events/show',
+    get 'admins/events/:id/show',
         to: 'admins/events#show',
         as: 'admins_events_show'
 
-    delete 'admins/events/destroy',
+    delete 'admins/events/:id/destroy',
            to: 'admins/events#destroy',
            as: 'admins_events_destroy'
   end

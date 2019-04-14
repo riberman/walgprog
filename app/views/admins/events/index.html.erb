@@ -37,39 +37,43 @@
       <th>Cor</th>
       <th>Início/Término</th>
       <th>Local</th>
+      <th>Endereço</th>
       <th>Criado em</th>
       <th></th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <td>Walprog(wpg)</td>
-      <td><i class="fas fa-circle text-danger"></i></td>
-      <td>
-        <%= Time.now.strftime("%m/%d/%Y %H:%M") %>
-        /
-        <%= Time.now.strftime("%m/%d/%Y %H:%M") %>
-      </td>
+    <% @events.each do |event| -%>
+      <tr>
+        <td><%= event.name %> (<%= event.initials %>)</td>
+        <td><i class="fas fa-circle" style="color: <%= event.color %>;"></i></td>
+        <td>
+          <%= format_date(event.beginning_date, '%d/%m/%Y') %>
+          <%= t('helpers.until') %>
+          <%= format_date(event.end_date, '%d/%m/%Y') %>
+        </td>
 
-      <td>UTFPR - auditório 1 (Guarapuava/PR)</td>
-      <td><%= Time.now.strftime("%m/%d/%Y") %></td>
-      <td>
-        <div class="">
-          <a class="icon">
-            <i
-              data-toggle="tooltip"
-              title="Editar"
-              class="fas fa-edit"></i>
-          </a>
-          <a class="icon text-danger">
-            <i
-              data-toggle="tooltip"
-              title="Apagar"
-              class="fa fa-trash"></i>
-          </a>
-        </div>
-      </td>
-    </tr>
+        <td><%= event.local %></td>
+        <td><%= event.address %></td>
+        <td><%= format_date(event.created_at, "%d/%m/%Y %H:%M") %></td>
+        <td>
+          <div class="btn-group">
+            <%= link_to admins_events_edit_path(event.id), class: 'icon ml-2', active: :exclusive do %>
+              <i
+                data-toggle="tooltip"
+                title="<%= t('helpers.edit') %>"
+                class="fas fa-edit"></i>
+            <% end %>
+            <%= link_to admins_events_destroy_path(event.id), :method => :delete, class: 'icon text-danger ml-2', active: :exclusive do %>
+              <i
+                data-toggle="tooltip"
+                title="<%= t('helpers.delete') %>"
+                class="fa fa-trash"></i>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    <% end -%>
     </tbody>
   </table>
 </div>
