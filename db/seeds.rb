@@ -1,6 +1,2 @@
 Admin.create_with(name: 'Administrador', password: '123456')
-     .find_or_create_by!(email: 'admin@admin.com')
-sul = Region.create_with(name: 'sul')
-parana = State.create_with(name: 'Paraná', acronym: 'PR', region_id => sul.id)
-guarapuava = City.create_with(name: 'Guarapuava', state_id: => parana.id)
-Institution.create_with(name:'Universidade Tecnologica Federal do Paraná', acronym: 'UTFPR', city_id: => guarapuava.id)
+Institution.create(name:'Universidade Tecnologica Federal do Paraná', acronym: 'UTFPR', city_id: 4049)
