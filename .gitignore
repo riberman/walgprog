@@ -40,10 +40,11 @@
 
 coverage
 
-# Ignore RubyMine files
-/.idea/*
-# OS generated files #
+# IDE generated files #
+######################
+.idea/
 
+# OS generated files #
 ######################
 .DS_Store
 .DS_Store?
