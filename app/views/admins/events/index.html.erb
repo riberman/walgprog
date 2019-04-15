@@ -21,7 +21,7 @@
     </span>
     </div>
     <div class="col-md-4 col-sm-12">
-      <%= link_to admins_events_new_path, class: 'btn btn-outline-info btn-block', active: :exclusive do %>
+      <%= link_to new_admins_event_path, class: 'btn btn-outline-info btn-block', active: :exclusive do %>
         <i class="fe fe-plus mr-2"></i>
         <%= t('events.new') %>
       <% end %>
@@ -58,13 +58,13 @@
         <td><%= format_date(event.created_at, "%d/%m/%Y %H:%M") %></td>
         <td>
           <div class="btn-group">
-            <%= link_to admins_events_edit_path(event.id), class: 'icon ml-2', active: :exclusive do %>
+            <%= link_to edit_admins_event_path(event.id), class: 'icon ml-2', active: :exclusive do %>
               <i
                 data-toggle="tooltip"
                 title="<%= t('helpers.edit') %>"
                 class="fas fa-edit"></i>
             <% end %>
-            <%= link_to admins_events_destroy_path(event.id), :method => :delete, class: 'icon text-danger ml-2', active: :exclusive do %>
+            <%= link_to admins_event_path(event.id), :method => :delete, class: 'icon text-danger ml-2', active: :exclusive do %>
               <i
                 data-toggle="tooltip"
                 title="<%= t('helpers.delete') %>"
