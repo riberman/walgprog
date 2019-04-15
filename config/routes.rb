@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  authenticate :admin do
+    namespace :institutions do
+      get 'dashboard#index'
+    end
+  end
   root to: 'home#index'
 
   devise_for :admins
