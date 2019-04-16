@@ -12,26 +12,35 @@ class Event < ApplicationRecord
   private
 
   def valid_year_event
-    query_beginning = 'extract(year  from beginning_date) = ?'
-    query_end = 'extract(year  from end_date) = ?'
 
-    events_beginning = Event.where(query_beginning, beginning_date.strftime('%Y'))
+    if beginning_date.present? && end_date.present?
+      query_beginning = 'extract(year  from beginning_date) = ?'
+      query_end = 'extract(year  from end_date) = ?'
 
-    events_end = Event.where(query_end, end_date.strftime('%Y'))
+      events_beginning = Event.where(query_beginning, beginning_date.year)
 
-    if events_beginning.present?
-      errors.add(:beginning_date, I18n.t('events.error.year_already_used'))
+      events_end = Event.where(query_end, end_date.year)
+
+      if events_beginning.present?
+        errors.add(:beginning_date, I18n.t('events.error.year_already_used'))
+      end
+
+      errors.add(:end_date, I18n.t('events.error.year_already_used')) if events_end.present?
     end
-
-    errors.add(:end_date, I18n.t('events.error.year_already_used')) if events_end.present?
   end
-
   def valid_year_event_except_self
-    query = 'extract(year  from beginning_date) = ? OR extract(year  from end_date) = ?'
-    events = Event.where(query, beginning_date.strftime('%Y'), end_date.strftime('%Y'))
-                  .where('id != ?', id)
 
-    errors.add(:beginning_date, I18n.t('events.error.year_already_used')) if events.present?
-    errors.add(:end_date, I18n.t('events.error.year_already_used')) if events.present?
+    if beginning_date.present? && end_date.present?
+      query_beginning = 'extract(year  from beginning_date) = ?'
+      query_end = 'extract(year  from end_date) = ?'    
+
+      events_beginning = Event.where(query_beginning, beginning_date.year)
+      .where('id != ?', id)
+      events_end = Event.where(query_end, end_date.year)
+      .where('id != ?', id)
+
+      errors.add(:beginning_date, I18n.t('events.error.year_already_used')) if events_beginning.present?
+      errors.add(:end_date, I18n.t('events.error.year_already_used')) if events_end.present?
+    end
   end
 end
