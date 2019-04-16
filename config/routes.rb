@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   authenticate :admin do
     namespace :admins do
       root to: 'dashboard#index'
+
+      resources :contacts
     end
   end
 
@@ -17,4 +19,5 @@ Rails.application.routes.draw do
         to: 'admins/registrations#update',
         as: 'admin_registration'
   end
+
 end
