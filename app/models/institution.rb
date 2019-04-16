@@ -3,4 +3,8 @@ class Institution < ApplicationRecord
 
   validates :name, presence: true
   validates :acronym, presence: true
+
+  def state
+    city.try(:state)
+  end
 end

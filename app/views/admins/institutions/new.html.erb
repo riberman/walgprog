@@ -1,0 +1,12 @@
+<% provide(:head_title, 'Cadastrar Instituição de Ensino') %>
+<% provide(:page_title, 'Cadastrar Instituição de Ensino') %>
+<% provide(:title, 'Cadastrar Instituição de Ensino') %>
+
+
+<%= simple_form_for([:admins, @institution]) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :acronym %>
+  <%= f.input :state, collection: @states, prompt: 'Escolha o estado' %>
+  <%= f.association :city %>
+<% end %>
+
