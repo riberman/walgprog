@@ -1,47 +1,79 @@
 <% provide(:head_title, t("events.index")) %>
 <% provide(:page_title, t('events.index')) %>
 <% provide(:title, t('events.index')) %>
+
 <div class="col-md-12">
-  <%= link_to admins_events_new_path, class: 'btn btn-success float-right', active: :exclusive do %>
-    <i class="fa fa-plus mr-2"></i>
-    <%= t('events.new') %>
-  <% end %>
+  <div class="row">
+    <div class="input-group col-md-8">
+      <input
+        type="text"
+        class="form-control btn-block"
+        placeholder="<%= t('helpers.search') %>"
+        aria-describedby="search-append">
+
+      <span
+        id="search-append"
+        class="input-group-append">
+
+      <span class="input-group-text">
+        <i class="fe fe-search text-info"></i>
+      </span>
+    </span>
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <%= link_to new_admins_event_path, class: 'btn btn-outline-info btn-block', active: :exclusive do %>
+        <i class="fe fe-plus mr-2"></i>
+        <%= t('events.new') %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
-<div class="mt-5 col-md-12 row card-body-scrollable">
-  <table class="table table-hover table-striped">
+<div class="mt-5 col-md-12 row card-body-scrollable mt-5">
+  <table class="table table-hover table-outline table-vcenter card-table">
     <thead>
     <tr>
-      <th>Nome</th>
-      <th>Iniciais</th>
-      <th>Cor</th>
-      <th>Início/Término</th>
-      <th>Local</th>
-      <th>Cidade/Estado</th>
-      <th>Criado em</th>
-      <th>Atualizado em</th>
+      <th><%= t('activerecord.attributes.attribute_commons.name') %></th>
+      <th><%= t('activerecord.attributes.event.color') %></th>
+      <th><%= t('events.beginning_end') %></th>
+      <th><%= t('activerecord.attributes.event.local') %></th>
+      <th><%= t('events.location') %></th>
+      <th><%= t('activerecord.attributes.attribute_commons.created_at') %></th>
       <th></th>
     </tr>
     </thead>
     <tbody>
+    <% @events.each do |event| -%>
       <tr>
-        <td>Walprog</td>
-        <td>wpg</td>
-        <td>red</td>
+        <td><%= event.name %> (<%= event.initials %>)</td>
+        <td><i class="fas fa-circle" style="color: <%= event.color %>;"></i></td>
         <td>
-          10/04/2019 10:00
-          <br>
-          10/04/2019 22:00
+          <%= format_date(event.beginning_date, '%d/%m/%Y %H:%M') %>
+          <%= t('helpers.until') %>
+          <%= format_date(event.end_date, '%d/%m/%Y %H:%M') %>
         </td>
-        <td>UTFPR - auditório 1</td>
-        <td>Guarapuava/PR</td>
-        <td><%= I18n.localize(Time.current) %></td>
-        <td><%= I18n.localize(Time.current) %></td>
-        <td class="btn-group">
-          <button class="btn btn-warning">Editar</button>
-          <button class="btn btn-danger">Excluir</button>
+
+        <td><%= event.local %></td>
+        <td><%= event.full_address %></td>
+        <td><%= format_date(event.created_at, "%d/%m/%Y %H:%M") %></td>
+        <td>
+          <div class="btn-group">
+            <%= link_to edit_admins_event_path(event.id), class: 'icon ml-2', active: :exclusive do %>
+              <i
+                data-toggle="tooltip"
+                title="<%= t('helpers.edit') %>"
+                class="fas fa-edit"></i>
+            <% end %>
+            <%= link_to admins_event_path(event.id), :method => :delete, class: 'icon text-danger ml-2', active: :exclusive do %>
+              <i
+                data-toggle="tooltip"
+                title="<%= t('helpers.delete') %>"
+                class="fa fa-trash"></i>
+            <% end %>
+          </div>
         </td>
       </tr>
+    <% end -%>
     </tbody>
   </table>
 </div>

@@ -1,0 +1,9 @@
+<div class="history-nav">
+  <% nav.each do |n| %>
+    <% unless n.equal? nav.last %>
+      <%= link_to n[:title], n[:url] %>
+    <% else %>
+     / <%= n[:title] %>
+    <% end %>
+  <% end %>
+</div>

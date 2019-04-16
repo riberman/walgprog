@@ -19,6 +19,7 @@ pt-BR:
         created_at: Criado em
         updated_at: Atualizado em
       admin:
+        image: Imagem
         password: Senha
         current_password: Senha atual
         password_confirmation: Confirmação de senha
@@ -30,15 +31,20 @@ pt-BR:
         beginning_date: Data de início
         end_date: Data de término
         local: Local
-        city_id: Cidade
-        state_id: Estado
+        city: Cidade
+        address: Endereço
         <<: *commons
   helpers:
     back: Voltar
+    search: Procurar...
     currently: Atualmente
+    home: Página inicial
     boolean:
       'true': Sim
       'false': Não
+    until: até
+    edit: Editar
+    delete: Apagar
   flash:
     actions:
       update:
@@ -83,3 +89,13 @@ pt-BR:
     new: Novo Evento
     edit: Editar Evento
     name: Nome
+    dates: Datas
+    location: Localização
+    description: Descrição
+    beginning_end: Início/Término
+    success:
+      new: Novo evento cadastrado com sucesso!
+      edit: Evento editado com sucesso!
+      destroy: Evento apagado com sucesso!
+    error:
+      year_already_used: Já há um evento cadastrado nesse ano.

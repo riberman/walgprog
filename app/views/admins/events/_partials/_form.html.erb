@@ -1,35 +1,57 @@
-<%= simple_form_for(@event, as: @event,
-                    :url => admins_events_create_path,
-                    html: { method: :post}) do |f| %>
+<%= simple_form_for @event, url: admins_events_path do |f| %>
 
   <%= f.error_notification %>
 
-  <%= f.input :name, required: true, autofocus: true %>
+  <fieldset class="form-fieldset">
+    <legend class="w-auto"><%= t('events.description') %></legend>
+    <div class="row">
+      <%= f.input :name, required: true, autofocus: true, wrapper_html: {class: 'col-md-8'} %>
 
-  <%= f.input :initials, autocomplete: "off",
-              required: true %>
+      <%= f.input :initials, autocomplete: "off", required: true, wrapper_html: {class: 'col-md-2'} %>
 
-  <%= f.input :color, required: true, input_html: {class: 'colorpicker'} %>
+      <%= f.input :color, required: true, wrapper_html: {class: 'col-md-1'}, input_html: {class: 'colorpicker'} %>
+    </div>
+  </fieldset>
 
-  <%= f.input :beginning_date, required: true %>
+  <fieldset class="form-fieldset">
+    <legend class="w-auto"><%= t('events.dates') %></legend>
+    <div class="row">
+      <div class="form-group string required event_color datetimepicker col-md-6" id="datetimepickerbegin" data-target-input="nearest">
+        <%= f.input(
+                :beginning_date,
+                :as => :string,
+                required: true,
+                input_html: {value: @event.beginning_date ? @event.beginning_date.strftime("%d/%m/%Y %H:%M") : nil,class: 'datetimepicker-input', data: {target: '#datetimepickerbegin', toggle: 'datetimepicker'}},) %>
 
-  <%= f.input :end_date, required: true %>
+      </div>
 
-  <%= f.input :local, required: true %>
+      <div class="form-group string required event_color datetimepicker col-md-6" id="datetimepickerend" data-target-input="nearest">
+        <%= f.input(
+                :end_date,
+                :as => :string,
+                required: true,
+                input_html: {value: @event.end_date ? @event.end_date.strftime("%d/%m/%Y %H:%M") : nil, class: 'datetimepicker-input', data: {target: '#datetimepickerend', toggle: 'datetimepicker'}},) %>
+      </div>
+    </div>
+  </fieldset>
 
-  <%= f.input :city_id, collection: ['Guarapuava', 'Curitiba'], :include_blank => false %>
+  <fieldset class="form-fieldset">
+    <legend class="w-auto"><%= t('events.location') %></legend>
+    <div class="row">
+      <%= f.association :city, :include_blank => false, wrapper_html: {class: 'col-md-6'} %>
 
-  <%= f.input :state_id, collection: ['Paraná', 'Curitiba'], :include_blank => false %>
+      <%= f.input :local, required: true, wrapper_html: {class: 'col-md-6'} %>
+      <%= f.input :address, required: true, wrapper_html: {class: 'col-md-12'} %>
+    </div>
+  </fieldset>
+
 
   <div class="d-flex">
-    <%= link_to admin_events_path, class: 'btn btn-secondary float-left', active: :exclusive do %>
+    <%= link_to admins_events_path, class: 'btn btn-secondary float-left', active: :exclusive do %>
       <%= t('helpers.back') %>
     <% end %>
 
     <%= f.button :submit, class: 'btn-primary ml-auto' %>
   </div>
-<% end %>
 
-<script type="text/javascript" charset="utf-8">
-    $('.colorpicker').colorpicker()
-</script>
+<% end %>

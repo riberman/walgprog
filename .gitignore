@@ -42,7 +42,7 @@ coverage
 
 # IDE generated files #
 ######################
-.idea/
+.idea/*
 
 # OS generated files #
 ######################
