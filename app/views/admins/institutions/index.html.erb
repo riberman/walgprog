@@ -19,7 +19,7 @@
       </div>
       <div class="col-lg-4">
 
-        <%= link_to "Cadastrar", new_admins_institution_path, class: "btn btn-outline-success mb-3"  %>
+        <%= link_to "+ Nova Instituição", new_admins_institution_path, class: "btn btn-outline-primary btn-block mb-4"  %>
 
       </div>
     </div>
@@ -35,51 +35,18 @@
         </tr>
         </thead>
         <tbody>
+          <% @institutions.each do |institution| %>
         <tr>
-          <td>Universidade Tecnologica Federal do Paraná</td>
-          <td>UTFPR</td>
-          <td class="text-nowrap">Guarapuava</td>
-          <td class="text-nowrap">PR</td>
-          <td class="w-1"><a href="#" class="icon"><i class="fe fe-edit"></i></a></td>
-
-          <td class="w-1"><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
+          <td><%= institution.name %></td>
+          <td><%= institution.acronym %></td>
+          <td class="text-nowrap"><%= institution.city.name %></td>
+          <td class="text-nowrap"><%= institution.city.state.acronym %></td>
+          <td class="w-1"><%= link_to '<i class="fe fe-edit"></i>'.html_safe, edit_admins_institution_path(institution) %></td>
+          <td class="w-1"><%= link_to '<i class="fe fe-trash"></i>'.html_safe, admins_institution_path(institution),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
         </tr>
-        <tr>
-          <td>Universidade Tecnologica Federal do Paraná</td>
-          <td>UTFPR</td>
-          <td class="text-nowrap">Guarapuava</td>
-          <td class="text-nowrap">PR</td>
-          <td class="w-1"><a href="#" class="icon"><i class="fe fe-edit"></i></a></td>
-
-          <td class="w-1"><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
-        </tr>
-        <tr>
-          <td>Universidade Tecnologica Federal do Paraná</td>
-          <td>UTFPR</td>
-          <td class="text-nowrap">Guarapuava</td>
-          <td class="text-nowrap">PR</td>
-          <td class="w-1"><a href="#" class="icon"><i class="fe fe-edit"></i></a></td>
-
-          <td class="w-1"><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
-        </tr>
-        <tr>
-          <td>Universidade Tecnologica Federal do Paraná</td>
-          <td>UTFPR</td>
-          <td class="text-nowrap">Guarapuava</td>
-          <td class="text-nowrap">PR</td>
-          <td class="w-1"><a href="#" class="icon"><i class="fe fe-edit"></i></a></td>
-
-          <td class="w-1"><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
-        </tr>
-        <tr>
-          <td>Universidade Tecnologica Federal do Paraná</td>
-          <td>UTFPR</td>
-          <td class="text-nowrap">Guarapuava</td>
-          <td class="text-nowrap">PR</td>
-          <td class="w-1"><a href="#" class="icon"><i class="fe fe-edit"></i></a></td>
-
-          <td class="w-1"><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
-        </tr>
+        <% end %>
         </tbody>
       </table>
     </div>
