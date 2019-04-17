@@ -41,10 +41,10 @@
           <td><%= institution.acronym %></td>
           <td class="text-nowrap"><%= institution.city.name %></td>
           <td class="text-nowrap"><%= institution.city.state.acronym %></td>
-          <td class="w-1"><%= link_to '<i class="fe fe-edit"></i>'.html_safe, edit_admins_institution_path(institution) %></td>
+          <td class="w-1"><%= link_to '<i class="fe fe-edit"></i>'.html_safe, edit_admins_institution_path(institution), :title=> "Editar" %></td>
           <td class="w-1"><%= link_to '<i class="fe fe-trash"></i>'.html_safe, admins_institution_path(institution),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+              data: { confirm: 'Deseja remover?' }, :title=> "Deletar" %></td>
         </tr>
         <% end %>
         </tbody>
