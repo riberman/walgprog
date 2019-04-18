@@ -1,17 +1,22 @@
 $(function () {
 
-    $("#institution_state").on( "change", function() {
-        var state_id = $("#institution_state").val();
+    console.log("Carregou Página");
+
+    $("#institution_state").on( "click", function() {
+        console.log("Selecionau Estado");
+        var state_id = $(this).val();
         $.ajax({
             method: "GET",
-            url: "/admins/cities/search/" + state_id,
-            data: {state_id: state_id},
+            url: "/admins/states/" + state_id + "/cities",
             success: function(data){
-                console.log(data);
-
+                $('#institution_city').html("");
+                $.each(data['cities'], function (index, city) {
+                    $('#institution_city').append($('<option>', {
+                        value: city['id'],
+                        text: city['name']
+                    }));
+                });
             }
-
         });
     });
-
 });
