@@ -13,7 +13,9 @@ Rails.application.routes.draw do
       root to: 'dashboard#index'
 
       resources :institutions
-      resources :cities
+
+      get 'states/:id/cities',
+          to: 'states#cities', as: :state_cities
 
     end
   end
@@ -27,9 +29,6 @@ Rails.application.routes.draw do
         to: 'admins/registrations#update',
         as: 'admin_registration'
 
-    get '/admins/cities/search/:state_id',
-        to: 'admins/cities#search_cities_by_state',
-        as: 'search_cities'
 
   end
 end
