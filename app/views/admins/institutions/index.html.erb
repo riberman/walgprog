@@ -8,13 +8,15 @@
       <h3 class="card-title"></h3>
       <div class="col-lg-8">
         <div class="form-group">
+          <form action="/admins/institutions" accept-charset="UTF-8" method="get">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Procurar..." aria-label="Procurar..." aria-describedby="search">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="text" class="form-control" placeholder="Procurar..." name="search" aria-label="Procurar..." aria-describedby="search">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="button" id="search"><i class="fe fe-search"></i></button>
             </div>
           </div>
-
+          </form>
         </div>
       </div>
       <div class="col-lg-4">
