@@ -23,6 +23,7 @@
 // Lib files
 //--------------------
 //= require lib/image_preview
+//= require admins/city.js
 
 
 // App files
