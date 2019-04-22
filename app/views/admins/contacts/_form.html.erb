@@ -1,0 +1,22 @@
+<%= simple_form_for(@contact, url: path) do | form | %>
+
+  <%= form.error_notification %>
+
+  <div class="form-row">
+    <div class="col-sm-12 col-md-6">
+      <%= form.input :name, required: true, autofocus: true %>
+      <%= form.input :email, required: true %>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+      <%= form.input :phone,  required: false %>
+      <%= form.association :institution %>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <%= link_to t('helpers.back'), admins_contacts_path, class: 'btn btn-secondary' %>
+
+    <%= form.button :submit, t('simple_form.buttons.save'), class: 'btn-primary ml-auto' %>
+  </div>
+<% end %>

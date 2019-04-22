@@ -1,0 +1,5 @@
+<% provide(:head_title, t('title.new_contact')) %>
+<% provide(:page_title, t('title.new_contact')) %>
+<% provide(:title, t('title.new_contact')) %>
+
+<%= render partial: "form", locals: { path: admins_contacts_path } %>
