@@ -13,6 +13,6 @@ module ApplicationHelper
   end
 
   def format_date(date = nil, format = '%d/%m/%Y %H:%M')
-    date.strftime(format) if !!date
+    date&.strftime(format)
   end
 end

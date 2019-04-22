@@ -1,6 +1,8 @@
 class ChangeEventDatesType < ActiveRecord::Migration[5.2]
   def change
-    change_column :events, :beginning_date, :timestamp
-    change_column :events, :end_date, :timestamp
+    change_table :events, bulk: true do |table|
+      table.timestamp :beginning_date
+      table.timestamp :end_date
+    end
   end
 end
