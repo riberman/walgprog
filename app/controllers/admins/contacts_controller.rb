@@ -35,6 +35,7 @@ class Admins::ContactsController < Admins::BaseController
   end
 
   private
+
   def success_action?(result, view, message)
     if result
       redirect_to admins_contacts_path, notice: message

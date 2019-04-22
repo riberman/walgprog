@@ -19,5 +19,4 @@ Rails.application.routes.draw do
         to: 'admins/registrations#update',
         as: 'admin_registration'
   end
-
 end
