@@ -14,6 +14,7 @@ pt-BR:
       edit: Editar
       update: Atualizar
       back: Voltar
+      save: Salvar
     error_notification:
       default_message: 'Alguns erros foram encontrados, por favor verifique:'
     # Labels and hints examples

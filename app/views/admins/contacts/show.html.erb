@@ -1,0 +1,31 @@
+<% provide(:page_title, 'Detalhes do Contato') %>
+
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title"><%= @contact.name %></h3>
+    <div class="card-options">
+      <%= link_to edit_admins_contact_path(@contact), class: 'btn btn-secondary btn-sm ml-2' do %>
+        <i class="fe fe-edit"> <%= t('title.edit_contact') %></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="col-sm-12 col-md-6">
+      <i class="fe fe-at-sign">
+        <%= @contact.email %>
+      </i>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+      <i class="fab fa-whatsapp">
+        <%= @contact.phone %>
+      </i>
+    </div>
+
+    <div class="col-sm-12 col-md-12">
+      <i class="fas fa-university">
+        <%= @contact.institution.name %> <%= @contact.institution.acronym %>
+      </i>
+    </div>
+  </div>
+</div>

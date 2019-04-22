@@ -46,11 +46,15 @@
                       <i class="fe fe-search"></i>
                     <% end %>
 
-                    <%= link_to admins_contact_path(contact), class: 'text-info' do %>
+                    <%= link_to edit_admins_contact_path(contact), class: 'text-info' do %>
                       <i class="fe fe-edit"></i>
                     <% end %>
 
-                    <%= link_to admins_contact_path(contact), class: 'text-info' do %>
+                    <!-- bootbox.js bootboxjs.com -->
+                    <%= link_to admins_contact_path(contact),
+                                method: :delete,
+                                data: { confirm: t('flash.actions.destroy.confirm', resource_name: contact.name) },
+                                class: 'text-info' do %>
                       <i class="fe fe-trash"></i>
                     <% end %>
                   </td>
