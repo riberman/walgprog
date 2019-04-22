@@ -7,6 +7,9 @@ pt-BR:
       admin:
         one: Administrador
         other: Administradores
+      contact:
+        one: Contato
+        other: Contatos
     attributes:
       attribute_commons: &commons
         name: Nome
@@ -19,6 +22,9 @@ pt-BR:
         current_password: Senha atual
         password_confirmation: Confirmação de senha
         remember_me: Lembre-me
+        <<: *commons
+      contact:
+        institution: Instituição
         <<: *commons
   helpers:
     back: Voltar
@@ -65,3 +71,8 @@ pt-BR:
     select:
       m: Selecione um %{name}
       f: Selecione uma %{name}
+  title:
+    contacts: Contatos
+    new_contact: Novo Contato
+    edit_contact: Editar Contato
+    show_contact: Detalhe Contato
