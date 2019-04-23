@@ -21,6 +21,10 @@ pt-BR:
       defaults:
         password: Senha
         current_password: Senha atual
+        name: Nome
+        acronym: Sigla
+        state: Estado
+        city: Cidade
     #   user:
     #     new:
     #       email: E-mail para efetuar o sign in.

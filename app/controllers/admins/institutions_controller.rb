@@ -1,17 +1,16 @@
 class Admins::InstitutionsController < Admins::BaseController
-
   def index
-    if params[:search]
-      @institutions = Institution.where('lower(name) LIKE ?', "%#{params[:search].downcase}%")
-    else
-      @institutions = Institution.all
-    end
+    @institutions = if params[:search]
+                      Institution.where('lower(name) LIKE ?', "%#{params[:search].downcase}%")
+                    else
+                      Institution.all
+                    end
   end
 
   def new
     @institution = Institution.new
     @states = State.order(:name)
-    end
+  end
 
   def create
     @institution = Institution.new(institution_params)
@@ -51,5 +50,4 @@ class Admins::InstitutionsController < Admins::BaseController
   def institution_params
     params.require(:institution).permit(:name, :acronym, :city_id, :search)
   end
-
 end
