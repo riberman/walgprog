@@ -48,16 +48,22 @@
         <td><%= event.name %> (<%= event.initials %>)</td>
         <td><i class="fas fa-circle" style="color: <%= event.color %>;"></i></td>
         <td>
-          <%= format_date(event.beginning_date, '%d/%m/%Y %H:%M') %>
+          <%= l(event.beginning_date, format: :short_hour) %>
           <%= t('helpers.until') %>
-          <%= format_date(event.end_date, '%d/%m/%Y %H:%M') %>
+          <%= l(event.end_date, format: :short_hour) %>
         </td>
 
         <td><%= event.local %></td>
         <td><%= event.full_address %></td>
-        <td><%= format_date(event.created_at, "%d/%m/%Y %H:%M") %></td>
+        <td><%= l(event.created_at, format: :short_hour) %></td>
         <td>
           <div class="btn-group">
+            <%= link_to admins_event_path(event.id), class: 'icon ml-2', active: :exclusive do %>
+              <i
+                data-toggle="tooltip"
+                title="<%= t('helpers.show') %>"
+                class="fas fa-search"></i>
+            <% end %>
             <%= link_to edit_admins_event_path(event.id), class: 'icon ml-2', active: :exclusive do %>
               <i
                 data-toggle="tooltip"

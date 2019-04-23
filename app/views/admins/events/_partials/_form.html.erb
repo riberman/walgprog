@@ -21,7 +21,7 @@
                 :beginning_date,
                 :as => :string,
                 required: true,
-                input_html: {value: @event.beginning_date ? @event.beginning_date.strftime("%d/%m/%Y %H:%M") : nil,class: 'datetimepicker-input', data: {target: '#datetimepickerbegin', toggle: 'datetimepicker'}},) %>
+                input_html: {value: @event.beginning_date ? l(@event.beginning_date, format: :short_hour) : nil,class: 'datetimepicker-input', data: {target: '#datetimepickerbegin', toggle: 'datetimepicker'}},) %>
 
       </div>
 
@@ -30,7 +30,7 @@
                 :end_date,
                 :as => :string,
                 required: true,
-                input_html: {value: @event.end_date ? @event.end_date.strftime("%d/%m/%Y %H:%M") : nil, class: 'datetimepicker-input', data: {target: '#datetimepickerend', toggle: 'datetimepicker'}},) %>
+                input_html: {value: @event.end_date ?  l(@event.end_date, format: :short_hour) : nil, class: 'datetimepicker-input', data: {target: '#datetimepickerend', toggle: 'datetimepicker'}},) %>
       </div>
     </div>
   </fieldset>
