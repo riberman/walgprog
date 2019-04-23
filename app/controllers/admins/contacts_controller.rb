@@ -2,7 +2,7 @@ class Admins::ContactsController < Admins::BaseController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contacts = Contact.all
+    @contacts = Contact.includes(:institution)
   end
 
   def new
@@ -30,18 +30,16 @@ class Admins::ContactsController < Admins::BaseController
       redirect_to admins_contacts_path
     else
       flash.now[:error] = I18n.t('flash.actions.errors')
-      render edit_admin_contact_path
+      render :edit
     end
   end
 
   def destroy
     contact_name = @contact.name
-    if @contact.destroy
-      flash[:success] = I18n.t('flash.actions.destroy.m', resource_name: contact_name)
-      redirect_to admins_contacts_path
-    else
-      render :index
-    end
+
+    @contact.destroy
+    flash[:success] = I18n.t('flash.actions.destroy.m', resource_name: contact_name)
+    redirect_to admins_contacts_path
   end
 
   def set_contact
@@ -49,6 +47,6 @@ class Admins::ContactsController < Admins::BaseController
   end
 
   def params_contact
-    params.require(:contact).permit(:name, :email, :phone?, :institution_id)
+    params.require(:contact).permit(:name, :email, :phone, :institution_id)
   end
 end
