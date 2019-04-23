@@ -7,6 +7,7 @@ RSpec.describe Contact, type: :model do
 
     context 'email' do
       it { is_expected.to allow_value('email@addresse.foo').for(:email) }
+      it { is_expected.to allow_value('email@addresse.foo.foo').for(:email) }
       it { is_expected.to_not allow_value('foo').for(:email) }
     end
   end
