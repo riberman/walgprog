@@ -5,7 +5,6 @@
 
 <%= simple_form_for([:admins, @institution]) do |f| %>
   <%= f.error_notification %>
-
   <div class="row">
     <div class="col-lg-8">
       <%= f.input :name %>
@@ -17,10 +16,10 @@
 
   <div class="row">
     <div class="col-lg-4">
-      <%= f.input :state, collection: @states, prompt: 'Escolha o estado'%>
+      <%= f.input :state, collection: @states, prompt: 'Escolha o estado', selected: @institution.city.state.id %>
     </div>
     <div class="col-lg-8">
-      <%= f.input :city, collection: [], prompt: 'Selecione um estado', input_html: { name: 'institution[city_id]' }%>
+      <%= f.input :city, collection: [], prompt: 'Selecione um estado', selected: @institution.city.id, input_html: { name: 'institution[city_id]' }%>
     </div>
   </div>
 
