@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :state do
-    sequence(:symbol) { |n| "Symbol #{n}" }
+    sequence(:acronym) { |n| "Acronym #{n}" }
     sequence(:name) { |n| "Name #{n}" }
+    region
   end
 end

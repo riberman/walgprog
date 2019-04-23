@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :city do
-    name { 'City' }
+    sequence(:name) { |n| "City #{n}" }
     state
   end
 end
