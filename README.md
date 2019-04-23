@@ -1,6 +1,6 @@
-[![Maintainability](https://api.codeclimate.com/v1/badges/f26b57e590687b502890/maintainability)](https://codeclimate.com/github/TSIDW5/walgprog/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/f26b57e590687b502890/test_coverage)](https://codeclimate.com/github/TSIDW5/walgprog/test_coverage)
-[![Build Status](https://travis-ci.org/TSIDW5/walgprog.svg?branch=master)](https://travis-ci.org/TSIDW5/walgprog)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7e2b5960951159798f2e/maintainability)](https://codeclimate.com/github/riberman/walgprog/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/7e2b5960951159798f2e/test_coverage)](https://codeclimate.com/github/riberman/walgprog/test_coverage)
+[![Build Status](https://travis-ci.org/riberman/walgprog.svg?branch=master)](https://travis-ci.org/riberman/walgprog)
 
 # Sistema de Gestão de Eventos para o WalgProg
 
