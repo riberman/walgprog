@@ -1,10 +1,6 @@
 class Admins::InstitutionsController < Admins::BaseController
   def index
-    @institutions = if params[:search]
-                      Institution.where('lower(name) LIKE ?', "%#{params[:search].downcase}%")
-                    else
-                      Institution.all
-                    end
+    @institutions = Institution.all
   end
 
   def new

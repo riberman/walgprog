@@ -3,7 +3,7 @@ pt-BR:
     "yes": Sim
     "no": Não
     required:
-      text: obrigatório
+      text: Obrigatório
       mark: '*'
       # You can uncomment the line below if you need to overwrite the whole
       # required html.

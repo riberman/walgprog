@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :institutions
   root to: 'home#index'
 
   devise_for :admins
