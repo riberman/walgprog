@@ -102,4 +102,4 @@ pt-BR:
       edit: Evento editado com sucesso!
       destroy: Evento apagado com sucesso!
     error:
-      year_already_used: Já há um evento cadastrado nesse ano.
+      year_used: Já há um evento cadastrado nesse ano.

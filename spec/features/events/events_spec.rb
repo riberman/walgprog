@@ -10,14 +10,11 @@ describe 'Admin:login', type: :feature do
   end
 
   it 'displays the events list' do
-
-  expect(page).to have_content(event.name)
-  expect(page).to have_content(I18n.l(event.beginning_date, format: :short))
-  expect(page).to have_content(I18n.l(event.end_date, format: :short))
-  expect(page).to have_content(event.local)
-  expect(page).to have_content(event.city.name)
-  expect(page).to have_content(event.address)
-
-
+    expect(page).to have_content(event.name)
+    expect(page).to have_content(I18n.l(event.beginning_date, format: :short))
+    expect(page).to have_content(I18n.l(event.end_date, format: :short))
+    expect(page).to have_content(event.local)
+    expect(page).to have_content(event.city.name)
+    expect(page).to have_content(event.address)
   end
 end

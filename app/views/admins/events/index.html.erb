@@ -48,15 +48,9 @@
         <td><%= event.name %> (<%= event.initials %>)</td>
         <td><i class="fas fa-circle" style="color: <%= event.color %>;"></i></td>
         <td>
-<<<<<<< HEAD
-          <%= l(event.beginning_date, format: :short) %>
-          <%= t('helpers.until') %>
-          <%= l(event.end_date, format: :short) %>
-=======
           <%= l(event.beginning_date, format: :short_hour) %>
           <%= t('helpers.until') %>
           <%= l(event.end_date, format: :short_hour) %>
->>>>>>> 07a68e3a6ec396d437b0bed6080117de977cfe8f
         </td>
 
         <td><%= event.local %></td>

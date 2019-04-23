@@ -6,8 +6,7 @@ FactoryBot.define do
     end_date { 2.years.after }
     color { '#fff' }
     initials { 'TST' }
-    local {'Parque'}
-    address {'testing'}
-
+    local { 'Parque' }
+    address { 'testing' }
   end
 end
