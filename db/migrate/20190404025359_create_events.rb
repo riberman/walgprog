@@ -4,11 +4,10 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :initials
       t.string :color
-      t.date :beginning_date
-      t.date :end_date
+      t.timestamp :beginning_date
+      t.timestamp :end_date
       t.string :local
       t.integer :city_id
-      t.integer :state_id
       t.timestamps
     end
   end
