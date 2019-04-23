@@ -1,6 +1,8 @@
 class Admins::EventsController < ApplicationController
   layout 'layouts/admins/application'
 
+  before_action :set_root_pagination
+
   protected
 
   def after_update_path_for(*)
@@ -10,18 +12,14 @@ class Admins::EventsController < ApplicationController
   public
 
   def index
-    @navigation = [ { :title => t('events.index'), :url => admins_events_path } ]
-
-    @events = Event.all.order("created_at desc")
+    @events = Event.all.order('created_at desc')
   end
 
   def new
-    @navigation = [ { :title => t('events.index'), :url => admins_events_path } ]
     @event = Event.new
   end
 
   def create
-    @navigation = [ { :title => t('events.index'), :url => admins_events_path } ]
     @event = Event.new(event_params)
     if @event.save
       flash[:success] = t('events.success.new')
@@ -31,10 +29,11 @@ class Admins::EventsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @event = Event.find(params[:id])
+  end
 
   def edit
-    @navigation = [ { :title => t('events.index'), :url => admins_events_path } ]
     @event = Event.find(params[:id])
   end
 
@@ -50,7 +49,7 @@ class Admins::EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
-    @event.destroy if !!@event
+    @event.destroy if @event.present?
 
     flash[:success] = t('events.success.destroy')
 
@@ -58,16 +57,21 @@ class Admins::EventsController < ApplicationController
   end
 
   private
+
   def event_params
     params.require(:event).permit(
-        :name,
-        :initials,
-        :color,
-        :beginning_date,
-        :end_date,
-        :local,
-        :city_id,
-        :address
+      :name,
+      :initials,
+      :color,
+      :beginning_date,
+      :end_date,
+      :local,
+      :city_id,
+      :address
     )
+  end
+
+  def set_root_pagination
+    @navigation = [{ title: t('events.index'), url: admins_events_path }]
   end
 end

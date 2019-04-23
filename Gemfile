@@ -36,7 +36,6 @@ group :development, :test do
 
   gem 'bootstrap-colorpicker-rails'
   gem 'bootstrap4-datetime-picker-rails'
-
 end
 
 group :development do

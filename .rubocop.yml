@@ -18,6 +18,9 @@ AllCops:
     - 'node_modules/**/*'
     - 'bin/webpack'
     - 'bin/webpack-dev-server'
+    - 'db/migrate/20190401222059_devise_create_admins.rb'
+    - 'config/initializers/simple_form.rb'
+    - 'config/initializers/simple_form_bootstrap.rb'
 
 Style/Documentation:
   Enabled: false
@@ -43,14 +46,13 @@ Metrics/LineLength:
     - 'config/environments/production.rb'
     - 'config/initializers/backtrace_silencers.rb'
     - 'config/initializers/content_security_policy.rb'
-    - 'config/initializers/simple_form.rb'
-    - 'config/initializers/simple_form_bootstrap.rb'
 
 Bundler/OrderedGems:
   Enabled: false
 
 Metrics/MethodLength:
   Exclude:
+    - 'db/migrate/*'
 
 Metrics/AbcSize:
   Exclude:
