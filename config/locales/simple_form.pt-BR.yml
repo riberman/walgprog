@@ -3,7 +3,7 @@ pt-BR:
     "yes": Sim
     "no": Não
     required:
-      text: obrigatório
+      text: Obrigatório
       mark: '*'
       # You can uncomment the line below if you need to overwrite the whole
       # required html.
@@ -21,6 +21,10 @@ pt-BR:
       defaults:
         password: Senha
         current_password: Senha atual
+        name: Nome
+        acronym: Sigla
+        city: Cidade
+        state: Estado
     #   user:
     #     new:
     #       email: E-mail para efetuar o sign in.

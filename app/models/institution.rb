@@ -9,4 +9,5 @@ class Institution < ApplicationRecord
   def state
     city.try(:state)
   end
+
 end
