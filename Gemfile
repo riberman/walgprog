@@ -24,7 +24,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'carrierwave-i18n'
 gem 'mini_magick'
 
-group :development, :test do
+group :development, :test, :production do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   gem 'rspec-rails', '~> 3.7'
@@ -35,7 +35,7 @@ group :development, :test do
   gem 'factory_bot_rails'
 end
 
-group :development do
+group :development, :production do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
