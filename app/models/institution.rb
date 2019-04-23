@@ -5,9 +5,7 @@ class Institution < ApplicationRecord
   validates :acronym, presence: true
   validates :city_id, presence: true
 
-
   def state
     city.try(:state)
   end
-
 end
