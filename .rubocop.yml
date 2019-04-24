@@ -116,6 +116,9 @@ RSpec/ExampleLength:
 RSpec/HookArgument:
   EnforcedStyle: each
 
+RSpec/LetSetup:
+  Enabled: false
+
 Style/Lambda:
   Exclude:
     - 'config/initializers/simple_form_bootstrap.rb'
