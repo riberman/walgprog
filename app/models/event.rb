@@ -4,10 +4,9 @@ class Event < ApplicationRecord
   validates :name, :city_id, :beginning_date, presence: true
   validates :color, :end_date, :initials, :local, :address, presence: true
 
-  validate :end_greater_then_begin
   validate :valid_year_event, on: :create
   validate :validate_beginning_date, on: :update
-  validate :validate_end_date, on: :update
+#  validate :validate_end_date, on: :update
 
   def full_address
     "#{address} - #{city.name}/#{city.state.acronym}"
@@ -16,30 +15,38 @@ class Event < ApplicationRecord
   private
 
   def valid_year_event
-    query_beginning = 'extract(year  from beginning_date) = ?'
-    query_end = 'extract(year  from end_date) = ?'
-    events_beginning = Event.where(query_beginning, beginning_date.try(:year))
-    events_end = Event.where(query_end, end_date.try(:year))
-    errors.add(:beginning_date, I18n.t('events.error.year_used')) if events_beginning.present?
-    errors.add(:end_date, I18n.t('events.error.year_used')) if events_end.present?
+
+    if beginning_date.present? && end_date.present?
+      query_beginning = 'extract(year  from beginning_date) = ?'
+      query_end = 'extract(year  from end_date) = ?'
+
+      events_beginning = Event.where(query_beginning, beginning_date.year)
+
+      events_end = Event.where(query_end, end_date.year)
+
+      if events_beginning.present?
+        errors.add(:beginning_date, I18n.t('events.error.year_already_used'))
+      end
+    end
   end
 
   def validate_beginning_date
     query_beginning = 'extract(year  from beginning_date) = ? AND id != ?'
 
-    events = Event.where(query_beginning, beginning_date.year, id)
+    events = Event.where(query_beginning, beginning_date.strftime('%Y'), id)
 
-    errors.add(:beginning_date, I18n.t('events.error.year_used')) if events.present?
+    errors.add(:beginning_date, I18n.t('events.error.year_already_used')) if events.present?
   end
 
   def validate_end_date
     query_end = 'extract(year  from end_date) = ? AND id != ?'
-    events = Event.where(query_end, end_date.year, id)
-    errors.add(:end_date, I18n.t('events.error.year_used')) if events.present?
+    events = Event.where(query_end, end_date.strftime('%Y'))
+    errors.add(:end_date, I18n.t('events.error.year_already_used')) if events.present?
   end
 
   def end_greater_then_begin
-    valid_date = beginning_date && end_date && (end_date > beginning_date)
+    valid_date = end_date > beginning_date if [beginning_date.blank?, end_date.blank?].any?
+
     errors.add(:end_date, I18n.t('events.invalid_dates')) unless valid_date
   end
 end
