@@ -9,7 +9,7 @@ describe 'Event:create', type: :feature do
     visit new_admins_event_path
   end
 
-  context 'when event is not valid', js: true do
+  context 'when event is valid', js: true do
     it 'create event' do
 
       attributes = attributes_for(:event)
