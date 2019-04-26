@@ -12,7 +12,7 @@ describe 'Event:show', type: :feature do
   it 'shows the event' do
     expect(page).to have_content(event.name)
     expect(page).to have_content(I18n.l(event.beginning_date, format: :short))
-    expect(page).to have_content(I18n.l(event.end_date, format: :short))  
+    expect(page).to have_content(I18n.l(event.end_date, format: :short))
     expect(page).to have_content(event.local)
     expect(page).to have_content(event.city.name)
     expect(page).to have_content(event.address)

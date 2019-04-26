@@ -11,9 +11,6 @@ describe 'Event:update', type: :feature do
 
   context 'when event is updated', js: true do
     it 'update event' do
-
-      attributes = attributes_for(:event)
-
       new_name = 'Teste'
       fill_in 'event_name', with: new_name
 
@@ -24,13 +21,11 @@ describe 'Event:update', type: :feature do
       success_message = I18n.t('events.success.edit')
       expect(page).to have_flash(:success, text: success_message)
       expect(page).to have_content(new_name)
-
     end
   end
 
   context 'when event is not updated', js: true do
     it 'show errors' do
-
       fill_in 'event_name', with: ''
       find('input[name="commit"]').click
 
@@ -38,7 +33,6 @@ describe 'Event:update', type: :feature do
 
       message_blank_error = I18n.t('errors.messages.blank')
       expect(page).to have_message(message_blank_error, in: 'div.event_name')
-
     end
   end
 end

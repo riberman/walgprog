@@ -11,13 +11,12 @@ describe 'Event:create', type: :feature do
 
   context 'when event is valid', js: true do
     it 'create event' do
-
       attributes = attributes_for(:event)
-      fill_in 'event_name',   with: attributes[:name]
-      fill_in 'event_initials',   with: attributes[:initials]
-      fill_in 'event_color',   with: attributes[:color]
-      fill_in 'event_local',   with: attributes[:local]
-      fill_in 'event_address',   with: attributes[:address]
+      fill_in 'event_name', with: attributes[:name]
+      fill_in 'event_initials', with: attributes[:initials]
+      fill_in 'event_color', with: attributes[:color]
+      fill_in 'event_local', with: attributes[:local]
+      fill_in 'event_address', with: attributes[:address]
 
       find('input[name="commit"]').click
 
