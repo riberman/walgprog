@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-describe 'Admin:login', type: :feature do
+describe 'Event:show', type: :feature do
   let(:admin) { create(:admin) }
-  let!(:event) { create(:event) }
+  let(:event) { create(:event) }
 
   before(:each) do
     login_as(admin, scope: :admin)
-    visit admins_events_path
+    visit admins_events_path(event)
   end
 
-  it 'displays the events list' do
+  it 'shows the event' do
     expect(page).to have_content(event.name)
     expect(page).to have_content(I18n.l(event.beginning_date, format: :short))
     expect(page).to have_content(I18n.l(event.end_date, format: :short))

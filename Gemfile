@@ -23,19 +23,17 @@ gem 'rails-i18n', '~> 5.1'
 gem 'carrierwave', '~> 1.0'
 gem 'carrierwave-i18n'
 gem 'mini_magick'
+gem 'bootstrap-colorpicker-rails'
+gem 'bootstrap4-datetime-picker-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-
   gem 'rspec-rails', '~> 3.7'
   gem 'brakeman', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
   gem 'bullet'
   gem 'factory_bot_rails'
-
-  gem 'bootstrap-colorpicker-rails'
-  gem 'bootstrap4-datetime-picker-rails'
 end
 
 group :development do

@@ -12,7 +12,7 @@ class Admins::EventsController < ApplicationController
   public
 
   def index
-    @events = Event.all.order('created_at desc')
+    @events = Event.all.order(created_at: :desc).includes(:city)
   end
 
   def new
