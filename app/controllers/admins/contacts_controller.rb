@@ -12,7 +12,8 @@ class Admins::ContactsController < Admins::BaseController
   def create
     @contact = Contact.new(params_contact)
     if @contact.save
-      flash[:success] = I18n.t('flash.actions.create.m', resource_name: t('activerecord.models.contact.one'))
+      flash[:success] = t('flash.actions.create.m',
+                          resource_name: t('activerecord.models.contact.one'))
       redirect_to admins_contacts_path
     else
       flash.now[:error] = flash.now[:error] = I18n.t('flash.actions.errors')
@@ -25,8 +26,9 @@ class Admins::ContactsController < Admins::BaseController
   def edit; end
 
   def update
-    if @contact.update_attributes(params_contact)
-      flash[:success] = I18n.t('flash.actions.update.m', resource_name: t('activerecord.models.contact.one'))
+    if @contact.update(params_contact)
+      flash[:success] = I18n.t('flash.actions.update.m',
+                               resource_name: t('activerecord.models.contact.one'))
       redirect_to admins_contacts_path
     else
       flash.now[:error] = I18n.t('flash.actions.errors')
@@ -41,6 +43,8 @@ class Admins::ContactsController < Admins::BaseController
     flash[:success] = I18n.t('flash.actions.destroy.m', resource_name: contact_name)
     redirect_to admins_contacts_path
   end
+
+  private
 
   def set_contact
     @contact = Contact.find(params[:id])

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe 'Admin Contact', type: :feature do
-
   let(:admin) { create(:admin) }
   let(:resource_name) { Contact.model_name.human }
   let!(:institution) { create_list(:institution, 2).sample }
@@ -11,14 +10,14 @@ describe 'Admin Contact', type: :feature do
   end
 
   describe '#create' do
-
     before(:each) do
       visit new_admins_contact_path
     end
 
     context 'with valid fields' do
-      it 'should create contact' do
+      it 'when click in butto should create contact and redirect to index contact' do
         attributes = attributes_for(:contact)
+        action_name = 'flash.actions.create.m'
 
         fill_in 'contact_name', with: attributes[:name]
         fill_in 'contact_email', with: attributes[:email]
@@ -26,8 +25,9 @@ describe 'Admin Contact', type: :feature do
 
         click_button
 
-        expect(page.current_path).to eq admins_contacts_path
-        expect(page).to have_selector('div.alert.alert-success', text: I18n.t('flash.actions.create.m', resource_name: resource_name))
+        expect(page).to have_current_path admins_contacts_path
+        expect(page).to have_selector('div.alert.alert-success',
+                                      text: I18n.t(action_name, resource_name: resource_name))
 
         within('table tbody') do
           expect(page).to have_content(attributes[:name])
@@ -36,7 +36,7 @@ describe 'Admin Contact', type: :feature do
     end
 
     context 'with invalid fields' do
-      it 'should show errors' do
+      it 'when clicn in button should show errors in fields' do
         click_button
 
         expect(page).to have_selector('div.alert.alert-danger',
@@ -51,15 +51,16 @@ describe 'Admin Contact', type: :feature do
 
   describe '#update' do
     before(:each) do
-      @contact = create :contact
-      visit edit_admins_contact_path(@contact)
+      contact = create :contact
+      visit edit_admins_contact_path(contact)
     end
 
     context 'with valid fields' do
-      it 'should update contact' do
+      it 'when click in button should update contact and redirec to index page contact' do
         local_name = 'Guilherme Ribas Carneiro'
         local_email = 'guilherme@hotmail.com'
         local_phone = '42998533012'
+        action_name = 'flash.actions.update.m'
 
         fill_in 'contact_name', with: local_name
         fill_in 'contact_email', with: local_email
@@ -68,13 +69,15 @@ describe 'Admin Contact', type: :feature do
 
         click_button
 
-        expect(page.current_path).to eq admins_contacts_path
-        expect(page).to have_selector('div.alert.alert-success', text: I18n.t('flash.actions.update.m', resource_name: resource_name))
+        expect(page).to have_current_path admins_contacts_path
+
+        expect(page).to have_selector('div.alert.alert-success',
+                                      text: I18n.t(action_name, resource_name: resource_name))
       end
     end
 
-    context 'with invalid fields' do
-      it 'should update contact' do
+    context 'with fields blank' do
+      it 'when invalid params value should return error in field' do
         local_name = ''
         local_email = ''
         local_phone = ''
@@ -96,23 +99,26 @@ describe 'Admin Contact', type: :feature do
   end
 
   describe '#destroy' do
-    it 'contact' do
-      @contact = create :contact
+    it 'when attemp remove contact should have message with warn and click action remove contact' do
+      action_name = 'flash.actions.destroy.m'
+
+      contact = create :contact
+      contact_name = contact.name
       visit admins_contacts_path
 
-      destroy_link = "a[href='#{admins_contact_path(@contact)}'][data-method='delete']"
+      destroy_link = "a[href='#{admins_contact_path(contact)}'][data-method='delete']"
       find(destroy_link).click
 
-      expect(page.current_path).to eq admins_contacts_path
-      expect(page).to have_selector('div.alert.alert-success', text: I18n.t('flash.actions.destroy.m', resource_name: @contact.name))
+      expect(page).to have_current_path admins_contacts_path
+      expect(page).to have_selector('div.alert.alert-success',
+                                    text: I18n.t(action_name, resource_name: contact_name))
     end
-
   end
 
   describe '#index' do
     let!(:contacts) { create_list(:contact, 5) }
 
-    it 'should show all contacts' do
+    it 'when access page contacts should have all contacts in table' do
       visit admins_contacts_path
 
       contacts.each do |contact|
@@ -131,8 +137,8 @@ describe 'Admin Contact', type: :feature do
   end
 
   describe '#show' do
-    context 'show contacts' do
-      it 'should show contact page' do
+    context 'when show contact' do
+      it 'view contact show data' do
         contact = create(:contact)
         visit admins_contact_path(contact)
 
