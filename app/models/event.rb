@@ -39,7 +39,7 @@ class Event < ApplicationRecord
   end
 
   def end_greater_then_begin
-    valid_date = beginning_date && end_date && (end_date > beginning_date)
+    valid_date = beginning_date && end_date && (end_date >= beginning_date)
     errors.add(:end_date, I18n.t('events.invalid_dates')) unless valid_date
   end
 end

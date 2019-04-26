@@ -33,6 +33,7 @@ pt-BR:
         end_date: Data de término
         local: Local
         city: Cidade
+        city_id: Cidade
         address: Endereço
         <<: *commons
   helpers:
