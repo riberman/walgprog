@@ -1,7 +1,6 @@
 namespace :db do
   desc 'Erase and Fill database'
   task populate: :environment do
-
     [Contact].each(&:delete_all)
 
     10.times do

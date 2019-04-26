@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :institution do
-    name { 'Institution Name' }
+    sequence(:name) { |n| "Institution Name #{n}" }
     acronym { 'IN' }
     city
   end
