@@ -70,7 +70,11 @@
                 title="<%= t('helpers.edit') %>"
                 class="fas fa-edit"></i>
             <% end %>
-            <%= link_to admins_event_path(event.id), :method => :delete, class: 'icon text-danger ml-2', active: :exclusive do %>
+            <%= link_to admins_event_path(event.id),
+              method: :delete,
+              data: { confirm: t('prompt.confirm') },
+              class: 'icon text-danger ml-2 destroy',
+              active: :exclusive do %>
               <i
                 data-toggle="tooltip"
                 title="<%= t('helpers.delete') %>"

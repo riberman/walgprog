@@ -4,7 +4,6 @@ class Event < ApplicationRecord
   validates :name, :city_id, :beginning_date, presence: true
   validates :color, :end_date, :initials, :local, :address, presence: true
 
-  validate :end_greater_then_begin
   validate :valid_year_event, on: :create
   validate :validate_beginning_date, on: :update
   validate :validate_end_date, on: :update
@@ -26,9 +25,7 @@ class Event < ApplicationRecord
 
   def validate_beginning_date
     query_beginning = 'extract(year  from beginning_date) = ? AND id != ?'
-
     events = Event.where(query_beginning, beginning_date.year, id)
-
     errors.add(:beginning_date, I18n.t('events.error.year_used')) if events.present?
   end
 
