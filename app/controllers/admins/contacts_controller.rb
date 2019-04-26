@@ -48,6 +48,6 @@ class Admins::ContactsController < Admins::BaseController
   end
 
   def params_contact
-    params.require(:contact).permit(:name, :email, :phone?, :institution_id)
+    params.require(:contact).permit(:name, :email, :phone, :institution_id)
   end
 end
