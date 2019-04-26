@@ -19,7 +19,6 @@ describe 'Event:create', type: :feature do
       fill_in 'event_local',   with: attributes[:local]
       fill_in 'event_address',   with: attributes[:address]
 
-
       find('input[name="commit"]').click
 
       expect(page).to have_current_path admins_events_path
