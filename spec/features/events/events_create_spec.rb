@@ -6,11 +6,7 @@ describe 'Event:create', type: :feature do
 
   before(:each) do
     login_as(admin, scope: :admin)
-    visit new_admins_event_path
-  end
-
-  after(:each) do
-    Event.delete_all
+    visit new_admins_event_path(event)
   end
 
   context 'when event is valid', js: true do
@@ -22,9 +18,12 @@ describe 'Event:create', type: :feature do
       fill_in 'event_local', with: attributes[:local]
       fill_in 'event_address', with: Event.count
 
-      sleep 1.seconds
+      sleep 1.second
 
-      fill_in 'event_beginning_date', with: I18n.l(attributes[:beginning_date] + 1.year, format: :short_hour)
+      fill_in 'event_beginning_date', with: I18n.l(
+        attributes[:beginning_date] + 1.year,
+        format: :short_hour
+      )
       fill_in 'event_end_date', with: I18n.l(attributes[:end_date] + 1.year, format: :short_hour)
 
       find('input[name="commit"]').click
