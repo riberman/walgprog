@@ -1,4 +1,10 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
+  WalgProg.colorPicker();
+  WalgProg.dateTimePicker();
+});
+
+
+WalgProg.colorPicker = function(){
   $('.colorpicker').colorpicker();
 
   let options = {
@@ -7,9 +13,10 @@ $(document).ready(function(){
     autoclose: true
   };
 
-  if (window.location.pathname.match(/new/) !== null ){
-    options.date = moment().format('YYYY-MM-DD hh:mm');
-  }
+};
 
-  $('.datetimepicker-input').datetimepicker(options);
-});
+WalgProg.dateTimePicker = function() {
+
+    $('.datetimepicker-input').datetimepicker();
+
+}
