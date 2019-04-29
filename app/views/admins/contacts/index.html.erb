@@ -42,11 +42,11 @@
                   <td><%= contact.email %></td>
                   <td><%= contact.institution.acronym %></td>
                   <td>
-                    <%= link_to admins_contact_path(contact), class: 'text-info' do %>
+                    <%= link_to admins_contact_path(contact), class: 'text-info', title: 'Detalhes' do %>
                       <i class="fe fe-search"></i>
                     <% end %>
 
-                    <%= link_to edit_admins_contact_path(contact), class: 'text-info' do %>
+                    <%= link_to edit_admins_contact_path(contact), class: 'text-info', title: 'Atualizar' do %>
                       <i class="fe fe-edit"></i>
                     <% end %>
 
@@ -54,7 +54,7 @@
                     <%= link_to admins_contact_path(contact),
                                 method: :delete,
                                 data: { confirm: t('flash.actions.destroy.confirm', resource_name: contact.name) },
-                                class: 'text-info' do %>
+                                class: 'text-info', title: 'Remover' do %>
                       <i class="fe fe-trash"></i>
                     <% end %>
                   </td>
