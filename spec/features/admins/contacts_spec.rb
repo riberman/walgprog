@@ -36,7 +36,7 @@ describe 'Admin Contact', type: :feature do
     end
 
     context 'with invalid fields' do
-      it 'when clicn in button should show errors in fields' do
+      it 'when click in button should show errors in fields' do
         click_button
 
         expect(page).to have_selector('div.alert.alert-danger',
