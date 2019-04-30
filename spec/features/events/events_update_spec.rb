@@ -18,11 +18,11 @@ describe 'Event:update', type: :feature do
       new_name = 'Teste'
       fill_in 'event_name', with: new_name
 
-      find('input[name="commit"]').click
+      click_button
 
       expect(page).to have_current_path admins_events_path
 
-      success_message = I18n.t('events.success.edit')
+      success_message = I18n.t('flash.actions.update.m', resource_name: new_name)
       expect(page).to have_flash(:success, text: success_message)
       expect(page).to have_content(new_name)
     end
@@ -31,7 +31,8 @@ describe 'Event:update', type: :feature do
   context 'when event is not updated', js: true do
     it 'show errors' do
       fill_in 'event_name', with: ''
-      find('input[name="commit"]').click
+
+      click_button
 
       expect(page).to have_flash(:danger, text: I18n.t('flash.actions.errors'))
 

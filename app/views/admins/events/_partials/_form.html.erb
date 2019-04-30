@@ -38,7 +38,7 @@
   <fieldset class="form-fieldset">
     <legend class="w-auto"><%= t('events.location') %></legend>
     <div class="row">
-      <%= f.association :city, :include_blank => false, wrapper_html: {class: 'col-md-6'} %>
+      <%= f.input :city, collection: @cities, :include_blank => false,  wrapper_html: {class: 'col-md-6'} %>
 
       <%= f.input :local, required: true, wrapper_html: {class: 'col-md-6'} %>
       <%= f.input :address, required: true, wrapper_html: {class: 'col-md-12'} %>

@@ -8,27 +8,32 @@ class Admins::EventsController < Admins::BaseController
 
   def new
     @event = Event.new
+    @cities = City.order(name: :desc)
   end
 
   def create
     @event = Event.new(event_params)
     if @event.save
-      flash[:success] = t('events.success.new')
+      flash[:success] = t('flash.actions.create.m', resource_name: @event.name)
       redirect_to admins_events_path
     else
+      @cities = City.order(name: :desc)
       render 'new'
     end
   end
 
   def show; end
 
-  def edit; end
+  def edit
+    @cities = City.order(name: :desc)
+  end
 
   def update
     if @event.update event_params
-      flash[:success] = t('events.success.edit')
+      flash[:success] = t('flash.actions.update.m', resource_name: @event.name)
       redirect_to admins_events_path
     else
+      @cities = City.order(name: :desc)
       render 'edit'
     end
   end
@@ -36,7 +41,7 @@ class Admins::EventsController < Admins::BaseController
   def destroy
     @event.destroy if @event.present?
 
-    flash[:success] = t('events.success.destroy')
+    flash[:success] = t('flash.actions.destroy.m', resource_name: @event.name)
 
     redirect_to admins_events_path
   end

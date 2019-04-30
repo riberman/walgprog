@@ -13,15 +13,17 @@
 
 // Vendors
 //--------------------
-//= require bootstrap-colorpicker
 //= require moment
 //= require moment/pt-br
 //= require tempusdominus-bootstrap-4.js
+//= require bootstrap-colorpicker
 
 
 // Config files
 //--------------------
 //= require config/namespace
+//= require config/color_picker
+//= require config/date_time_picker
 
 
 // Lib files
@@ -31,4 +33,3 @@
 
 // App files
 //--------------------
-//= require ./events

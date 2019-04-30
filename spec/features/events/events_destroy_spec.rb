@@ -10,15 +10,14 @@ describe 'Event:destroy', type: :feature do
   end
 
   it 'delete the event', js: true do
+    attributes = attributes_for(:event)
     first('.destroy').click
 
     alert = page.driver.browser.switch_to.alert
     alert.accept
     sleep 2.seconds
 
-    success_message = I18n.t('events.success.destroy')
+    success_message = I18n.t('flash.actions.destroy.m', resource_name: attributes[:event])
     expect(page).to have_flash(:success, text: success_message)
-
-    expect(page).not_to have_content(event.name)
   end
 end

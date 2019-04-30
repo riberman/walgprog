@@ -26,10 +26,10 @@ describe 'Event:create', type: :feature do
       )
       fill_in 'event_end_date', with: I18n.l(attributes[:end_date] + 1.year, format: :short_hour)
 
-      find('input[name="commit"]').click
+      click_button
 
       expect(page).to have_current_path admins_events_path
-      success_message = I18n.t('events.success.new')
+      success_message = I18n.t('flash.actions.create.m', resource_name: attributes[:name])
       expect(page).to have_flash(:success, text: success_message)
       expect(page).to have_message(attributes[:name], in: 'table tbody')
     end
