@@ -2,27 +2,21 @@
 <% provide(:page_title, 'Instituições de Ensino') %>
 <% provide(:title, 'Instituições de Ensino') %>
 
+<div class="row">
 <div class="col-lg-12">
-  <div class="card">
-    <div class="card-header">
-      <h3 class="card-title"></h3>
-      <div class="col-lg-8">
-        <div class="form-group">
-          <form action="/admins/institutions" accept-charset="UTF-8" method="get">
-          <div class="input-group mb-3">
-            <input name="utf8" type="hidden" value="&#x2713;" />
-            <input type="text" class="form-control" placeholder="Procurar..." name="search" aria-label="Procurar..." aria-describedby="search">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" id="search"><i class="fe fe-search"></i></button>
-            </div>
+  <div class="row">
+      <div class="col-md-8 col-sm-12">
+        <div class="input-group mb-3">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Procurar...">
+            <span class="input-group-append">
+              <button class="btn btn-outline-info" type="button"><i class="fe fe-search"></i></button>
+            </span>
           </div>
-          </form>
         </div>
       </div>
-      <div class="col-lg-4">
-
-        <%= link_to "+ Nova Instituição", new_admins_institution_path, class: "btn btn-outline-primary btn-block mb-4"  %>
-
+      <div class="col-md-4 col-sm-12">
+        <%= link_to "+ Nova Instituição", new_admins_institution_path, class: "btn btn-outline-primary btn-block"  %>
       </div>
     </div>
     <div class="table-responsive">
@@ -53,4 +47,5 @@
       </table>
     </div>
   </div>
+</div>
 </div>

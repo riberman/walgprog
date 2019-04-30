@@ -11,7 +11,7 @@ class Admins::InstitutionsController < Admins::BaseController
   def create
     @institution = Institution.new(institution_params)
     if @institution.save
-      # success_create_message
+      flash[:success] = "Instituição caadastrada com sucesso."
       redirect_to admins_institutions_path
     else
       # error_message
@@ -22,12 +22,15 @@ class Admins::InstitutionsController < Admins::BaseController
   def edit
     @institution = Institution.find(params[:id])
     @states = State.order(:name)
+    state = @institution.city.state
+    @cities = state.cities
   end
 
   def update
     @institution = Institution.find(params[:id])
 
     if @institution.update(institution_params)
+      flash[:success] = "Instituição atualizada com sucesso."
       redirect_to admins_institutions_path
     else
       render 'edit'
@@ -37,7 +40,7 @@ class Admins::InstitutionsController < Admins::BaseController
   def destroy
     @institution = Institution.find(params[:id])
     @institution.destroy
-
+    flash[:success] = "Instituição apagada com sucesso."
     redirect_to admins_institutions_path
   end
 

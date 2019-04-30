@@ -19,7 +19,7 @@
       <%= f.input :state, collection: @states, prompt: 'Escolha o estado', selected: @institution.city.state.id %>
     </div>
     <div class="col-lg-8">
-      <%= f.input :city, collection: [], prompt: 'Selecione um estado', selected: @institution.city.id, input_html: { name: 'institution[city_id]' }%>
+      <%= f.input :city, collection: @cities, prompt: 'Selecione um estado', selected: @institution.city.id, input_html: { name: 'institution[city_id]' }%>
     </div>
   </div>
 

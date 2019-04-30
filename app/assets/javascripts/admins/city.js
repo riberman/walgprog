@@ -1,4 +1,4 @@
-$(function () {
+$(document).on('ready turbolinks:load', function () {
 
     console.log("Carregou Página");
     $('#institution_city').attr('disabled', 'true');
