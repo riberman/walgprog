@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>
       <%= full_title(yield(:head_title)) %>
     </title>
@@ -8,7 +9,6 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag 'devise/session', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'devise/session', 'data-turbolinks-track': 'reload' %>
-
   </head>
 
   <body id="<%= controller_name %>-<%= action_name %>" >
