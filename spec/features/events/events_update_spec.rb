@@ -9,6 +9,10 @@ describe 'Event:update', type: :feature do
     visit edit_admins_event_path(event)
   end
 
+  after(:each) do
+    Event.delete_all
+  end
+
   context 'when event is updated', js: true do
     it 'update event' do
       new_name = 'Teste'

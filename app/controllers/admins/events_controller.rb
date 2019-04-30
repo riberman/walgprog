@@ -1,15 +1,6 @@
-class Admins::EventsController < ApplicationController
-  layout 'layouts/admins/application'
-
+class Admins::EventsController < Admins::BaseController
   before_action :set_root_pagination
-
-  protected
-
-  def after_update_path_for(*)
-    events_path
-  end
-
-  public
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
     @events = Event.all.order(created_at: :desc).includes(:city)
@@ -29,16 +20,11 @@ class Admins::EventsController < ApplicationController
     end
   end
 
-  def show
-    @event = Event.find(params[:id])
-  end
+  def show; end
 
-  def edit
-    @event = Event.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @event = Event.find(params[:id])
     if @event.update event_params
       flash[:success] = t('events.success.edit')
       redirect_to admins_events_path
@@ -48,7 +34,6 @@ class Admins::EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id])
     @event.destroy if @event.present?
 
     flash[:success] = t('events.success.destroy')
@@ -73,5 +58,9 @@ class Admins::EventsController < ApplicationController
 
   def set_root_pagination
     @navigation = [{ title: t('events.index'), url: admins_events_path }]
+  end
+
+  def set_event
+    @event = Event.find(params[:id])
   end
 end

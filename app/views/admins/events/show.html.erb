@@ -4,7 +4,10 @@
 <% navigation_add t('events.show'), admins_event_path %>
 
 <div class="col-md-12 card-body">
-
+  <%= link_to edit_admins_event_path(@event.id), class: 'btn btn-warning float-right', active: :exclusive do %>
+    <i class="fa fa-edit"></i>
+    <%= t('helpers.edit') %>
+  <% end %>
   <fieldset class="form-fieldset col-md-12">
     <legend class="w-auto"><%= t('events.description') %></legend>
     <div class="row">
@@ -54,11 +57,6 @@
   </fieldset>
   <%= link_to admins_events_path, class: 'btn btn-secondary float-left', active: :exclusive do %>
     <%= t('helpers.back') %>
-  <% end %>
-
-  <%= link_to edit_admins_event_path(@event.id), class: 'btn btn-warning float-right', active: :exclusive do %>
-    <i class="fa fa-edit"></i>
-    <%= t('helpers.edit') %>
   <% end %>
 </div>
 

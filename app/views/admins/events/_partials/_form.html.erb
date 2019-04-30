@@ -5,11 +5,11 @@
   <fieldset class="form-fieldset">
     <legend class="w-auto"><%= t('events.description') %></legend>
     <div class="row">
-      <%= f.input :name, required: true, autofocus: true, wrapper_html: {class: 'col-md-8'} %>
+      <%= f.input :name, required: true, autofocus: true, wrapper_html: {class: 'col-md-9'} %>
 
-      <%= f.input :initials, autocomplete: "off", required: true, wrapper_html: {class: 'col-md-2'} %>
+      <%= f.input :initials, autocomplete: "off", required: true, wrapper_html: {class: 'col-md-3'} %>
 
-      <%= f.input :color, required: true, wrapper_html: {class: 'col-md-1'}, input_html: {class: 'colorpicker'} %>
+      <%= f.input :color, required: true, wrapper_html: {class: 'col-md-2'}, input_html: {class: 'colorpicker'} %>
     </div>
   </fieldset>
 
