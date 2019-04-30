@@ -1,4 +1,7 @@
 pt-BR:
+  views:
+    sidebar:
+      walgprog: 'WalgProg'
   time:
     formats:
       short: '%d/%m/%Y'

@@ -18,6 +18,7 @@
 // Config files
 //--------------------
 //= require config/namespace
+//= require config/sidebar_menu_collapse
 
 
 // Lib files
