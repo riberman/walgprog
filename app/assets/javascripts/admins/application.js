@@ -24,6 +24,7 @@
 //= require config/namespace
 //= require config/color_picker
 //= require config/date_time_picker
+//= require config/sidebar_menu_collapse
 
 
 // Lib files
