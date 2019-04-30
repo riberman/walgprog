@@ -18,7 +18,7 @@
 // Config files
 //--------------------
 //= require config/namespace
-
+//= require config/selectize
 
 // Lib files
 //--------------------
