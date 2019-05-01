@@ -11,10 +11,10 @@ describe 'Event:index', type: :feature do
 
   it 'displays the events list' do
     expect(page).to have_content(event.name)
-    expect(page).to have_content(I18n.l(event.beginning_date, format: :short))
-    expect(page).to have_content(I18n.l(event.end_date, format: :short))
+    expect(page).to have_content(event.initials)
+    expect(page).to have_content(
+      I18n.t('events.from_until', beginning: I18n.l(event.beginning_date, format: :short_hour),
+                                  end: I18n.l(event.end_date, format: :short_hour)))
     expect(page).to have_content(event.local)
-    expect(page).to have_content(event.city.name)
-    expect(page).to have_content(event.address)
   end
 end

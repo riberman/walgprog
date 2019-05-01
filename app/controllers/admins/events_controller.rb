@@ -3,7 +3,7 @@ class Admins::EventsController < Admins::BaseController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
-    @events = Event.all.order(created_at: :desc).includes(:city)
+    @events = Event.all.order(created_at: :desc)
   end
 
   def new

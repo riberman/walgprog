@@ -19,12 +19,13 @@ describe 'Event:create', type: :feature do
       fill_in 'event_address', with: Event.count
 
       sleep 1.second
-
-      fill_in 'event_beginning_date', with: I18n.l(
-        attributes[:beginning_date] + 1.year,
-        format: :short_hour
+      find('#datetimepickerbegin').fill_in with: I18n.l(
+          attributes[:beginning_date] + 1.year,
+          format: :short_hour
       )
-      fill_in 'event_end_date', with: I18n.l(attributes[:end_date] + 1.year, format: :short_hour)
+      find('#datetimepickerend').fill_in with: I18n.l(
+          attributes[:end_date] + 1.year,
+          format: :short_hour)
 
       click_button
 
@@ -37,7 +38,7 @@ describe 'Event:create', type: :feature do
 
   context 'when event is not valid', js: true do
     it 'show errors' do
-      find('input[name="commit"]').click
+      click_button
       expect(page).to have_flash(:danger, text: I18n.t('flash.actions.errors'))
 
       message_blank_error = I18n.t('errors.messages.blank')

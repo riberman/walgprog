@@ -4,7 +4,7 @@ FactoryBot.define do
     city
     beginning_date { Time.zone.now }
     end_date { Time.zone.now + 10.days }
-    color { '#fff' }
+    color { '#aa33dd' }
     initials { 'TST' }
     local { 'Parque' }
     address { 'testing' }
