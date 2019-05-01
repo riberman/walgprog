@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe 'Institution:update', type: :feature do
-  let(:admin) { create(:admin) }
-  let!(:institution) { create(:institution) }
+  let(:admin) {create(:admin)}
+  let!(:institution) {create(:institution)}
 
   before(:each) do
     login_as(admin, scope: :admin)
@@ -35,9 +35,7 @@ describe 'Institution:update', type: :feature do
       fill_in 'institution_acronym', with: ''
       click_button
 
-      # expect(page).to have_current_path edit_admins_institution_path(institution)
-
-        expect(page).to have_flash(:danger, text: I18n.t('simple_form.error_notification.default_message'))
+      expect(page).to have_flash(:danger, text: I18n.t('simple_form.error_notification.default_message'))
     end
   end
 end
