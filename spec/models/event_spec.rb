@@ -35,7 +35,7 @@ RSpec.describe Event, type: :model do
 
     it 'update without check self year' do
       event = create(:event)
-      event.update(beginning_date: Time.now + 10.minutes)
+      event.update(beginning_date: Time.now.in_time_zone + 10.minutes)
       expect(event.valid?).to eq(true)
     end
   end

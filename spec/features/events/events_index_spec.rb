@@ -14,7 +14,8 @@ describe 'Event:index', type: :feature do
     expect(page).to have_content(event.initials)
     expect(page).to have_content(
       I18n.t('events.from_until', beginning: I18n.l(event.beginning_date, format: :short_hour),
-                                  end: I18n.l(event.end_date, format: :short_hour)))
+                                  end: I18n.l(event.end_date, format: :short_hour))
+    )
     expect(page).to have_content(event.local)
   end
 end

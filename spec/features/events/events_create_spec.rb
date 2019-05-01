@@ -20,12 +20,13 @@ describe 'Event:create', type: :feature do
 
       sleep 1.second
       find('#datetimepickerbegin').fill_in with: I18n.l(
-          attributes[:beginning_date] + 1.year,
-          format: :short_hour
+        attributes[:beginning_date] + 1.year,
+        format: :short_hour
       )
       find('#datetimepickerend').fill_in with: I18n.l(
-          attributes[:end_date] + 1.year,
-          format: :short_hour)
+        attributes[:end_date] + 1.year,
+        format: :short_hour
+      )
 
       click_button
 
