@@ -35,7 +35,7 @@ pt-BR:
     show: Visualizar
     home: Página inicial
     edit: Editar
-    delete: Apagar
+    delete: Deletar
     boolean:
       'true': Sim
       'false': Não
@@ -79,10 +79,9 @@ pt-BR:
       m: Selecione um %{name}
       f: Selecione uma %{name}
   institutions:
-    index: Instituições
-    new: Nova Instituição
-    show: Visualizar
-    edit: Editar Instituição
+    index: Instituições de Ensino
+    new: Nova Instituição de Ensino
+    edit: Editar Instituição de Ensino
     success:
       new: Nova instituição cadastrada com sucesso!
       edit: Instituição editada com sucesso!

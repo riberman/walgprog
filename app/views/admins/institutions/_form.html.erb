@@ -12,18 +12,14 @@
   <div class="row">
     <div class="col-lg-4">
       <%= f.input :state_id, collection: @states,
-                  prompt: 'Escolha o estado',
+                  prompt: t('prompt.select.m'),
                   label_method: :name, value_method: :id %>
-
-      <%#= f.input :state, collection: @states, prompt: 'Escolha o estado', selected: @institution.city.state.id, input_html: { class: 'selectize' } %>
     </div>
     <div class="col-lg-8">
       <%= f.input :city_id, collection: @cities,
-                  prompt: 'Selecione um cidade',
+                  prompt: t('prompt.select.f'),
                   label_method: :name, value_method: :id %>
     </div>
-
-    <%#= f.input :city, collection: @cities, prompt: 'Selecione um estado', selected: @institution.city.id, input_html: { name: 'institution[city_id]', class: 'selectize' }%>
   </div>
 
   <div class="row">

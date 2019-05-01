@@ -1,6 +1,7 @@
 class Admins::InstitutionsController < Admins::BaseController
 
   before_action :set_institution, only: [:edit, :update, :destroy]
+  before_action :find_states_and_cities, only: [:edit, :update]
 
   def index
     @institutions = Institution.all.order(:name)
@@ -25,7 +26,6 @@ class Admins::InstitutionsController < Admins::BaseController
   end
 
   def edit
-    find_states_and_cities
   end
 
   def update
@@ -33,15 +33,11 @@ class Admins::InstitutionsController < Admins::BaseController
       flash[:success] = t('institutions.success.edit')
       redirect_to admins_institutions_path
     else
-      find_institution
-      find_states_and_cities
-      flash[:error] = t('simple_form.error_notification.default_message')
       render 'edit'
     end
   end
 
   def destroy
-    find_institution
     @institution.destroy
     flash[:success] = t('institutions.success.destroy')
 
