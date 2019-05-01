@@ -18,7 +18,7 @@ describe 'Event:update', type: :feature do
       new_name = 'Teste'
       fill_in 'event_name', with: new_name
 
-      click_button
+      find('input[name="commit"]').click
 
       expect(page).to have_current_path admins_events_path
 
@@ -32,7 +32,7 @@ describe 'Event:update', type: :feature do
     it 'show errors' do
       fill_in 'event_name', with: ''
 
-      click_button
+      find('input[name="commit"]').click
 
       expect(page).to have_flash(:danger, text: I18n.t('flash.actions.errors'))
 

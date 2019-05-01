@@ -28,7 +28,7 @@ describe 'Event:create', type: :feature do
         format: :short_hour
       )
 
-      click_button
+      find('input[name="commit"]').click
 
       expect(page).to have_current_path admins_events_path
       success_message = I18n.t('flash.actions.create.m', resource_name: attributes[:name])
@@ -39,7 +39,7 @@ describe 'Event:create', type: :feature do
 
   context 'when event is not valid', js: true do
     it 'show errors' do
-      click_button
+      find('input[name="commit"]').click
       expect(page).to have_flash(:danger, text: I18n.t('flash.actions.errors'))
 
       message_blank_error = I18n.t('errors.messages.blank')
