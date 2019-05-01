@@ -5,32 +5,32 @@
   <fieldset class="form-fieldset">
     <legend class="w-auto"><%= t('events.description') %></legend>
     <div class="row">
-      <%= f.input :name, required: true, autofocus: true, wrapper_html: {class: 'col-md-9'} %>
+      <%= f.input :name, required: true, autofocus: true, wrapper_html: {class: 'col-lg-8 col-md-12 col-sm-12'} %>
 
-      <%= f.input :initials, autocomplete: "off", required: true, wrapper_html: {class: 'col-md-3'} %>
+      <%= f.input :initials, autocomplete: "off", required: true, wrapper_html: {class: 'col-lg-2 col-md-6 col-sm-6'} %>
 
-      <%= f.input :color, required: true, wrapper_html: {class: 'col-md-2'}, input_html: {class: 'colorpicker'} %>
+      <%= f.input :color, required: true, wrapper_html: {class: 'col-lg-2 col-md-6 col-sm-6'}, input_html: {class: 'colorpicker'} %>
     </div>
   </fieldset>
 
   <fieldset class="form-fieldset">
     <legend class="w-auto"><%= t('events.dates') %></legend>
     <div class="row">
-      <div class="form-group string required event_color datetimepicker col-md-6" id="datetimepickerbegin" data-target-input="nearest">
+      <div class="form-group string required event_color col-md-6">
         <%= f.input(
                 :beginning_date,
                 as:  :string,
                 required: true,
-                input_html: {value: @event.beginning_date ? l(@event.beginning_date, format: :short_hour) : nil,class: 'datetimepicker-input', data: {target: '#datetimepickerbegin', toggle: 'datetimepicker'}},) %>
+                input_html: {value: @event.beginning_date ? l(@event.beginning_date, format: :short_hour) : nil, id: 'datetimepickerbegin', class: 'datetimepicker-input', data: {target: '#datetimepickerbegin', toggle: 'datetimepicker'}},) %>
 
       </div>
 
-      <div class="form-group string required event_color datetimepicker col-md-6" id="datetimepickerend" data-target-input="nearest">
+      <div class="form-group string required event_color col-md-6">
         <%= f.input(
                 :end_date,
                 as: :string,
                 required: true,
-                input_html: {value: @event.end_date ?  l(@event.end_date, format: :short_hour) : nil, class: 'datetimepicker-input', data: {target: '#datetimepickerend', toggle: 'datetimepicker'}},) %>
+                input_html: {value: @event.end_date ?  l(@event.end_date, format: :short_hour) : nil, id: 'datetimepickerend', class: 'datetimepicker-input', data: {target: '#datetimepickerend', toggle: 'datetimepicker'}},) %>
       </div>
     </div>
   </fieldset>
@@ -38,7 +38,7 @@
   <fieldset class="form-fieldset">
     <legend class="w-auto"><%= t('events.location') %></legend>
     <div class="row">
-      <%= f.input :city, collection: @cities, :include_blank => false,  wrapper_html: {class: 'col-md-6'} %>
+      <%= f.input :city, collection: @cities, :include_blank => false,  wrapper_html: {class: 'col-md-6'}, input_html: { name: 'event[city_id]', data: 'selectize' } %>
 
       <%= f.input :local, required: true, wrapper_html: {class: 'col-md-6'} %>
       <%= f.input :address, required: true, wrapper_html: {class: 'col-md-12'} %>

@@ -101,6 +101,7 @@ pt-BR:
     description: Descrição
     beginning_end: Início/Término
     invalid_dates: deve ser posterior ao início
+    from_until: 'De %{beginning} até %{end}'
     success:
       new: Novo evento cadastrado com sucesso!
       edit: Evento editado com sucesso!

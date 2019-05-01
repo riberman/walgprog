@@ -6,7 +6,7 @@ describe 'Event:destroy', type: :feature do
 
   before(:each) do
     login_as(admin, scope: :admin)
-    visit admins_events_path
+    visit admins_events_path(event)
   end
 
   it 'delete the event', js: true do

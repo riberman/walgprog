@@ -1,7 +1,6 @@
 <% provide(:head_title, t("events.index")) %>
 <% provide(:page_title, t('events.index')) %>
 <% provide(:title, t('events.index')) %>
-<% navigation_add t('events.show'), admins_event_path %>
 
 <div class="col-md-12 card-body">
   <%= link_to edit_admins_event_path(@event.id), class: 'btn btn-warning float-right', active: :exclusive do %>
