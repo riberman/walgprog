@@ -9,6 +9,6 @@ class Contact < ApplicationRecord
             uniqueness: { case_sensitive: false }
   validates :phone,
             presence: false,
-            length: { :minimum => 14, :maximum => 15 },
-            format: { with: /\(\d{2,}\) \d{4,}\-\d{4}/, allow_blank: false}
+            length: { minimum: 14, maximum: 15 },
+            format: { with: /A\(\d{2,}\) \d{4,}\-\d{4} z/, allow_blank: false }
 end
