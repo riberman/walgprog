@@ -27,6 +27,8 @@ pt-BR:
         city: Cidade
         state: Estado
         acronym: Sigla
+        state_id: Estado
+        city_id: Cidade
         <<: *commons
   helpers:
     back: Voltar
@@ -76,8 +78,8 @@ pt-BR:
   prompt:
     confirm: Você tem certeza?
     select:
-      m: Selecione um %{name}
-      f: Selecione uma %{name}
+      m: 'Selecione um %{name}'
+      f: 'Selecione uma %{name}'
   institutions:
     index: Instituições de Ensino
     new: Nova Instituição de Ensino

@@ -30,9 +30,8 @@ describe 'Institution:create', type: :feature do
     select(state.cities.sample.name, from: 'institution_city_id')
 
     click_button
-
+    success_message = I18n.t('institutions.success.new')
     expect(page).to have_current_path admins_institutions_path
-    expect(page).to have_selector('div.alert.alert-success',
-                                    text: I18n.t('institutions.success.new'))
+    expect(page).to have_selector('div.alert.alert-success', text: success_message)
   end
 end

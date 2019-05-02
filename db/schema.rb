@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_10_141936) do
+ActiveRecord::Schema.define(version: 2019_04_16_221819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 2019_04_10_141936) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["state_id"], name: "index_cities_on_state_id"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.bigint "institution_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["institution_id"], name: "index_contacts_on_institution_id"
   end
 
   create_table "institutions", force: :cascade do |t|
@@ -62,6 +72,7 @@ ActiveRecord::Schema.define(version: 2019_04_10_141936) do
   end
 
   add_foreign_key "cities", "states"
+  add_foreign_key "contacts", "institutions"
   add_foreign_key "institutions", "cities"
   add_foreign_key "states", "regions"
 end

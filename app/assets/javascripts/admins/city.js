@@ -1,6 +1,6 @@
 $(document).on('ready turbolinks:load', function () {
 
-    $('#institution_state_id').on("click", function () {
+    $('#institution_state_id').on("change", function () {
         var state_id = $(this).val();
         $('#institution_city').removeAttr('disabled');
         $.ajax({

@@ -6,12 +6,12 @@
   <td>
     <div class="btn-group">
       <%= link_to edit_admins_institution_path(institution), title: t('helpers.edit') do %>
-        <%= icon('fe', 'edit') %>
+        <%= icon('fe', ' fe-edit') %>
       <% end %>
 
       <%= link_to admins_institution_path(institution), method: :delete,
                   data: {confirm: t('prompt.confirm')}, title: t('helpers.delete') do %>
-        <%= icon('fe', 'trash') %>
+        <%= icon('fe', ' fe-trash') %>
       <% end %>
     </div>
   </td>

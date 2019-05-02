@@ -1,5 +1,4 @@
 class Admins::InstitutionsController < Admins::BaseController
-
   before_action :set_institution, only: [:edit, :update, :destroy]
   before_action :find_states_and_cities, only: [:edit, :update]
 
@@ -15,6 +14,10 @@ class Admins::InstitutionsController < Admins::BaseController
 
   def create
     @institution = Institution.new(institution_params)
+    create_condition
+  end
+
+  def create_condition
     if @institution.save
       flash[:success] = t('institutions.success.new')
       redirect_to admins_institutions_path
@@ -25,8 +28,7 @@ class Admins::InstitutionsController < Admins::BaseController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @institution.update(institution_params)
