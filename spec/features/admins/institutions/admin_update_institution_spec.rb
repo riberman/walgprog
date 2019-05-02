@@ -24,7 +24,6 @@ describe 'Institution:update', type: :feature do
     end
   end
 
-  error_message = I18n.t('simple_form.error_notification.default_message')
   context 'when institution is not updated', js: true do
     it 'show errors - blank name' do
       fill_in 'institution_name', with: ''
@@ -32,7 +31,6 @@ describe 'Institution:update', type: :feature do
 
       error_default_message = I18n.t('simple_form.error_notification.default_message')
       expect(page).to have_flash(:danger, text: error_default_message)
-
     end
     it 'show errors - blank acronym' do
       fill_in 'institution_acronym', with: ''

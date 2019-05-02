@@ -22,9 +22,13 @@ class Admins::InstitutionsController < Admins::BaseController
       redirect_to admins_institutions_path
     else
       flash[:error] = t('simple_form.error_notification.default_message')
-      @cities = params[:institution][:state_id].empty? ? [] : @institution.city.state.cities
+      state_cities
       render :new
     end
+  end
+
+  def state_cities
+    @cities = params[:institution][:state_id].empty? ? [] : @institution.city.state.cities
   end
 
   def edit; end

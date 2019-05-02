@@ -13,13 +13,14 @@ describe 'Institution:create', type: :feature do
     click_button
 
     message_blank_error = I18n.t('errors.messages.blank')
-    expect(page).to have_message(message_blank_error, in: 'div.instituion_name')
-    expect(page).to have_message(message_blank_error, in: 'div.instituion_acronym')
-    expect(page).to have_message(message_blank_error, in: 'div.instituion_city_id')
+    expect(page).to have_message(message_blank_error, in: 'div.institution_name')
+    expect(page).to have_message(message_blank_error, in: 'div.institution_acronym')
+    expect(page).to have_message(message_blank_error, in: 'div.institution_city_id')
 
+    message_error = I18n.t('simple_form.error_notification.default_message')
     expect(page).to have_current_path admins_institutions_path
     expect(page).to have_selector('div.alert.alert-danger',
-                                  text: message_blank_error)
+                                  text: message_error)
   end
 
   it 'try to create with valid fields', js: true do
