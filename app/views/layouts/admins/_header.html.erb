@@ -1,9 +1,14 @@
-<div class="header py-4">
-  <div class="container">
+<div class="fixed-top header py-4">
+  <div class="container-fluid">
     <div class="d-flex">
       <%= link_to admins_root_path, class: 'header-brand' do %>
         <% image_tag 'tsi-logo.png', class: 'header-brand-img'  %>
       <% end  %>
+
+      <span class="d-lg-block mt-2 text-muted font-weight-bold">
+        WalgProg
+      </span>
+
       <div class="d-flex order-lg-2 ml-auto">
 
         <div class="dropdown">
@@ -28,6 +33,7 @@
 
       </div>
 
+      <%= render '/layouts/admins/responsive_menu_toggle' %>
     </div>
   </div>
 </div>
