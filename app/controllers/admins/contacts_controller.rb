@@ -2,7 +2,7 @@ class Admins::ContactsController < Admins::BaseController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contacts = Contact.includes(:institution)
+    @contacts = Contact.includes(:institution).order('contacts.name ASC')
   end
 
   def new
