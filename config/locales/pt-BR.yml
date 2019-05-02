@@ -24,7 +24,9 @@ pt-BR:
         remember_me: Lembre-me
       institution:
         name: Nome
+        city_id: Cidade
         city: Cidade
+        state_id: Estado
         state: Estado
         acronym: Sigla
         <<: *commons
@@ -83,6 +85,7 @@ pt-BR:
     new: Nova Instituição de Ensino
     edit: Editar Instituição de Ensino
     success:
-      new: Nova instituição cadastrada com sucesso!
-      edit: Instituição editada com sucesso!
-      destroy: Instituição apagada com sucesso!
+      new: Instituição de Ensino criada com sucesso!
+      edit: Instituição de Ensino atualizada com sucesso!
+      destroy: Instituição de Ensino removida com sucesso!
+

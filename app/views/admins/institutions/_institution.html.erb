@@ -5,13 +5,13 @@
   <td class="text-nowrap"><%= institution.city.state.acronym %></td>
   <td>
     <div class="btn-group">
-      <%= link_to edit_admins_institution_path(institution), title: t('helpers.edit') do %>
-        <%= icon('fe', 'edit') %>
+      <%= link_to edit_admins_institution_path(institution), class: 'icon ml-2', title: t('helpers.edit') do %>
+        <%= icon('fas', 'edit') %>
       <% end %>
 
-      <%= link_to admins_institution_path(institution), method: :delete,
+      <%= link_to admins_institution_path(institution),class: 'icon ml-2 destroy', method: :delete,
                   data: {confirm: t('prompt.confirm')}, title: t('helpers.delete') do %>
-        <%= icon('fe', 'trash') %>
+        <%= icon('fas', 'trash') %>
       <% end %>
     </div>
   </td>

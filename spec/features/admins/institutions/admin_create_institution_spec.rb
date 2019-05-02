@@ -19,7 +19,7 @@ describe 'Institution:create', type: :feature do
 
     expect(page).to have_current_path admins_institutions_path
     expect(page).to have_selector('div.alert.alert-danger',
-                                  text: I18n.t('simple_form.error_notification.default_message'))
+                                  text: message_blank_error)
   end
 
   it 'try to create with valid fields', js: true do
@@ -33,6 +33,6 @@ describe 'Institution:create', type: :feature do
 
     expect(page).to have_current_path admins_institutions_path
     expect(page).to have_selector('div.alert.alert-success',
-                                    text: I18n.t('institutions.success.new'))
+                                  text: I18n.t('institutions.success.new'))
   end
 end

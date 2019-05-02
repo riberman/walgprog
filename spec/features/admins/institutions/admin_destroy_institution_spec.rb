@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 describe 'Institution:destroy', type: :feature do
   let(:admin) { create(:admin) }
   let!(:institution) { create(:institution) }
@@ -19,6 +18,6 @@ describe 'Institution:destroy', type: :feature do
     success_message = I18n.t('institutions.success.destroy')
     expect(page).to have_flash(:success, text: success_message)
 
-    expect(page).not_to have_content(event.name)
+    expect(page).not_to have_content(institution.name)
   end
 end
