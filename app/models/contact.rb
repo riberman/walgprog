@@ -2,6 +2,13 @@ class Contact < ApplicationRecord
   belongs_to :institution
 
   validates :name, presence: true
-  validates :email, presence: true, format: { with: Devise.email_regexp }
-  validates :phone, presence: false
+  validates :email,
+            presence: true,
+            length: { maximum: 255 },
+            format: { with: Devise.email_regexp },
+            uniqueness: { case_sensitive: false }
+  validates :phone,
+            presence: false,
+            length: { :minimum => 14, :maximum => 15 },
+            format: { with: /\(\d{2,}\) \d{4,}\-\d{4}/, allow_blank: false}
 end
