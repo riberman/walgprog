@@ -7,6 +7,9 @@ pt-BR:
       admin:
         one: Administrador
         other: Administradores
+      institution:
+        one: Instituição
+        other: Instituições
     attributes:
       attribute_commons: &commons
         name: Nome
@@ -19,10 +22,22 @@ pt-BR:
         current_password: Senha atual
         password_confirmation: Confirmação de senha
         remember_me: Lembre-me
+      institution:
+        name: Nome
+        city: Cidade
+        state: Estado
+        acronym: Sigla
+        state_id: Estado
+        city_id: Cidade
         <<: *commons
   helpers:
     back: Voltar
     currently: Atualmente
+    search: Pesquisar
+    show: Visualizar
+    home: Página inicial
+    edit: Editar
+    delete: Deletar
     boolean:
       'true': Sim
       'false': Não
@@ -63,5 +78,14 @@ pt-BR:
   prompt:
     confirm: Você tem certeza?
     select:
-      m: Selecione um %{name}
-      f: Selecione uma %{name}
+      m: 'Selecione um %{name}'
+      f: 'Selecione uma %{name}'
+  institutions:
+    index: Instituições de Ensino
+    new: Nova Instituição de Ensino
+    edit: Editar Instituição de Ensino
+    success:
+      new: Instituição de Ensino criada com sucesso!
+      edit: Instituição de Ensino atualizada com sucesso!
+      destroy: Instituição de Ensino removida com sucesso!
+

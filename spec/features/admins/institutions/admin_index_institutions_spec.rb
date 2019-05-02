@@ -3,7 +3,6 @@ require 'rails_helper'
 describe 'Institution:index', type: :feature do
   let(:admin) { create(:admin) }
   let!(:institution) { create(:institution) }
-  # let(:institutions) { create_list(:institution, 2) }
 
   before(:each) do
     login_as(admin, scope: :admin)
