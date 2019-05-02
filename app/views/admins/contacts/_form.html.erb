@@ -3,13 +3,21 @@
   <%= form.error_notification %>
 
   <div class="form-row">
-    <div class="col-sm-12 col-md-6">
+    <div class="form-group col-sm-12 col-md-6">
       <%= form.input :name, required: true, autofocus: true %>
-      <%= form.input :email, required: true %>
     </div>
 
-    <div class="col-sm-12 col-md-6">
+    <div class="form-group col-sm-12 col-md-6">
+      <%= form.input :email, required: true %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-sm-12 col-md-6">
       <%= form.input :phone,  required: false %>
+    </div>
+
+    <div class="form-group col-sm-12 col-md-6">
       <%= form.association :institution %>
     </div>
   </div>
