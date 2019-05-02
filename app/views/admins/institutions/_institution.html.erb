@@ -9,7 +9,7 @@
         <%= icon('fas', 'edit') %>
       <% end %>
 
-      <%= link_to admins_institution_path(institution),class: 'icon ml-2 destroy', method: :delete,
+      <%= link_to admins_institution_path(institution), class: 'icon ml-2 destroy', method: :delete,
                   data: {confirm: t('prompt.confirm')}, title: t('helpers.delete') do %>
         <%= icon('fas', 'trash') %>
       <% end %>

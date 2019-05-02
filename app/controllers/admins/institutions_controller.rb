@@ -13,6 +13,10 @@ class Admins::InstitutionsController < Admins::BaseController
 
   def create
     @institution = Institution.new(institution_params)
+    create_condition
+  end
+
+  def create_condition
     if @institution.save
       flash[:success] = t('institutions.success.new')
       redirect_to admins_institutions_path
