@@ -1,27 +1,27 @@
-<%= simple_form_for(@contact, url: path) do | form | %>
+<%= simple_form_for([:admins, @contact]) do | f | %>
   <div class="form-row">
     <div class="form-group col-sm-12 col-md-6">
-      <%= form.input :name, required: true, autofocus: true %>
+      <%= f.input :name, required: true, autofocus: true %>
     </div>
 
     <div class="form-group col-sm-12 col-md-6">
-      <%= form.input :email, required: true %>
+      <%= f.input :email, required: true %>
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-sm-12 col-md-6">
-      <%= form.input :phone,  required: false %>
+      <%= f.input :phone,  required: false %>
     </div>
 
     <div class="form-group col-sm-12 col-md-6">
-      <%= form.association :institution %>
+      <%= f.association :institution %>
     </div>
   </div>
 
   <div class="d-flex">
     <%= link_to t('helpers.back'), admins_contacts_path, class: 'btn btn-secondary' %>
 
-    <%= form.button :submit, t('simple_form.buttons.save'), class: 'btn-primary ml-auto' %>
+    <%= f.button :submit, t('simple_form.buttons.save'), class: 'btn-primary ml-auto' %>
   </div>
 <% end %>
