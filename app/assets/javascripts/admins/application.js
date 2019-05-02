@@ -13,11 +13,13 @@
 
 // Vendors
 //--------------------
+//= require jquery.mask/jquery.mask.min.js
 
 
 // Config files
 //--------------------
 //= require config/namespace
+//= require config/cell-phone-mask
 
 
 // Lib files
