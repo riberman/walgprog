@@ -5,27 +5,21 @@
     <h3 class="card-title"><%= @contact.name %></h3>
     <div class="card-options">
       <%= link_to edit_admins_contact_path(@contact), class: 'btn btn-outline-primary btn-block' do %>
-        <i class="fe fe-edit"> <%= t('title.edit_contact') %></i>
+        <%= icon('fas', 'edit', class: 'mr-2') %><%= t('title.edit_contact') %>
       <% end %>
     </div>
   </div>
   <div class="card-body">
     <p class="card-text">
-      <i class="fe fe-at-sign">
-        <%= @contact.email %>
-      </i>
+      <%= icon('fas', 'at', class: 'mr-2') %><%= @contact.email %>
     </p>
 
     <p class="card-text">
-      <i class="fab fa-whatsapp">
-        <%= @contact.phone %>
-      </i>
+      <%= icon('fas', 'phone', class: 'mr-2') %><%= @contact.phone %>
     </p>
 
     <p class="card-text">
-      <i class="fas fa-university">
-        <%= @contact.institution.name %> <%= @contact.institution.acronym %>
-      </i>
+      <%= icon('fas', 'university', class: 'mr-2') %><%= @contact.institution.name %> <%= @contact.institution.acronym %>
     </p>
   </div>
 </div>

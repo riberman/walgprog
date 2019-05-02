@@ -9,7 +9,7 @@
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Procurar...">
             <span class="input-group-append">
-              <button class="btn btn-outline-info" type="button"><i class="fe fe-search"></i></button>
+              <button class="btn btn-outline-info" type="button"><%= icon('fas', 'search') %></button>
             </span>
           </div>
         </div>
@@ -17,7 +17,7 @@
 
       <div class="col-md-4 col-sm-12">
         <%= link_to new_admins_contact_path, class: 'btn btn-outline-primary btn-block' do %>
-          <i class="fe fe-plus mr-2"></i><%= t('title.new_contact') %>
+          <%= icon('fas', 'plus', class: 'mr-2') %><%= t('title.new_contact') %>
         <% end %>
       </div>
 
