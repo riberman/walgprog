@@ -3,7 +3,7 @@
   <td style="color: <%= event.color %>;">
     <%= icon('fas', 'circle') %>
   <td>
-    <%= t('events.from_until', beginning: l(event.beginning_date, format: :short_hour), end:  l(event.end_date, format: :short_hour) ) %>
+    <%= t('events.from_until', beginning: l(event.beginning_date, format: :short), end:  l(event.end_date, format: :short) ) %>
   </td>
 
   <td><%= event.local %></td>

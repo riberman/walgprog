@@ -19,13 +19,14 @@ describe 'Event:create', type: :feature do
       fill_in 'event_address', with: Event.count
 
       sleep 1.second
-      find('#datetimepickerbegin').fill_in with: I18n.l(
+      fill_in 'event_beginning_date', with: I18n.l(
         attributes[:beginning_date] + 1.year,
-        format: :short_hour
+        format: :short
       )
-      find('#datetimepickerend').fill_in with: I18n.l(
+
+      fill_in 'event_end_date', with: I18n.l(
         attributes[:end_date] + 1.year,
-        format: :short_hour
+        format: :short
       )
 
       find('input[name="commit"]').click
