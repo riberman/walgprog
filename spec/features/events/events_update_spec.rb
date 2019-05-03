@@ -18,6 +18,8 @@ describe 'Event:update', type: :feature do
       new_name = 'Teste'
       fill_in 'event_name', with: new_name
 
+      page.execute_script 'window.scrollBy(0,10000)'
+
       find('input[name="commit"]').click
 
       expect(page).to have_current_path admins_events_path
@@ -31,6 +33,8 @@ describe 'Event:update', type: :feature do
   context 'when event is not updated', js: true do
     it 'show errors' do
       fill_in 'event_name', with: ''
+
+      page.execute_script 'window.scrollBy(0,10000)'
 
       find('input[name="commit"]').click
 

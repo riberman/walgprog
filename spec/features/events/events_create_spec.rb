@@ -29,6 +29,8 @@ describe 'Event:create', type: :feature do
         format: :short
       )
 
+      page.execute_script 'window.scrollBy(0,10000)'
+
       find('input[name="commit"]').click
 
       expect(page).to have_current_path admins_events_path
@@ -40,6 +42,8 @@ describe 'Event:create', type: :feature do
 
   context 'when event is not valid', js: true do
     it 'show errors' do
+      page.execute_script 'window.scrollBy(0,10000)'
+
       find('input[name="commit"]').click
       expect(page).to have_flash(:danger, text: I18n.t('flash.actions.errors'))
 
