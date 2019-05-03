@@ -15,15 +15,16 @@ describe 'Admin Contact', type: :feature do
     end
 
     context 'with valid fields' do
-      it 'when click in butto should create contact and redirect to index contact' do
+      it 'create contact and redirect to index contact' do
         attributes = attributes_for(:contact)
         action_name = 'flash.actions.create.m'
 
         fill_in 'contact_name', with: attributes[:name]
         fill_in 'contact_email', with: attributes[:email]
+        fill_in 'contact_phone', with: attributes[:phone]
         select institution.name, from: 'contact_institution_id'
 
-        click_button
+        find('input[name="commit"]').click
 
         expect(page).to have_current_path admins_contacts_path
         expect(page).to have_selector('div.alert.alert-success',
@@ -37,13 +38,14 @@ describe 'Admin Contact', type: :feature do
 
     context 'with invalid fields' do
       it 'when click in button should show errors in fields' do
-        click_button
+        find('input[name="commit"]').click
 
         expect(page).to have_selector('div.alert.alert-danger',
                                       text: I18n.t('flash.actions.errors'))
 
         have_contains('div.contact_name', I18n.t('errors.messages.blank'))
         have_contains('div.contact_email', I18n.t('errors.messages.blank'))
+        have_contains('div.contact_phone', I18n.t('errors.messages.blank'))
         have_contains('div.contact_institution', I18n.t('errors.messages.blank'))
       end
     end
@@ -56,10 +58,10 @@ describe 'Admin Contact', type: :feature do
     end
 
     context 'with valid fields' do
-      it 'when click in button should update contact and redirec to index page contact' do
+      it 'update contact and redirect to index contact' do
         local_name = 'Guilherme Ribas Carneiro'
         local_email = 'guilherme@hotmail.com'
-        local_phone = '42998533012'
+        local_phone = '(42) 99853-3012'
         action_name = 'flash.actions.update.m'
 
         fill_in 'contact_name', with: local_name
@@ -67,7 +69,7 @@ describe 'Admin Contact', type: :feature do
         fill_in 'contact_phone', with: local_phone
         select institution.name, from: 'contact_institution_id'
 
-        click_button
+        find('input[name="commit"]').click
 
         expect(page).to have_current_path admins_contacts_path
 
@@ -86,7 +88,7 @@ describe 'Admin Contact', type: :feature do
         fill_in 'contact_email', with: local_email
         fill_in 'contact_phone', with: local_phone
 
-        click_button
+        find('input[name="commit"]').click
 
         expect(page).to have_selector('div.alert.alert-danger',
                                       text: I18n.t('flash.actions.errors'))
@@ -144,6 +146,7 @@ describe 'Admin Contact', type: :feature do
 
         expect(page).to have_content(contact.name)
         expect(page).to have_content(contact.email)
+        expect(page).to have_content(contact.phone)
         expect(page).to have_content(contact.institution.name)
       end
     end
