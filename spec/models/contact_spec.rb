@@ -5,15 +5,21 @@ RSpec.describe Contact, type: :model do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:email) }
 
-    context 'email' do
+    context 'when email' do
       it { is_expected.to allow_value('email@addresse.foo').for(:email) }
       it { is_expected.to allow_value('email@addresse.foo.foo').for(:email) }
       it { is_expected.not_to allow_value('foo').for(:email) }
     end
 
-    context 'phone' do
-      it { is_expected.to allow_value('(11) 3624-3502').for(:phone) }
-      it { is_expected.to allow_value('(11) 99853-3012').for(:phone) }
+    context 'when phone' do
+      it { is_expected.to allow_value('(11) 3333-4444').for(:phone) }
+      it { is_expected.to allow_value('(11) 33333-4444').for(:phone) }
+      it { is_expected.not_to allow_value('11 3333-4444').for(:phone) }
+      it { is_expected.not_to allow_value('11 33333-4444').for(:phone) }
+      it { is_expected.not_to allow_value('113333-4444').for(:phone) }
+      it { is_expected.not_to allow_value('1133333-4444').for(:phone) }
+      it { is_expected.not_to allow_value('1133334444').for(:phone) }
+      it { is_expected.not_to allow_value('11333334444').for(:phone) }
     end
   end
 
