@@ -1,4 +1,6 @@
 class Contact < ApplicationRecord
+  PHONE_REGEX = /\A\(\d{2}\) \d{4,5}-\d{4}\z/.freeze
+
   belongs_to :institution
 
   validates :name, presence: true
@@ -10,5 +12,5 @@ class Contact < ApplicationRecord
   validates :phone,
             presence: false,
             length: { minimum: 14, maximum: 15 },
-            format: { with: /\A\(\d{2}\) \d{4,5}-\d{4}\z/, allow_blank: true }
+            format: { with: PHONE_REGEX, allow_blank: true }
 end

@@ -1,14 +1,16 @@
-<% provide(:page_title, 'Detalhes do Contato') %>
+<% provide(:head_title, t('contacts.show')) %>
+<% provide(:page_title, t('contacts.show')) %>
 
 <div class="card">
   <div class="card-header">
     <h3 class="card-title"><%= @contact.name %></h3>
     <div class="card-options">
       <%= link_to edit_admins_contact_path(@contact), class: 'btn btn-outline-primary btn-block' do %>
-        <%= icon('fas', 'edit', class: 'mr-2') %><%= t('title.edit_contact') %>
+        <%= icon('fas', 'edit', class: 'mr-2') %><%= t('contacts.edit') %>
       <% end %>
     </div>
   </div>
+
   <div class="card-body">
     <p class="card-text">
       <%= icon('fas', 'at', class: 'mr-2') %><%= @contact.email %>

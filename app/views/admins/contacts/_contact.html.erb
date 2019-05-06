@@ -4,11 +4,11 @@
   <td><%= contact.institution.acronym %></td>
   <td>
     <%= link_to admins_contact_path(contact), class: 'text-info', title: 'Detalhes' do %>
-      <%= icon('fas', 'user-cog', class: 'mr-2') %>
+      <%= icon('fas', 'search', class: 'mr-2') %>
     <% end %>
 
     <%= link_to edit_admins_contact_path(contact), class: 'text-info', title: 'Atualizar' do %>
-      <%= icon('fas', 'user-edit', class: 'mr-2') %>
+      <%= icon('fas', 'edit', class: 'mr-2') %>
     <% end %>
 
     <!-- bootbox.js bootboxjs.com -->
@@ -16,7 +16,7 @@
                 method: :delete,
                 data: { confirm: t('flash.actions.destroy.confirm', resource_name: contact.name) },
                 class: 'text-info', title: 'Remover' do %>
-      <%= icon('fas', 'user-times', class: 'mr-2') %>
+      <%= icon('fas', 'trash', class: 'mr-2') %>
     <% end %>
   </td>
 </tr>

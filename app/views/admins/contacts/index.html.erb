@@ -1,4 +1,5 @@
-<% provide(:page_title, t('title.contacts')) %>
+<% provide(:head_title, t('contacts.index')) %>
+<% provide(:page_title, t('contacts.index')) %>
 
 <div class="row">
   <div class="col-12">
@@ -17,7 +18,7 @@
 
       <div class="col-md-4 col-sm-12">
         <%= link_to new_admins_contact_path, class: 'btn btn-outline-primary btn-block' do %>
-          <%= icon('fas', 'plus', class: 'mr-2') %><%= t('title.new_contact') %>
+          <%= icon('fas', 'plus', class: 'mr-2') %><%= t('contacts.new') %>
         <% end %>
       </div>
 

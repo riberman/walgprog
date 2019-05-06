@@ -13,6 +13,9 @@ pt-BR:
       contact:
         one: Contato
         other: Contatos
+      institution:
+        one: 'Instituição'
+        other: 'Instituições'
     attributes:
       attribute_commons: &commons
         name: Nome
@@ -76,8 +79,8 @@ pt-BR:
     select:
       m: Selecione um %{name}
       f: Selecione uma %{name}
-  title:
-    contacts: Contatos
-    new_contact: Novo Contato
-    edit_contact: Editar Contato
-    show_contact: Detalhe Contato
+  contacts:
+    index: Contatos
+    new: Novo Contato
+    edit: Editar Contato
+    show: Detalhes do Contato
