@@ -1,11 +1,10 @@
 <% provide(:head_title, t('institutions.index')) %>
 <% provide(:page_title, t('institutions.index')) %>
-<% provide(:title, t('institutions.index')) %>
 
 <div class="row">
   <div class="col-lg-12">
     <div class="row">
-      <div class="col-md-8 col-sm-12">
+      <div class="col-sm-12 col-lg-8 mb-2">
         <div class="input-group mb-3">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Procurar...">
@@ -15,26 +14,26 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4 col-sm-12">
-        <%= link_to "+ Nova Instituição", new_admins_institution_path, class: "btn btn-outline-primary btn-block" %>
+      <div class="col-sm-12 col-lg-4">
+        <%= link_to '+ ' + t('institutions.new'), new_admins_institution_path, class: "btn btn-outline-primary btn-block" %>
       </div>
     </div>
+
     <div class="table-responsive">
       <table class="table card-table table-striped table-vcenter">
         <thead>
-        <tr>
-          <th><%= t('activerecord.attributes.institution.name') %></th>
-          <th><%= t('activerecord.attributes.institution.acronym') %></th>
-          <th><%= t('activerecord.attributes.institution.city') %></th>
-          <th><%= t('activerecord.attributes.institution.state') %></th>
-          <th colspan="3"></th>
-        </tr>
+          <tr>
+            <th><%= t('activerecord.attributes.institution.name') %></th>
+            <th><%= t('activerecord.attributes.institution.acronym') %></th>
+            <th><%= t('activerecord.attributes.institution.city') %></th>
+            <th><%= t('activerecord.attributes.institution.state') %></th>
+            <th></th>
+          </tr>
         </thead>
         <tbody>
-        <%= render @institutions %>
+          <%= render @institutions %>
         </tbody>
       </table>
     </div>
   </div>
-</div>
 </div>

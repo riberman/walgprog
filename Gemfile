@@ -48,7 +48,6 @@ end
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'webdrivers'
-  gem 'chromedriver-helper'
 
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false

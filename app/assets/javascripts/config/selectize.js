@@ -5,5 +5,10 @@ $(document).on('ready turbolinks:load', () => {
 });
 
 WalgProg.selectize = () => {
-    $('.selectize').selectize();
+    const selects = $('.apply-selectize');
+
+    if (selects.length > 0) {
+        selects.selectize();
+        $('.selectize-input input[placeholder]').attr('style', 'width: 100%;');
+    }
 }

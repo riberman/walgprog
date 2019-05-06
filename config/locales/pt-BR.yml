@@ -87,8 +87,3 @@ pt-BR:
     index: Instituições de Ensino
     new: Nova Instituição de Ensino
     edit: Editar Instituição de Ensino
-    success:
-      new: Instituição de Ensino criada com sucesso!
-      edit: Instituição de Ensino atualizada com sucesso!
-      destroy: Instituição de Ensino removida com sucesso!
-
