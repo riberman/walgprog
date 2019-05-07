@@ -42,8 +42,6 @@ ActiveRecord::Schema.define(version: 2019_04_16_221819) do
     t.string "email"
     t.string "phone"
     t.bigint "institution_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["institution_id"], name: "index_contacts_on_institution_id"
   end
 
