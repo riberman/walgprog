@@ -54,3 +54,6 @@ Thumbs.db
 ######################
 
 public/uploads/*
+
+
+.idea/*
