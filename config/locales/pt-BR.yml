@@ -26,6 +26,10 @@ pt-BR:
     boolean:
       'true': Sim
       'false': Não
+  breadcrumbs:
+    homepage: 'Página Inicial'
+    Admins:
+        edit: Editar Administrador
   flash:
     actions:
       update:

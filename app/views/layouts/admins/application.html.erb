@@ -31,7 +31,9 @@
               <%= render 'layouts/admins/sidebar' %>
             </div>
             <div class="col-lg-9 order-lg-1">
-
+              <ol class="breadcrumb">
+                <%= render_breadcrumbs tag: :li, separator: '<li class="ml-2 mr-2">/</li>'%>
+              </ol>
               <div class="card">
                 <div class="card-body">
                   <%= render 'shared/flash_messages' %>
