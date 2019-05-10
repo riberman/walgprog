@@ -3,20 +3,19 @@
   <td><%= contact.email %></td>
   <td><%= contact.institution.acronym %></td>
   <td>
-    <%= link_to admins_contact_path(contact), class: 'text-info', title: 'Detalhes' do %>
-      <%= icon('fas', 'search', class: 'mr-2') %>
+    <%= link_to admins_contact_path(contact) do %>
+      <%= icon('fas', 'search', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.show')) %>
     <% end %>
 
-    <%= link_to edit_admins_contact_path(contact), class: 'text-info', title: 'Atualizar' do %>
-      <%= icon('fas', 'edit', class: 'mr-2') %>
+    <%= link_to edit_admins_contact_path(contact) do %>
+      <%= icon('fas', 'edit', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.edit')) %>
     <% end %>
 
     <!-- bootbox.js bootboxjs.com -->
     <%= link_to admins_contact_path(contact),
                 method: :delete,
-                data: { confirm: t('flash.actions.destroy.confirm', resource_name: contact.name) },
-                class: 'text-info', title: 'Remover' do %>
-      <%= icon('fas', 'trash', class: 'mr-2') %>
+                data: { confirm: t('flash.actions.destroy.confirm', resource_name: contact.name) } do %>
+      <%= icon('fa', 'trash', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.delete')) %>
     <% end %>
   </td>
 </tr>
