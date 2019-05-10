@@ -19,7 +19,6 @@ describe 'Admins::Contact::create', type: :feature do
       fill_in 'contact_email', with: attributes[:email]
       fill_in 'contact_phone', with: attributes[:phone]
       selectize institution.name, from: 'contact_institution'
-
       click_button
 
       expect(page).to have_current_path admins_contacts_path

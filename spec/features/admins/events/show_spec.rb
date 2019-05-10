@@ -29,5 +29,4 @@ describe 'Event:show', type: :feature do
     it { expect(page).to have_link(I18n.t('helpers.edit'), href: edit_admins_event_path(event)) }
     it { expect(page).to have_link(I18n.t('helpers.back'), href: admins_events_path) }
   end
-
 end

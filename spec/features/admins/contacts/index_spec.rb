@@ -28,5 +28,4 @@ describe 'Admins::Contact::index', type: :feature do
   context 'with links' do
     it { expect(page).to have_link(I18n.t('contacts.new'), href: new_admins_contact_path) }
   end
-
 end

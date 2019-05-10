@@ -92,9 +92,9 @@ describe 'Admins::Event::update', type: :feature do
       fill_in 'event_end_date', with: I18n.l(event.end_date, format: :short)
       click_button
 
-      expect(page).to have_message(I18n.t('events.errors.year_used'), in: 'div.event_beginning_date')
-      expect(page).to have_message(I18n.t('events.errors.year_used'), in: 'div.event_end_date')
+      message = I18n.t('events.errors.year_used')
+      expect(page).to have_message(message, in: 'div.event_beginning_date')
+      expect(page).to have_message(message, in: 'div.event_end_date')
     end
   end
 end
-

@@ -36,6 +36,4 @@ describe 'Admins::Event::index', type: :feature do
   context 'with links' do
     it { expect(page).to have_link(I18n.t('events.new'), href: new_admins_event_path) }
   end
-
 end
-

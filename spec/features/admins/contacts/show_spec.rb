@@ -22,7 +22,9 @@ describe 'Admins::Contact::show', type: :feature do
   end
 
   context 'with links' do
-    it { expect(page).to have_link(I18n.t('helpers.edit'), href: edit_admins_contact_path(contact)) }
+    it do
+      expect(page).to have_link(I18n.t('helpers.edit'), href: edit_admins_contact_path(contact))
+    end
     it { expect(page).to have_link(I18n.t('helpers.back'), href: admins_contacts_path) }
   end
 end
