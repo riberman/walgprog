@@ -1,6 +1,6 @@
 //= require selectize/selectize.min
 
-$(document).on('ready turbolinks:load', () => {
+$(document).on('turbolinks:load', () => {
     WalgProg.selectize();
 });
 

@@ -3,10 +3,12 @@
 **************************************************************/
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "bootstrap-datepicker";
 
 /*************************************************************
 * Vendors stylesheets
 **************************************************************/
+@import "colorpicker/bootstrap-colorpicker.min";
 @import "selectize/selectize.min";
 
 
@@ -26,6 +28,8 @@
 * Customizations
 **************************************************************/
 @import "customizations/bootstrap";
+@import "customizations/selectize";
+@import "customizations/colorpicker";
 
 
 /*************************************************************

@@ -47,6 +47,19 @@ ActiveRecord::Schema.define(version: 2019_04_16_221819) do
     t.index ["institution_id"], name: "index_contacts_on_institution_id"
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.string "initials"
+    t.string "color"
+    t.datetime "beginning_date"
+    t.datetime "end_date"
+    t.string "local"
+    t.integer "city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "address"
+  end
+
   create_table "institutions", force: :cascade do |t|
     t.string "name"
     t.string "acronym"

@@ -5,6 +5,9 @@ pt-BR:
   time:
     formats:
       short: '%d/%m/%Y'
+      short_hour: '%d/%m/%Y %H:%M'
+      default: "%A, %d de %B de %Y, %H:%M h"
+      long: "%A, %d de %B de %Y, %H:%M h"
   activerecord:
     models:
       admin:
@@ -14,11 +17,11 @@ pt-BR:
         one: Contato
         other: Contatos
       institution:
-        one: 'Instituição'
-        other: 'Instituições'
-      institution:
         one: Instituição
         other: Instituições
+      event:
+        one: Evento
+        other: Eventos
     attributes:
       attribute_commons: &commons
         name: Nome
@@ -42,18 +45,31 @@ pt-BR:
         <<: *commons
       contact:
         institution: Instituição
+      event:
+        name: Nome
+        initials: Iniciais
+        color: Cor
+        beginning_date: Data de início
+        end_date: Data de término
+        local: Local
+        city: Cidade
+        city_id: Cidade
+        address: Endereço
         <<: *commons
   helpers:
     back: Voltar
     currently: Atualmente
     search: Pesquisar
-    show: Visualizar
     home: Página inicial
+    show: Visualizar
     edit: Editar
     delete: Deletar
     boolean:
       'true': Sim
       'false': Não
+    until: até
+    edit: Editar
+    delete: Apagar
   flash:
     actions:
       update:
@@ -65,9 +81,8 @@ pt-BR:
       destroy:
         m: '%{resource_name} removido com sucesso!'
         f: '%{resource_name} removida com sucesso!'
-        confirm: ' Você deseja remover %{resource_name}? esta ação será permanente.'
-        bond: Não é possível remover %{resource_name} com vínculos!'
-      errors: Existem dados incorretos!
+      bond: Não é possível remover %{resource_name} com vínculos!'
+      errors: 'Alguns erros foram encontrados, por favor verifique:'
     not_authorized: Acesso não autorizado!
   sessions:
     sign_in: Login
@@ -103,3 +118,16 @@ pt-BR:
     index: Instituições de Ensino
     new: Nova Instituição de Ensino
     edit: Editar Instituição de Ensino
+  events:
+    index: Eventos
+    new: Novo Evento
+    show: Detalhes do Evento
+    edit: Editar Evento
+    dates: Datas
+    location: Localização
+    description: Descrição
+    beginning_end: Início/Término
+    from_until: 'De %{beginning} até %{end}'
+    errors:
+      year_used: Já há um evento cadastrado nesse ano.
+      invalid_dates: deve ser posterior ao início

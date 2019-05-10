@@ -12,7 +12,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
-
+gem 'faker'
 gem 'pg', '0.20.0'
 gem 'devise'
 gem 'bootstrap', '~> 4.3.1'
@@ -23,10 +23,10 @@ gem 'rails-i18n', '~> 5.1'
 gem 'carrierwave', '~> 1.0'
 gem 'carrierwave-i18n'
 gem 'mini_magick'
+gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-
   gem 'rspec-rails', '~> 3.7'
   gem 'brakeman', require: false
   gem 'rubocop', require: false
@@ -48,6 +48,7 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
+  gem 'capybara-screenshot'
   gem 'webdrivers'
 
   gem 'simplecov', require: false

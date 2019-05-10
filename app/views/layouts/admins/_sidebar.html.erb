@@ -6,16 +6,20 @@
       <%= t('views.sidebar.walgprog') %>
     </span>
 
-    <%= link_to admins_root_path, class: 'list-group-item list-group-item-action', active: :exclusive do %>
+    <%= link_to admins_root_path, class: 'list-group-item list-group-item-action' do %>
       <span class="icon mr-3"><%= icon('fas', 'home') %></span>Página inicial
     <% end %>
 
-    <%= link_to admins_contacts_path, class: 'list-group-item list-group-item-action', active: :exclusive do %>
+    <%= link_to admins_contacts_path, class: 'list-group-item list-group-item-action' do %>
       <span class="icon mr-3"><%= icon('fas', 'address-book') %></span>Contatos
     <% end %>
 
-    <%= link_to admins_institutions_path, class: 'list-group-item list-group-item-action', active: :exclusive do %>
+    <%= link_to admins_institutions_path, class: 'list-group-item list-group-item-action' do %>
       <span class="icon mr-3"><%= icon('fas', 'university') %></i></span>Instituições de Ensino
+    <% end %>
+
+    <%= link_to admins_events_path, class: 'list-group-item list-group-item-action' do %>
+      <span class="icon mr-3"><i class="fas fa-calendar"></i></span><%= t('events.index') %>
     <% end %>
   </div>
 </div>

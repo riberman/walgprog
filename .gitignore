@@ -40,6 +40,13 @@
 
 coverage
 
+# IDE generated files #
+######################
+.idea
+.idea?
+.idea/*
+.idea*
+
 # OS generated files #
 ######################
 .DS_Store
