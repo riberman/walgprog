@@ -7,5 +7,6 @@ RSpec.describe Institution, type: :model do
 
   describe 'associations' do
     it { is_expected.to belong_to(:city) }
+    it { is_expected.to have_many(:contacts).dependent(:restrict_with_error) }
   end
 end

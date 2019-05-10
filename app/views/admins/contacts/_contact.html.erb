@@ -1,0 +1,22 @@
+<tr>
+  <td><%= contact.name %></td>
+  <td><%= contact.email %></td>
+  <td><%= contact.institution.acronym %></td>
+  <td>
+    <%= link_to admins_contact_path(contact), class: 'text-info', title: 'Detalhes' do %>
+      <%= icon('fas', 'search', class: 'mr-2') %>
+    <% end %>
+
+    <%= link_to edit_admins_contact_path(contact), class: 'text-info', title: 'Atualizar' do %>
+      <%= icon('fas', 'edit', class: 'mr-2') %>
+    <% end %>
+
+    <!-- bootbox.js bootboxjs.com -->
+    <%= link_to admins_contact_path(contact),
+                method: :delete,
+                data: { confirm: t('flash.actions.destroy.confirm', resource_name: contact.name) },
+                class: 'text-info', title: 'Remover' do %>
+      <%= icon('fas', 'trash', class: 'mr-2') %>
+    <% end %>
+  </td>
+</tr>

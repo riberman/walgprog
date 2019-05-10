@@ -10,18 +10,28 @@ pt-BR:
       admin:
         one: Administrador
         other: Administradores
+      contact:
+        one: Contato
+        other: Contatos
+      institution:
+        one: 'Instituição'
+        other: 'Instituições'
     attributes:
       attribute_commons: &commons
         name: Nome
         email: Email
         created_at: Criado em
         updated_at: Atualizado em
+        phone: Celular
       admin:
         image: Imagem
         password: Senha
         current_password: Senha atual
         password_confirmation: Confirmação de senha
         remember_me: Lembre-me
+        <<: *commons
+      contact:
+        institution: Instituição
         <<: *commons
   helpers:
     back: Voltar
@@ -40,6 +50,7 @@ pt-BR:
       destroy:
         m: '%{resource_name} removido com sucesso!'
         f: '%{resource_name} removida com sucesso!'
+        confirm: ' Você deseja remover %{resource_name}? esta ação será permanente.'
         bond: Não é possível remover %{resource_name} com vínculos!'
       errors: Existem dados incorretos!
     not_authorized: Acesso não autorizado!
@@ -68,3 +79,8 @@ pt-BR:
     select:
       m: Selecione um %{name}
       f: Selecione uma %{name}
+  contacts:
+    index: Contatos
+    new: Novo Contato
+    edit: Editar Contato
+    show: Detalhes do Contato
