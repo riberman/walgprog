@@ -20,11 +20,13 @@
 //= require config/namespace
 //= require config/sidebar_menu_collapse
 //= require config/jmask
+//= require config/selectize
 
 
 // Lib files
 //--------------------
 //= require lib/image_preview
+//= require admins/city.js
 
 
 // App files

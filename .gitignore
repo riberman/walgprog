@@ -58,3 +58,14 @@ public/uploads/*
 # Jetbrains RubyMine #
 ######################
 .idea
+
+# IntelliJ #
+######################
+
+.idea/*
+
+# Rake_Tasks #
+######################
+
+.rake_tasks~
+>>>>>>> riberman-master

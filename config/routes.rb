@@ -7,6 +7,10 @@ Rails.application.routes.draw do
       root to: 'dashboard#index'
 
       resources :contacts
+      resources :institutions
+
+      get 'states/:id/cities',
+          to: 'states#cities', as: :state_cities
     end
   end
 

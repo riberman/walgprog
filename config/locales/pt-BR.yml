@@ -16,6 +16,9 @@ pt-BR:
       institution:
         one: 'Instituição'
         other: 'Instituições'
+      institution:
+        one: Instituição
+        other: Instituições
     attributes:
       attribute_commons: &commons
         name: Nome
@@ -29,6 +32,13 @@ pt-BR:
         current_password: Senha atual
         password_confirmation: Confirmação de senha
         remember_me: Lembre-me
+      institution:
+        name: Nome
+        city: Cidade
+        state: Estado
+        acronym: Sigla
+        state_id: Estado
+        city_id: Cidade
         <<: *commons
       contact:
         institution: Instituição
@@ -36,6 +46,11 @@ pt-BR:
   helpers:
     back: Voltar
     currently: Atualmente
+    search: Pesquisar
+    show: Visualizar
+    home: Página inicial
+    edit: Editar
+    delete: Deletar
     boolean:
       'true': Sim
       'false': Não
@@ -84,3 +99,7 @@ pt-BR:
     new: Novo Contato
     edit: Editar Contato
     show: Detalhes do Contato
+  institutions:
+    index: Instituições de Ensino
+    new: Nova Instituição de Ensino
+    edit: Editar Instituição de Ensino
