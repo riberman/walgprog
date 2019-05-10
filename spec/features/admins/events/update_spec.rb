@@ -36,9 +36,9 @@ describe 'Admins::Event::update', type: :feature do
       fill_in 'event_color', with: attributes[:color]
       fill_in 'event_local', with: attributes[:local]
       fill_in 'event_address', with: attributes[:address]
+      selectize city.name, from: 'event_city_id'
       fill_in 'event_beginning_date', with: I18n.l(attributes[:beginning_date], format: :short)
       fill_in 'event_end_date', with: I18n.l(attributes[:end_date], format: :short)
-      selectize city.name, from: 'event_city_id'
       click_button
 
       expect(page).to have_current_path admins_events_path
@@ -64,9 +64,9 @@ describe 'Admins::Event::update', type: :feature do
       fill_in 'event_color', with: ''
       fill_in 'event_local', with: ''
       fill_in 'event_address', with: ''
+      selectize '', from: 'event_city_id'
       fill_in 'event_beginning_date', with: ''
       fill_in 'event_end_date', with: ''
-      selectize '', from: 'event_city_id'
       click_button
 
       expect(page).to have_flash(:danger, text: I18n.t('flash.actions.errors'))
