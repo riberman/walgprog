@@ -2,27 +2,29 @@
   <td><%= event.name %> (<%= event.initials %>)</td>
   <td style="color: <%= event.color %>;">
     <%= icon('fas', 'circle') %>
-  <td>
-    <%= t('events.from_until', beginning: l(event.beginning_date, format: :short), end:  l(event.end_date, format: :short) ) %>
-  </td>
+    <td>
+      <%= t('events.from_until', beginning: l(event.beginning_date, format: :short),
+            end:  l(event.end_date, format: :short) ) %>
+    </td>
+    <td><%= event.local %></td>
+    <td><%= l(event.created_at, format: :short_hour) %></td>
+    <td>
+      <div class="btn-group">
+        <%= link_to admins_event_path(event), class: 'icon ml-2', active: :exclusive do %>
+          <%= icon('fas', 'search', nil, { 'data-toggle' => 'tooltip', title: t('helpers.show') }) %>
+        <% end %>
 
-  <td><%= event.local %></td>
-  <td><%= l(event.created_at, format: :short_hour) %></td>
-  <td>
-    <div class="btn-group">
-      <%= link_to admins_event_path(event.id), class: 'icon ml-2', active: :exclusive do %>
-        <%= icon('fas', 'search', nil, { 'data-toggle' => 'tooltip', title: t('helpers.show') }) %>
-      <% end %>
-      <%= link_to edit_admins_event_path(event.id), class: 'icon ml-2', active: :exclusive do %>
-        <%= icon('fas', 'edit', nil, { 'data-toggle' => 'tooltip', title: t('helpers.edit') }) %>
-      <% end %>
-      <%= link_to admins_event_path(event.id),
-                  method: :delete,
-                  data: { confirm: t('prompt.confirm') },
-                  class: 'icon text-danger ml-2 destroy',
-                  active: :exclusive do %>
-        <%= icon('fa', 'trash', nil, { 'data-toggle' => 'tooltip', title: t('helpers.delete') }) %>
-      <% end %>
-    </div>
-  </td>
+        <%= link_to edit_admins_event_path(event), class: 'icon ml-2', active: :exclusive do %>
+          <%= icon('fas', 'edit', nil, { 'data-toggle' => 'tooltip', title: t('helpers.edit') }) %>
+        <% end %>
+
+        <%= link_to admins_event_path(event),
+          method: :delete,
+          data: { confirm: t('prompt.confirm') },
+          class: 'icon text-danger ml-2 destroy',
+          active: :exclusive do %>
+          <%= icon('fa', 'trash', nil, { 'data-toggle' => 'tooltip', title: t('helpers.delete') }) %>
+        <% end %>
+      </div>
+    </td>
 </tr>

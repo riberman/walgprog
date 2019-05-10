@@ -3,12 +3,14 @@
 **************************************************************/
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "jquery-ui";
+@import "bootstrap-datepicker";
 
 /*************************************************************
 * Vendors stylesheets
 **************************************************************/
-@import "bootstrap-datepicker";
+@import "colorpicker/bootstrap-colorpicker.min";
+@import "selectize/selectize.min";
+
 
 /*************************************************************
 * Configurations
@@ -20,17 +22,17 @@
 * Libs
 **************************************************************/
 @import "lib/image_preview";
-@import "lib/fieldset";
 
 
 /*************************************************************
 * Customizations
 **************************************************************/
 @import "customizations/bootstrap";
+@import "customizations/selectize";
+@import "customizations/colorpicker";
 
 
 /*************************************************************
 * Apps stylesheets
 **************************************************************/
 @import "sidebar";
-@import "events";

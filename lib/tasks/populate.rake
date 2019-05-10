@@ -5,24 +5,24 @@ namespace :db do
     require 'faker'
 
     [Event].each(&:delete_all)
+
     beginning_date = Faker::Date.forward(30)
-    year_increment = 1
-    4.times do
-      city_offset = rand(City.count)
-      random_city = City.offset(city_offset).first
+    city_ids = City.limit(4).pluck(:id)
+
+    4.times do |i|
+      beginning_date += i.years
+      end_date = beginning_date + i.years + 1.day
 
       Event.create(
         name: Faker::Name.unique.name,
-        initials: Faker::String.random(4),
-        beginning_date: beginning_date + year_increment.years,
-        end_date: beginning_date + year_increment.years + 1.day,
+        initials: Faker::Lorem.word.upcase,
+        beginning_date: beginning_date,
+        end_date: end_date,
         color: Faker::Color.hex_color,
         local: Faker::Address.community,
         address: Faker::Address.full_address,
-        city_id: random_city.id
+        city_id: city_ids.sample
       )
-
-      year_increment += year_increment
     end
   end
 end

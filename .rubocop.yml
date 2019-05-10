@@ -108,7 +108,7 @@ Naming/VariableNumber:
   EnforcedStyle: non_integer
 
 RSpec/MultipleExpectations:
-  Max: 2
+  Max: 3
   Exclude:
     - 'spec/features/**/*'
 

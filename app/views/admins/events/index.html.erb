@@ -1,50 +1,47 @@
-<% provide(:head_title, t("events.index")) %>
+<% provide(:head_title, t('events.index')) %>
 <% provide(:page_title, t('events.index')) %>
-<% provide(:title, t('events.index')) %>
 
-<div class="col-md-12">
-  <div class="row">
-    <div class="input-group col-md-8">
+<div class="row">
+  <div class="col-sm-12 col-lg-8 mb-2">
+    <div class="input-group input-icon">
       <input
         type="text"
-        class="form-control btn-block"
+        class="form-control"
         placeholder="<%= t('helpers.search') %>"
         aria-describedby="search-append">
 
-      <span
-        id="search-append"
-        class="input-group-append">
+        <span
+          id="search-append"
+          class="input-group-append">
 
-      <span class="input-group-text">
-        <i class="fe fe-search text-info"></i>
-      </span>
-    </span>
+          <a id="search" href="#" class="btn btn-outline-primary">
+            <i class="fe fe-search"></i>
+          </a>
+        </span>
     </div>
-    <div class="col-md-4 col-sm-12">
-      <%= link_to new_admins_event_path, class: 'btn btn-outline-info btn-block', active: :exclusive do %>
-        <i class="fe fe-plus mr-2"></i>
-        <%= t('events.new') %>
-      <% end %>
-    </div>
+  </div>
+  <div class="ccol-sm-12 col-lg-4">
+    <%= link_to new_admins_event_path, class: 'btn btn-outline-primary d-block' do %>
+      <i class="fe fe-plus mr-2"></i>
+      <%= t('events.new') %>
+    <% end %>
   </div>
 </div>
 
-<div class="mt-5 col-md-12 row card-body-scrollable mt-5">
+<div class="table-striped mt-3 table-responsive w-100">
   <table class="table table-hover table-outline table-vcenter card-table">
     <thead>
-    <tr>
-      <th><%= t('activerecord.attributes.attribute_commons.name') %></th>
-      <th><%= t('activerecord.attributes.event.color') %></th>
-      <th><%= t('events.beginning_end') %></th>
-      <th><%= t('activerecord.attributes.event.local') %></th>
-      <th><%= t('activerecord.attributes.attribute_commons.created_at') %></th>
-      <th></th>
-    </tr>
+      <tr>
+        <th><%= t('activerecord.attributes.attribute_commons.name') %></th>
+        <th><%= t('activerecord.attributes.event.color') %></th>
+        <th><%= t('events.beginning_end') %></th>
+        <th><%= t('activerecord.attributes.event.local') %></th>
+        <th><%= t('activerecord.attributes.attribute_commons.created_at') %></th>
+        <th></th>
+      </tr>
     </thead>
     <tbody>
-
-    <%= render @events %>
-
+      <%= render @events %>
     </tbody>
   </table>
 </div>

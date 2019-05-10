@@ -9,14 +9,12 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-//= require jquery-ui
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR.js
 
 
 // Vendors
 //--------------------
-//= require bootstrap-colorpicker
 //= require sifter/sifter.min
 //= require microplugin/microplugin.min
 //= require selectize/selectize.min
@@ -26,8 +24,8 @@
 //--------------------
 //= require config/namespace
 //= require config/selectize
-//= require config/color_picker
-//= require config/date_picker
+//= require config/colorpicker
+//= require config/datepicker
 //= require config/sidebar_menu_collapse
 
 

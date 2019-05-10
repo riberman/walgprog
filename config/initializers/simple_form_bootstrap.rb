@@ -58,7 +58,7 @@ SimpleForm.setup do |config|
     b.optional :readonly
     b.use :label, class: 'form-control-label'
     b.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid'
-    b.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
+    b.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback  d-block' }
     b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
   end
 
@@ -408,14 +408,14 @@ SimpleForm.setup do |config|
   # Custom wrappers for input types. This should be a hash containing an input
   # type as key and the wrapper that will be used for all inputs with specified type.
   config.wrapper_mappings = {
-      boolean: :vertical_boolean,
-      check_boxes: :vertical_collection,
-      date: :vertical_multi_select,
-      datetime: :vertical_multi_select,
-      file: :vertical_file,
-      radio_buttons: :vertical_collection,
-      range: :vertical_range,
-      time: :vertical_multi_select
+    boolean:        :vertical_boolean,
+    check_boxes:    :vertical_collection,
+    date:           :vertical_multi_select,
+    datetime:       :vertical_multi_select,
+    file:           :vertical_file,
+    radio_buttons:  :vertical_collection,
+    range:          :vertical_range,
+    time:           :vertical_multi_select
   }
 
   # enable custom form wrappers
