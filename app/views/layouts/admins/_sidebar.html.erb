@@ -7,15 +7,15 @@
     </span>
 
     <%= link_to admins_root_path, class: 'list-group-item list-group-item-action' do %>
-      <span class="icon mr-3"><%= icon('fas', 'home') %></span>Página inicial
+      <span class="icon mr-3"><%= icon('fas', 'home') %></span><%= t('helpers.home') %>
     <% end %>
 
     <%= link_to admins_contacts_path, class: 'list-group-item list-group-item-action' do %>
-      <span class="icon mr-3"><%= icon('fas', 'address-book') %></span>Contatos
+      <span class="icon mr-3"><%= icon('fas', 'address-book') %></span><%= t('contacts.index') %>
     <% end %>
 
     <%= link_to admins_institutions_path, class: 'list-group-item list-group-item-action' do %>
-      <span class="icon mr-3"><%= icon('fas', 'university') %></i></span>Instituições de Ensino
+      <span class="icon mr-3"><%= icon('fas', 'university') %></i></span><%= t('institutions.index') %>
     <% end %>
 
     <%= link_to admins_events_path, class: 'list-group-item list-group-item-action' do %>
