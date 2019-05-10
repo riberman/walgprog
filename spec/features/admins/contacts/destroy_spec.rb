@@ -11,14 +11,11 @@ describe 'Admin Contact Destroy', type: :feature do
   end
 
   it 'show message and redirect_to index' do
-    action_name = 'flash.actions.destroy.m'
-
-    destroy_link = "a[href='#{admins_contact_path(contact)}'][data-method='delete']"
-    find(destroy_link).click
+    click_on_destroy_link(admins_contact_path(contact))
 
     expect(page).to have_current_path admins_contacts_path
-    expect(page).to have_selector('div.alert.alert-success',
-                                  text: I18n.t(action_name, resource_name: contact.name))
+    success_message = I18n.t('flash.actions.destroy.m', resource_name: contact.name)
+    expect(page).to have_flash(:success, text: success_message)
 
     within('table tbody') do
       expect(page).not_to have_content(contact.name)

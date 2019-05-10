@@ -4,10 +4,11 @@
   <%= f.input :email, required: true %>
   <%= f.input :phone, required: false,
     input_html: { 'data-mask' => '(00) 00000-0000', placeholder: '(00) 00000-0000' } %>
-  <%= f.association :institution, prompt: t('prompt.select.f', name: Institution.model_name.human) %>
+  <%= f.association :institution, prompt: t('prompt.select.f', name: Institution.model_name.human),
+    input_html: { class: 'apply-selectize' } %>
 
   <div class="d-flex">
-    <%= link_to t('helpers.back'), admins_contacts_path, class: 'btn btn-secondary' %>
+    <%= link_to t('helpers.back'), admins_contacts_path, class: 'btn btn-secondary float-left' %>
     <%= f.button :submit, class: 'btn-primary ml-auto' %>
   </div>
 

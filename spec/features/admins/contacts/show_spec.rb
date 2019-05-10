@@ -9,13 +9,20 @@ describe 'Admins::Contact::show', type: :feature do
     visit admins_contact_path(contact)
   end
 
-  it 'show the data' do
-    expect(page).to have_content(contact.name)
-    expect(page).to have_content(contact.email)
-    expect(page).to have_content(contact.phone)
-    expect(page).to have_content(contact.institution.name)
+  context 'with data' do
+    it 'showed' do
+      expect(page).to have_content(contact.name)
+      expect(page).to have_content(contact.email)
+      expect(page).to have_content(contact.phone)
+      expect(page).to have_content(contact.institution.name)
 
-    expect(page).to have_link(href: edit_admins_contact_path(contact))
-    expect(page).to have_link(href: admins_contacts_path)
+      expect(page).to have_link(href: edit_admins_contact_path(contact))
+      expect(page).to have_link(href: admins_contacts_path)
+    end
+  end
+
+  context 'with links' do
+    it { expect(page).to have_link(I18n.t('helpers.edit'), href: edit_admins_contact_path(contact)) }
+    it { expect(page).to have_link(I18n.t('helpers.back'), href: admins_contacts_path) }
   end
 end

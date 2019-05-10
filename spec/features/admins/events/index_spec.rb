@@ -27,8 +27,7 @@ describe 'Admins::Event::index', type: :feature do
 
           expect(page).to have_link(href: admins_event_path(event))
           expect(page).to have_link(href: edit_admins_event_path(event))
-          destroy_link = "a[href='#{admins_event_path(event)}'][data-method='delete']"
-          expect(page).to have_css(destroy_link)
+          expect(page).to have_destroy_link(href: admins_event_path(event))
         end
       end
     end

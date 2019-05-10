@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Admin::Contact::update', type: :feature do
+describe 'Admin::Contact::update', type: :feature, js: true do
   let(:admin) { create(:admin) }
   let(:resource_name) { Contact.model_name.human }
   let!(:institution) { create_list(:institution, 2).sample }
@@ -16,7 +16,7 @@ describe 'Admin::Contact::update', type: :feature do
       expect(page).to have_field('contact_name', with: contact.name)
       expect(page).to have_field('contact_email', with: contact.email)
       expect(page).to have_field('contact_phone', with: contact.phone)
-      expect(page).to have_select('contact_institution_id', selected: contact.institution.name)
+      expect(page).to have_selectize('contact_institution', selected: contact.institution.name)
     end
   end
 
@@ -30,13 +30,12 @@ describe 'Admin::Contact::update', type: :feature do
       fill_in 'contact_name', with: local_name
       fill_in 'contact_email', with: local_email
       fill_in 'contact_phone', with: local_phone
-      select institution.name, from: 'contact_institution_id'
+      selectize institution.name, from: 'contact_institution'
 
       click_button
 
       expect(page).to have_current_path admins_contacts_path
-      expect(page).to have_selector('div.alert.alert-success',
-                                    text: I18n.t(action_name, resource_name: resource_name))
+      expect(page).to have_flash(:success, text: I18n.t(action_name, resource_name: resource_name))
 
       within('table tbody') do
         expect(page).to have_content(local_name)
@@ -51,11 +50,10 @@ describe 'Admin::Contact::update', type: :feature do
       fill_in 'contact_name', with: ''
       fill_in 'contact_email', with: ''
       fill_in 'contact_phone', with: ''
-
+      selectize '', from: 'contact_institution'
       click_button
 
-      expect(page).to have_selector('div.alert.alert-danger',
-                                    text: I18n.t('flash.actions.errors'))
+      expect(page).to have_flash(:danger, text: I18n.t('flash.actions.errors'))
 
       message_blank_error = I18n.t('errors.messages.blank')
       expect(page).to have_message(message_blank_error, in: 'div.contact_name')

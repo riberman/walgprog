@@ -10,7 +10,7 @@ describe 'Admins::Contact::create', type: :feature do
     visit new_admins_contact_path
   end
 
-  context 'with valid fields' do
+  context 'with valid fields', js: true do
     it 'create a contact' do
       attributes = attributes_for(:contact)
       action_name = 'flash.actions.create.m'
@@ -18,13 +18,12 @@ describe 'Admins::Contact::create', type: :feature do
       fill_in 'contact_name', with: attributes[:name]
       fill_in 'contact_email', with: attributes[:email]
       fill_in 'contact_phone', with: attributes[:phone]
-      select institution.name, from: 'contact_institution_id'
+      selectize institution.name, from: 'contact_institution'
 
       click_button
 
       expect(page).to have_current_path admins_contacts_path
-      expect(page).to have_selector('div.alert.alert-success',
-                                    text: I18n.t(action_name, resource_name: resource_name))
+      expect(page).to have_flash(:success, text: I18n.t(action_name, resource_name: resource_name))
 
       within('table tbody') do
         expect(page).to have_content(attributes[:name])
@@ -34,12 +33,11 @@ describe 'Admins::Contact::create', type: :feature do
     end
   end
 
-  context 'with fields' do
+  context 'with fields', js: true do
     it 'filled blank show errors' do
       click_button
 
-      expect(page).to have_selector('div.alert.alert-danger',
-                                    text: I18n.t('flash.actions.errors'))
+      expect(page).to have_flash(:danger, text: I18n.t('flash.actions.errors'))
 
       message_blank_error = I18n.t('errors.messages.blank')
       expect(page).to have_message(message_blank_error, in: 'div.contact_name')
