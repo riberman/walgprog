@@ -61,7 +61,7 @@ describe 'Admins::Event::update', type: :feature do
     it 'show errors' do
       fill_in 'event_name', with: ''
       fill_in 'event_initials', with: ''
-      fill_in 'event_color', with: ''
+      fill_in 'event_color', with: 'uu'
       fill_in 'event_local', with: ''
       fill_in 'event_address', with: ''
       selectize '', from: 'event_city_id'
@@ -74,7 +74,7 @@ describe 'Admins::Event::update', type: :feature do
       message_blank_error = I18n.t('errors.messages.blank')
       expect(page).to have_message(message_blank_error, in: 'div.event_name')
       expect(page).to have_message(message_blank_error, in: 'div.event_initials')
-      expect(page).to have_message(message_blank_error, in: 'div.event_color')
+      expect(page).to have_field('event_color', with: '#000000') # default color
 
       expect(page).to have_message(message_blank_error, in: 'div.event_beginning_date')
       expect(page).to have_message(message_blank_error, in: 'div.event_end_date')

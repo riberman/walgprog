@@ -6,7 +6,7 @@
 # </div>
 class ColorPickerInput < SimpleForm::Inputs::Base
   def input(_wrapper_options)
-    template.content_tag(:div, class: 'input-group apply-colorpicker') do
+    template.content_tag(:div, class: 'input-group colorpicker-component apply-colorpicker') do
       template.concat @builder.input_field(attribute_name, class: 'form-control')
       template.concat span_tag
     end

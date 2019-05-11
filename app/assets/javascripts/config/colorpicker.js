@@ -10,6 +10,7 @@ $(document).on('turbolinks:load', () => {
 WalgProg.colorPicker = () => {
     $('.apply-colorpicker').colorpicker({
         fallbackColor: '#000',
+        fallbackFormat: 'hex',
         popover: {
             animation: true,
             placement: 'bottom',
