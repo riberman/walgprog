@@ -25,6 +25,7 @@ gem 'mini_magick'
 gem 'bootstrap-datepicker-rails'
 gem 'active_link_to'
 
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.7'
