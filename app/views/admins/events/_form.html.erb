@@ -1,0 +1,59 @@
+<%= simple_form_for [:admins, @event] do |f| %>
+
+  <fieldset class="form-fieldset">
+    <legend class="w-auto"><%= t('events.description') %></legend>
+    <div class="row">
+      <%= f.input :name, required: true, autofocus: true,
+        wrapper_html: { class: 'col-lg-7 col-md-12 col-sm-12' } %>
+
+      <%= f.input :initials, autocomplete: "off", required: true,
+        wrapper_html: { class: 'col-lg-2 col-md-6 col-sm-6' } %>
+
+      <%= f.input :color, required: true, as: :color_picker,
+        input_html: { class: 'apply-colorpicker'},
+        wrapper_html: { class: 'col-lg-3 col-md-6 col-sm-6' } %>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-fieldset">
+    <legend class="w-auto"><%= t('events.dates') %></legend>
+    <div class="row">
+      <div class="form-group string required col-md-6">
+        <%= f.input(
+          :beginning_date,
+          as:  :string,
+          required: true,
+          input_html: { value: @event.beginning_date.formatted, class: 'datepicker' }) %>
+
+      </div>
+
+      <div class="form-group string required col-md-6">
+        <%= f.input(
+          :end_date,
+          as: :string,
+          required: true,
+          input_html: { value: @event.end_date.formatted, class: 'datepicker' }) %>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-fieldset">
+    <legend class="w-auto"><%= t('events.location') %></legend>
+    <div class="row">
+      <%= f.input :city_id, collection: @cities,
+        wrapper_html: { class: 'col-md-6'}, input_html: { class: 'apply-selectize' } %>
+
+      <%= f.input :local, required: true, wrapper_html: { class: 'col-md-6' } %>
+      <%= f.input :address, required: true, wrapper_html: { class: 'col-md-12' } %>
+    </div>
+  </fieldset>
+
+  <div class="d-flex">
+    <%= link_to admins_events_path, class: 'btn btn-secondary float-left' do %>
+      <%= t('helpers.back') %>
+    <% end %>
+
+    <%= f.button :submit, class: 'btn-primary ml-auto' %>
+  </div>
+
+<% end %>

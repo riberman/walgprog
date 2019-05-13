@@ -1,35 +1,82 @@
 pt-BR:
+  views:
+    sidebar:
+      walgprog: 'WalgProg'
   time:
     formats:
       short: '%d/%m/%Y'
+      short_hour: '%d/%m/%Y %H:%M'
+      default: "%A, %d de %B de %Y, %H:%M h"
+      long: "%A, %d de %B de %Y, %H:%M h"
   activerecord:
     models:
       admin:
         one: Administrador
         other: Administradores
+      contact:
+        one: Contato
+        other: Contatos
+      institution:
+        one: Instituição
+        other: Instituições
+      event:
+        one: Evento
+        other: Eventos
     attributes:
       attribute_commons: &commons
         name: Nome
         email: Email
         created_at: Criado em
         updated_at: Atualizado em
+        phone: Celular
       admin:
         image: Imagem
         password: Senha
         current_password: Senha atual
         password_confirmation: Confirmação de senha
         remember_me: Lembre-me
+      institution:
+        name: Nome
+        city: Cidade
+        state: Estado
+        acronym: Sigla
+        state_id: Estado
+        city_id: Cidade
+        <<: *commons
+      contact:
+        institution: Instituição
+      event:
+        name: Nome
+        initials: Iniciais
+        color: Cor
+        beginning_date: Data de início
+        end_date: Data de término
+        local: Local
+        city: Cidade
+        city_id: Cidade
+        address: Endereço
         <<: *commons
   helpers:
     back: Voltar
     currently: Atualmente
+    search: Pesquisar
+    home: Página inicial
+    show: Visualizar
+    edit: Editar
+    delete: Deletar
     boolean:
       'true': Sim
       'false': Não
+    until: até
   breadcrumbs:
     homepage: 'Página Inicial'
-    Admins:
-        edit: Editar Administrador
+    action:
+      edit:  'Editar %{resource_name}'
+      new:
+        m: 'Novo %{resource_name}'
+        f: 'Nova %{resource_name}'
+      show: 'Visualizar %{resource_name}'
+      index: '%{resource_name}'
   flash:
     actions:
       update:
@@ -41,8 +88,8 @@ pt-BR:
       destroy:
         m: '%{resource_name} removido com sucesso!'
         f: '%{resource_name} removida com sucesso!'
-        bond: Não é possível remover %{resource_name} com vínculos!'
-      errors: Existem dados incorretos!
+      bond: Não é possível remover %{resource_name} com vínculos!'
+      errors: 'Alguns erros foram encontrados, por favor verifique:'
     not_authorized: Acesso não autorizado!
   sessions:
     sign_in: Login
@@ -69,3 +116,25 @@ pt-BR:
     select:
       m: Selecione um %{name}
       f: Selecione uma %{name}
+  contacts:
+    index: Contatos
+    new: Novo Contato
+    edit: Editar Contato
+    show: Detalhes do Contato
+  institutions:
+    index: Instituições de Ensino
+    new: Nova Instituição de Ensino
+    edit: Editar Instituição de Ensino
+  events:
+    index: Eventos
+    new: Novo Evento
+    show: Detalhes do Evento
+    edit: Editar Evento
+    dates: Datas
+    location: Localização
+    description: Descrição
+    beginning_end: Início/Término
+    from_until: 'De %{beginning} até %{end}'
+    errors:
+      year_used: Já há um evento cadastrado nesse ano.
+      invalid_dates: deve ser posterior ao início

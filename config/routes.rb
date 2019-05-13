@@ -5,6 +5,13 @@ Rails.application.routes.draw do
   authenticate :admin do
     namespace :admins do
       root to: 'dashboard#index'
+
+      resources :contacts
+      resources :institutions
+      resources :events
+
+      get 'states/:id/cities',
+          to: 'states#cities', as: :state_cities
     end
   end
 

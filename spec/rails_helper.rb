@@ -9,10 +9,16 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 
 require 'support/capybara'
-require 'support/bullet'
+require 'capybara-screenshot/rspec'
 require 'support/shoulda'
 require 'support/database_cleaner'
 require 'support/file_spec_helper'
+require 'support/matchers/have_flash'
+require 'support/matchers/have_message'
+require 'support/matchers/have_selectize'
+require 'support/matchers/have_destroy_link'
+require 'support/helpers/form'
+require 'support/helpers/link'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -24,6 +30,8 @@ end
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include Warden::Test::Helpers
+  config.include Helpers::Form, type: :feature
+  config.include Helpers::Link, type: :feature
 
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!

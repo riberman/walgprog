@@ -40,6 +40,13 @@
 
 coverage
 
+# IDE generated files #
+######################
+.idea
+.idea?
+.idea/*
+.idea*
+
 # OS generated files #
 ######################
 .DS_Store
@@ -55,5 +62,22 @@ Thumbs.db
 
 public/uploads/*
 
+<<<<<<< HEAD
 
 .idea/*
+=======
+# Jetbrains RubyMine #
+######################
+.idea
+
+# IntelliJ #
+######################
+
+.idea/*
+
+# Rake_Tasks #
+######################
+
+.rake_tasks~
+>>>>>>> riberman-master
+>>>>>>> master

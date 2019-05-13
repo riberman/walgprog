@@ -1,0 +1,35 @@
+<% provide(:head_title, t('contacts.show')) %>
+<% provide(:page_title, t('contacts.show')) %>
+
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title"><%= @contact.name %></h3>
+    <div class="card-options">
+      <%= link_to edit_admins_contact_path(@contact), class: 'btn btn-outline-primary btn-block' do %>
+        <%= icon('fas', 'edit', class: 'mr-2') %><%= t('contacts.edit') %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <p class="card-text">
+      <%= icon('fas', 'at', class: 'mr-2') %><%= @contact.email %>
+    </p>
+
+    <p class="card-text">
+      <%= icon('fas', 'phone', class: 'mr-2') %><%= @contact.phone %>
+    </p>
+
+    <p class="card-text">
+      <%= icon('fas', 'university', class: 'mr-2') %><%= @contact.institution.name %> <%= @contact.institution.acronym %>
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="d-flex">
+      <%= link_to t('helpers.back'), admins_contacts_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+</div>
