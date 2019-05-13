@@ -43,6 +43,7 @@ group :development do
 
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'rails_real_favicon'
 end
 
 group :test do
