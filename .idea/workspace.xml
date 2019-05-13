@@ -2,129 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdd89480-acae-4368-9806-42c1cdbaf67b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/admins/city.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/config/colorpicker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/config/datepicker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/config/jmask.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/config/selectize.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/config/sidebar_menu_collapse.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/admins/sidebar.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/customizations/bootstrap.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/customizations/colorpicker.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/customizations/selectize.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/admins/contacts_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/admins/events_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/admins/institutions_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/admins/states_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/inputs/color_picker_input.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/concerns/date_formatter.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/contact.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/event.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/validators/event_date_validator.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/validators/event_update_date_validator.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admins/contacts/_contact.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admins/contacts/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admins/contacts/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admins/contacts/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admins/contacts/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admins/contacts/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admins/events/_event.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admins/events/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admins/events/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admins/events/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admins/events/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admins/events/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admins/institutions/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admins/institutions/_institution.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admins/institutions/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admins/institutions/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admins/institutions/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/layouts/admins/_responsive_menu_toggle.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20190404025359_create_events.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20190413151701_add_address_to_events.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20190416221819_create_contacts.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/tasks/populate.rake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/factories/contact.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/factories/events.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/factories/regions.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/features/admins/contacts/create_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/features/admins/contacts/destroy_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/features/admins/contacts/index_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/features/admins/contacts/show_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/features/admins/contacts/update_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/features/admins/events/create_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/features/admins/events/destroy_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/features/admins/events/index_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/features/admins/events/show_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/features/admins/events/update_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/features/admins/institutions/create_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/features/admins/institutions/destroy_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/features/admins/institutions/index_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/features/admins/institutions/update_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/models/contact_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/models/event_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/support/helpers/form.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/support/helpers/link.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/support/matchers/have_destroy_link.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/support/matchers/have_flash.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/support/matchers/have_message.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/support/matchers/have_selectize.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/assets/javascripts/colorpicker/bootstrap-colorpicker.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/assets/javascripts/colorpicker/bootstrap-colorpicker.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/assets/javascripts/jquery.mask/jquery.mask.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/assets/javascripts/microplugin/microplugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/assets/javascripts/selectize/selectize.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/assets/javascripts/sifter/sifter.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/assets/stylesheets/colorpicker/bootstrap-colorpicker.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/assets/stylesheets/colorpicker/bootstrap-colorpicker.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/assets/stylesheets/selectize/selectize.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/walgprog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/walgprog.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.rubocop.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.rubocop.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/admins/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/javascripts/admins/application.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/config/namespace.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/javascripts/config/namespace.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/admins/application.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/admins/application.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/config/tabler.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/config/tabler.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/customizations/table_bootstrap.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/devise/session.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/devise/session.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/admins/registrations_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admins/registrations_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/city.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/city.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/institution.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/institution.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/admins/_footer.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/admins/_footer.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/admins/_header.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/admins/_header.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/admins/_sidebar.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/admins/_sidebar.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/admins/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/admins/application.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/devise/session.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/devise/session.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/application.yml.example" beforeDir="false" afterPath="$PROJECT_DIR$/config/application.yml.exemple" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/environments/development.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/development.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/initializers/simple_form.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/simple_form.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/initializers/simple_form_bootstrap.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/simple_form_bootstrap.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/locales/pt-BR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/locales/pt-BR.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/locales/simple_form.pt-BR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/locales/simple_form.pt-BR.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20190401222059_devise_create_admins.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190401222059_devise_create_admins.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/tasks/seeds/data/institutions.csv" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tasks/seeds/data/institutions.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/factories/cities.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/factories/cities.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/factories/institutions.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/factories/institutions.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/factories/states.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/factories/states.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/features/admins/admin_login_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/features/admins/sessions/login_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/features/admins/admin_logout_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/features/admins/sessions/logout_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/features/admins/admin_profile_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/features/admins/sessions/profile_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/models/institution_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/institution_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/rails_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/rails_helper.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/spec_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/spec_helper.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/assets/fonts/feather/feather-webfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/assets/fonts/feather/feather-webfont.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/assets/fonts/feather/feather-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/assets/fonts/feather/feather-webfont.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/assets/fonts/feather/feather-webfont.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/assets/fonts/feather/feather-webfont.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/assets/fonts/feather/feather-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/assets/fonts/feather/feather-webfont.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/assets/stylesheets/tabler/tabler.css" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/assets/stylesheets/tabler/tabler.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -141,15 +20,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/admins/contacts_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="62" selection-start-line="4" selection-start-column="62" selection-end-line="4" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/features/breadcrumbs_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
@@ -168,11 +38,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/features/admins/contacts/update_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="49">
               <caret line="75" column="32" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="516">
+              <caret line="72" column="12" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -267,7 +146,6 @@
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/admins/researchers_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/admins/dashboard_controller.rb" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/spec/features/breadcrumbs_spec.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/admins/application.html.erb" />
         <option value="$PROJECT_DIR$/Gemfile" />
@@ -279,6 +157,7 @@
         <option value="$PROJECT_DIR$/spec/features/admins/contacts/breadcrumbs_spec.rb" />
         <option value="$PROJECT_DIR$/spec/features/admins/contacts/create_spec.rb" />
         <option value="$PROJECT_DIR$/spec/features/admins/contacts/update_spec.rb" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -560,12 +439,12 @@
       <workItem from="1557237483243" duration="2418000" />
       <workItem from="1557306326325" duration="598000" />
       <workItem from="1557740961400" duration="2354000" />
-      <workItem from="1557772097998" duration="294000" />
+      <workItem from="1557772097998" duration="577000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73153000" />
+    <option name="totallyTimeSpent" value="73436000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-11" width="1313" height="780" extended-state="6" />
@@ -732,13 +611,6 @@
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/admins/institutions/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -818,6 +690,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="49">
           <caret line="75" column="32" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="516">
+          <caret line="72" column="12" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="12" />
         </state>
       </provider>
     </entry>
