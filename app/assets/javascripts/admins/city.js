@@ -66,7 +66,7 @@ WalgProg.classes.StateAndCities = class {
   }
 
   static init() {
-    const sc = new WalgProg.classes.StateAndCities('#institution_stateId', '#institution_city_id');
+    const sc = new WalgProg.classes.StateAndCities('#institution_state_id', '#institution_city_id');
     if (!sc.isOnPage()) return;
 
     sc.selectizeElements();
