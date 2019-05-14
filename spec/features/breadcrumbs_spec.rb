@@ -10,7 +10,10 @@ describe 'Breadcrumbs', type: :feature do
     end
 
     it 'text' do
-      breadcrumbs_text = [I18n.t('breadcrumbs.homepage'), '/', I18n.t('breadcrumbs.action.edit', :resource_name => 'Administrador')]
+      breadcrumbs_text = [I18n.t('breadcrumbs.homepage'),
+                          '/',
+                          I18n.t('breadcrumbs.action.edit',
+                                 resource_name: 'Administrador')]
       all('li').each_with_index do |li, index|
         expect(li.text).to have_content(breadcrumbs_text[index])
       end
