@@ -91,7 +91,9 @@ describe 'Admin::Contact::update', type: :feature, js: true do
     end
 
     it 'url' do
-      expected_paths = ['/admins', '/admins/contacts', '/admins/contacts/' + contact.id.to_s + '/edit']
+      expected_paths = ['/admins',
+                        '/admins/contacts',
+                        '/admins/contacts/' + contact.id.to_s + '/edit']
       i = 0
       all('li a').each do |a|
         # puts a[:href] == expected_paths[i]

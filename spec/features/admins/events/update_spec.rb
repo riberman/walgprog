@@ -115,7 +115,9 @@ describe 'Admins::Event::update', type: :feature do
     end
 
     it 'url' do
-      expected_paths = ['/admins', '/admins/events', '/admins/events/' + event.id.to_s + '/edit']
+      expected_paths = ['/admins',
+                        '/admins/events',
+                        '/admins/events/' + event.id.to_s + '/edit']
       i = 0
       all('li a').each do |a|
         expect(a[:href]).to have_content(expected_paths[i])
