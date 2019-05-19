@@ -22,7 +22,12 @@
             <div class="col col-login mx-auto">
 
               <div class="text-center mb-6">
-                <%= image_tag("tsi-logo.png", alt: "logo-tsi", class: 'header-brand-img') %>
+                <%= link_to admins_root_path do %>
+                  <%= render 'shared/logo', css_class: 'logo-fixed-header mr-2' %>
+                <% end  %>
+                <span class="d-lg-block mt-2 text-muted font-weight-bold">
+                  WalgProg
+                </span>
               </div>
 
               <div class="card card-body p-6">

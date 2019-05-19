@@ -1,8 +1,8 @@
 <div class="fixed-top header py-4">
   <div class="container-fluid">
     <div class="d-flex">
-      <%= link_to admins_root_path, class: 'header-brand' do %>
-        <% image_tag 'tsi-logo.png', class: 'header-brand-img'  %>
+      <%= link_to admins_root_path do %>
+        <%= render 'shared/logo', css_class: 'logo-fixed-header mr-2' %>
       <% end  %>
 
       <span class="d-lg-block mt-2 text-muted font-weight-bold">
