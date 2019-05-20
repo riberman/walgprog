@@ -62,10 +62,6 @@ Thumbs.db
 
 public/uploads/*
 
-# Jetbrains RubyMine #
-######################
-.idea
-
 # IntelliJ #
 ######################
 
@@ -75,4 +71,3 @@ public/uploads/*
 ######################
 
 .rake_tasks~
->>>>>>> riberman-master

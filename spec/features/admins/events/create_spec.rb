@@ -72,4 +72,30 @@ describe 'Admins::Event::create', type: :feature do
       expect(page).to have_message(message, in: 'div.event_end_date')
     end
   end
+
+  context 'when Breadcrumbs have the correct' do
+    it 'text' do
+      i = 0
+      breadcrumbs_text = [I18n.t('breadcrumbs.homepage'),
+                          '/',
+                          I18n.t('breadcrumbs.action.index',
+                                 resource_name: I18n.t('activerecord.models.event.other')),
+                          '/',
+                          I18n.t('breadcrumbs.action.new.m',
+                                 resource_name: I18n.t('activerecord.models.event.one'))]
+      all('li').each do |li|
+        expect(li.text).to have_content(breadcrumbs_text[i])
+        i += 1
+      end
+    end
+
+    it 'url' do
+      expected_paths = ['/admins', '/admins/events', '/admins/events/new']
+      i = 0
+      all('li a').each do |a|
+        expect(a[:href]).to have_content(expected_paths[i])
+        i += 1
+      end
+    end
+  end
 end

@@ -1,4 +1,18 @@
 class Admins::InstitutionsController < Admins::BaseController
+  add_breadcrumb I18n.t('breadcrumbs.homepage'), :admins_root_path
+
+  add_breadcrumb I18n.t('breadcrumbs.action.index',
+                        resource_name: I18n.t('activerecord.models.institution.other')),
+                 :admins_institutions_path, only: [:index, :new, :create, :edit, :update]
+
+  add_breadcrumb I18n.t('breadcrumbs.action.new.f',
+                        resource_name: I18n.t('activerecord.models.institution.one')),
+                 :new_admins_institution_path, only: [:new, :create]
+
+  add_breadcrumb I18n.t('breadcrumbs.action.edit',
+                        resource_name: I18n.t('activerecord.models.institution.one')),
+                 :edit_admins_institution_path, only: [:edit, :update]
+
   before_action :set_resource_name, only: [:create, :update, :destroy]
   before_action :set_institution, only: [:edit, :update, :destroy]
   before_action :load_states, only: [:new, :create, :edit, :update]

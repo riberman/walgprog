@@ -68,6 +68,15 @@ pt-BR:
       'true': Sim
       'false': Não
     until: até
+  breadcrumbs:
+    homepage: 'Página Inicial'
+    action:
+      edit:  'Editar %{resource_name}'
+      new:
+        m: 'Novo %{resource_name}'
+        f: 'Nova %{resource_name}'
+      show: 'Visualizar %{resource_name}'
+      index: '%{resource_name}'
   flash:
     actions:
       update:
