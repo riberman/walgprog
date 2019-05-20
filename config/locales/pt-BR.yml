@@ -68,8 +68,6 @@ pt-BR:
       'true': Sim
       'false': Não
     until: até
-    edit: Editar
-    delete: Apagar
   flash:
     actions:
       update:
