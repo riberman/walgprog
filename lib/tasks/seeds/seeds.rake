@@ -26,5 +26,12 @@ namespace :db do
         Institution.create_with(city: city).find_or_create_by(name: row[0], acronym: row[1])
       end
     end
+
+    desc 'Populate scholarities'
+    task scholarities: :environment do
+      CSV.foreach('./lib/tasks/seeds/data/scholarities.csv') do |row|
+        Scholarity.create(name: row[0], abbr: row[1])
+      end
+    end
   end
 end

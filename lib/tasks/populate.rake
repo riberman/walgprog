@@ -8,10 +8,12 @@ namespace :db do
     cities
     contacts
     events
+    scholarities
+    researchers
   end
 
   def delete_all
-    [Contact, Institution].each(&:delete_all)
+    [Contact, Institution, Researcher].each(&:delete_all)
     Admin.where.not(email: 'admin@admin.com').destroy_all
   end
 
@@ -44,6 +46,21 @@ namespace :db do
         beginning_date: beginning_date, end_date: end_date,
         color: Faker::Color.hex_color, local: Faker::Address.community,
         address: Faker::Address.full_address, city_id: city_ids.sample
+      )
+    end
+  end
+
+  def scholarities
+    Rake::Task['db:seeds:scholarities'].invoke
+  end
+
+  def researchers
+    10.times do
+      Researcher.create(
+        name: Faker::Name.unique.name,
+        genre: Faker::Gender,
+        scholarity: Scholarity.all.sample,
+        institution: Institution.all.sample
       )
     end
   end
