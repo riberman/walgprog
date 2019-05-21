@@ -4,7 +4,6 @@
 
 # Sistema de Gestão de Eventos para o WalgProg
 
-----
 ## O que é o WalgProg?
 
 O WAlgProg foi criado em resposta à ausência de um evento no Brasil que
@@ -14,8 +13,20 @@ estendido, inclusive, por entre a educação básica. Ainda nesse contexto, muit
 das iniciativas de pesquisa do país ocorriam de maneira esparsa e com poucas
 oportunidades de intercomunicação.
 
-----
 
 ## Sobre
 
 O objetivo desse sistema é a gestão de eventos do WalgProg.
+
+----
+
+### Maintainers
+
+* Diego Marczal (https://github.com/dmarczal)
+* Eleandro Maschio
+
+### License
+
+MIT License. Copyright 2015-2019 WalgProg. http://walgprog.gp.utfpr.edu.br
+
+You are not granted rights or licenses to the trademarks of the WalgProg, including without limitation the WalgProg name or logo.
