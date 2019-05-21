@@ -1,4 +1,3 @@
-spec/models/researcher_spec.rb
 require 'rails_helper'
 
 RSpec.describe Researcher, type: :model do
