@@ -62,4 +62,22 @@ RSpec.describe Event, type: :model do
       expect(event.full_address).to eq(full_address)
     end
   end
+
+  describe '.current_color' do
+    it 'return color of current year event' do
+      event = create(:event, beginning_date: Time.zone.now,
+                             end_date: Time.zone.now + 10.days)
+      expect(Event.current_color).to eql(event.color)
+    end
+
+    it 'return default color when there is no event' do
+      expect(Event.current_color).to eql('#000')
+    end
+
+    it 'return default color when have no event in current year' do
+      create(:event, beginning_date: Time.zone.now + 1.year,
+                     end_date: Time.zone.now + 1.year + 10.days)
+      expect(Event.current_color).to eql('#000')
+    end
+  end
 end
