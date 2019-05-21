@@ -3,8 +3,7 @@ document.addEventListener('turbolinks:load', () => {
 });
 
 WalgProg.sidebarMenuCollapse = () => {
-  $('[data-toggle="collapse"]').click( () => {
+  $('[data-toggle="collapse"]').click(() => {
     $('html, body').animate({ scrollTop: 0 }, 'slow');
   });
-}
-
+};
