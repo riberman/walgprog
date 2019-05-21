@@ -17,6 +17,8 @@ WalgProg.classes.StateAndCities = class {
       searchField: ['name'],
       create: false,
     })[0].selectize;
+
+    $('.selectize-input input[placeholder]').attr('style', 'width: 100%;');
   }
 
   disbleCityWhenHasNoElements() {
