@@ -20,6 +20,7 @@ describe 'Admins::Event::update', type: :feature do
       expect(page).to have_field('event_beginning_date', with: event.beginning_date.formatted)
       expect(page).to have_field('event_end_date', with: event.end_date.formatted)
 
+      expect(page).to have_selectize('event_state_id', selected: event.state.name)
       expect(page).to have_selectize('event_city_id', selected: event.city.name)
       expect(page).to have_field('event_local', with: event.local)
       expect(page).to have_field('event_address', with: event.address)
@@ -36,7 +37,8 @@ describe 'Admins::Event::update', type: :feature do
       fill_in 'event_color', with: attributes[:color]
       fill_in 'event_local', with: attributes[:local]
       fill_in 'event_address', with: attributes[:address]
-      selectize city.name, from: 'event_city_id'
+      selectize(city.state.name, from: 'event_state_id')
+      selectize(city.name, from: 'event_city_id')
       fill_in 'event_beginning_date', with: I18n.l(attributes[:beginning_date], format: :short)
       fill_in 'event_end_date', with: I18n.l(attributes[:end_date], format: :short)
       click_button
@@ -64,7 +66,8 @@ describe 'Admins::Event::update', type: :feature do
       fill_in 'event_color', with: 'uu'
       fill_in 'event_local', with: ''
       fill_in 'event_address', with: ''
-      selectize '', from: 'event_city_id'
+      selectize('', from: 'event_state_id')
+      selectize('', from: 'event_city_id')
       fill_in 'event_beginning_date', with: ''
       fill_in 'event_end_date', with: ''
       click_button
@@ -80,6 +83,7 @@ describe 'Admins::Event::update', type: :feature do
       expect(page).to have_message(message_blank_error, in: 'div.event_end_date')
       expect(page).to have_message(I18n.t('events.errors.invalid_dates'), in: 'div.event_end_date')
 
+      expect(page).to have_message(message_blank_error, in: 'div.event_state_id')
       expect(page).to have_message(message_blank_error, in: 'div.event_city_id')
       expect(page).to have_message(message_blank_error, in: 'div.event_local')
       expect(page).to have_message(message_blank_error, in: 'div.event_address')

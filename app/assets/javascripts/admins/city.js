@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load', () => {
-  WalgProg.classes.StateAndCities.init();
+  WalgProg.classes.StateAndCities.init('#institution_state_id', '#institution_city_id');
+  WalgProg.classes.StateAndCities.init('#event_state_id', '#event_city_id');
 });
 
 WalgProg.classes.StateAndCities = class {
@@ -21,7 +22,7 @@ WalgProg.classes.StateAndCities = class {
     $('.selectize-input input[placeholder]').attr('style', 'width: 100%;');
   }
 
-  disbleCityWhenHasNoElements() {
+  disableCityWhenHasNoElements() {
     const els = this.citySelectize.options;
 
     if (Object.keys(els).length <= 0) this.citySelectize.disable();
@@ -67,12 +68,12 @@ WalgProg.classes.StateAndCities = class {
       && $(this.state).length > 0);
   }
 
-  static init() {
-    const sc = new WalgProg.classes.StateAndCities('#institution_state_id', '#institution_city_id');
+  static init(stateSelector, citySelector) {
+    const sc = new WalgProg.classes.StateAndCities(stateSelector, citySelector);
     if (!sc.isOnPage()) return;
 
     sc.selectizeElements();
-    sc.disbleCityWhenHasNoElements();
+    sc.disableCityWhenHasNoElements();
     sc.applyChangeEventOnState();
   }
 };

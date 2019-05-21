@@ -39,12 +39,25 @@
 
   <fieldset class="form-fieldset">
     <legend class="w-auto"><%= t('events.location') %></legend>
-    <div class="row">
-      <%= f.input :city_id, collection: @cities,
-        wrapper_html: { class: 'col-md-6'}, input_html: { class: 'apply-selectize' } %>
 
+    <div class="row">
+      <%= f.input :state_id,
+                  collection: @states,
+                  prompt: t('prompt.select.m', name: t('activerecord.attributes.event.state_id')),
+                  label_method: :name, value_method: :id,
+                  wrapper_html: { class: 'col-md-6'},
+                  input_html: { autocomplete: 'false' } %>
+
+      <%= f.input :city_id,
+                  collection: @cities,
+                  prompt: t('prompt.select.f', name: t('activerecord.attributes.event.city_id')),
+                  wrapper_html: { class: 'col-md-6'},
+                  input_html: { autocomplete: 'false' } %>
+    </div>
+
+    <div class="row">
       <%= f.input :local, required: true, wrapper_html: { class: 'col-md-6' } %>
-      <%= f.input :address, required: true, wrapper_html: { class: 'col-md-12' } %>
+      <%= f.input :address, required: true, wrapper_html: { class: 'col-md-6' } %>
     </div>
   </fieldset>
 

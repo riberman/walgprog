@@ -3,7 +3,12 @@ require 'rails_helper'
 describe 'Admins::Event::create', type: :feature do
   let(:resource_name) { Event.model_name.human }
   let(:admin) { create(:admin) }
-  let!(:city) { create(:city) }
+  let!(:state) { create_list(:state, 2) }
+  let!(:city) do
+    create_list(:city, 2, state: State.first)
+    create_list(:city, 2, state: State.last)
+    City.all.sample
+  end
 
   before(:each) do
     login_as(admin, scope: :admin)
@@ -19,7 +24,8 @@ describe 'Admins::Event::create', type: :feature do
       fill_in 'event_color', with: attributes[:color]
       fill_in 'event_local', with: attributes[:local]
       fill_in 'event_address', with: attributes[:address]
-      selectize city.name, from: 'event_city_id'
+      selectize(city.state.name, from: 'event_state_id')
+      selectize(city.name, from: 'event_city_id')
       fill_in 'event_beginning_date', with: I18n.l(attributes[:beginning_date], format: :short)
       fill_in 'event_end_date', with: I18n.l(attributes[:end_date], format: :short)
       click_button
@@ -55,6 +61,7 @@ describe 'Admins::Event::create', type: :feature do
       expect(page).to have_message(message_blank_error, in: 'div.event_end_date')
       expect(page).to have_message(I18n.t('events.errors.invalid_dates'), in: 'div.event_end_date')
 
+      expect(page).to have_message(message_blank_error, in: 'div.event_state_id')
       expect(page).to have_message(message_blank_error, in: 'div.event_city_id')
       expect(page).to have_message(message_blank_error, in: 'div.event_local')
       expect(page).to have_message(message_blank_error, in: 'div.event_address')

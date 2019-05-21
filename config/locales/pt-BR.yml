@@ -52,6 +52,7 @@ pt-BR:
         beginning_date: Data de início
         end_date: Data de término
         local: Local
+        state_id: Estado
         city: Cidade
         city_id: Cidade
         address: Endereço

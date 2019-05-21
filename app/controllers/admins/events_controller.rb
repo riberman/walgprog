@@ -17,7 +17,7 @@ class Admins::EventsController < Admins::BaseController
 
   before_action :set_resource_name, only: [:create, :update, :destroy]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :load_cities, only: [:new, :create, :edit, :update]
+  before_action :load_states, only: [:new, :create, :edit, :update]
 
   def index
     @events = Event.order(created_at: :desc)
@@ -33,6 +33,7 @@ class Admins::EventsController < Admins::BaseController
       flash[:success] = t('flash.actions.create.m', resource_name: @resource_name)
       redirect_to admins_events_path
     else
+      load_cities
       flash.now[:error] = I18n.t('flash.actions.errors')
       render 'new'
     end
@@ -40,13 +41,16 @@ class Admins::EventsController < Admins::BaseController
 
   def show; end
 
-  def edit; end
+  def edit
+    load_cities
+  end
 
   def update
     if @event.update event_params
       flash[:success] = t('flash.actions.update.m', resource_name: @resource_name)
       redirect_to admins_events_path
     else
+      load_cities
       flash.now[:error] = I18n.t('flash.actions.errors')
       render 'edit'
     end
@@ -82,7 +86,13 @@ class Admins::EventsController < Admins::BaseController
     @event = Event.find(params[:id])
   end
 
+  def load_states
+    @states = State.order(:name)
+    @cities = []
+  end
+
   def load_cities
-    @cities = City.all
+    state = @event.state
+    @cities = state.cities if state
   end
 end
