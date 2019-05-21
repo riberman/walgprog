@@ -1,4 +1,20 @@
 class Admins::EventsController < Admins::BaseController
+  add_breadcrumb I18n.t('breadcrumbs.action.index',
+                        resource_name: I18n.t('activerecord.models.event.other')),
+                 :admins_events_path, except: :destroy
+
+  add_breadcrumb I18n.t('breadcrumbs.action.new.m',
+                        resource_name: I18n.t('activerecord.models.event.one')),
+                 :new_admins_event_path, only: [:new, :create]
+
+  add_breadcrumb I18n.t('breadcrumbs.action.edit',
+                        resource_name: I18n.t('activerecord.models.event.one')),
+                 :edit_admins_event_path, only: [:edit, :update]
+
+  add_breadcrumb I18n.t('breadcrumbs.action.show',
+                        resource_name: I18n.t('activerecord.models.event.one')),
+                 :admins_event_path, only: [:show]
+
   before_action :set_resource_name, only: [:create, :update, :destroy]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :load_cities, only: [:new, :create, :edit, :update]

@@ -1,6 +1,10 @@
 class Admins::RegistrationsController < Devise::RegistrationsController
   layout 'layouts/admins/application'
 
+  add_breadcrumb I18n.t('breadcrumbs.action.edit',
+                        resource_name: I18n.t('activerecord.models.admin.one')),
+                 :edit_admin_registration_path, only: [:edit, :update]
+
   protected
 
   def after_update_path_for(*)

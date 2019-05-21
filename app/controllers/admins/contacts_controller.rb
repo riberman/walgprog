@@ -1,4 +1,20 @@
 class Admins::ContactsController < Admins::BaseController
+  add_breadcrumb I18n.t('breadcrumbs.action.index',
+                        resource_name: I18n.t('activerecord.models.contact.other')),
+                 :admins_contacts_path, except: :destroy
+
+  add_breadcrumb I18n.t('breadcrumbs.action.new.m',
+                        resource_name: I18n.t('activerecord.models.contact.one')),
+                 :new_admins_contact_path, only: [:new, :create]
+
+  add_breadcrumb I18n.t('breadcrumbs.action.edit',
+                        resource_name: I18n.t('activerecord.models.contact.one')),
+                 :edit_admins_contact_path, only: [:edit, :update]
+
+  add_breadcrumb I18n.t('breadcrumbs.action.show',
+                        resource_name: I18n.t('activerecord.models.contact.one')),
+                 :admins_contact_path, only: :show
+
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   def index
