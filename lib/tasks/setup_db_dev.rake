@@ -1,4 +1,3 @@
-b/tasks/setup_db_dev.rake
 namespace :db do
   desc 'Setup initial database to development'
 
