@@ -1,9 +1,7 @@
 class Admins::EventsController < Admins::BaseController
-  add_breadcrumb I18n.t('breadcrumbs.homepage'), :admins_root_path
-
   add_breadcrumb I18n.t('breadcrumbs.action.index',
                         resource_name: I18n.t('activerecord.models.event.other')),
-                 :admins_events_path, only: [:index, :new, :create, :edit, :update, :show]
+                 :admins_events_path, except: :destroy
 
   add_breadcrumb I18n.t('breadcrumbs.action.new.m',
                         resource_name: I18n.t('activerecord.models.event.one')),

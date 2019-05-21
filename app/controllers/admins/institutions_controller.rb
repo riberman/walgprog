@@ -1,9 +1,7 @@
 class Admins::InstitutionsController < Admins::BaseController
-  add_breadcrumb I18n.t('breadcrumbs.homepage'), :admins_root_path
-
   add_breadcrumb I18n.t('breadcrumbs.action.index',
                         resource_name: I18n.t('activerecord.models.institution.other')),
-                 :admins_institutions_path, only: [:index, :new, :create, :edit, :update]
+                 :admins_institutions_path, except: :destroy
 
   add_breadcrumb I18n.t('breadcrumbs.action.new.f',
                         resource_name: I18n.t('activerecord.models.institution.one')),

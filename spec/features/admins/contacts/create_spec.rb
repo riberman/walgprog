@@ -58,32 +58,4 @@ describe 'Admins::Contact::create', type: :feature do
       expect(page).to have_message(I18n.t('errors.messages.invalid'), in: 'div.contact_email')
     end
   end
-
-  context 'when Breadcrumbs have the correct' do
-    it 'text' do
-      i = 0
-      breadcrumbs_text = [I18n.t('breadcrumbs.homepage'),
-                          '/',
-                          I18n.t('breadcrumbs.action.index',
-                                 resource_name: I18n.t('activerecord.models.contact.other')),
-                          '/',
-                          I18n.t('breadcrumbs.action.new.m',
-                                 resource_name: I18n.t('activerecord.models.contact.one'))]
-      all('li').each do |li|
-        # puts li.text
-        expect(li.text).to have_content(breadcrumbs_text[i])
-        i += 1
-      end
-    end
-
-    it 'url' do
-      expected_paths = ['/admins', '/admins/contacts', '/admins/contacts/new']
-      i = 0
-      all('li a').each do |a|
-        # puts a[:href] == expected_paths[i]
-        expect(a[:href]).to have_content(expected_paths[i])
-        i += 1
-      end
-    end
-  end
 end
