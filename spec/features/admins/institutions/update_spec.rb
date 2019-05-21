@@ -90,32 +90,4 @@ describe 'Admins::Institution::update', type: :feature do
       expect(page).to have_selectize('institution_city_id', selected: city.name)
     end
   end
-
-  context 'when Breadcrumbs have the correct' do
-    it 'text' do
-      i = 0
-      breadcrumbs_text = [I18n.t('breadcrumbs.homepage'),
-                          '/',
-                          I18n.t('breadcrumbs.action.index',
-                                 resource_name: I18n.t('activerecord.models.institution.other')),
-                          '/',
-                          I18n.t('breadcrumbs.action.edit',
-                                 resource_name: I18n.t('activerecord.models.institution.one'))]
-      all('li').each do |li|
-        expect(li.text).to have_content(breadcrumbs_text[i])
-        i += 1
-      end
-    end
-
-    it 'url' do
-      expected_paths = ['/admins',
-                        '/admins/institutions',
-                        '/admins/institutions/' + institution.id.to_s + '/edit']
-      i = 0
-      all('li a').each do |a|
-        expect(a[:href]).to have_content(expected_paths[i])
-        i += 1
-      end
-    end
-  end
 end
