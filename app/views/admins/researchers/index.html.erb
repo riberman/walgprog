@@ -1,0 +1,41 @@
+<% provide(:head_title, t('researchers.index')) %>
+<% provide(:page_title, t('researchers.index')) %>
+<div class="row">
+  <div class="input-group col-md-8">
+    <input
+      type="text"
+      class="form-control btn-block"
+      placeholder="<%= t('helpers.search') %>"
+      aria-describedby="search-append">
+
+    <span
+      id="search-append"
+      class="input-group-append">
+
+      <span class="input-group-text">
+        <i class="fe fe-search text-info"></i>
+      </span>
+    </span>
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <%= link_to new_admins_researcher_path, class: 'btn btn-outline-info btn-block', active: :exclusive do %>
+      <i class="fe fe-plus mr-2"></i>
+      <%= t('researchers.new') %>
+    <% end %>
+  </div>
+</div>
+<div class="mt-5 col-md-12 row card-body-scrollable mt-5">
+  <table class="table table-hover table-outline table-vcenter card-table">
+    <thead>
+    <tr>
+      <th colspan="2"><%= t('activerecord.attributes.attribute_commons.name') %></th>
+      <th><%= t('activerecord.attributes.researcher.scholarity') %></th>
+      <th><%= t('activerecord.attributes.researcher.institution') %></th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <%= render @researchers %>
+    </tbody>
+  </table>
+</div>
