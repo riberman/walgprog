@@ -4,6 +4,6 @@ module ProfileImage
   extend ActiveSupport::Concern
 
   included do
-    mount_uploader :profile_image, ProfileImageUploader
+    mount_uploader :image, ProfileImageUploader
   end
 end
