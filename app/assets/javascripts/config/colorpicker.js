@@ -3,11 +3,11 @@
 //= require colorpicker/bootstrap-colorpicker.min
 
 $(document).on('turbolinks:load', () => {
-  WalgProg.colorPicker();
+  WAlgProg.colorPicker();
 });
 
 
-WalgProg.colorPicker = () => {
+WAlgProg.colorPicker = () => {
   $('.apply-colorpicker').colorpicker({
     fallbackColor: '#000',
     fallbackFormat: 'hex',

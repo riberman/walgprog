@@ -1,2 +1,2 @@
-window.WalgProg = {};
-window.WalgProg.classes = {};
+window.WAlgProg = {};
+window.WAlgProg.classes = {};
