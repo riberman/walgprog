@@ -1,10 +1,10 @@
 //= require selectize/selectize.min
 
 $(document).on('turbolinks:load', () => {
-  WalgProg.selectize();
+  WAlgProg.selectize();
 });
 
-WalgProg.selectize = () => {
+WAlgProg.selectize = () => {
   const selects = $('.apply-selectize');
 
   if (selects.length > 0) {

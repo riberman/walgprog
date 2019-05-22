@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def full_title(page_title = '', base_title = 'WalgProg')
+  def full_title(page_title = '', base_title = 'WAlgProg')
     if page_title.empty?
       base_title
     else

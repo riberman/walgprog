@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe ApplicationHelper, type: :helper do
   describe 'full title' do
     it 'defaulf' do
-      expect(helper.full_title).to eql('WalgProg')
+      expect(helper.full_title).to eql('WAlgProg')
     end
 
     it 'title' do
-      expect(helper.full_title('Home')).to eql('Home | WalgProg')
+      expect(helper.full_title('Home')).to eql('Home | WAlgProg')
     end
   end
 
