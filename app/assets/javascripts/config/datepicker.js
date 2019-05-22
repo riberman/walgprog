@@ -1,8 +1,8 @@
 $(document).on('turbolinks:load', () => {
-  WalgProg.datePicker();
+  WAlgProg.datePicker();
 });
 
-WalgProg.datePicker = () => {
+WAlgProg.datePicker = () => {
   options = {
     language: 'pt-BR',
   };
