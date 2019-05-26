@@ -1,9 +1,9 @@
 $(document).on('turbolinks:load', () => {
-  WalgProg.classes.StateAndCities.init('#institution_state_id', '#institution_city_id');
-  WalgProg.classes.StateAndCities.init('#event_state_id', '#event_city_id');
+  WAlgProg.classes.StateAndCities.init('#institution_state_id', '#institution_city_id');
+  WAlgProg.classes.StateAndCities.init('#event_state_id', '#event_city_id');
 });
 
-WalgProg.classes.StateAndCities = class {
+WAlgProg.classes.StateAndCities = class {
   constructor(state, city) {
     this.state = state;
     this.city = city;
@@ -69,7 +69,7 @@ WalgProg.classes.StateAndCities = class {
   }
 
   static init(stateSelector, citySelector) {
-    const sc = new WalgProg.classes.StateAndCities(stateSelector, citySelector);
+    const sc = new WAlgProg.classes.StateAndCities(stateSelector, citySelector);
     if (!sc.isOnPage()) return;
 
     sc.selectizeElements();

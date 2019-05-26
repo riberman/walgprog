@@ -17,4 +17,14 @@ class Event < ApplicationRecord
   def full_address
     "#{address} - #{city.name}/#{city.state.acronym}"
   end
+
+  def self.current_color
+    date = Time.now.utc
+    e = find_by(['beginning_date >= :beginning_year and end_date <= :end_year',
+                 { beginning_year: date.beginning_of_year, end_year: date.end_of_year }])
+
+    return e.color if e
+
+    '#000'
+  end
 end

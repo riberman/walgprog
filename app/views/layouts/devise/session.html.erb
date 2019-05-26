@@ -21,8 +21,13 @@
           <div class="row">
             <div class="col col-login mx-auto">
 
-              <div class="text-center mb-6">
-                <%= image_tag("tsi-logo.png", alt: "logo-tsi", class: 'header-brand-img') %>
+              <div class="text-center mb-4">
+                <%= link_to admins_root_path do %>
+                  <%= render 'shared/logo', css_class: 'logo-devise center' %>
+                <% end  %>
+                <h4>
+                  WAlgProg
+                </h4>
               </div>
 
               <div class="card card-body p-6">

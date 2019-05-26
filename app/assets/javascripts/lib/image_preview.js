@@ -1,9 +1,9 @@
 document.addEventListener('turbolinks:load', () => {
   const input = $('.image_preview input[type=file]');
-  WalgProg.imagePreview(input);
+  WAlgProg.imagePreview(input);
 });
 
-WalgProg.imagePreview = (el) => {
+WAlgProg.imagePreview = (el) => {
   const readURL = (input) => {
     if (input.files && input.files[0]) {
       const reader = new FileReader();
