@@ -3,6 +3,8 @@ class Event < ApplicationRecord
   include DateFormatter
 
   belongs_to :city
+  has_many :sponsor_events, dependent: :restrict_with_error
+  has_many :institutions, through: :sponsor_events
 
   validates :name, :city_id, :beginning_date, presence: true
   validates :color, :end_date, :initials, :local, :address, presence: true
