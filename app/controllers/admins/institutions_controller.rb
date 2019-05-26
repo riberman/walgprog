@@ -1,4 +1,6 @@
 class Admins::InstitutionsController < Admins::BaseController
+  include VirtualState
+
   add_breadcrumb I18n.t('breadcrumbs.action.index',
                         resource_name: I18n.t('activerecord.models.institution.other')),
                  :admins_institutions_path, except: :destroy
@@ -30,13 +32,13 @@ class Admins::InstitutionsController < Admins::BaseController
       redirect_to admins_institutions_path
     else
       flash.now[:error] = I18n.t('flash.actions.errors')
-      load_cities
+      load_cities(@institution)
       render :new
     end
   end
 
   def edit
-    load_cities
+    load_cities(@institution)
   end
 
   def update
@@ -44,7 +46,7 @@ class Admins::InstitutionsController < Admins::BaseController
       flash[:success] = I18n.t('flash.actions.update.f', resource_name: @resource_name)
       redirect_to admins_institutions_path
     else
-      load_cities
+      load_cities(@institution)
       flash.now[:error] = I18n.t('flash.actions.errors')
       render 'edit'
     end
@@ -64,16 +66,6 @@ class Admins::InstitutionsController < Admins::BaseController
 
   def set_institution
     @institution = Institution.find(params[:id])
-  end
-
-  def load_states
-    @states = State.order(:name)
-    @cities = []
-  end
-
-  def load_cities
-    state = @institution.state
-    @cities = state.cities if state
   end
 
   def set_resource_name

@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   include ActiveModel::Validations
   include DateFormatter
+  include VirtualState
 
   belongs_to :city
 
@@ -12,18 +13,6 @@ class Event < ApplicationRecord
   preload city: :state
 
   attr_writer :state_id
-
-  def state
-    return city.state if city
-
-    State.find_by(id: state_id) if state_id
-  end
-
-  def state_id
-    return city.state.try(:id) if city
-
-    @state_id
-  end
 
   def full_address
     "#{address} - #{city.name}/#{city.state.acronym}"

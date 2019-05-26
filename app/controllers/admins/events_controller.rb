@@ -1,4 +1,6 @@
 class Admins::EventsController < Admins::BaseController
+  include VirtualState
+
   add_breadcrumb I18n.t('breadcrumbs.action.index',
                         resource_name: I18n.t('activerecord.models.event.other')),
                  :admins_events_path, except: :destroy
@@ -33,7 +35,7 @@ class Admins::EventsController < Admins::BaseController
       flash[:success] = t('flash.actions.create.m', resource_name: @resource_name)
       redirect_to admins_events_path
     else
-      load_cities
+      load_cities(@event)
       flash.now[:error] = I18n.t('flash.actions.errors')
       render 'new'
     end
@@ -42,7 +44,7 @@ class Admins::EventsController < Admins::BaseController
   def show; end
 
   def edit
-    load_cities
+    load_cities(@event)
   end
 
   def update
@@ -50,7 +52,7 @@ class Admins::EventsController < Admins::BaseController
       flash[:success] = t('flash.actions.update.m', resource_name: @resource_name)
       redirect_to admins_events_path
     else
-      load_cities
+      load_cities(@event)
       flash.now[:error] = I18n.t('flash.actions.errors')
       render 'edit'
     end
@@ -84,15 +86,5 @@ class Admins::EventsController < Admins::BaseController
 
   def set_event
     @event = Event.find(params[:id])
-  end
-
-  def load_states
-    @states = State.order(:name)
-    @cities = []
-  end
-
-  def load_cities
-    state = @event.state
-    @cities = state.cities if state
   end
 end
