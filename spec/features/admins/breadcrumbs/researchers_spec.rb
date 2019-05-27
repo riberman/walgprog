@@ -12,8 +12,8 @@ describe 'Admins::Researchers::Breadcrumbs', type: :feature do
   context 'when index' do
     let(:breadcrumbs) do
       [
-          { text: text_for_home, path: admins_root_path },
-          { text: text_for_index, path: admins_researchers_path }
+        { text: text_for_home, path: admins_root_path },
+        { text: text_for_index, path: admins_researchers_path }
       ]
     end
 
@@ -26,9 +26,9 @@ describe 'Admins::Researchers::Breadcrumbs', type: :feature do
   context 'when create' do
     let(:breadcrumbs) do
       [
-          { text: text_for_home, path: admins_root_path },
-          { text: text_for_index, path: admins_researchers_path },
-          { text: text_for_new_m, path: new_admins_researcher_path }
+        { text: text_for_home, path: admins_root_path },
+        { text: text_for_index, path: admins_researchers_path },
+        { text: text_for_new_m, path: new_admins_researcher_path }
       ]
     end
 
@@ -50,9 +50,9 @@ describe 'Admins::Researchers::Breadcrumbs', type: :feature do
     let!(:researcher) { create(:researcher) }
     let(:breadcrumbs) do
       [
-          { text: text_for_home, path: admins_root_path },
-          { text: text_for_index, path: admins_researchers_path },
-          { text: text_for_edit, path: edit_admins_researcher_path(researcher) }
+        { text: text_for_home, path: admins_root_path },
+        { text: text_for_index, path: admins_researchers_path },
+        { text: text_for_edit, path: edit_admins_researcher_path(researcher) }
       ]
     end
 

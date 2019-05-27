@@ -68,7 +68,7 @@ class Admins::ResearchersController < Admins::BaseController
         :genre,
         :institution_id,
         :image, :image_cache
-    )
+      )
   end
 
   def set_resource_name
@@ -82,6 +82,7 @@ class Admins::ResearchersController < Admins::BaseController
   def find_scholarity
     @scholarities = Scholarity.all.order(:name)
   end
+
   def find_researcher
     @researcher = Researcher.find(params[:id])
   end

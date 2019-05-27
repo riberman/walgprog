@@ -20,7 +20,8 @@ describe 'Researchers:show', type: :feature do
 
   context 'with links' do
     it do
-      expect(page).to have_link(I18n.t('helpers.edit'), href: edit_admins_researcher_path(researcher))
+      expect(page).to have_link(I18n.t('helpers.edit'),
+                                href: edit_admins_researcher_path(researcher))
     end
     it { expect(page).to have_link(I18n.t('helpers.back'), href: admins_researchers_path) }
   end

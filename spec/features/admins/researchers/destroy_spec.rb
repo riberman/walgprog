@@ -21,4 +21,3 @@ describe 'Admins::Reseracher::destroy', type: :feature do
     end
   end
 end
-

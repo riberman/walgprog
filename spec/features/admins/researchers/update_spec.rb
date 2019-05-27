@@ -7,7 +7,6 @@ describe 'Admin::Reseracher::update', type: :feature, js: true do
   let(:scholarity) { create_list(:scholarity, 2).sample }
   let(:researcher) { create(:researcher) }
 
-
   before(:each) do
     login_as(admin, scope: :admin)
     visit edit_admins_researcher_path(researcher)
@@ -17,8 +16,10 @@ describe 'Admin::Reseracher::update', type: :feature, js: true do
     it 'fields should be filled' do
       expect(page).to have_field('researcher_name', with: researcher.name)
       # expect(page).to have_field('researcher_genre', with: researcher.genre)
-      expect(page).to have_selectize('researcher_scholarity', selected: researcher.scholarity.name)
-      expect(page).to have_selectize('researcher_institution', selected: researcher.institution.name)
+      expect(page).to have_selectize('researcher_scholarity',
+                                     selected: researcher.scholarity.name)
+      expect(page).to have_selectize('researcher_institution',
+                                     selected: researcher.institution.name)
     end
   end
 
