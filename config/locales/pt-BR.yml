@@ -25,6 +25,8 @@ pt-BR:
       researcher:
         one: Pesquisador
         other: Pesquisadores
+      scholarity:
+        one: Titulo Acadêmico
     attributes:
       attribute_commons: &commons
         name: Nome
@@ -153,3 +155,4 @@ pt-BR:
     new: Novo Pesquisador
     show: Visualizar
     edit: Editar Pesquisador
+    image_update: Clique na imagem para alterá-la
