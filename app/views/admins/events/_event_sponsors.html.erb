@@ -1,0 +1,35 @@
+<div class="table-responsive">
+  <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Patrocinador</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @event.sponsor_events.includes(:institution).each do |spr_evt| %>
+      <tr>
+        <td><%= spr_evt.institution.id %></td>
+        <td><%= spr_evt.institution.name %></td>
+        <td>
+          <div class="btn-group">
+            <%= link_to admins_institutions_path do %>
+              <%= icon('fas', 'search', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.show')) %>
+            <% end %>
+
+            <%= link_to edit_admins_sponsor_event_path(spr_evt) do %>
+              <%= icon('fas', 'edit', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.edit')) %>
+            <% end %>
+
+            <%= link_to [:admins, spr_evt], method: :delete, data: {confirm: t('prompt.confirm')} do %>
+              <%= icon('fa', 'trash', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.delete')) %>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+

@@ -22,6 +22,9 @@ pt-BR:
       event:
         one: Evento
         other: Eventos
+      sponsor_event:
+        one: Patrocinador
+        other: Patrocinadores
     attributes:
       attribute_commons: &commons
         name: Nome
@@ -56,6 +59,9 @@ pt-BR:
         city_id: Cidade
         address: Endereço
         <<: *commons
+      sponsor_event:
+        event: Evento
+        institution: Instituição
   helpers:
     back: Voltar
     currently: Atualmente
@@ -77,6 +83,7 @@ pt-BR:
         f: 'Nova %{resource_name}'
       show: 'Visualizar %{resource_name}'
       index: '%{resource_name}'
+      add: 'Adicionar %{resource_name}'
   flash:
     actions:
       update:
@@ -88,6 +95,9 @@ pt-BR:
       destroy:
         m: '%{resource_name} removido com sucesso!'
         f: '%{resource_name} removida com sucesso!'
+      add:
+        m: '%{resource_name} adicionado com sucesso!'
+        f: '%{resource_name} adicionada com sucesso!'
       bond: Não é possível remover %{resource_name} com vínculos!'
       errors: 'Alguns erros foram encontrados, por favor verifique:'
     not_authorized: Acesso não autorizado!
@@ -138,3 +148,5 @@ pt-BR:
     errors:
       year_used: Já há um evento cadastrado nesse ano.
       invalid_dates: deve ser posterior ao início
+  sponsors:
+    add: Adicionar Patrocinador
