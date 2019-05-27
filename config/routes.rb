@@ -10,6 +10,10 @@ Rails.application.routes.draw do
       resources :institutions
       resources :events
 
+      resources :sponsor_events, excepty: [:show] do
+        get 'page/:page', action: :index, on: :collection
+      end
+
       get 'states/:id/cities',
           to: 'states#cities', as: :state_cities
     end
