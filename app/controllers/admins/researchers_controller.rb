@@ -34,6 +34,7 @@ class Admins::ResearchersController < Admins::BaseController
       flash[:success] = t('flash.actions.create.m', resource_name: @resource_name)
       redirect_to admins_researchers_path
     else
+      flash.now[:error] = I18n.t('flash.actions.errors')
       render 'new'
     end
   end
@@ -47,6 +48,7 @@ class Admins::ResearchersController < Admins::BaseController
       flash[:success] = t('flash.actions.update.m', resource_name: @resource_name)
       redirect_to admins_researchers_path
     else
+      flash.now[:error] = I18n.t('flash.actions.errors')
       render 'edit'
     end
   end
