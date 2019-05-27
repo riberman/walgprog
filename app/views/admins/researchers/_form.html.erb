@@ -1,20 +1,18 @@
 <%= simple_form_for [:admins, @researcher] do |f| %>
 
-  <%= f.error_notification %>
-
   <div class="form-row">
     <div class="col-sm-8">
       <%= f.input :name, required: true, autofocus: true %>
-      <%= f.association :scholarity,
-                        prompt: t('prompt.select.f', name: Scholarity.model_name.human),
-                        input_html: { class: 'apply-selectize' } %>
+      <%= f.association :scholarity, collection: @scholarities,
+                  prompt: t('prompt.select.f', name: Scholarity.model_name.human),
+                  input_html: {class: 'apply-selectize'} %>
       <%= f.input :genre, as: :radio_buttons, collection: [['Feminino', 'Feminino'], ['Masculino', 'Masculino']] %>
 
-      <%= f.association :institution,
-                        prompt: t('prompt.select.f', name: Institution.model_name.human),
-                        input_html: { class: 'apply-selectize' } %>
+      <%= f.association :institution, collection: @institutions,
+                  prompt: t('prompt.select.f', name: Institution.model_name.human),
+                  label_method: :name, value_method: :id,
+                  input_html: {class: 'apply-selectize'} %>
     </div>
-
     <div class="col-4">
 
       <div id="box-image-preview" data-toggle="tooltip" data-placement="left" title="Clique na imagem para alterá-la">
@@ -26,7 +24,7 @@
           </div>
         </div>
         <div class="text-box text-center">
-          <p class="text-input"><%= t('researchers.image_update') %></p>
+          <p class="text-input">Clique na imagem para alterá-la</p>
         </div>
       </div>
 

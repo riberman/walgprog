@@ -1,5 +1,5 @@
 class Researcher < ApplicationRecord
-  include ProfileImage
+  mount_uploader :image, ProfileImageUploader
 
   belongs_to :institution
   belongs_to :scholarity
@@ -8,4 +8,5 @@ class Researcher < ApplicationRecord
   validates :scholarity, presence: true
   validates :institution, presence: true
   validates :genre, presence: true
+  validates :image, presence: true
 end
