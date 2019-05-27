@@ -1,9 +1,15 @@
 class Admins::ResearchersController < Admins::BaseController
   add_breadcrumb I18n.t('breadcrumbs.action.index',
-                   resource_name: I18n.t('activerecord.models.researcher.other')), :admins_researchers_path
+                        resource_name: I18n.t('activerecord.models.researcher.other')),
+                 :admins_researchers_path, except: :destroy
 
-  add_breadcrumb I18n.t('breadcrumbs.action.new.m', resource_name: I18n.t('activerecord.models.researcher.one')),
-                 :new_admins_researcher_path, only: [:new]
+  add_breadcrumb I18n.t('breadcrumbs.action.new.f',
+                        resource_name: I18n.t('activerecord.models.researcher.one')),
+                 :new_admins_researcher_path, only: [:new, :create]
+
+  add_breadcrumb I18n.t('breadcrumbs.action.edit',
+                        resource_name: I18n.t('activerecord.models.researcher.one')),
+                 :edit_admins_researcher_path, only: [:edit, :update]
 
   before_action :set_resource_name, only: [:create, :update, :destroy]
   before_action :find_institutions, only: [:new, :create, :edit]
@@ -52,9 +58,9 @@ class Admins::ResearchersController < Admins::BaseController
   def researcher_params
     params.require(:researcher).permit(
         :name,
-        :scholarity,
+        :scholarity_id,
         :genre,
-        :institution,
+        :institution_id,
         :image, :image_cache
     )
   end
