@@ -3,7 +3,7 @@ class Admins::ResearchersController < Admins::BaseController
                         resource_name: I18n.t('activerecord.models.researcher.other')),
                  :admins_researchers_path, except: :destroy
 
-  add_breadcrumb I18n.t('breadcrumbs.action.new.f',
+  add_breadcrumb I18n.t('breadcrumbs.action.new.m',
                         resource_name: I18n.t('activerecord.models.researcher.one')),
                  :new_admins_researcher_path, only: [:new, :create]
 
@@ -11,9 +11,13 @@ class Admins::ResearchersController < Admins::BaseController
                         resource_name: I18n.t('activerecord.models.researcher.one')),
                  :edit_admins_researcher_path, only: [:edit, :update]
 
+  add_breadcrumb I18n.t('breadcrumbs.action.show',
+                        resource_name: I18n.t('activerecord.models.researcher.one')),
+                 :admins_researcher_path, only: :show
+
   before_action :set_resource_name, only: [:create, :update, :destroy]
-  before_action :find_institutions, only: [:new, :create, :edit]
-  before_action :find_scholarity, only: [:new, :create, :edit]
+  before_action :find_institutions, only: [:new, :create, :edit, :update]
+  before_action :find_scholarity, only: [:new, :create, :edit, :update]
   before_action :find_researcher, except: [:new, :create, :index]
 
   def index

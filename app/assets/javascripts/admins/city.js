@@ -1,8 +1,8 @@
 $(document).on('turbolinks:load', () => {
-  WalgProg.classes.StateAndCities.init();
+  WAlgProg.classes.StateAndCities.init();
 });
 
-WalgProg.classes.StateAndCities = class {
+WAlgProg.classes.StateAndCities = class {
   constructor(state, city) {
     this.state = state;
     this.city = city;
@@ -17,6 +17,8 @@ WalgProg.classes.StateAndCities = class {
       searchField: ['name'],
       create: false,
     })[0].selectize;
+
+    $('.selectize-input input[placeholder]').attr('style', 'width: 100%;');
   }
 
   disbleCityWhenHasNoElements() {
@@ -66,7 +68,7 @@ WalgProg.classes.StateAndCities = class {
   }
 
   static init() {
-    const sc = new WalgProg.classes.StateAndCities('#institution_state_id', '#institution_city_id');
+    const sc = new WAlgProg.classes.StateAndCities('#institution_state_id', '#institution_city_id');
     if (!sc.isOnPage()) return;
 
     sc.selectizeElements();
