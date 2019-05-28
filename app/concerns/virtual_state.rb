@@ -1,5 +1,4 @@
 module VirtualState
-
   module Model
     extend ActiveSupport::Concern
 
