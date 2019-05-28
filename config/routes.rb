@@ -8,10 +8,8 @@ Rails.application.routes.draw do
 
       resources :contacts
       resources :institutions
-      resources :events
-
-      resources :sponsor_events, excepty: [:show] do
-        get 'page/:page', action: :index, on: :collection
+      resources :events do
+        resources :sponsors, only: [:index, :create, :destroy]
       end
 
       get 'states/:id/cities',

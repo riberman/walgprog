@@ -84,17 +84,11 @@
               </div>
             </div>
 
-            <div class="col-md-4 col-sm-12">
-              <%= link_to new_admins_sponsor_event_path(:event => @event.id),
-                          class: 'btn btn-outline-primary btn-block' do %>
-                <%= icon('fas', 'plus', class: 'mr-2') %><%= t('sponsors.add') %>
-              <% end %>
-            </div>
+            
           </div>
 
           <div class="row">
             <div class="col-12">
-              <%= render 'event_sponsors' %>
             </div>
           </div>
         </div>
@@ -102,4 +96,3 @@
     </div>
   </div>
 </div>
-

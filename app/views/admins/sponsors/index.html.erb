@@ -1,0 +1,43 @@
+<%= simple_form_for :sponsor, url: admins_event_sponsors_path(@event), method: :post  do |f| %>
+
+<div class="row">
+  <div class="col-sm-12 col-lg-8 mb-2">
+    <%= f.input :id, label: false, collection: @institutions %>
+  </div>
+  <div class="col-sm-12 col-lg-4">
+    <%= f.button :submit, 'Adicionar',  class: 'btn-primary ml-auto' %>
+  </div>
+</div>
+
+<% end %>
+
+
+
+
+<div class="table-responsive">
+  <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Patrocinador</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @event.sponsors.each do |sponsor| %>
+      <tr>
+        <td><%= sponsor.id %></td>
+        <td><%= sponsor.name %></td>
+        <td>
+          <div class="btn-group">
+
+            <%= link_to admins_event_sponsor_path(@event, sponsor), method: :delete, data: {confirm: t('prompt.confirm')} do %>
+              <%= icon('fa', 'trash', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.delete')) %>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
