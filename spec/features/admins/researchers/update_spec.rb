@@ -31,8 +31,9 @@ describe 'Admin::Reseracher::update', type: :feature, js: true do
 
       fill_in 'researcher_name', with: new_name
       choose(new_genre)
-      selectize scholarity.name, from: 'researcher_scholarity'
-      selectize institution.name, from: 'researcher_institution'
+
+      selectize researcher.scholarity.name, from: 'researcher_scholarity_id'
+      selectize researcher.institution.name, from: 'researcher_institution_id'
 
       click_button
 

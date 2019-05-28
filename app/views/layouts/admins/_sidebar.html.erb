@@ -22,7 +22,7 @@
       <span class="icon mr-3"><%= icon('fas', 'calendar') %></span><%= t('events.index') %>
     <% end %>
 
-    <%= link_to admins_researchers_path, class: 'list-group-item list-group-item-action', active: :incluseve do %>
+    <%= active_link_to admins_researchers_path, class: 'list-group-item list-group-item-action', active: :inclusive do %>
       <span class="icon mr-3"><%= icon('fas', 'graduation-cap') %></i></span><%= t('researchers.index') %>
     <% end %>
   </div>

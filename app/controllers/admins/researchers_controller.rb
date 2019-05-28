@@ -15,10 +15,9 @@ class Admins::ResearchersController < Admins::BaseController
                         resource_name: I18n.t('activerecord.models.researcher.one')),
                  :admins_researcher_path, only: :show
 
-  before_action :set_resource_name, only: [:create, :update, :destroy]
-  before_action :find_institutions, only: [:new, :create, :edit, :update]
-  before_action :find_scholarity, only: [:new, :create, :edit, :update]
   before_action :find_researcher, except: [:new, :create, :index]
+  before_action :find_scholarity, except: [:destroy, :index, :show]
+  before_action :find_institutions, except: [:destroy, :index, :show]
 
   def index
     @researchers = Researcher.includes(:institution, :scholarity).order(:name)
@@ -30,13 +29,7 @@ class Admins::ResearchersController < Admins::BaseController
 
   def create
     @researcher = Researcher.new(researcher_params)
-    if @researcher.save
-      flash[:success] = t('flash.actions.create.m', resource_name: @resource_name)
-      redirect_to admins_researchers_path
-    else
-      flash.now[:error] = I18n.t('flash.actions.errors')
-      render 'new'
-    end
+    action_success? @researcher.save, :new, 'flash.actions.create.m'
   end
 
   def show; end
@@ -44,35 +37,30 @@ class Admins::ResearchersController < Admins::BaseController
   def edit; end
 
   def update
-    if @researcher.update researcher_params
-      flash[:success] = t('flash.actions.update.m', resource_name: @resource_name)
-      redirect_to admins_researchers_path
-    else
-      flash.now[:error] = I18n.t('flash.actions.errors')
-      render 'edit'
-    end
+    action_success? @researcher.update(researcher_params), :edit, 'flash.actions.update.m'
   end
 
   def destroy
     @researcher.destroy if @researcher.present?
-    flash[:success] = t('flash.actions.destroy.m', resource_name: @resource_name)
+    flash[:success] = t('flash.actions.destroy.m', resource_name: Researcher.model_name.human)
     redirect_to admins_researchers_path
   end
 
   private
 
-  def researcher_params
-    params.require(:researcher).permit(
-        :name,
-        :scholarity_id,
-        :genre,
-        :institution_id,
-        :image, :image_cache
-      )
+  def action_success?(action_result, redirect_to, action)
+    if action_result
+      flash[:success] = I18n.t(action, resource_name: t('activerecord.models.researcher.one'))
+      redirect_to admins_researchers_path
+    else
+      flash.now[:error] = I18n.t('flash.actions.errors')
+      render redirect_to
+    end
   end
 
-  def set_resource_name
-    @resource_name = Researcher.model_name.human
+  def researcher_params
+    params.require(:researcher).permit(:name, :scholarity_id, :genre, :institution_id, :image,
+                                       :image_cache)
   end
 
   def find_institutions

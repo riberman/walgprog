@@ -12,6 +12,8 @@ describe 'Admins::Researchers::create', type: :feature do
   end
 
   context 'with valid fields', js: true do
+    Capybara.ignore_hidden_elements = false
+
     it 'create a researcher' do
       attributes = attributes_for(:researcher)
       action_name = 'flash.actions.create.m'
@@ -19,7 +21,10 @@ describe 'Admins::Researchers::create', type: :feature do
       fill_in 'researcher_name', with: attributes[:name]
       selectize institution.name, from: 'researcher_institution'
       selectize scholarity.name, from: 'researcher_scholarity'
+      attach_file 'researcher_image', FileSpecHelper.image.path
+
       choose('Feminino')
+
       click_button
 
       expect(page).to have_current_path admins_researchers_path
