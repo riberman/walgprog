@@ -100,5 +100,31 @@ describe 'Admins::Event::update', type: :feature do
       expect(page).to have_message(message, in: 'div.event_beginning_date')
       expect(page).to have_message(message, in: 'div.event_end_date')
     end
+
+    it 'not change state and city' do
+      fill_in 'event_name', with: ''
+      click_button
+
+      expect(page).to have_selectize('event_state_id', selected: event.city.state.name)
+      expect(page).to have_selectize('event_city_id', selected: event.city.name)
+    end
+
+    it 'if state is changed keep it' do
+      fill_in 'event_name', with: ''
+      selectize(city.state.name, from: 'event_state_id')
+      click_button
+
+      expect(page).to have_selectize('event_state_id', selected: city.state.name)
+    end
+
+    it 'if state and city are changed keep both' do
+      fill_in 'event_name', with: ''
+      selectize(city.state.name, from: 'event_state_id')
+      selectize(city.name, from: 'event_city_id')
+      click_button
+
+      expect(page).to have_selectize('event_state_id', selected: city.state.name)
+      expect(page).to have_selectize('event_city_id', selected: city.name)
+    end
   end
 end

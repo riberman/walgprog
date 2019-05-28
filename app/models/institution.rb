@@ -1,8 +1,6 @@
 class Institution < ApplicationRecord
   include VirtualState::Model
 
-  attr_writer :state_id
-
   belongs_to :city
   has_many :contacts, dependent: :restrict_with_error
 

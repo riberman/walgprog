@@ -1,4 +1,7 @@
 class Admins::EventsController < Admins::BaseController
+  before_action :set_resource_name, only: [:create, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
+
   include VirtualState::Controller
 
   add_breadcrumb I18n.t('breadcrumbs.action.index',
@@ -17,10 +20,6 @@ class Admins::EventsController < Admins::BaseController
                         resource_name: I18n.t('activerecord.models.event.one')),
                  :admins_event_path, only: [:show]
 
-  before_action :set_resource_name, only: [:create, :update, :destroy]
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :load_states, only: [:new, :create, :edit, :update]
-
   def index
     @events = Event.order(created_at: :desc)
   end
@@ -35,7 +34,7 @@ class Admins::EventsController < Admins::BaseController
       flash[:success] = t('flash.actions.create.m', resource_name: @resource_name)
       redirect_to admins_events_path
     else
-      load_cities(@event)
+      load_cities
       flash.now[:error] = I18n.t('flash.actions.errors')
       render 'new'
     end
@@ -44,7 +43,7 @@ class Admins::EventsController < Admins::BaseController
   def show; end
 
   def edit
-    load_cities(@event)
+    load_cities
   end
 
   def update
@@ -52,7 +51,7 @@ class Admins::EventsController < Admins::BaseController
       flash[:success] = t('flash.actions.update.m', resource_name: @resource_name)
       redirect_to admins_events_path
     else
-      load_cities(@event)
+      load_cities
       flash.now[:error] = I18n.t('flash.actions.errors')
       render 'edit'
     end
@@ -69,14 +68,10 @@ class Admins::EventsController < Admins::BaseController
 
   def event_params
     params.require(:event).permit(
-      :name,
-      :initials,
-      :color,
-      :beginning_date,
-      :end_date,
-      :local,
-      :city_id,
-      :address
+      :name, :initials, :color,
+      :beginning_date, :end_date,
+      :local, :address,
+      :city_id, :state_id
     )
   end
 

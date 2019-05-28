@@ -78,5 +78,21 @@ describe 'Admins::Event::create', type: :feature do
       expect(page).to have_message(message, in: 'div.event_beginning_date')
       expect(page).to have_message(message, in: 'div.event_end_date')
     end
+
+    it 'when has a state selected', js: true do
+      selectize(city.state.name, from: 'event_state_id')
+      click_button
+
+      expect(page).to have_selectize('event_state_id', selected: city.state.name)
+    end
+
+    it 'when has a state and city selected', js: true do
+      selectize(city.state.name, from: 'event_state_id')
+      selectize(city.name, from: 'event_city_id')
+      click_button
+
+      expect(page).to have_selectize('event_state_id', selected: city.state.name)
+      expect(page).to have_selectize('event_city_id', selected: city.name)
+    end
   end
 end

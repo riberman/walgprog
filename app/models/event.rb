@@ -10,10 +10,6 @@ class Event < ApplicationRecord
   validates_with EventDateValidator, on: :create
   validates_with EventUpdateDateValidator, on: :update
 
-  preload city: :state
-
-  attr_writer :state_id
-
   def full_address
     "#{address} - #{city.name}/#{city.state.acronym}"
   end
