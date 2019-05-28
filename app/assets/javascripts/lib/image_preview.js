@@ -16,5 +16,5 @@ WAlgProg.imagePreview = (el) => {
     }
   };
 
-  return $(el).change(() => readURL(this));
+  return $(el).change(function preview() { readURL(this); });
 };
