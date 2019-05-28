@@ -4,14 +4,14 @@
     <legend class="w-auto"><%= t('events.description') %></legend>
     <div class="row">
       <%= f.input :name, required: true, autofocus: true,
-        wrapper_html: { class: 'col-lg-7 col-md-12 col-sm-12' } %>
+                  wrapper_html: { class: 'col-lg-7 col-md-12 col-sm-12' } %>
 
       <%= f.input :initials, autocomplete: "off", required: true,
-        wrapper_html: { class: 'col-lg-2 col-md-6 col-sm-6' } %>
+                  wrapper_html: { class: 'col-lg-2 col-md-6 col-sm-6' } %>
 
       <%= f.input :color, required: true, as: :color_picker,
-        input_html: { class: 'apply-colorpicker'},
-        wrapper_html: { class: 'col-lg-3 col-md-6 col-sm-6' } %>
+                  input_html: { class: 'apply-colorpicker' },
+                  wrapper_html: { class: 'col-lg-3 col-md-6 col-sm-6' } %>
     </div>
   </fieldset>
 
@@ -20,31 +20,47 @@
     <div class="row">
       <div class="form-group string required col-md-6">
         <%= f.input(
-          :beginning_date,
-          as:  :string,
-          required: true,
-          input_html: { value: @event.beginning_date.formatted, class: 'datepicker' }) %>
+              :beginning_date,
+              as: :string,
+              required: true,
+              input_html: { value: @event.beginning_date.formatted, class: 'datepicker' }) %>
 
       </div>
 
       <div class="form-group string required col-md-6">
         <%= f.input(
-          :end_date,
-          as: :string,
-          required: true,
-          input_html: { value: @event.end_date.formatted, class: 'datepicker' }) %>
+              :end_date,
+              as: :string,
+              required: true,
+              input_html: { value: @event.end_date.formatted, class: 'datepicker' }) %>
       </div>
     </div>
   </fieldset>
 
   <fieldset class="form-fieldset">
     <legend class="w-auto"><%= t('events.location') %></legend>
-    <div class="row">
-      <%= f.input :city_id, collection: @cities,
-        wrapper_html: { class: 'col-md-6'}, input_html: { class: 'apply-selectize' } %>
 
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input(
+              :state_id,
+              collection: @states,
+              prompt: t('prompt.select.m', name: t('activerecord.attributes.event.state_id')),
+              label_method: :name, value_method: :id,
+              input_html: { autocomplete: 'false' }) %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input(
+              :city_id,
+              collection: @cities,
+              prompt: t('prompt.select.f', name: t('activerecord.attributes.event.city_id')),
+              input_html: { autocomplete: 'false' }) %>
+      </div>
+    </div>
+
+    <div class="row">
       <%= f.input :local, required: true, wrapper_html: { class: 'col-md-6' } %>
-      <%= f.input :address, required: true, wrapper_html: { class: 'col-md-12' } %>
+      <%= f.input :address, required: true, wrapper_html: { class: 'col-md-6' } %>
     </div>
   </fieldset>
 
