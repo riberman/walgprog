@@ -1,5 +1,5 @@
 class Admins::InstitutionsController < Admins::BaseController
-  include VirtualState
+  include VirtualState::Controller
 
   add_breadcrumb I18n.t('breadcrumbs.action.index',
                         resource_name: I18n.t('activerecord.models.institution.other')),

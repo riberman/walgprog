@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   include ActiveModel::Validations
   include DateFormatter
-  include VirtualState
+  include VirtualState::Model
 
   belongs_to :city
 

@@ -1,5 +1,5 @@
 class Institution < ApplicationRecord
-  include VirtualState
+  include VirtualState::Model
 
   attr_writer :state_id
 
