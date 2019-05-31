@@ -1,18 +1,16 @@
+<% provide(:head_title, t('sponsors.index')) %>
+<% provide(:page_title, t('sponsors.index')) %>
+
 <%= simple_form_for :sponsor, url: admins_event_sponsors_path(@event), method: :post  do |f| %>
-
-<div class="row">
-  <div class="col-sm-12 col-lg-8 mb-2">
-    <%= f.input :id, label: false, collection: @institutions %>
+  <div class="row">
+    <div class="col-sm-12 col-lg-8 mb-2">
+      <%= f.input :id, label: false, prompt: t('prompt.select.m', name: t('activerecord.models.sponsor.one')), collection: @institutions %>
+    </div>
+    <div class="col-sm-12 col-lg-4">
+      <%= f.button :submit, 'Adicionar',  class: 'btn-primary ml-auto' %>
+    </div>
   </div>
-  <div class="col-sm-12 col-lg-4">
-    <%= f.button :submit, 'Adicionar',  class: 'btn-primary ml-auto' %>
-  </div>
-</div>
-
 <% end %>
-
-
-
 
 <div class="table-responsive">
   <table class="table table-hover table-outline table-vcenter text-nowrap card-table">

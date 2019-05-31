@@ -11,7 +11,7 @@ class Admins::EventsController < Admins::BaseController
                         resource_name: I18n.t('activerecord.models.event.one')),
                  :edit_admins_event_path, only: [:edit, :update]
 
-  add_breadcrumb I18n.t('breadcrumbs.action.show',
+  add_breadcrumb I18n.t('breadcrumbs.event.detail',
                         resource_name: I18n.t('activerecord.models.event.one')),
                  :admins_event_path, only: [:show]
 

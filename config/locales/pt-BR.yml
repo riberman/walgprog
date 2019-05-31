@@ -22,7 +22,7 @@ pt-BR:
       event:
         one: Evento
         other: Eventos
-      sponsor_event:
+      sponsor:
         one: Patrocinador
         other: Patrocinadores
     attributes:
@@ -59,9 +59,6 @@ pt-BR:
         city_id: Cidade
         address: Endereço
         <<: *commons
-      sponsor_event:
-        event: Evento
-        institution: Instituição
   helpers:
     back: Voltar
     currently: Atualmente
@@ -84,6 +81,8 @@ pt-BR:
       show: 'Visualizar %{resource_name}'
       index: '%{resource_name}'
       add: 'Adicionar %{resource_name}'
+    event:
+      detail: 'Detalhes do %{resource_name}'
   flash:
     actions:
       update:
@@ -150,3 +149,4 @@ pt-BR:
       invalid_dates: deve ser posterior ao início
   sponsors:
     add: Adicionar Patrocinador
+    index: Patrocinadores

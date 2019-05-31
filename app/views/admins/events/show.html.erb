@@ -2,97 +2,59 @@
 <% provide(:page_title, t('events.show')) %>
 
 <div class="col-md-12">
-  <ul class="nav nav-tabs mb-3">
-    <li class="nav-item">
-      <a class="nav-link active" href="" data-target="#data" data-toggle="tab">Dados</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="" data-target="#sponsors" data-toggle="tab">Patrocinadores</a>
-    </li>
-  </ul>
+  <%= link_to edit_admins_event_path(@event), class: 'btn btn-outline-primary float-right' do %>
+  <i class="fa fa-edit"></i>
+  <%= t('helpers.edit') %>
+  <% end %>
 
-  <div class="tab-content">
-    <div id="data" class="tab-pane active">
-      <%= link_to edit_admins_event_path(@event), class: 'btn btn-outline-primary float-right' do %>
-        <i class="fa fa-edit"></i>
-        <%= t('helpers.edit') %>
-      <% end %>
-
-      <fieldset class="form-fieldset col-md-12">
-        <legend class="w-auto"><%= t('events.description') %></legend>
-        <div class="row">
-          <div class="col-md-6">
-            <h4><%= t('activerecord.attributes.attribute_commons.name') %></h4>
-            <p><%= @event.name %> (<%= @event.initials %>)</p>
-          </div>
-          <div id='event_color' class="col-md-3">
-            <h4><%= t('activerecord.attributes.event.color') %></h4>
-            <p><i class="fas fa-circle" style="color: <%= @event.color %>;"></i></p>
-          </div>
-          <div class="col-md-3">
-            <h4><%= t('activerecord.attributes.attribute_commons.created_at') %></h4>
-            <p><%= l(@event.created_at) %></p>
-          </div>
-        </div>
-      </fieldset>
-
-      <fieldset class="form-fieldset col-md-12">
-        <legend class="w-auto"><%= t('events.dates') %></legend>
-        <div class="row">
-          <div class="col-md-6">
-            <h4><%= t('activerecord.attributes.event.beginning_date') %></h4>
-            <p><%= l(@event.beginning_date.to_date, format: :long) %></p>
-          </div>
-
-          <div class="col-md-6">
-            <h4><%= t('activerecord.attributes.event.end_date') %></h4>
-            <p><%= l(@event.end_date.to_date, format: :long) %></p>
-          </div>
-        </div>
-      </fieldset>
-
-      <fieldset class="form-fieldset col-md-12">
-        <legend class="w-auto"><%= t('events.location') %></legend>
-        <div class="row">
-          <div class="col-md-6">
-            <h4><%= t('events.location') %></h4>
-            <p><%= @event.full_address %></p>
-          </div>
-          <div class="col-md-6">
-            <h4><%= t('activerecord.attributes.event.local') %></h4>
-            <p><%= @event.local %></p>
-          </div>
-        </div>
-      </fieldset>
-
-      <%= link_to admins_events_path, class: 'btn btn-secondary float-left' do %>
-        <%= t('helpers.back') %>
-      <% end %>
-    </div>
-    <div id="sponsors" class="tab-pane">
-      <div class="row">
-        <div class="col-12">
-          <div class="row">
-            <div class="col-md-8 col-sm-12">
-              <div class="input-group mb-3">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Procurar...">
-                  <span class="input-group-append">
-                    <button class="btn btn-outline-info" type="button"><%= icon('fas', 'search') %></button>
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            
-          </div>
-
-          <div class="row">
-            <div class="col-12">
-            </div>
-          </div>
-        </div>
+  <fieldset class="form-fieldset col-md-12">
+    <legend class="w-auto"><%= t('events.description') %></legend>
+    <div class="row">
+      <div class="col-md-6">
+        <h4><%= t('activerecord.attributes.attribute_commons.name') %></h4>
+        <p><%= @event.name %> (<%= @event.initials %>)</p>
+      </div>
+      <div id='event_color' class="col-md-3">
+        <h4><%= t('activerecord.attributes.event.color') %></h4>
+        <p><i class="fas fa-circle" style="color: <%= @event.color %>;"></i></p>
+      </div>
+      <div class="col-md-3">
+        <h4><%= t('activerecord.attributes.attribute_commons.created_at') %></h4>
+        <p><%= l(@event.created_at) %></p>
       </div>
     </div>
-  </div>
+  </fieldset>
+
+  <fieldset class="form-fieldset col-md-12">
+    <legend class="w-auto"><%= t('events.dates') %></legend>
+    <div class="row">
+      <div class="col-md-6">
+        <h4><%= t('activerecord.attributes.event.beginning_date') %></h4>
+        <p><%= l(@event.beginning_date.to_date, format: :long) %></p>
+      </div>
+
+      <div class="col-md-6">
+        <h4><%= t('activerecord.attributes.event.end_date') %></h4>
+        <p><%= l(@event.end_date.to_date, format: :long) %></p>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-fieldset col-md-12">
+    <legend class="w-auto"><%= t('events.location') %></legend>
+    <div class="row">
+      <div class="col-md-6">
+        <h4><%= t('events.location') %></h4>
+        <p><%= @event.full_address %></p>
+      </div>
+      <div class="col-md-6">
+        <h4><%= t('activerecord.attributes.event.local') %></h4>
+        <p><%= @event.local %></p>
+      </div>
+    </div>
+  </fieldset>
+
+  <%= link_to admins_events_path, class: 'btn btn-secondary float-left' do %>
+  <%= t('helpers.back') %>
+  <% end %>
 </div>

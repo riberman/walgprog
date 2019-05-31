@@ -3,11 +3,15 @@
 
     <span class="sidebar-heading pl-0 pt-2 pb-2">
       <%= icon('fas', 'book-open', class: 'mr-1') %>
-      Menud do Evento <%= @event.id %>
+      WAlgProg <%= @event.beginning_date.strftime('%Y') %>
     </span>
 
+    <%= active_link_to(admins_event_path(@event), class: 'list-group-item list-group-item-action', active: :exact) do %>
+      <span class="icon mr-3"><%= icon('fas', 'address-book') %></span><%= t('events.show') %>
+    <% end %>
+
     <%= active_link_to(admins_event_sponsors_path(@event), class: 'list-group-item list-group-item-action', active: :inclusive) do %>
-      <span class="icon mr-3"><%= icon('fas', 'address-book') %></span><%= 'Patrocinadores' %>
+      <span class="icon mr-3"><%= icon('fas', 'address-book') %></span><%= t('sponsors.index') %>
     <% end %>
 
   </div>

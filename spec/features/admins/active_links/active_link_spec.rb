@@ -76,7 +76,7 @@ RSpec.describe 'Admins::Active_link', type: :feature do
 
     it 'show active' do
       visit admins_event_path(event)
-      expect(page).to have_link(I18n.t('events.index'), class: active_class)
+      expect(page).to have_link(I18n.t('events.show'), class: active_class)
     end
   end
 end
