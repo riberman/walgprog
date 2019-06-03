@@ -1,0 +1,42 @@
+<% provide(:head_title, t('admins.index')) %>
+<% provide(:page_title, t('admins.index')) %>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="row">
+      <div class="col-sm-12 col-lg-8 mb-2">
+        <div class="input-group mb-3">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Procurar...">
+            <span class="input-group-append">
+              <button class="btn btn-outline-info" type="button"><i class="fe fe-search"></i></button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-lg-4">
+        <% if current_admin.admin? %>
+        <%= link_to '+ ' + t('admins.new'), new_admins_admin_path, class: "btn btn-outline-primary btn-block" %>
+          <% end %>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table card-table table-striped table-vcenter">
+        <thead>
+          <tr>
+            <th><%= t('activerecord.attributes.admin.name') %></th>
+            <th><%= t('activerecord.attributes.admin.email') %></th>
+            <th><%= t('activerecord.attributes.admin.image') %></th>
+            <th><%= t('activerecord.attributes.admin.user_type') %></th>
+
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @admins %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
