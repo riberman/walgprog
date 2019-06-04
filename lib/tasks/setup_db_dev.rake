@@ -11,7 +11,7 @@ namespace :db do
     puts 'Running drop database. . . '
     Rake::Task['db:drop'].invoke
     puts 'Running create database'
-    Rake::Task['db:create'].invok
+    Rake::Task['db:create'].invoke
   end
 
   def call_migrate

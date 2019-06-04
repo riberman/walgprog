@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe Researcher, type: :model do
   describe 'validates' do
     it { is_expected.to validate_presence_of(:genre) }
-    it { is_expected.to validate_presence_of(:image) }
     it { is_expected.to validate_presence_of(:institution) }
     it { is_expected.to validate_presence_of(:scholarity) }
   end

@@ -4,8 +4,8 @@ describe 'Admin::Reseracher::update', type: :feature, js: true do
   let(:admin) { create(:admin) }
   let(:resource_name) { Researcher.model_name.human }
   let!(:institution) { create_list(:institution, 2).sample }
-  let(:scholarity) { create_list(:scholarity, 2).sample }
-  let(:researcher) { create(:researcher) }
+  let!(:scholarity) { create_list(:scholarity, 2).sample }
+  let!(:researcher) { create(:researcher) }
 
   before(:each) do
     login_as(admin, scope: :admin)
@@ -15,7 +15,6 @@ describe 'Admin::Reseracher::update', type: :feature, js: true do
   context 'when render edit' do
     it 'fields should be filled' do
       expect(page).to have_field('researcher_name', with: researcher.name)
-      # expect(page).to have_field('researcher_genre', with: researcher.genre)
       expect(page).to have_selectize('researcher_scholarity',
                                      selected: researcher.scholarity.name)
       expect(page).to have_selectize('researcher_institution',
@@ -32,8 +31,8 @@ describe 'Admin::Reseracher::update', type: :feature, js: true do
       fill_in 'researcher_name', with: new_name
       choose(new_genre)
 
-      selectize researcher.scholarity.name, from: 'researcher_scholarity_id'
-      selectize researcher.institution.name, from: 'researcher_institution_id'
+      selectize scholarity.name, from: 'researcher_scholarity'
+      selectize institution.name, from: 'researcher_institution'
 
       click_button
 

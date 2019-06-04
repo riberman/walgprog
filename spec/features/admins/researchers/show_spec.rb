@@ -11,10 +11,10 @@ describe 'Researchers:show', type: :feature do
 
   context 'with data' do
     it 'showed' do
-      # expect(page).to have_text(researcher.name)
-      # expect(page).to have_css("input[value=#{researcher.genre}]")
-      # expect(page).to have_css("input[value=#{researcher.institution.name}]", :exact)
-      # expect(page).to have_css("input[value=#{researcher.scholarity.name}]")
+      expect(page).to have_content(researcher.name)
+      expect(page).to have_content(researcher.genre)
+      expect(page).to have_content(researcher.institution.name)
+      expect(page).to have_content(researcher.scholarity.name)
     end
   end
 

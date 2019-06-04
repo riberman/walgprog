@@ -8,7 +8,6 @@ namespace :db do
     cities
     contacts
     events
-    scholarities
     researchers
   end
 
@@ -50,15 +49,11 @@ namespace :db do
     end
   end
 
-  def scholarities
-    Rake::Task['db:seeds:scholarities'].invoke
-  end
-
   def researchers
     10.times do
       Researcher.create(
         name: Faker::Name.unique.name,
-        genre: Faker::Gender,
+        genre: Faker::Gender.binary_type,
         scholarity: Scholarity.all.sample,
         institution: Institution.all.sample
       )
