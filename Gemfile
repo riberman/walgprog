@@ -51,7 +51,7 @@ end
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'capybara-screenshot'
-  gem 'webdrivers'
+  gem 'webdrivers', '~> 4.0'
 
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false
