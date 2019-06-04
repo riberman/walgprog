@@ -10,6 +10,7 @@
 
     <%= stylesheet_link_tag 'admins/application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'admins/application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'application/favicon' %>
   </head>
 
   <body id="<%= controller_name %>-<%= action_name %>">
@@ -22,17 +23,11 @@
             <div class="col-sm-12 col-md-3 col-lg-2">
               <%= render 'layouts/admins/sidebar' %>
             </div>
-<!--<<<<<<< HEAD-->
-<!--            <div class="col-lg-9 order-lg-1">-->
-<!--              <ol class="breadcrumb">-->
-                <%#= render_breadcrumbs tag: :li, separator: '<li class="ml-2 mr-2">/</li>'%>
-<!--              </ol>-->
-<!--              <div class="card">-->
-<!--=======-->
+
             <div class="col-md-9 col-lg-10">
-              <ol class="breadcrumb">
-                <%= render_breadcrumbs tag: :li, separator: '<li class="ml-2 mr-2">/</li>'%>
-              </ol>
+
+              <%= render 'shared/breadcrumbs' %>
+
               <div id="main-content" class="card mb-9">
                 <div class="card-header">
                   <h1 class="page-title mb-3">

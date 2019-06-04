@@ -1,5 +1,15 @@
 {
   "name": "walgprog",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "eslint-config-airbnb": "^17.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2"
+  },
+  "scripts": {
+    "lint": "yarn run eslint --ext .js app/assets/javascripts"
+  }
 }

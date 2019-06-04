@@ -20,6 +20,7 @@ describe 'Admins::Event::update', type: :feature do
       expect(page).to have_field('event_beginning_date', with: event.beginning_date.formatted)
       expect(page).to have_field('event_end_date', with: event.end_date.formatted)
 
+      expect(page).to have_selectize('event_state_id', selected: event.state.name)
       expect(page).to have_selectize('event_city_id', selected: event.city.name)
       expect(page).to have_field('event_local', with: event.local)
       expect(page).to have_field('event_address', with: event.address)
@@ -36,7 +37,8 @@ describe 'Admins::Event::update', type: :feature do
       fill_in 'event_color', with: attributes[:color]
       fill_in 'event_local', with: attributes[:local]
       fill_in 'event_address', with: attributes[:address]
-      selectize city.name, from: 'event_city_id'
+      selectize(city.state.name, from: 'event_state_id')
+      selectize(city.name, from: 'event_city_id')
       fill_in 'event_beginning_date', with: I18n.l(attributes[:beginning_date], format: :short)
       fill_in 'event_end_date', with: I18n.l(attributes[:end_date], format: :short)
       click_button
@@ -64,7 +66,8 @@ describe 'Admins::Event::update', type: :feature do
       fill_in 'event_color', with: 'uu'
       fill_in 'event_local', with: ''
       fill_in 'event_address', with: ''
-      selectize '', from: 'event_city_id'
+      selectize('', from: 'event_state_id')
+      selectize('', from: 'event_city_id')
       fill_in 'event_beginning_date', with: ''
       fill_in 'event_end_date', with: ''
       click_button
@@ -80,6 +83,7 @@ describe 'Admins::Event::update', type: :feature do
       expect(page).to have_message(message_blank_error, in: 'div.event_end_date')
       expect(page).to have_message(I18n.t('events.errors.invalid_dates'), in: 'div.event_end_date')
 
+      expect(page).to have_message(message_blank_error, in: 'div.event_state_id')
       expect(page).to have_message(message_blank_error, in: 'div.event_city_id')
       expect(page).to have_message(message_blank_error, in: 'div.event_local')
       expect(page).to have_message(message_blank_error, in: 'div.event_address')
@@ -96,33 +100,31 @@ describe 'Admins::Event::update', type: :feature do
       expect(page).to have_message(message, in: 'div.event_beginning_date')
       expect(page).to have_message(message, in: 'div.event_end_date')
     end
-  end
 
-  context 'when Breadcrumbs have the correct' do
-    it 'text' do
-      i = 0
-      breadcrumbs_text = [I18n.t('breadcrumbs.homepage'),
-                          '/',
-                          I18n.t('breadcrumbs.action.index',
-                                 resource_name: I18n.t('activerecord.models.event.other')),
-                          '/',
-                          I18n.t('breadcrumbs.action.edit',
-                                 resource_name: I18n.t('activerecord.models.event.one'))]
-      all('li').each do |li|
-        expect(li.text).to have_content(breadcrumbs_text[i])
-        i += 1
-      end
+    it 'not change state and city' do
+      fill_in 'event_name', with: ''
+      click_button
+
+      expect(page).to have_selectize('event_state_id', selected: event.city.state.name)
+      expect(page).to have_selectize('event_city_id', selected: event.city.name)
     end
 
-    it 'url' do
-      expected_paths = ['/admins',
-                        '/admins/events',
-                        '/admins/events/' + event.id.to_s + '/edit']
-      i = 0
-      all('li a').each do |a|
-        expect(a[:href]).to have_content(expected_paths[i])
-        i += 1
-      end
+    it 'if state is changed keep it' do
+      fill_in 'event_name', with: ''
+      selectize(city.state.name, from: 'event_state_id')
+      click_button
+
+      expect(page).to have_selectize('event_state_id', selected: city.state.name)
+    end
+
+    it 'if state and city are changed keep both' do
+      fill_in 'event_name', with: ''
+      selectize(city.state.name, from: 'event_state_id')
+      selectize(city.name, from: 'event_city_id')
+      click_button
+
+      expect(page).to have_selectize('event_state_id', selected: city.state.name)
+      expect(page).to have_selectize('event_city_id', selected: city.name)
     end
   end
 end

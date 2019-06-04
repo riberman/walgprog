@@ -3,19 +3,19 @@
 //= require colorpicker/bootstrap-colorpicker.min
 
 $(document).on('turbolinks:load', () => {
-    WalgProg.colorPicker();
+  WAlgProg.colorPicker();
 });
 
 
-WalgProg.colorPicker = () => {
-    $('.apply-colorpicker').colorpicker({
-        fallbackColor: '#000',
-        fallbackFormat: 'hex',
-        popover: {
-            animation: true,
-            placement: 'bottom',
-            fallbackPlacement: 'flip',
-            container: '#main-content'
-        }
-    });
+WAlgProg.colorPicker = () => {
+  $('.apply-colorpicker').colorpicker({
+    fallbackColor: '#000',
+    fallbackFormat: 'hex',
+    popover: {
+      animation: true,
+      placement: 'bottom',
+      fallbackPlacement: 'flip',
+      container: '#main-content',
+    },
+  });
 };

@@ -1,7 +1,7 @@
 pt-BR:
   views:
     sidebar:
-      walgprog: 'WalgProg'
+      walgprog: 'WAlgProg'
   time:
     formats:
       short: '%d/%m/%Y'
@@ -52,6 +52,7 @@ pt-BR:
         beginning_date: Data de início
         end_date: Data de término
         local: Local
+        state_id: Estado
         city: Cidade
         city_id: Cidade
         address: Endereço
@@ -68,6 +69,15 @@ pt-BR:
       'true': Sim
       'false': Não
     until: até
+  breadcrumbs:
+    homepage: 'Página Inicial'
+    action:
+      edit:  'Editar %{resource_name}'
+      new:
+        m: 'Novo %{resource_name}'
+        f: 'Nova %{resource_name}'
+      show: 'Visualizar %{resource_name}'
+      index: '%{resource_name}'
   flash:
     actions:
       update:

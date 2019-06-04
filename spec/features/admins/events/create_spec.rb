@@ -3,7 +3,12 @@ require 'rails_helper'
 describe 'Admins::Event::create', type: :feature do
   let(:resource_name) { Event.model_name.human }
   let(:admin) { create(:admin) }
-  let!(:city) { create(:city) }
+  let!(:state) { create_list(:state, 2) }
+  let!(:city) do
+    create_list(:city, 2, state: State.first)
+    create_list(:city, 2, state: State.last)
+    City.all.sample
+  end
 
   before(:each) do
     login_as(admin, scope: :admin)
@@ -19,7 +24,8 @@ describe 'Admins::Event::create', type: :feature do
       fill_in 'event_color', with: attributes[:color]
       fill_in 'event_local', with: attributes[:local]
       fill_in 'event_address', with: attributes[:address]
-      selectize city.name, from: 'event_city_id'
+      selectize(city.state.name, from: 'event_state_id')
+      selectize(city.name, from: 'event_city_id')
       fill_in 'event_beginning_date', with: I18n.l(attributes[:beginning_date], format: :short)
       fill_in 'event_end_date', with: I18n.l(attributes[:end_date], format: :short)
       click_button
@@ -55,6 +61,7 @@ describe 'Admins::Event::create', type: :feature do
       expect(page).to have_message(message_blank_error, in: 'div.event_end_date')
       expect(page).to have_message(I18n.t('events.errors.invalid_dates'), in: 'div.event_end_date')
 
+      expect(page).to have_message(message_blank_error, in: 'div.event_state_id')
       expect(page).to have_message(message_blank_error, in: 'div.event_city_id')
       expect(page).to have_message(message_blank_error, in: 'div.event_local')
       expect(page).to have_message(message_blank_error, in: 'div.event_address')
@@ -71,31 +78,21 @@ describe 'Admins::Event::create', type: :feature do
       expect(page).to have_message(message, in: 'div.event_beginning_date')
       expect(page).to have_message(message, in: 'div.event_end_date')
     end
-  end
 
-  context 'when Breadcrumbs have the correct' do
-    it 'text' do
-      i = 0
-      breadcrumbs_text = [I18n.t('breadcrumbs.homepage'),
-                          '/',
-                          I18n.t('breadcrumbs.action.index',
-                                 resource_name: I18n.t('activerecord.models.event.other')),
-                          '/',
-                          I18n.t('breadcrumbs.action.new.m',
-                                 resource_name: I18n.t('activerecord.models.event.one'))]
-      all('li').each do |li|
-        expect(li.text).to have_content(breadcrumbs_text[i])
-        i += 1
-      end
+    it 'when has a state selected', js: true do
+      selectize(city.state.name, from: 'event_state_id')
+      click_button
+
+      expect(page).to have_selectize('event_state_id', selected: city.state.name)
     end
 
-    it 'url' do
-      expected_paths = ['/admins', '/admins/events', '/admins/events/new']
-      i = 0
-      all('li a').each do |a|
-        expect(a[:href]).to have_content(expected_paths[i])
-        i += 1
-      end
+    it 'when has a state and city selected', js: true do
+      selectize(city.state.name, from: 'event_state_id')
+      selectize(city.name, from: 'event_city_id')
+      click_button
+
+      expect(page).to have_selectize('event_state_id', selected: city.state.name)
+      expect(page).to have_selectize('event_city_id', selected: city.name)
     end
   end
 end

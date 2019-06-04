@@ -1,10 +1,10 @@
 $(document).on('turbolinks:load', () => {
-    WalgProg.datePicker();
+  WAlgProg.datePicker();
 });
 
-WalgProg.datePicker = () => {
-    options = {
-        language: 'pt-BR',
-    }
-    $('.datepicker').datepicker(options);
+WAlgProg.datePicker = () => {
+  options = {
+    language: 'pt-BR',
+  };
+  $('.datepicker').datepicker(options);
 };
