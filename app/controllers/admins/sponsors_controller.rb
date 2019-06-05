@@ -27,6 +27,7 @@ class Admins::SponsorsController < Admins::BaseController
   end
 
   protected
+
   def set_event
     @event = Event.find(params[:event_id])
   end

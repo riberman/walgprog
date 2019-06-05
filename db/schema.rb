@@ -42,8 +42,6 @@ ActiveRecord::Schema.define(version: 2019_05_26_061008) do
     t.string "email"
     t.string "phone"
     t.bigint "institution_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["institution_id"], name: "index_contacts_on_institution_id"
   end
 
@@ -82,6 +80,15 @@ ActiveRecord::Schema.define(version: 2019_05_26_061008) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_sponsor_events_on_event_id"
     t.index ["institution_id"], name: "index_sponsor_events_on_institution_id"
+  end
+
+  create_table "sponsors", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "institution_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_sponsors_on_event_id"
+    t.index ["institution_id"], name: "index_sponsors_on_institution_id"
   end
 
   create_table "states", force: :cascade do |t|
