@@ -8,6 +8,7 @@ namespace :db do
     cities
     contacts
     events
+    sponsors
   end
 
   def delete_all
@@ -44,6 +45,15 @@ namespace :db do
         beginning_date: beginning_date, end_date: end_date,
         color: Faker::Color.hex_color, local: Faker::Address.community,
         address: Faker::Address.full_address, city_id: city_ids.sample
+      )
+    end
+  end
+
+  def sponsors
+    10.times do
+      SponsorEvent.find_or_create_by!(
+        event: Event.all.sample,
+        institution: Institution.all.sample
       )
     end
   end
