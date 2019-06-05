@@ -3,11 +3,14 @@
 
 <%= simple_form_for :sponsor, url: admins_event_sponsors_path(@event), method: :post  do |f| %>
   <div class="row">
-    <div class="col-sm-12 col-lg-8 mb-2">
-      <%= f.input :id, label: false, prompt: t('prompt.select.m', name: t('activerecord.models.sponsor.one')), collection: @institutions, input_html: { class: 'apply-selectize' } %>
-    </div>
-    <div class="col-sm-12 col-lg-4">
-      <%= f.button :submit, 'Adicionar',  class: 'btn-primary ml-auto' %>
+    <div class="form-row col-md-12">
+      <div class="form-group col-md-8">
+        <%= f.input :id, label: false, prompt: t('prompt.select.m', name: t('activerecord.models.sponsor.one')), collection: @institutions, input_html: { class: 'apply-selectize' } %>
+      </div>
+
+      <div class="form-group col-md-4">
+        <%= f.button :submit, 'Adicionar',  class: 'btn btn-outline-primary btn-block' %>
+      </div>
     </div>
   </div>
 <% end %>
