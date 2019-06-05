@@ -25,6 +25,9 @@ pt-BR:
       sponsor:
         one: Patrocinador
         other: Patrocinadores
+      sponsor_event:
+        one: Patrocinador
+        other: Patrocinadores
     attributes:
       attribute_commons: &commons
         name: Nome

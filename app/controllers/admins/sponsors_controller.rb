@@ -7,6 +7,7 @@ class Admins::SponsorsController < Admins::BaseController
                         resource_name: I18n.t('activerecord.models.sponsor.other')),
                  :admins_event_sponsors_path, only: [:index]
 
+  before_action :set_resource_name
   before_action :set_event
   before_action :load_sponsors
 
@@ -17,13 +18,25 @@ class Admins::SponsorsController < Admins::BaseController
   def create
     sponsor = Institution.find(params[:sponsor][:id])
     @event.sponsors << sponsor
+
+    if @event.save
+      flash[:success] = t('flash.actions.add.m', resource_name: @resource_name)
+    else
+      flash.now[:error] = I18n.t('flash.actions.errors')
+    end
     redirect_to admins_event_sponsors_path(@event)
   end
 
   def destroy
     sponsor = Institution.find(params[:id])
     @event.sponsors.destroy(sponsor)
+
+    flash[:success] = t('flash.actions.destroy.m', resource_name: @resource_name)
     redirect_to admins_event_sponsors_path(@event)
+  end
+
+  def set_resource_name
+    @resource_name = SponsorEvent.model_name.human
   end
 
   protected
