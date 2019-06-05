@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Admins::Event::remove_sponsor', type: :feature do
+describe 'Admins::Event::Sponsor::remove', type: :feature do
   let(:admin) { create(:admin) }
   let!(:event) { create_list(:event, 3).sample }
 

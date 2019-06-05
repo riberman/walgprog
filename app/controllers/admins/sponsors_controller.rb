@@ -24,6 +24,7 @@ class Admins::SponsorsController < Admins::BaseController
     else
       flash.now[:error] = I18n.t('flash.actions.errors')
     end
+
     redirect_to admins_event_sponsors_path(@event)
   end
 
@@ -32,6 +33,7 @@ class Admins::SponsorsController < Admins::BaseController
     @event.sponsors.destroy(sponsor)
 
     flash[:success] = t('flash.actions.destroy.m', resource_name: @resource_name)
+
     redirect_to admins_event_sponsors_path(@event)
   end
 
