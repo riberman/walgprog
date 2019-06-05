@@ -3,8 +3,8 @@ require 'rails_helper'
 describe 'Admins::Event::Sponsor::create', type: :feature do
   let(:resource_name) { SponsorEvent.model_name.human }
   let(:admin) { create(:admin) }
-  let!(:event) { create_list(:event, 2).sample }
-  let!(:institution) { create(:institution) }
+  let!(:event) { create_list(:event, 3).sample }
+  let!(:institution) { create_list(:institution, 3).sample }
 
   before(:each) do
     login_as(admin, scope: :admin)
@@ -29,7 +29,14 @@ describe 'Admins::Event::Sponsor::create', type: :feature do
   end
 
   context 'when data are not valid', js: true do
-    #it 'show errors' do end
+    it 'show errors' do
+      click_button
+
+      expect(page).to have_current_path admins_event_sponsors_path(event)
+
+      danger_message = I18n.t('flash.actions.errors')
+      expect(page).to have_flash(:danger, text: danger_message)
+    end
   end
 
 end
