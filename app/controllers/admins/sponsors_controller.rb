@@ -16,13 +16,13 @@ class Admins::SponsorsController < Admins::BaseController
   end
 
   def create
-    sponsor = Institution.find(params[:sponsor][:id])
-    @event.sponsors << sponsor
+    sponsor = Institution.find_by(id: params[:sponsor][:id])
 
-    if @event.save
+    if sponsor
+      @event.sponsors << sponsor
       flash[:success] = t('flash.actions.add.m', resource_name: @resource_name)
     else
-      flash.now[:error] = I18n.t('flash.actions.errors')
+      flash[:error] = I18n.t('flash.actions.errors')
     end
 
     redirect_to admins_event_sponsors_path(@event)
