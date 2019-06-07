@@ -8,9 +8,9 @@ describe 'Admins::Event::Sponsor::Breadcrumbs', type: :feature do
   let(:resource_name_plural) { Event.model_name.human count: 2 }
   let(:breadcrumbs) do
     [
-        { text: text_for_home, path: admins_root_path },
-        { text: text_for_index, path: admins_events_path },
-        { text: text_for_index}
+      { text: text_for_home, path: admins_root_path },
+      { text: text_for_index, path: admins_events_path },
+      { text: text_for_index }
     ]
   end
 

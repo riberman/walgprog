@@ -38,5 +38,4 @@ describe 'Admins::Event::Sponsor::create', type: :feature do
       expect(page).to have_flash(:danger, text: danger_message)
     end
   end
-
 end
