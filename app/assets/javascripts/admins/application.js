@@ -18,8 +18,6 @@
 //= require sifter/sifter.min
 //= require microplugin/microplugin.min
 //= require selectize/selectize.min
-//= require jsyaml/js-yaml.min
-
 
 // Config files
 //--------------------
