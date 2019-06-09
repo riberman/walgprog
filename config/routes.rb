@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
       resources :contacts
       resources :institutions
-      resources :events
+      resources :events do
+        resources :sections
+      end
 
       get 'states/:id/cities',
           to: 'states#cities', as: :state_cities

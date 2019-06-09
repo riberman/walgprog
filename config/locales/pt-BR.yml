@@ -22,6 +22,9 @@ pt-BR:
       event:
         one: Evento
         other: Eventos
+      section:
+        one: Seção
+        other: Seções
     attributes:
       attribute_commons: &commons
         name: Nome
@@ -29,6 +32,7 @@ pt-BR:
         created_at: Criado em
         updated_at: Atualizado em
         phone: Celular
+        title: Título
       admin:
         image: Imagem
         password: Senha
@@ -57,6 +61,14 @@ pt-BR:
         city_id: Cidade
         address: Endereço
         <<: *commons
+      section:
+        title: Título
+        index: Índice
+        content: Conteúdo
+        icon: Ícone
+        status: Status
+        alternative_text: Texto alternativo
+        <<: *commons
   helpers:
     back: Voltar
     currently: Atualmente
@@ -69,6 +81,11 @@ pt-BR:
       'true': Sim
       'false': Não
     until: até
+  enums:
+    status_types:
+      active: 'Ativo'
+      inactive: 'Inativo'
+      other: 'Outro'
   breadcrumbs:
     homepage: 'Página Inicial'
     action:
@@ -139,3 +156,9 @@ pt-BR:
     errors:
       year_used: Já há um evento cadastrado nesse ano.
       invalid_dates: deve ser posterior ao início
+  sections:
+    index: Seções
+    new: Nova Seção
+    show: "Detalhes da Seção do evento: %{event}"
+    edit: Editar Seção
+    description: Descrição
