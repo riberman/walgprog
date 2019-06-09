@@ -1,4 +1,5 @@
 class ContactMailer < ApplicationMailer
+
   def welcome_email
     @contact = params[:contact]
     email_with_name = %("#{@contact.name}" <#{@contact.email}>)
