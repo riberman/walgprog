@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_16_221819) do
+ActiveRecord::Schema.define(version: 2019_06_09_325478) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_221819) do
     t.bigint "institution_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "unregistered"
     t.index ["institution_id"], name: "index_contacts_on_institution_id"
   end
 
@@ -75,6 +76,25 @@ ActiveRecord::Schema.define(version: 2019_04_16_221819) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "researchers", force: :cascade do |t|
+    t.string "name"
+    t.string "genre"
+    t.bigint "scholarity_id"
+    t.bigint "institution_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image"
+    t.index ["institution_id"], name: "index_researchers_on_institution_id"
+    t.index ["scholarity_id"], name: "index_researchers_on_scholarity_id"
+  end
+
+  create_table "scholarities", force: :cascade do |t|
+    t.string "name"
+    t.string "abbr"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "states", force: :cascade do |t|
     t.string "acronym"
     t.string "name"
@@ -87,5 +107,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_221819) do
   add_foreign_key "cities", "states"
   add_foreign_key "contacts", "institutions"
   add_foreign_key "institutions", "cities"
+  add_foreign_key "researchers", "institutions"
+  add_foreign_key "researchers", "scholarities"
   add_foreign_key "states", "regions"
 end
