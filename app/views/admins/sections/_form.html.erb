@@ -16,11 +16,13 @@
 
     <%= f.input :title, required: true, autofocus: true, wrapper_html: { class: 'col-md-12' } %>
 
+    <%= f.input :index, disabled: true, wrapper_html: { class: 'col-md-1' } %>
+
     <%= f.input(:icon,
                 collection: [],
                 prompt: t('prompt.select.m', name: t('activerecord.attributes.section.icon')),
                 input_html: { class: 'icon-select select fa', style: 'font-family:FontAwesome,sans-serif'},
-                wrapper_html: { class: 'col-md-4' }) %>
+                wrapper_html: { class: 'col-md-3' }) %>
 
     <%= f.input(:status, collection: Section.human_status_types,
                 prompt: t('prompt.select.m',

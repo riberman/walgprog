@@ -1,11 +1,11 @@
 <% provide(:head_title, t('sections.index')) %>
-<% provide(:page_title, t('sections.index')) %>
+<% provide(:page_title, t('sections.from', event: @event.name)) %>
 
 <div class="row">
   <div class="col-sm-12 col-lg-4 offset-lg-8">
     <%= link_to new_admins_event_section_path, class: 'btn btn-outline-primary d-block' do %>
       <i class="fe fe-plus mr-2"></i>
-      <%= t('events.new') %>
+      <%= t('sections.new') %>
     <% end %>
   </div>
 </div>
@@ -20,7 +20,6 @@
         <th><%= t('activerecord.attributes.section.alternative_text') %></th>
         <th><%= t('activerecord.attributes.section.index') %></th>
         <th><%= t('activerecord.attributes.section.icon') %></th>
-        <th><%= t('activerecord.models.event.one') %></th>
         <th><%= t('activerecord.attributes.attribute_commons.created_at') %></th>
         <th></th>
       </tr>

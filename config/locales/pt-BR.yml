@@ -95,6 +95,7 @@ pt-BR:
         f: 'Nova %{resource_name}'
       show: 'Visualizar %{resource_name}'
       index: '%{resource_name}'
+      parent_model: '%{parent_name}'
   flash:
     actions:
       update:
@@ -158,6 +159,7 @@ pt-BR:
       invalid_dates: deve ser posterior ao início
   sections:
     index: Seções
+    from: "Seções do evento: %{event}"
     new: Nova Seção
     show: "Detalhes da Seção do evento: %{event}"
     edit: Editar Seção

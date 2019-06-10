@@ -4,10 +4,14 @@ class Admins::SectionsController < Admins::BaseController
   before_action :set_event
 
   add_breadcrumb I18n.t('breadcrumbs.action.index',
+                        resource_name: I18n.t('activerecord.models.event.one')),
+                 :admins_event_sections_path, except: :destroy
+
+  add_breadcrumb I18n.t('breadcrumbs.action.index',
                         resource_name: I18n.t('activerecord.models.section.other')),
                  :admins_event_sections_path, except: :destroy
 
-  add_breadcrumb I18n.t('breadcrumbs.action.new.m',
+  add_breadcrumb I18n.t('breadcrumbs.action.new.f',
                         resource_name: I18n.t('activerecord.models.section.one')),
                  :new_admins_event_section_path, only: [:new, :create]
 
@@ -31,7 +35,7 @@ class Admins::SectionsController < Admins::BaseController
   def create
     @section = Section.new(section_params)
     if @section.save
-      flash[:success] = t('flash.actions.create.m', resource_name: @resource_name)
+      flash[:success] = t('flash.actions.create.f', resource_name: @resource_name)
       redirect_to admins_event_sections_path
     else
       max_index
@@ -46,7 +50,7 @@ class Admins::SectionsController < Admins::BaseController
 
   def update
     if @section.update section_params
-      flash[:success] = t('flash.actions.update.m', resource_name: @resource_name)
+      flash[:success] = t('flash.actions.update.f', resource_name: @resource_name)
       redirect_to admins_event_sections_path
     else
       flash.now[:error] = I18n.t('flash.actions.errors')
@@ -57,7 +61,7 @@ class Admins::SectionsController < Admins::BaseController
   def destroy
     @section.destroy
 
-    flash[:success] = t('flash.actions.destroy.m', resource_name: @resource_name)
+    flash[:success] = t('flash.actions.destroy.f', resource_name: @resource_name)
     redirect_to admins_event_sections_path
   end
 
