@@ -22,6 +22,9 @@ pt-BR:
       event:
         one: Evento
         other: Eventos
+      section:
+        one: Seção
+        other: Seções
     attributes:
       attribute_commons: &commons
         name: Nome
@@ -29,6 +32,8 @@ pt-BR:
         created_at: Criado em
         updated_at: Atualizado em
         phone: Celular
+        title: Título
+        id: ID
       admin:
         image: Imagem
         password: Senha
@@ -57,6 +62,14 @@ pt-BR:
         city_id: Cidade
         address: Endereço
         <<: *commons
+      section:
+        title: Título
+        index: Índice
+        content: Conteúdo
+        icon: Ícone
+        status: Status
+        alternative_text: Texto alternativo
+        <<: *commons
   helpers:
     back: Voltar
     currently: Atualmente
@@ -69,6 +82,11 @@ pt-BR:
       'true': Sim
       'false': Não
     until: até
+  enums:
+    status_types:
+      active: 'Ativo'
+      inactive: 'Inativo'
+      other: 'Outro'
   breadcrumbs:
     homepage: 'Página Inicial'
     action:
@@ -78,6 +96,7 @@ pt-BR:
         f: 'Nova %{resource_name}'
       show: 'Visualizar %{resource_name}'
       index: '%{resource_name}'
+      parent_model: '%{parent_name}'
   flash:
     actions:
       update:
@@ -139,3 +158,13 @@ pt-BR:
     errors:
       year_used: Já há um evento cadastrado nesse ano.
       invalid_dates: deve ser posterior ao início
+  sections:
+    index: Seções
+    from: "Seções do evento: %{event}"
+    new: Nova Seção
+    show: "Detalhes da Seção do evento: %{event}"
+    edit: Editar Seção
+    description: Descrição
+    sortable_info: Clique e arraste nos ícones abaixo para selecionar a ordem das seções
+    save_order: Salvar ordem das seções
+    saved_order: Ordem das seções redefinida com sucesso!

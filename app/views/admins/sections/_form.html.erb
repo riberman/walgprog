@@ -1,0 +1,51 @@
+<%= simple_form_for [:admins, @event, @section] do |f| %>
+
+  <% if @section.errors.any? %>
+    <ul>
+      <% @section.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <div class='row'>
+
+    <h3 class="col-md-12 text-center"><%= @event.name %></h3>
+
+    <%= f.hidden_field :event_id, value: @event.id %>
+
+
+    <%= f.input :title, required: true, autofocus: true, wrapper_html: { class: 'col-md-12' } %>
+
+    <%= f.input :index, disabled: true, wrapper_html: { class: 'col-md-1' } %>
+
+    <%= f.input(:icon,
+                collection: [],
+                prompt: t('prompt.select.m', name: t('activerecord.attributes.section.icon')),
+                input_html: { class: 'icon-select select fa', style: 'font-family:FontAwesome,sans-serif'},
+                wrapper_html: { class: 'col-md-3' }) %>
+
+    <%= f.input(:status, collection: Section.human_status_types,
+                prompt: t('prompt.select.m',
+                          name: t('activerecord.attributes.section.status')),
+                wrapper_html: { class: 'col-lg-4 col-sm-12' },
+                input_html: { autocomplete: 'false', class: 'apply-selectize ' }) %>
+
+    <%= f.input :alternative_text, required: true, wrapper_html: { class: 'col-lg-4 col-sm-12' } %>
+
+    <%= f.hidden_field :index, value: @section.index %>
+  </div>
+
+  <div class="row">
+    <%= f.input(:content, as: :text, wrapper_html: { class: 'col-md-12' }) %>
+  </div>
+
+
+  <div class='d-flex'>
+    <%= link_to admins_event_sections_path, class: 'btn btn-secondary float-left' do %>
+      <%= t('helpers.back') %>
+    <% end %>
+
+    <%= f.button :submit, class: 'btn-primary ml-auto' %>
+  </div>
+
+<% end %>
