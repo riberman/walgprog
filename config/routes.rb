@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
       get 'states/:id/cities',
           to: 'states#cities', as: :state_cities
+
+      get 'contact/:id/unregister',
+          to: 'contacts#unregister', as: :contact_unregister
     end
   end
 

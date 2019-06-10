@@ -15,7 +15,7 @@ class Admins::ContactsController < Admins::BaseController
                         resource_name: I18n.t('activerecord.models.contact.one')),
                  :admins_contact_path, only: :show
 
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :set_contact, only: [:show, :edit, :update, :destroy, :unregister]
 
   def index
     @contacts = Contact.includes(:institution).order('contacts.name ASC')
@@ -25,9 +25,21 @@ class Admins::ContactsController < Admins::BaseController
     @contact = Contact.new
   end
 
+  # def create
+  #   @contact = Contact.new(params_contact)
+  #   action_success? @contact.save, :new, 'flash.actions.create.m'
+  # end
+
   def create
     @contact = Contact.new(params_contact)
-    action_success? @contact.save, :new, 'flash.actions.create.m'
+    if @contact.save
+      ContactMailer.with(contact: @contact).welcome_email.deliver
+      flash[:success] = I18n.t('flash.actions.create.f', resource_name: I18n.t('activerecord.models.contact.one'))
+      redirect_to admins_contacts_path
+    else
+      flash.now[:error] = I18n.t('flash.actions.errors')
+      render :new
+    end
   end
 
   def show; end
@@ -44,6 +56,12 @@ class Admins::ContactsController < Admins::BaseController
     @contact.destroy
     flash[:success] = I18n.t('flash.actions.destroy.m', resource_name: contact_name)
     redirect_to admins_contacts_path
+  end
+
+  def unregister
+    if Contact.update(params[:id], unregistered: true)
+      ContactMailer.with(contact: @contact).unregistered_contact.deliver
+    end
   end
 
   private
