@@ -2,7 +2,14 @@
 <% provide(:page_title, t('sections.from', event: @event.name)) %>
 
 <div class="row">
-  <div class="col-sm-12 col-lg-4 offset-lg-8">
+  <div class="col-sm-12 col-lg-4 ">
+    <button class="btn btn-outline-success d-block" id="save-sections-order">
+      <%= icon('fa', 'check') %>
+      <%= t('sections.save_order') %>
+    </button>
+  </div>
+
+  <div class="col-sm-12 col-lg-4 offset-lg-4">
     <%= link_to new_admins_event_section_path, class: 'btn btn-outline-primary d-block' do %>
       <i class="fe fe-plus mr-2"></i>
       <%= t('sections.new') %>
@@ -21,6 +28,7 @@
             class="fa fa-info-circle">
           </i>
         </th>
+        <th><%= t('activerecord.attributes.attribute_commons.id') %></th>
         <th><%= t('activerecord.attributes.attribute_commons.title') %></th>
         <th><%= t('activerecord.attributes.section.content') %></th>
         <th><%= t('activerecord.attributes.section.status') %></th>
@@ -35,4 +43,7 @@
       <%= render @sections %>
     </tbody>
   </table>
+
+  <input type="hidden" id="event_id" value="<%= @event.id %>">
 </div>
+

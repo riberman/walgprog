@@ -2,6 +2,7 @@ $(document).on('turbolinks:load', () => {
   const statusInput = $('#section_status');
   const alternativeInput = $('.section_alternative_text');
   WAlgProg.sectionsSortable();
+  WAlgProg.saveSectionsOrder();
   WAlgProg.loadFontAwesomeIcons();
   WAlgProg.sectionStatusListener(statusInput, alternativeInput);
   statusInput.trigger('change');
@@ -44,5 +45,33 @@ WAlgProg.sectionsSortable = () => {
         $(section).html(maxSectionIndex - (index));
       });
     },
+  });
+};
+
+WAlgProg.saveSectionsOrder = () => {
+  const sections = [];
+  $('#save-sections-order').click(() => {
+    const sectionsTr = $('tbody tr');
+    $.each(sectionsTr, (index, section) => {
+      sections.push({
+        id: +$(section).find('.id-td').html(),
+        index: +$(section).find('.index-td').html(),
+      });
+    });
+
+    const eventId = $('#event_id').val();
+
+    $.ajax({
+      method: 'POST',
+      url: `/admins/events/${eventId}/sections/index`,
+      data: {
+        authenticity_token: $('[name="csrf-token"]')[0].content,
+        list: sections,
+      },
+      error: () => {},
+      success: (response) => {
+        alert(response.message);
+      },
+    });
   });
 };

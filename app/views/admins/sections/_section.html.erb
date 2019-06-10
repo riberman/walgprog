@@ -2,6 +2,7 @@
   <td class="section-to-order">
     <%= icon('fas', 'list') %>
   </td>
+  <td class="id-td" id="<%= section.id %>"><%= section.id %></td>
   <td><%= section.title %></td>
   <td><%= section.content %></td>
   <td><%= t("enums.status_types.#{section.status}") %></td>

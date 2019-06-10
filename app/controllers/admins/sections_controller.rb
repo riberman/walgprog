@@ -65,6 +65,17 @@ class Admins::SectionsController < Admins::BaseController
     redirect_to admins_event_sections_path
   end
 
+  def update_index
+    @list = params[:list]
+    @list.each do |_index, section|
+      @section = Section.find(section['id'])
+      @section.index = section['index']
+      @section.save
+    end
+
+    render json: { message: t('sections.saved_order') }
+  end
+
   private
 
   def section_params

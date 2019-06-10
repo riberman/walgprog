@@ -33,6 +33,7 @@ pt-BR:
         updated_at: Atualizado em
         phone: Celular
         title: Título
+        id: ID
       admin:
         image: Imagem
         password: Senha
@@ -165,3 +166,5 @@ pt-BR:
     edit: Editar Seção
     description: Descrição
     sortable_info: Clique e arraste nos ícones abaixo para selecionar a ordem das seções
+    save_order: Salvar ordem das seções
+    saved_order: Ordem das seções redefinida com sucesso!
