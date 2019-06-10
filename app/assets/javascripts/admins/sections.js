@@ -1,6 +1,7 @@
 $(document).on('turbolinks:load', () => {
   const statusInput = $('#section_status');
   const alternativeInput = $('.section_alternative_text');
+  WAlgProg.sectionsSortable();
   WAlgProg.loadFontAwesomeIcons();
   WAlgProg.sectionStatusListener(statusInput, alternativeInput);
   statusInput.trigger('change');
@@ -25,5 +26,23 @@ WAlgProg.sectionStatusListener = (input, inputToToggle) => {
     (status === 'O')
       ? inputToToggle.removeClass('hidden')
       : inputToToggle.addClass('hidden');
+  });
+};
+
+WAlgProg.sectionsSortable = () => {
+  $('tbody').sortable({
+    group: 'no-drop',
+    handle: '.section-to-order',
+    onDragStart($item, container, _super) {
+      if (!container.options.drop) $item.clone().insertAfter($item);
+      _super($item, container);
+    },
+    update() {
+      const sections = $('tbody .index-td');
+      const maxSectionIndex = sections.length;
+      $.each(sections, (index, section) => {
+        $(section).html(maxSectionIndex - (index));
+      });
+    },
   });
 };

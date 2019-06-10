@@ -164,3 +164,4 @@ pt-BR:
     show: "Detalhes da Seção do evento: %{event}"
     edit: Editar Seção
     description: Descrição
+    sortable_info: Clique e arraste nos ícones abaixo para selecionar a ordem das seções

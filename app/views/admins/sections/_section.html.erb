@@ -1,9 +1,12 @@
 <tr>
+  <td class="section-to-order">
+    <%= icon('fas', 'list') %>
+  </td>
   <td><%= section.title %></td>
   <td><%= section.content %></td>
   <td><%= t("enums.status_types.#{section.status}") %></td>
   <td><%= section.alternative_text %></td>
-  <td><%= section.index %></td>
+  <td class="index-td"><%= section.index %></td>
   <td><i class="fa fa-<%= section.icon %>"></i></td>
   <td><%= I18n.l(section.created_at, format: :short) %></td>
   <td>

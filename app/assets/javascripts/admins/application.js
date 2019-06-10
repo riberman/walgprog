@@ -18,6 +18,7 @@
 //= require sifter/sifter.min
 //= require microplugin/microplugin.min
 //= require selectize/selectize.min
+//= require jquery.ui/jquery-ui
 
 // Config files
 //--------------------
