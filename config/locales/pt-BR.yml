@@ -169,3 +169,5 @@ pt-BR:
     sortable_info: Clique e arraste nos ícones abaixo para selecionar a ordem das seções
     save_order: Salvar ordem das seções
     saved_order: Ordem das seções redefinida com sucesso!
+    error:
+      save_order: Deve haver ao menos uma

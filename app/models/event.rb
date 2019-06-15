@@ -25,4 +25,8 @@ class Event < ApplicationRecord
 
     '#000'
   end
+
+  def sections_to_sort?
+    sections.length > 1
+  end
 end

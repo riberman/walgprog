@@ -64,13 +64,15 @@ class Admins::SectionsController < Admins::BaseController
 
   def update_index
     @list = params[:list]
+
+    return flash[:error] = t('sections.saved_order') if @list.empty?
+
     @list.each do |_index, section|
       @section = Section.find(section['id'])
       @section.index = section['index']
       @section.save
     end
-
-    render json: { message: t('sections.saved_order') }
+    flash[:success] = t('sections.saved_order')
   end
 
   private

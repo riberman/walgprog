@@ -72,9 +72,7 @@ WAlgProg.saveSectionsOrder = () => {
         list: sections,
       },
       error: () => {},
-      success: (response) => {
-        alert(response.message);
-      },
+      success: () => window.location.reload(),
     });
   });
 };

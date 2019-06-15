@@ -1,9 +1,10 @@
 <% provide(:head_title, t('sections.index')) %>
 <% provide(:page_title, t('sections.from', event: @event.name)) %>
 
+
 <div class="row">
   <div class="col-sm-12 col-lg-4 ">
-    <% unless @sections.empty? %>
+    <% if @event.sections_to_sort? %>
       <button class="btn btn-outline-success d-block" id="save-sections-order">
         <%= icon('fa', 'check') %>
         <%= t('sections.save_order') %>
@@ -32,7 +33,6 @@
       </th>
       <th><%= t('activerecord.attributes.attribute_commons.id') %></th>
       <th><%= t('activerecord.attributes.attribute_commons.title') %></th>
-      <th><%= t('activerecord.attributes.section.content') %></th>
       <th><%= t('activerecord.attributes.section.status') %></th>
       <th><%= t('activerecord.attributes.section.alternative_text') %></th>
       <th><%= t('activerecord.attributes.section.index') %></th>
