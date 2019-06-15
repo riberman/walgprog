@@ -1,0 +1,23 @@
+<tr>
+  <td class="text-center">
+    <div class="avatar d-block"  style="background-image: url('<%= admin.image.url(:thumb)%>');"></div>
+  </td>
+  <td>
+    <div><%= admin.name %></div>
+    <div class="small text-muted"><%= I18n.t('admins.registered', date: l(admin.created_at, format: :short_date)) %></div>
+  </td>
+  <td><%= admin.email %></td>
+  <td><%= t("enums.user_types.#{admin.user_type}") %></td>
+  <td>
+    <% if current_admin.administrator? %>
+        <%= link_to edit_admins_admin_path(admin) do %>
+          <%= icon('fas', 'edit', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.edit')) %>
+        <% end %>
+
+        <%= link_to admins_admin_path(admin), method: :delete,
+          data: {confirm: t('prompt.confirm')} do %>
+          <%= icon('fa', 'trash', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.delete')) %>
+        <% end %>
+    <% end %>
+  </td>
+</tr>
