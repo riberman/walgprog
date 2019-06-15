@@ -1,12 +1,7 @@
 <%= simple_form_for [:admins, @event, @section] do |f| %>
 
-  <% if @section.errors.any? %>
-    <ul>
-      <% @section.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  <% end %>
+  <input type="hidden" id="section-icon" value="<%= @section.icon %>">
+
   <div class='row'>
 
     <h3 class="col-md-12 text-center"><%= @event.name %></h3>

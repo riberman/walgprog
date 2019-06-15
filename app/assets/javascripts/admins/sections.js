@@ -9,13 +9,19 @@ $(document).on('turbolinks:load', () => {
 });
 
 WAlgProg.loadFontAwesomeIcons = () => {
+  const sectionIcon = $('#section-icon').val();
   const iconSelect = $('.icon-select');
   const url = 'https://gist.githubusercontent.com/RobinMalfait/b2632576462910a4cd67/raw/'
     + '799d7d22dd418402e40f06c56cde7bdbd446927d/FontAwesome.json';
   $.get(url, (data) => {
     const parsed = JSON.parse(data).icons;
     $.each(parsed, (index, icon) => {
-      iconSelect.append(`<option class="fa" value="${icon.id}">&#x${icon.unicode};  ${icon.id}</option>`);
+      const option = document.createElement('option');
+      option.className = 'fa';
+      option.value = icon.id;
+      option.selected = sectionIcon === icon.id;
+      option.innerHTML = `&#x${icon.unicode};  ${icon.id}`;
+      iconSelect.append(option);
     });
   });
 };
