@@ -8,6 +8,7 @@ pt-BR:
       short_hour: '%d/%m/%Y %H:%M'
       default: "%A, %d de %B de %Y, %H:%M h"
       long: "%A, %d de %B de %Y, %H:%M h"
+      short_date:  "%d de %B de %Y"
   activerecord:
     models:
       admin:
@@ -40,6 +41,7 @@ pt-BR:
         current_password: Senha atual
         password_confirmation: Confirmação de senha
         remember_me: Lembre-me
+        user_type: Tipo de Usuário
       institution:
         name: Nome
         city: Cidade
@@ -83,6 +85,9 @@ pt-BR:
       'false': Não
     until: até
   enums:
+    user_types:
+      administrator: 'Administrador'
+      collaborator: 'Colaborador'
     status_types:
       active: 'Ativo'
       inactive: 'Inativo'
@@ -171,3 +176,9 @@ pt-BR:
     saved_order: Ordem das seções redefinida com sucesso!
     error:
       save_order: Deve haver ao menos uma
+  admins:
+    index: Administradores
+    new: Novo Administrador
+    edit: Editar Administrador
+    show: Detalhes do Administrador
+    registered: 'Registrado: %{date}'

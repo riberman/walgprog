@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
       resources :contacts
       resources :institutions
+      resources :admins, expect: :show
       resources :events do
         resources :sections
       end

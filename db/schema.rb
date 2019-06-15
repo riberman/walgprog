@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_06_09_182334) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "image"
+    t.string "user_type", limit: 1
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
@@ -51,13 +52,13 @@ ActiveRecord::Schema.define(version: 2019_06_09_182334) do
     t.string "name"
     t.string "initials"
     t.string "color"
+    t.datetime "beginning_date"
+    t.datetime "end_date"
     t.string "local"
     t.integer "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "address"
-    t.datetime "beginning_date"
-    t.datetime "end_date"
   end
 
   create_table "institutions", force: :cascade do |t|
