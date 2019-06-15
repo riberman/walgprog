@@ -3,7 +3,7 @@ FactoryBot.define do
     sequence(:title) { |n| "Title #{n}" }
     content { 'Content' }
     status { 'A' }
-    icon { 'glass' }
+    icon { 'laptop' }
     sequence(:index) { |n| n }
     event
 

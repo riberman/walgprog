@@ -29,10 +29,10 @@ describe 'Admins::Section::Breadcrumbs', type: :feature do
   context 'when create' do
     let(:breadcrumbs) do
       [
-          { text: text_for_home, path: admins_root_path },
-          { text: text_for_parent, path: admins_event_path(section.event) },
-          { text: text_for_index, path: admins_event_sections_path(section.event) },
-          { text: text_for_new_f, path: new_admins_event_section_path(section.event) }
+        { text: text_for_home, path: admins_root_path },
+        { text: text_for_parent, path: admins_event_path(section.event) },
+        { text: text_for_index, path: admins_event_sections_path(section.event) },
+        { text: text_for_new_f, path: new_admins_event_section_path(section.event) }
       ]
     end
 
@@ -54,10 +54,10 @@ describe 'Admins::Section::Breadcrumbs', type: :feature do
     let!(:contact) { create(:contact) }
     let(:breadcrumbs) do
       [
-          { text: text_for_home, path: admins_root_path },
-          { text: text_for_parent, path: admins_event_path(section.event) },
-          { text: text_for_index, path: admins_event_sections_path(section.event) },
-          { text: text_for_edit, path: edit_admins_event_section_path(section.event, section) }
+        { text: text_for_home, path: admins_root_path },
+        { text: text_for_parent, path: admins_event_path(section.event) },
+        { text: text_for_index, path: admins_event_sections_path(section.event) },
+        { text: text_for_edit, path: edit_admins_event_section_path(section.event, section) }
       ]
     end
 
