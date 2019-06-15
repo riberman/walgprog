@@ -21,7 +21,7 @@
     <%= f.input(:icon,
                 collection: [],
                 prompt: t('prompt.select.m', name: t('activerecord.attributes.section.icon')),
-                input_html: { class: 'icon-select select fa', style: 'font-family:FontAwesome,sans-serif'},
+                input_html: { class: 'icon-select select fa'},
                 wrapper_html: { class: 'col-md-3' }) %>
 
     <%= f.input(:status, collection: Section.human_status_types,
