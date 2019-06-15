@@ -52,13 +52,13 @@ ActiveRecord::Schema.define(version: 2019_06_09_182334) do
     t.string "name"
     t.string "initials"
     t.string "color"
-    t.datetime "beginning_date"
-    t.datetime "end_date"
     t.string "local"
     t.integer "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "address"
+    t.datetime "beginning_date"
+    t.datetime "end_date"
   end
 
   create_table "institutions", force: :cascade do |t|
