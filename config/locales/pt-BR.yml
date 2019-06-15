@@ -155,6 +155,7 @@ pt-BR:
     description: Descrição
     beginning_end: Início/Término
     from_until: 'De %{beginning} até %{end}'
+    edit_sections: Editar seções
     errors:
       year_used: Já há um evento cadastrado nesse ano.
       invalid_dates: deve ser posterior ao início

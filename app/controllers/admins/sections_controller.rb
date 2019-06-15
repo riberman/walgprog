@@ -2,10 +2,7 @@ class Admins::SectionsController < Admins::BaseController
   before_action :set_resource_name, only: [:create, :update, :destroy]
   before_action :set_section, only: [:show, :edit, :update, :destroy]
   before_action :set_event
-
-  add_breadcrumb I18n.t('breadcrumbs.action.index',
-                        resource_name: I18n.t('activerecord.models.event.one')),
-                 :admins_event_sections_path, except: :destroy
+  before_action :set_event_breadcrumb, except: :destroy
 
   add_breadcrumb I18n.t('breadcrumbs.action.index',
                         resource_name: I18n.t('activerecord.models.section.other')),
@@ -99,5 +96,12 @@ class Admins::SectionsController < Admins::BaseController
 
   def max_index
     @section.index = @event.sections.count + 1 if @section.new_record?
+  end
+
+  def set_event_breadcrumb
+    path = admins_event_path(@event)
+    add_breadcrumb I18n.t('breadcrumbs.action.index',
+                          resource_name: I18n.t('activerecord.models.event.one')),
+                   path, except: :destroy
   end
 end

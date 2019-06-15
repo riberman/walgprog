@@ -23,10 +23,7 @@ WAlgProg.loadFontAwesomeIcons = () => {
 WAlgProg.sectionStatusListener = (input, inputToToggle) => {
   $(input).on('change', (event) => {
     const status = event.target.value;
-
-    (status === 'O')
-      ? inputToToggle.removeClass('hidden')
-      : inputToToggle.addClass('hidden');
+    (status === 'other') ? inputToToggle.removeClass('hidden') : inputToToggle.addClass('hidden');
   });
 };
 
