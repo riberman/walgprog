@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 describe 'Admins::Institution::create', type: :feature do
   let(:resource_name) { Institution.model_name.human }
   let(:admin) { create(:admin) }

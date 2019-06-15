@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Admins:logout', type: :feature do
+describe 'Admins::Session::logout', type: :feature do
   let(:admin) { create(:admin) }
 
   before(:each) do
