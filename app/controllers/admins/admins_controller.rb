@@ -1,7 +1,7 @@
 class Admins::AdminsController < Admins::BaseController
   before_action :set_resource_name, only: [:create, :update, :destroy]
   before_action :set_admin, only: [:edit, :update, :destroy]
-  before_action :authorized, only: [:new, :edit, :update, :destroy]
+  before_action :authorized, except: :index
 
   add_breadcrumb I18n.t('breadcrumbs.action.index',
                         resource_name: I18n.t('activerecord.models.admin.other')),
@@ -70,7 +70,7 @@ class Admins::AdminsController < Admins::BaseController
   end
 
   def authorized
-    return if current_admin.admin?
+    return if current_admin.administrator?
 
     flash[:error] = I18n.t('flash.not_authorized')
     redirect_to admins_admins_path

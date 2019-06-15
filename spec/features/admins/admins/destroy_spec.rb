@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Admins::Admin::destroy', type: :feature do
   let(:resource_name) { Admin.model_name.human }
-  let(:admin) { create(:admin) }
+  let(:admin) { create(:admin, :administrator) }
   let!(:admins) { create_list(:admin, 3) }
 
   before(:each) do

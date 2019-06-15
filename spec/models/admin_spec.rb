@@ -3,88 +3,71 @@ require 'rails_helper'
 RSpec.describe Admin, type: :model do
   describe 'validates' do
     it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:user_type) }
-    it { is_expected.to validate_presence_of(:password) }
+  end
 
-    context 'when blank attributes' do
-      admin = Admin.new
-      it 'name message blank' do
-        expect(admin).not_to be_valid
-        expect(admin.errors[:name]).to include(I18n.t('errors.messages.blank'))
-      end
+  describe '#user_type' do
+    let(:admin) { build(:admin, :administrator) }
 
-      it 'email message blank' do
-        expect(admin).not_to be_valid
-        expect(admin.errors[:email]).to include(I18n.t('errors.messages.blank'))
-      end
-
-      it 'user_type message blank' do
-        expect(admin).not_to be_valid
-        expect(admin.errors[:user_type]).to include(I18n.t('errors.messages.blank'))
-      end
-
-      it 'password messgage blank' do
-        expect(admin).not_to be_valid
-        expect(admin.errors[:password]).to include(I18n.t('errors.messages.blank'))
-      end
+    it 'admistrator' do
+      expect(admin.administrator?).to be true
+      expect(admin.collaborator?).to be false
     end
 
-    context 'when user type' do
-      let(:admin) { create(:admin) }
-
-      it 'is admin' do
-        expect(admin.admin?).to eq(true)
-      end
-
-      it 'is not admin' do
-        admin.update(user_type: 'C')
-
-        expect(admin.admin?).to eq(false)
-      end
-    end
-
-    context 'when human user type' do
-      let(:admin) { create(:admin) }
-
-      it 'enum administrator' do
-        enum_user_type = I18n.t("enums.user_types.#{admin.user_type}")
-        expect(enum_user_type).to eq(I18n.t('enums.user_types.administrator'))
-      end
-
-      it 'enum collaborator' do
-        admin.update(user_type: 'C')
-
-        enum_user_type = I18n.t("enums.user_types.#{admin.user_type}")
-        expect(enum_user_type).to eq(I18n.t('enums.user_types.collaborator'))
-      end
+    it 'collaborator' do
+      admin.user_type = 'C'
+      expect(admin.administrator?).to be false
+      expect(admin.collaborator?).to be true
     end
   end
 
-  context 'when create and update admin' do
+  describe '#update' do
     let(:admin) { create(:admin) }
 
-    it 'create valid' do
-      expect(admin).to be_valid
+    it 'with password update all attributes' do
+      params = attributes_for(:admin, password: '123456', password_confirmation: '123456')
+
+      admin.update(params)
+      admin.reload
+
+      expect(admin.valid_password?('123456')).to be true
     end
 
-    it 'update with password valid' do
-      admin.update(user_type: 'C')
+    it 'without password update attributes but keeep the same password' do
+      params = { name: 'new name' }
 
-      expect(admin).to be_valid
+      admin.update(params)
+      admin.reload
+
+      expect(admin.valid_password?('password')).to be true
+      expect(admin.name).to eql('new name')
     end
 
-    it 'update without password' do
-      admin.update(user_type: 'A')
+    it 'with empty password update attributes but keeep the same password' do
+      params = { name: 'new name', password: '', password_confirmation: '' }
 
-      expect(admin).to be_valid
+      admin.update(params)
+      admin.reload
+
+      expect(admin.valid_password?('password')).to be true
+      expect(admin.name).to eql('new name')
+    end
+  end
+
+  describe '.user_types' do
+    subject(:admin) { Admin.new }
+
+    it 'enum' do
+      expect(admin).to define_enum_for(:user_type)
+        .with_values(administrator: 'A', collaborator: 'C')
+        .backed_by_column_of_type(:string)
     end
 
-    it 'update with password confirmation error' do
-      admin.update(password: '123456', password_confirmation: '')
+    it 'human enum' do
+      hash = { I18n.t('enums.user_types.administrator') => 'administrator',
+               I18n.t('enums.user_types.collaborator') => 'collaborator' }
 
-      expect(admin).not_to be_valid
-      expect(admin.errors[:password_confirmation]).to include('não é igual a Senha')
+      expect(Admin.human_user_types).to include(hash)
     end
   end
 end

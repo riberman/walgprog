@@ -1,12 +1,12 @@
 class Admin < ApplicationRecord
   include Classifiable
+
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
 
   mount_uploader :image, ProfileImageUploader
 
   validates :name, presence: true
-
   validates :user_type, presence: true
 
   def update(params)
@@ -14,9 +14,5 @@ class Admin < ApplicationRecord
       update_without_password(params)
     end
     super(params)
-  end
-
-  def admin?
-    user_type.eql?('administrator')
   end
 end

@@ -8,6 +8,7 @@ pt-BR:
       short_hour: '%d/%m/%Y %H:%M'
       default: "%A, %d de %B de %Y, %H:%M h"
       long: "%A, %d de %B de %Y, %H:%M h"
+      short_date:  "%d de %B de %Y"
   activerecord:
     models:
       admin:
@@ -149,3 +150,4 @@ pt-BR:
     new: Novo Administrador
     edit: Editar Administrador
     show: Detalhes do Administrador
+    registered: 'Registrado: %{date}'

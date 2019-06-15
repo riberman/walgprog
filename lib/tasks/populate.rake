@@ -8,6 +8,7 @@ namespace :db do
     cities
     contacts
     events
+    admins
   end
 
   def delete_all
@@ -44,6 +45,18 @@ namespace :db do
         beginning_date: beginning_date, end_date: end_date,
         color: Faker::Color.hex_color, local: Faker::Address.community,
         address: Faker::Address.full_address, city_id: city_ids.sample
+      )
+    end
+  end
+
+  def admins
+    5.times do
+      Admin.create!(
+        name: Faker::Name.unique.name,
+        email: Faker::Internet.unique.email,
+        user_type: Admin.user_types.keys.sample,
+        password: '123456',
+        password_confirmation: '123456'
       )
     end
   end

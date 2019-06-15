@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="col-sm-12 col-lg-4">
-        <% if current_admin.admin? %>
+        <% if current_admin.administrator? %>
         <%= link_to '+ ' + t('admins.new'), new_admins_admin_path, class: "btn btn-outline-primary btn-block" %>
           <% end %>
       </div>
@@ -25,11 +25,10 @@
       <table class="table card-table table-striped table-vcenter">
         <thead>
           <tr>
+            <th class="text-center w-1"></th>
             <th><%= t('activerecord.attributes.admin.name') %></th>
             <th><%= t('activerecord.attributes.admin.email') %></th>
-            <th><%= t('activerecord.attributes.admin.image') %></th>
             <th><%= t('activerecord.attributes.admin.user_type') %></th>
-
             <th></th>
           </tr>
         </thead>
