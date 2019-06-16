@@ -31,6 +31,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   gem 'brakeman', require: false
   gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'bullet'
   gem 'factory_bot_rails'

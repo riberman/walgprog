@@ -21,7 +21,7 @@ describe 'Admins::Institution::update', type: :feature do
     end
   end
 
-  context 'whith valid fields', js: true do
+  context 'with valid fields', js: true do
     it 'update event' do
       new_name = 'new institution name'
       new_acronym = 'new institution acronym'
@@ -46,7 +46,7 @@ describe 'Admins::Institution::update', type: :feature do
     end
   end
 
-  context 'whith invalid fields', js: true do
+  context 'with invalid fields', js: true do
     it 'show errors' do
       fill_in 'institution_name', with: ''
       fill_in 'institution_acronym', with: ''
