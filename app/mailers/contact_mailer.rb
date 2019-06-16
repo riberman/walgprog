@@ -12,3 +12,6 @@ class ContactMailer < ApplicationMailer
     mail(to: email_with_name, subject: 'Você foi Descadastrado')
   end
 end
+
+# settings app rails
+# action mailer template define by user

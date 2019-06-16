@@ -15,20 +15,33 @@ class Admins::ContactsController < Admins::BaseController
                         resource_name: I18n.t('activerecord.models.contact.one')),
                  :admins_contact_path, only: :show
 
+  add_breadcrumb I18n.t('breadcrumbs.action.unregistered',
+                        resource_name: I18n.t('activerecord.models.contact.other')),
+                 :admins_contacts_unregistered_path, only: :unregistered
+
+  add_breadcrumb I18n.t('breadcrumbs.action.registered',
+                        resource_name: I18n.t('activerecord.models.contact.other')),
+                 :admins_contacts_registered_path, only: :registered
+
   before_action :set_contact, only: [:show, :edit, :update, :destroy, :unregister]
 
   def index
     @contacts = Contact.includes(:institution).order('contacts.name ASC')
   end
 
+  def unregistered
+    @contacts = Contact.where(unregistered: false).includes(:institution)
+    render :index
+  end
+
+  def registered
+    @contacts = Contact.where(unregistered: true).includes(:institution)
+    render :index
+  end
+
   def new
     @contact = Contact.new
   end
-
-  # def create
-  #   @contact = Contact.new(params_contact)
-  #   action_success? @contact.save, :new, 'flash.actions.create.m'
-  # end
 
   def create
     @contact = Contact.new(params_contact)
@@ -61,6 +74,7 @@ class Admins::ContactsController < Admins::BaseController
   def unregister
     if Contact.update(params[:id], unregistered: true)
       ContactMailer.with(contact: @contact).unregistered_contact.deliver
+      redirect_to admins_contacts_path
     end
   end
 

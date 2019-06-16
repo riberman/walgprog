@@ -8,11 +8,12 @@ class Contact < ApplicationRecord
             presence: true,
             length: { maximum: 255 },
             format: { with: Devise.email_regexp },
-            uniqueness: { case_sensitive: false }
+            uniqueness: { case_sensitive: false },
+            email_unregistered: true
+
   validates :phone,
             presence: false,
             length: { minimum: 14, maximum: 15 },
             format: { with: PHONE_REGEX, allow_blank: true }
-  validates :unregistered, default: false
 
 end
