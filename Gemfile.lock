@@ -367,7 +367,7 @@ DEPENDENCIES
   breadcrumbs_on_rails
   bullet
   byebug
-  capybara (>= 2.15)
+  capybara (>= 3.19.1)
   capybara-screenshot
   carrierwave (~> 1.0)
   carrierwave-i18n
