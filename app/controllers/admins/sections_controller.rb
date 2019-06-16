@@ -66,14 +66,23 @@ class Admins::SectionsController < Admins::BaseController
   end
 
   def update_index
-    @list = params[:list]
-    @list.each do |_index, section|
-      @section = Section.find(section['id'])
-      @section.index = section['index']
-      @section.save
+    if params[:list].present?
+      list = params[:list]
+      list.each do |_index, section|
+        @section = Section.find(section['id'])
+        @section.index = section['index']
+        @section.save
+      end
+    end
+
+    respond_to do |format|  ## Add this
+      format.js { flash.now[:notice] = "Here is my flash notice" }
+      format.json {render json: { message: t('sections.saved_order') }}
+      ## Other format
     end
 
     render json: { message: t('sections.saved_order') }
+    # flash[:success] = t('flash.actions.destroy.m', resource_name: Section.model_name.human)
   end
 
   private
