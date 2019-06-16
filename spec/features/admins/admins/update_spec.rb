@@ -22,7 +22,7 @@ describe 'Admins::Admin::update', type: :feature do
     end
   end
 
-  context 'whith valid fields', js: true do
+  context 'with valid fields', js: true do
     it 'update admin' do
       new_name = 'new admin name'
       new_email = 'new@admin.com'
@@ -65,7 +65,7 @@ describe 'Admins::Admin::update', type: :feature do
     end
   end
 
-  context 'whith invalid fields', js: true do
+  context 'with invalid fields', js: true do
     it 'show errors' do
       fill_in 'admin_name', with: ''
       fill_in 'admin_email', with: ''

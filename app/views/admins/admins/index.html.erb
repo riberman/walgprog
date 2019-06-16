@@ -16,8 +16,10 @@
       </div>
       <div class="col-sm-12 col-lg-4">
         <% if current_admin.administrator? %>
-        <%= link_to '+ ' + t('admins.new'), new_admins_admin_path, class: "btn btn-outline-primary btn-block" %>
+          <%= link_to new_admins_admin_path, class: "btn btn-outline-primary btn-block" do %>
+            <%= icon('fas', 'plus', class: 'mr-2') %><%= t('admins.new') %>
           <% end %>
+        <% end %>
       </div>
     </div>
 

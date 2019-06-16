@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Admin:Profiles', type: :feature do
+describe 'Admins::Session::profile', type: :feature do
   context 'when update my profile' do
     let(:admin) { create(:admin) }
 
