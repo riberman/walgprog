@@ -1,9 +1,10 @@
-require:
-  - rubocop-rspec
-  - rubocop-rails
+require: rubocop-rspec
+
+Rails:
+  Enabled: true
 
 AllCops:
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 2.4
   # RuboCop has a bunch of cops enabled by default. This setting tells RuboCop
   # to ignore them, so only the ones explicitly set in this file are enabled.
   # DisabledByDefault: true
@@ -16,8 +17,8 @@ AllCops:
     - 'config/initializers/devise.rb'
     - 'node_modules/**/*'
     - 'bin/webpack'
-    - 'bin/webpack-dev-server'
     - 'bin/yarn'
+    - 'bin/webpack-dev-server'
     - 'db/migrate/20190401222059_devise_create_admins.rb'
     - 'config/initializers/simple_form.rb'
     - 'config/initializers/simple_form_bootstrap.rb'
