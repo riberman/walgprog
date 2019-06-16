@@ -79,11 +79,11 @@ ActiveRecord::Schema.define(version: 2019_05_23_031647) do
   create_table "researchers", force: :cascade do |t|
     t.string "name"
     t.string "genre"
+    t.string "image"
     t.bigint "scholarity_id"
     t.bigint "institution_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
     t.index ["institution_id"], name: "index_researchers_on_institution_id"
     t.index ["scholarity_id"], name: "index_researchers_on_scholarity_id"
   end
