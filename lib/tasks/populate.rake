@@ -58,7 +58,7 @@ namespace :db do
       rand.times do |i|
         Section.create!(
           title: Faker::DcComics.title,
-          content: Faker::Markdown.sandwich(6, 3),
+          content_markdown: Faker::Markdown.sandwich(6, 3),
           icon: 'music',
           index: i,
           event: event,

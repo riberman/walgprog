@@ -1,6 +1,5 @@
 class MarkdownConfig
 
-  # TODO deve ficar neste pasta mesmo???
   def extensions
     extensions = {
       space_after_headers: true,
@@ -12,8 +11,8 @@ class MarkdownConfig
     options = {
       filter_html: false,
       link_attributes: {
-        rel: "nofollow",
-        target: "blank"
+        rel: 'nofollow',
+        target: 'blank'
       }
     }
   end

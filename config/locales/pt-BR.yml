@@ -66,6 +66,8 @@ pt-BR:
         title: Título
         index: Índice
         content: Conteúdo
+        content_markdown: Conteúdo
+        content_short: Conteúdo de visualização
         icon: Ícone
         status: Status
         alternative_text: Texto alternativo

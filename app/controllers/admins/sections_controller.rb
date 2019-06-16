@@ -90,7 +90,7 @@ class Admins::SectionsController < Admins::BaseController
   def section_params
     params.require(:section).permit(
       :title, :status, :alternative_text,
-      :icon, :index, :event_id, :content
+      :icon, :index, :event_id, :content_markdown
     )
   end
 

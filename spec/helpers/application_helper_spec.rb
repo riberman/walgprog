@@ -28,25 +28,4 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(helper.bootstrap_class_for('danger')).to eql('danger')
     end
   end
-
-  describe 'markdown' do
-    it 'parse markdown to html' do
-      markdown = <<-MARKDOWN.strip_heredoc
-        # Effugiam erit cinerem tenuere concurrere
-        ## Mihi persequar et trementi muris constant tibique
-        Lorem markdownum, abstulerunt preces prima. Ripas et concipit **genuit**.
-      MARKDOWN
-
-      html = <<-HTML.chomp.strip_heredoc
-        <h1>Effugiam erit cinerem tenuere concurrere</h1>
-
-        <h2>Mihi persequar et trementi muris constant tibique</h2>
-
-        <p>Lorem markdownum, abstulerunt preces prima. Ripas et concipit <strong>genuit</strong>.</p>
-
-      HTML
-
-      expect(helper.markdown_to_html(markdown)).to eql(html)
-    end
-  end
 end
