@@ -23,6 +23,11 @@ pt-BR:
       event:
         one: Evento
         other: Eventos
+      researcher:
+        one: Pesquisador
+        other: Pesquisadores
+      scholarity:
+        one: Titulo Acadêmico
     attributes:
       attribute_commons: &commons
         name: Nome
@@ -58,6 +63,13 @@ pt-BR:
         city: Cidade
         city_id: Cidade
         address: Endereço
+        <<: *commons
+      researcher:
+        name: Nome
+        scholarity: Título Acadêmico
+        institution: Afiliação Institucional
+        image: Imagem
+        genre: Gênero
         <<: *commons
   helpers:
     back: Voltar
@@ -151,3 +163,9 @@ pt-BR:
     edit: Editar Administrador
     show: Detalhes do Administrador
     registered: 'Registrado: %{date}'
+  researchers:
+    index: Pesquisadores
+    new: Novo Pesquisador
+    show: Visualizar
+    edit: Editar Pesquisador
+    image_update: Clique na imagem para alterá-la

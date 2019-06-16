@@ -9,10 +9,11 @@ namespace :db do
     contacts
     events
     admins
+    researchers
   end
 
   def delete_all
-    [Contact, Institution].each(&:delete_all)
+    [Contact, Institution, Researcher].each(&:delete_all)
     Admin.where.not(email: 'admin@admin.com').destroy_all
   end
 
@@ -57,6 +58,17 @@ namespace :db do
         user_type: Admin.user_types.keys.sample,
         password: '123456',
         password_confirmation: '123456'
+      )
+    end
+  end
+
+  def researchers
+    10.times do
+      Researcher.create(
+        name: Faker::Name.unique.name,
+        genre: Faker::Gender.binary_type,
+        scholarity: Scholarity.all.sample,
+        institution: Institution.all.sample
       )
     end
   end
