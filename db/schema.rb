@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2019_05_23_031647) do
 
   create_table "researchers", force: :cascade do |t|
     t.string "name"
-    t.string "gender"
+    t.string "gender", limit: 1
     t.string "image"
     t.bigint "scholarity_id"
     t.bigint "institution_id"

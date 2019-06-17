@@ -9,7 +9,7 @@
                   input_html: {class: 'apply-selectize'} %>
 
       <%= f.input :gender, as: :radio_buttons,
-                  collection: [['Feminino', 'Feminino'], ['Masculino', 'Masculino']] %>
+                  collection: Researcher.human_genders %>
 
       <%= f.association :institution, collection: @institutions,
                   prompt: t('prompt.select.f', name: Institution.model_name.human),

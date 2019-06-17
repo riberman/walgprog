@@ -22,9 +22,7 @@ describe 'Admins::Researchers::create', type: :feature do
       selectize institution.name, from: 'researcher_institution'
       selectize scholarity.name, from: 'researcher_scholarity'
       attach_file 'researcher_image', FileSpecHelper.image.path
-
-      choose('Feminino')
-
+      choose(I18n.t("enums.genders.#{attributes[:gender]}"))
       click_button
 
       expect(page).to have_current_path admins_researchers_path
@@ -46,7 +44,7 @@ describe 'Admins::Researchers::create', type: :feature do
 
       message_blank_error = I18n.t('errors.messages.blank')
       expect(page).to have_message(message_blank_error, in: 'div.researcher_name')
-      expect(page).to have_message(message_blank_error, in: 'fieldset.researcher_genre')
+      expect(page).to have_message(message_blank_error, in: 'fieldset.researcher_gender')
       expect(page).to have_message(I18n.t('errors.messages.required'),
                                    in: 'div.researcher_institution')
       expect(page).to have_message(I18n.t('errors.messages.required'),

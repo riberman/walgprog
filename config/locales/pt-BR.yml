@@ -87,6 +87,9 @@ pt-BR:
     user_types:
       administrator: 'Administrador'
       collaborator: 'Colaborador'
+    genders:
+      male: 'Masculino'
+      female: 'Feminino'
   breadcrumbs:
     homepage: 'Página Inicial'
     action:
