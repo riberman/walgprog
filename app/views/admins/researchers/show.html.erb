@@ -1,7 +1,6 @@
 <% provide(:head_title, t('researchers.show')) %>
 <% provide(:page_title, t('researchers.show')) %>
 
-
 <div class="card">
   <div class="card-header">
     <h3 class="card-title"><%= @researcher.name %></h3>
@@ -39,10 +38,4 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-12">
-    <div class="d-flex">
-      <%= link_to t('helpers.back'), admins_researchers_path, class: 'btn btn-secondary' %>
-    </div>
-  </div>
-</div>
+<%= link_to t('helpers.back'), admins_researchers_path, class: 'btn btn-secondary' %>

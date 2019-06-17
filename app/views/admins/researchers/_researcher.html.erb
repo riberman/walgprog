@@ -1,5 +1,11 @@
 <tr>
-  <td><%= researcher.name %> </td>
+  <td class="text-center">
+    <div class="avatar d-block"  style="background-image: url('<%= researcher.image.url(:thumb) %>');"></div>
+  </td>
+  <td>
+    <div><%= researcher.name %></div>
+    <div class="small text-muted"><%= I18n.t('helpers.registered', date: l(researcher.created_at, format: :short_date)) %></div>
+  </td>
   <td><%= researcher.scholarity.name %></td>
   <td><%= researcher.institution.name %></td>
   <td>

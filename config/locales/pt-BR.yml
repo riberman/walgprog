@@ -83,6 +83,7 @@ pt-BR:
       'true': Sim
       'false': Não
     until: até
+    registered: 'Registrado: %{date}'
   enums:
     user_types:
       administrator: 'Administrador'
@@ -165,7 +166,6 @@ pt-BR:
     new: Novo Administrador
     edit: Editar Administrador
     show: Detalhes do Administrador
-    registered: 'Registrado: %{date}'
   researchers:
     index: Pesquisadores
     new: Novo Pesquisador
