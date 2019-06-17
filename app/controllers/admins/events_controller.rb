@@ -58,9 +58,12 @@ class Admins::EventsController < Admins::BaseController
   end
 
   def destroy
-    @event.destroy
+    if @event.destroy
+      flash[:success] = t('flash.actions.destroy.m', resource_name: @resource_name)
+    else
+      flash[:alert] = t('flash.actions.bond', resource_name: @resource_name)
+    end
 
-    flash[:success] = t('flash.actions.destroy.m', resource_name: @resource_name)
     redirect_to admins_events_path
   end
 
