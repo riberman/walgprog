@@ -1,7 +1,7 @@
 class Researcher < ApplicationRecord
   include ProfileImage
 
-  enum gender: { male: 'M', female: 'F' }, _prefix: :gender
+  enum gender: { male: 'M', female: 'F' }, _suffix: :gender
 
   def self.human_genders
     hash = {}
