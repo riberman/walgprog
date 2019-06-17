@@ -18,27 +18,26 @@
 <div class="table-responsive">
   <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
     <thead>
-    <tr>
-      <th>Id</th>
-      <th>Patrocinador</th>
-      <th></th>
-    </tr>
+      <tr>
+        <th>Id</th>
+        <th>Patrocinador</th>
+        <th><%= t('activerecord.attributes.institution.acronym') %></th>
+        <th></th>
+      </tr>
     </thead>
     <tbody>
-    <% @event.sponsors.each do |sponsor| %>
-      <tr>
-        <td><%= sponsor.id %></td>
-        <td><%= sponsor.name %></td>
-        <td>
-          <div class="btn-group">
-
+      <% @event.sponsors.each do |sponsor| %>
+        <tr>
+          <td><%= sponsor.id %></td>
+          <td><%= sponsor.name %></td>
+          <td><%= sponsor.acronym %></td>
+          <td>
             <%= link_to admins_event_sponsor_path(@event, sponsor), method: :delete, data: {confirm: t('prompt.confirm')} do %>
               <%= icon('fa', 'trash', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.delete')) %>
             <% end %>
-          </div>
-        </td>
-      </tr>
-    <% end %>
+          </td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </div>
