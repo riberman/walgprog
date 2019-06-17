@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :institutions
       resources :events
       resources :admins, expect: :show
+      resources :researchers
 
       get 'states/:id/cities',
           to: 'states#cities', as: :state_cities

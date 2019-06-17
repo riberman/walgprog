@@ -23,6 +23,11 @@ pt-BR:
       event:
         one: Evento
         other: Eventos
+      researcher:
+        one: Pesquisador
+        other: Pesquisadores
+      scholarity:
+        one: Titulo Acadêmico
     attributes:
       attribute_commons: &commons
         name: Nome
@@ -59,6 +64,13 @@ pt-BR:
         city_id: Cidade
         address: Endereço
         <<: *commons
+      researcher:
+        name: Nome
+        scholarity: Título Acadêmico
+        institution: Afiliação Institucional
+        image: Imagem
+        gender: Gênero
+        <<: *commons
   helpers:
     back: Voltar
     currently: Atualmente
@@ -71,10 +83,14 @@ pt-BR:
       'true': Sim
       'false': Não
     until: até
+    registered: 'Registrado: %{date}'
   enums:
     user_types:
       administrator: 'Administrador'
       collaborator: 'Colaborador'
+    genders:
+      male: 'Masculino'
+      female: 'Feminino'
   breadcrumbs:
     homepage: 'Página Inicial'
     action:
@@ -150,4 +166,9 @@ pt-BR:
     new: Novo Administrador
     edit: Editar Administrador
     show: Detalhes do Administrador
-    registered: 'Registrado: %{date}'
+  researchers:
+    index: Pesquisadores
+    new: Novo Pesquisador
+    show: Visualizar
+    edit: Editar Pesquisador
+    image_update: Clique na imagem para alterá-la

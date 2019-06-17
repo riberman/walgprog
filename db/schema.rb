@@ -76,6 +76,25 @@ ActiveRecord::Schema.define(version: 2019_05_23_031647) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "researchers", force: :cascade do |t|
+    t.string "name"
+    t.string "gender", limit: 1
+    t.string "image"
+    t.bigint "scholarity_id"
+    t.bigint "institution_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["institution_id"], name: "index_researchers_on_institution_id"
+    t.index ["scholarity_id"], name: "index_researchers_on_scholarity_id"
+  end
+
+  create_table "scholarities", force: :cascade do |t|
+    t.string "name"
+    t.string "abbr"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "states", force: :cascade do |t|
     t.string "acronym"
     t.string "name"
@@ -88,5 +107,7 @@ ActiveRecord::Schema.define(version: 2019_05_23_031647) do
   add_foreign_key "cities", "states"
   add_foreign_key "contacts", "institutions"
   add_foreign_key "institutions", "cities"
+  add_foreign_key "researchers", "institutions"
+  add_foreign_key "researchers", "scholarities"
   add_foreign_key "states", "regions"
 end

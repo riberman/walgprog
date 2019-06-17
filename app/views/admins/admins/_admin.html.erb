@@ -4,7 +4,7 @@
   </td>
   <td>
     <div><%= admin.name %></div>
-    <div class="small text-muted"><%= I18n.t('admins.registered', date: l(admin.created_at, format: :short_date)) %></div>
+    <div class="small text-muted"><%= I18n.t('helpers.registered', date: l(admin.created_at, format: :short_date)) %></div>
   </td>
   <td><%= admin.email %></td>
   <td><%= t("enums.user_types.#{admin.user_type}") %></td>

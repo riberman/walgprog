@@ -3,16 +3,17 @@ namespace :db do
 
   task populate: :environment do
     require 'faker'
-
     delete_all
+
+    admins
     cities
     contacts
     events
-    admins
+    researchers
   end
 
   def delete_all
-    [Contact, Institution].each(&:delete_all)
+    [Contact, Researcher, Institution].each(&:delete_all)
     Admin.where.not(email: 'admin@admin.com').destroy_all
   end
 
@@ -57,6 +58,20 @@ namespace :db do
         user_type: Admin.user_types.keys.sample,
         password: '123456',
         password_confirmation: '123456'
+      )
+    end
+  end
+
+  def researchers
+    institutions_ids = Institution.pluck(:id)
+    scholarity_ids = Scholarity.pluck(:id)
+
+    10.times do
+      Researcher.create!(
+        name: Faker::Name.unique.name,
+        gender: Researcher.genders.keys.sample,
+        scholarity_id: scholarity_ids.sample,
+        institution_id: institutions_ids.sample
       )
     end
   end
