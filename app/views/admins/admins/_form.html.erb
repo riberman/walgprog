@@ -1,0 +1,36 @@
+<%= simple_form_for([:admins, @admin], html: { autocomplete: 'off' }) do |f| %>
+
+  <div class="form-row">
+    <div class="col-sm-8">
+      <%= f.input :name, required: true, autofocus: true %>
+      <%= f.input :email, required: true %>
+      <%= f.input :user_type, collection: Admin.human_user_types,
+                  prompt: t('prompt.select.m',
+                            name: t('activerecord.attributes.admin.user_type')),
+                  input_html: { autocomplete: 'false', class: 'apply-selectize' } %>
+      <%= f.input :password,
+                  hint: t("devise.registrations.edit.leave_blank_if_you_don_t_want_to_change_it") %>
+      <%= f.input :password_confirmation %>
+    </div>
+
+    <div class="col-4">
+      <div id="box-image-preview" data-toggle="tooltip" data-placement="left" title="Clique na imagem para alterá-la">
+        <div class="input-field image_preview">
+          <div class="box-image center">
+            <%= image_tag @admin.image.url, class: 'file_preview active' %>
+            <%= f.input :image, label: false, input_html: { accept: 'image/*' } %>
+            <%= f.hidden_field :image_cache %>
+          </div>
+        </div>
+        <div class="text-box text-center">
+          <p class="text-input">Clique na imagem para alterá-la</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <%= link_to t('helpers.back'), admins_admins_path, class: 'btn btn-secondary float-left' %>
+    <%= f.button :submit, class: 'btn btn-primary ml-auto' %>
+  </div>
+<% end %>

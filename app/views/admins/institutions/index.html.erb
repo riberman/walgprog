@@ -15,7 +15,9 @@
         </div>
       </div>
       <div class="col-sm-12 col-lg-4">
-        <%= link_to '+ ' + t('institutions.new'), new_admins_institution_path, class: "btn btn-outline-primary btn-block" %>
+        <%= link_to new_admins_institution_path, class: "btn btn-outline-primary btn-block" do %>
+          <%= icon('fas', 'plus', class: 'mr-2') %><%= t('institutions.new') %>
+        <% end %>
       </div>
     </div>
 

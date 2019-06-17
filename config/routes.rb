@@ -8,7 +8,10 @@ Rails.application.routes.draw do
 
       resources :contacts
       resources :institutions
+      resources :admins, expect: :show
+      resources :researchers
       resources :events do
+        resources :sponsors, only: [:index, :create, :destroy]
         resources :sections
       end
 

@@ -1,7 +1,7 @@
 module Helpers
   module Form
     def selectize(name, options = {})
-      id = normalize_selector(options[:from])
+      id = normalize_selector(options)
 
       find("\##{id}-selectized").click
 
@@ -13,10 +13,18 @@ module Helpers
       end
     end
 
+    def choose_radio(value, options = {})
+      find("div.#{options[:from]} label.custom-radio", text: value).click
+    end
+
     private
 
     # This is necessary when is used f.association
-    def normalize_selector(selector)
+    def normalize_selector(options)
+      selector = options[:from]
+
+      return selector if options[:normalize_id] == false
+
       return selector if selector.include?('_id')
 
       "#{selector}_id"

@@ -1,7 +1,5 @@
 require 'csv'
 
-# From:
-# ftp://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/divisao_territorial/2018/
 namespace :db do
   namespace :seeds do
     desc 'Populate regions, states, and cities'
@@ -18,12 +16,16 @@ namespace :db do
       end
     end
 
-    desc 'Populate regions, states, and cities'
+    desc 'Populate regions, states, and cities and scholarities'
     task institutions: :environment do
       CSV.foreach('./lib/tasks/seeds/data/institutions.csv') do |row|
         city = City.joins(:state).find_by(name: row[2], states: { acronym: row[3] })
 
         Institution.create_with(city: city).find_or_create_by(name: row[0], acronym: row[1])
+      end
+
+      CSV.foreach('./lib/tasks/seeds/data/scholarities.csv') do |row|
+        Scholarity.create(name: row[0], abbr: row[1])
       end
     end
   end

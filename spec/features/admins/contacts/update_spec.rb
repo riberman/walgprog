@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Admin::Contact::update', type: :feature, js: true do
+describe 'Admins::Contact::update', type: :feature, js: true do
   let(:admin) { create(:admin) }
   let(:resource_name) { Contact.model_name.human }
   let!(:institution) { create_list(:institution, 2).sample }
