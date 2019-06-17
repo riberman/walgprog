@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 describe 'Admins::Reseracher::destroy', type: :feature do
   let(:resource_name) { Researcher.model_name.human }
   let(:admin) { create(:admin) }

@@ -96,4 +96,28 @@ RSpec.describe 'Admins::active_link', type: :feature do
       expect(page).to have_link(I18n.t('admins.index'), class: active_class)
     end
   end
+
+  context 'when visit researchers' do
+    let!(:researcher) { create(:researcher) }
+
+    it 'index active' do
+      visit admins_researchers_path
+      expect(page).to have_link(I18n.t('researchers.index'), class: active_class)
+    end
+
+    it 'new active' do
+      visit new_admins_researcher_path
+      expect(page).to have_link(I18n.t('researchers.index'), class: active_class)
+    end
+
+    it 'edit active' do
+      visit edit_admins_researcher_path(researcher)
+      expect(page).to have_link(I18n.t('researchers.index'), class: active_class)
+    end
+
+    it 'show active' do
+      visit admins_researcher_path(researcher)
+      expect(page).to have_link(I18n.t('researchers.index'), class: active_class)
+    end
+  end
 end

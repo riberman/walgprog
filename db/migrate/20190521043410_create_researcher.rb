@@ -2,7 +2,9 @@ class CreateResearcher < ActiveRecord::Migration[5.2]
   def change
     create_table :researchers do |t|
       t.string :name
-      t.string :genre
+      t.string :gender, limit: 1
+      t.string :image
+
       t.belongs_to :scholarity, foreign_key: true
       t.belongs_to :institution, foreign_key: true
 

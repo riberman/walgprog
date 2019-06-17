@@ -69,7 +69,7 @@ pt-BR:
         scholarity: Título Acadêmico
         institution: Afiliação Institucional
         image: Imagem
-        genre: Gênero
+        gender: Gênero
         <<: *commons
   helpers:
     back: Voltar
@@ -83,10 +83,14 @@ pt-BR:
       'true': Sim
       'false': Não
     until: até
+    registered: 'Registrado: %{date}'
   enums:
     user_types:
       administrator: 'Administrador'
       collaborator: 'Colaborador'
+    genders:
+      male: 'Masculino'
+      female: 'Feminino'
   breadcrumbs:
     homepage: 'Página Inicial'
     action:
@@ -162,7 +166,6 @@ pt-BR:
     new: Novo Administrador
     edit: Editar Administrador
     show: Detalhes do Administrador
-    registered: 'Registrado: %{date}'
   researchers:
     index: Pesquisadores
     new: Novo Pesquisador

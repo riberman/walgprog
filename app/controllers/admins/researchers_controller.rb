@@ -61,7 +61,7 @@ class Admins::ResearchersController < Admins::BaseController
   private
 
   def researcher_params
-    params.require(:researcher).permit(:name, :scholarity_id, :genre, :institution_id, :image,
+    params.require(:researcher).permit(:name, :scholarity_id, :gender, :institution_id, :image,
                                        :image_cache)
   end
 

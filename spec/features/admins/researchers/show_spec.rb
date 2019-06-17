@@ -11,10 +11,13 @@ describe 'Researchers:show', type: :feature do
 
   context 'with data' do
     it 'showed' do
-      expect(page).to have_content(researcher.name)
-      expect(page).to have_content(researcher.genre)
-      expect(page).to have_content(researcher.institution.name)
-      expect(page).to have_content(researcher.scholarity.name)
+      within('div.card-body div.card-body') do
+        expect(page).to have_content(researcher.name)
+        expect(page).to have_content(I18n.t("enums.genders.#{researcher.gender}"))
+        expect(page).to have_content(researcher.institution.name)
+        expect(page).to have_content(researcher.scholarity.name)
+        expect(page).to have_image(researcher.image.url)
+      end
     end
   end
 

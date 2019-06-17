@@ -13,6 +13,10 @@ module Helpers
       end
     end
 
+    def choose_radio(value, options = {})
+      find("div.#{options[:from]} label.custom-radio", text: value).click
+    end
+
     private
 
     # This is necessary when is used f.association

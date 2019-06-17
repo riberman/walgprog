@@ -1,5 +1,6 @@
 <% provide(:head_title, t('researchers.index')) %>
 <% provide(:page_title, t('researchers.index')) %>
+
 <div class="row">
   <div class="input-group col-md-8">
     <input
@@ -24,18 +25,20 @@
     <% end %>
   </div>
 </div>
+
 <div class="mt-5 col-md-12 row card-body-scrollable mt-5">
   <table class="table table-hover table-outline table-vcenter card-table">
     <thead>
-    <tr>
-      <th><%= t('activerecord.attributes.attribute_commons.name') %></th>
-      <th><%= t('activerecord.attributes.researcher.scholarity') %></th>
-      <th><%= t('activerecord.attributes.researcher.institution') %></th>
-      <th colspan="3"></th>
-    </tr>
+      <tr>
+        <th class="text-center w-1"></th>
+        <th><%= t('activerecord.attributes.attribute_commons.name') %></th>
+        <th><%= t('activerecord.attributes.researcher.scholarity') %></th>
+        <th><%= t('activerecord.attributes.researcher.institution') %></th>
+        <th></th>
+      </tr>
     </thead>
     <tbody>
-    <%= render @researchers %>
+      <%= render @researchers %>
     </tbody>
   </table>
 </div>
