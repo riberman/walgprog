@@ -11,4 +11,11 @@ module ApplicationHelper
     { success: 'alert-success', error: 'alert-danger', alert: 'alert-warning',
       notice: 'alert-info' }[flash_type.to_sym] || flash_type.to_s
   end
+
+  def sidebar
+    actions = %(new create edit update)
+    return 'layouts/admins/event_sidebar' if @event && !actions.include?(action_name)
+
+    'layouts/admins/sidebar'
+  end
 end

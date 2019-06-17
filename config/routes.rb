@@ -8,9 +8,11 @@ Rails.application.routes.draw do
 
       resources :contacts
       resources :institutions
-      resources :events
       resources :admins, expect: :show
       resources :researchers
+      resources :events do
+        resources :sponsors, only: [:index, :create, :destroy]
+      end
 
       get 'states/:id/cities',
           to: 'states#cities', as: :state_cities

@@ -28,6 +28,12 @@ pt-BR:
         other: Pesquisadores
       scholarity:
         one: Titulo Acadêmico
+      sponsor:
+        one: Patrocinador
+        other: Patrocinadores
+      sponsor_event:
+        one: Patrocinador
+        other: Patrocinadores
     attributes:
       attribute_commons: &commons
         name: Nome
@@ -100,6 +106,9 @@ pt-BR:
         f: 'Nova %{resource_name}'
       show: 'Visualizar %{resource_name}'
       index: '%{resource_name}'
+      add: 'Adicionar %{resource_name}'
+    event:
+      detail: 'Detalhes do %{resource_name}'
   flash:
     actions:
       update:
@@ -111,6 +120,9 @@ pt-BR:
       destroy:
         m: '%{resource_name} removido com sucesso!'
         f: '%{resource_name} removida com sucesso!'
+      add:
+        m: '%{resource_name} adicionado com sucesso!'
+        f: '%{resource_name} adicionada com sucesso!'
       bond: Não é possível remover %{resource_name} com vínculos!'
       errors: 'Alguns erros foram encontrados, por favor verifique:'
     not_authorized: Acesso não autorizado!
@@ -172,3 +184,6 @@ pt-BR:
     show: Visualizar
     edit: Editar Pesquisador
     image_update: Clique na imagem para alterá-la
+  sponsors:
+    add: Adicionar Patrocinador
+    index: Patrocinadores
