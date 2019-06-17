@@ -16,7 +16,7 @@ class Admins::EventsController < Admins::BaseController
                         resource_name: I18n.t('activerecord.models.event.one')),
                  :edit_admins_event_path, only: [:edit, :update]
 
-  add_breadcrumb I18n.t('breadcrumbs.action.show',
+  add_breadcrumb I18n.t('breadcrumbs.event.detail',
                         resource_name: I18n.t('activerecord.models.event.one')),
                  :admins_event_path, only: [:show]
 
@@ -58,9 +58,12 @@ class Admins::EventsController < Admins::BaseController
   end
 
   def destroy
-    @event.destroy
+    if @event.destroy
+      flash[:success] = t('flash.actions.destroy.m', resource_name: @resource_name)
+    else
+      flash[:alert] = t('flash.actions.bond', resource_name: @resource_name)
+    end
 
-    flash[:success] = t('flash.actions.destroy.m', resource_name: @resource_name)
     redirect_to admins_events_path
   end
 

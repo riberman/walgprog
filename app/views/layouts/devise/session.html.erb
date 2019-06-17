@@ -5,10 +5,11 @@
     <title>
       <%= full_title(yield(:head_title)) %>
     </title>
-
     <%= csrf_meta_tags %>
+
     <%= stylesheet_link_tag 'devise/session', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'devise/session', 'data-turbolinks-track': 'reload' %>
+
     <%= render 'application/favicon' %>
   </head>
 
