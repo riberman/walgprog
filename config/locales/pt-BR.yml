@@ -146,6 +146,8 @@ pt-BR:
       label: Entidade não processável!
       message: A mudança que você queria foi rejeitada...
       details: Talvez você tentou alterar algo que você não possui acesso.
+    sponsors:
+      none_selected: 'Nenhum patrocianador selecionado'
   prompt:
     confirm: Você tem certeza?
     select:

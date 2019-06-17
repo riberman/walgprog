@@ -22,7 +22,7 @@ class Admins::SponsorsController < Admins::BaseController
       @event.sponsors << sponsor
       flash[:success] = t('flash.actions.add.m', resource_name: @resource_name)
     else
-      flash[:error] = I18n.t('flash.actions.errors')
+      flash[:error] = t('errors.sponsors.none_selected')
     end
 
     redirect_to admins_event_sponsors_path(@event)

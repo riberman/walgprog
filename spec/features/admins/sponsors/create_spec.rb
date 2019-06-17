@@ -24,6 +24,7 @@ describe 'Admins::Event::Sponsor::create', type: :feature do
       within('table tbody') do
         expect(page).to have_content(institution.id)
         expect(page).to have_content(institution.name)
+        expect(page).to have_content(institution.acronym)
       end
     end
   end
@@ -33,9 +34,7 @@ describe 'Admins::Event::Sponsor::create', type: :feature do
       click_button
 
       expect(page).to have_current_path admins_event_sponsors_path(event)
-
-      danger_message = I18n.t('flash.actions.errors')
-      expect(page).to have_flash(:danger, text: danger_message)
+      expect(page).to have_flash(:danger, text: I18n.t('errors.sponsors.none_selected'))
     end
   end
 end
