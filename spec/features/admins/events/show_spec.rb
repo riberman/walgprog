@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Event:show', type: :feature do
+describe 'Admins::Event:show', type: :feature do
   let(:admin) { create(:admin) }
   let(:event) { create(:event) }
 

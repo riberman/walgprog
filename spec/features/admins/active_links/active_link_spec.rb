@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Admins::Active_link', type: :feature do
+RSpec.describe 'Admins::active_link', type: :feature do
   let(:admin) { create(:admin) }
   let(:active_class) { 'list-group-item list-group-item-action active' }
 
