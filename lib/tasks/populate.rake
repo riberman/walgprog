@@ -40,11 +40,11 @@ namespace :db do
       beginning_date += i.years
       end_date = beginning_date + i.years + 1.day
 
-      event = Event.create(
+      Event.create(
         name: Faker::Name.unique.name, initials: Faker::Lorem.word.upcase,
         beginning_date: beginning_date, end_date: end_date,
         color: Faker::Color.hex_color, local: Faker::Address.community,
-        address: Faker::Address.full_address, city_id: city_ids.sample,
+        address: Faker::Address.full_address, city_id: city_ids.sample
       )
     end
   end
@@ -55,12 +55,12 @@ namespace :db do
     Event.all.each do |event|
       rand = rand(1..10)
       puts "created sections #{rand} by event name #{event.name} with id #{event.id}. . ."
-      rand.times do |i|
+      rand.times do |index|
         Section.create!(
           title: Faker::DcComics.title,
           content_markdown: Faker::Markdown.sandwich(6, 3),
           icon: 'music',
-          index: i,
+          index: index,
           event: event,
           status: status.sample
         )
