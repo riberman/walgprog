@@ -78,10 +78,13 @@ namespace :db do
   end
 
   def sponsors
+    event_ids = Event.pluck(:id)
+    institution_ids = Institution.pluck(:id)
+
     10.times do
       SponsorEvent.find_or_create_by!(
-        event: Event.all.sample,
-        institution: Institution.all.sample
+        event_id: event_ids.sample,
+        institution_id: institution_ids.sample
       )
     end
   end

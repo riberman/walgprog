@@ -104,15 +104,6 @@ ActiveRecord::Schema.define(version: 2019_05_26_061008) do
     t.index ["institution_id"], name: "index_sponsor_events_on_institution_id"
   end
 
-  create_table "sponsors", force: :cascade do |t|
-    t.bigint "event_id"
-    t.bigint "institution_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_sponsors_on_event_id"
-    t.index ["institution_id"], name: "index_sponsors_on_institution_id"
-  end
-
   create_table "states", force: :cascade do |t|
     t.string "acronym"
     t.string "name"
