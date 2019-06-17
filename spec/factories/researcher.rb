@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :researcher do
     sequence(:name) { |n| "Researcher#{n}" }
-    genre { 'Genero' }
+    gender { 'Genero' }
     institution
     scholarity
 

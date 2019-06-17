@@ -66,7 +66,7 @@ namespace :db do
     10.times do
       Researcher.create(
         name: Faker::Name.unique.name,
-        genre: Faker::Gender.binary_type,
+        gender: Faker::Gender.binary_type,
         scholarity: Scholarity.all.sample,
         institution: Institution.all.sample
       )

@@ -8,7 +8,7 @@
                   prompt: t('prompt.select.f', name: Scholarity.model_name.human),
                   input_html: {class: 'apply-selectize'} %>
 
-      <%= f.input :genre, as: :radio_buttons,
+      <%= f.input :gender, as: :radio_buttons,
                   collection: [['Feminino', 'Feminino'], ['Masculino', 'Masculino']] %>
 
       <%= f.association :institution, collection: @institutions,

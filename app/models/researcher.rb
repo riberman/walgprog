@@ -7,5 +7,5 @@ class Researcher < ApplicationRecord
   validates :name, presence: true
   validates :scholarity, presence: true
   validates :institution, presence: true
-  validates :genre, presence: true
+  validates :gender, presence: true
 end

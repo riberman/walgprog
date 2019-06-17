@@ -69,7 +69,7 @@ pt-BR:
         scholarity: Título Acadêmico
         institution: Afiliação Institucional
         image: Imagem
-        genre: Gênero
+        gender: Gênero
         <<: *commons
   helpers:
     back: Voltar
