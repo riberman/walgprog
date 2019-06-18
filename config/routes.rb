@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
+  resources :contacts, only: [:new, :create]
+
   devise_for :admins
   authenticate :admin do
     namespace :admins do
