@@ -2,20 +2,14 @@
 <% provide(:page_title, t('contacts.new')) %>
 <% provide(:title, t('contacts.new')) %>
 
-<%= simple_form_for([:admins, @contact], html: { method: :post }) do | f | %>
-  <%= f.error_notification %>
+<%= simple_form_for(@contact) do | f | %>
 
-  <p class="text-muted">
-    <%= t('devise.passwords.info.forgot') %>
-  </p>
-  <div class="form-inputs">
     <%= f.input :name, required: true, autofocus: true %>
     <%= f.input :email, required: true %>
     <%= f.input :phone, required: false,
                 input_html: { 'data-mask' => '(00) 00000-0000', placeholder: '(00) 00000-0000' } %>
     <%= f.association :institution, prompt: t('prompt.select.f', name: Institution.model_name.human),
                       input_html: { class: 'apply-selectize' } %>
-  </div>
 
   <div class="text-right pt-5">
     <%= f.button :submit, class: 'btn-primary btn-block' %>
@@ -26,4 +20,3 @@
 <div class="text-right pt-5">
   <%= link_to t('helpers.back'), root_path, class: 'btn btn-secondary btn-block' %>
 </div>
-

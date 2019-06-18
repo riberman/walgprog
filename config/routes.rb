@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
-  resources :contacts, only: [:new, :create]
+  get '/contacts', to: 'contacts#new', as: :new_contact
+  post '/contacts', to: 'contacts#create'
 
   devise_for :admins
   authenticate :admin do
