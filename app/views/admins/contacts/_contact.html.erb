@@ -14,7 +14,7 @@
     <!-- bootbox.js bootboxjs.com -->
     <%= link_to admins_contact_path(contact),
                 method: :delete,
-                data: { confirm: t('flash.actions.destroy.confirm', resource_name: contact.name) } do %>
+                data: { confirm: t('prompt.confirm', resource_name: contact.name) } do %>
       <%= icon('fa', 'trash', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.delete')) %>
     <% end %>
   </td>

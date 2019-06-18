@@ -78,6 +78,8 @@ pt-BR:
         f: 'Nova %{resource_name}'
       show: 'Visualizar %{resource_name}'
       index: '%{resource_name}'
+      unregistered: '%{resource_name} descadastrados'
+      registered: '%{resource_name} cadastrados'
   flash:
     actions:
       update:

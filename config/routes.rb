@@ -15,6 +15,12 @@ Rails.application.routes.draw do
 
       get 'contact/:id/unregister',
           to: 'contacts#unregister', as: :contact_unregister
+
+      get 'contact/unregistered',
+          to: 'contacts#unregistered', as: :contacts_unregistered
+
+      get 'contact/registered',
+          to: 'contacts#registered', as: :contacts_registered
     end
   end
 
