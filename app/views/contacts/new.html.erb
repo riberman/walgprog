@@ -1,3 +1,19 @@
 <% provide(:head_title, t('devise.passwords.new.forgot_your_password')) %>
 <% provide(:page_title, t('devise.passwords.new.forgot_your_password')) %>
 <% provide(:title, t('devise.passwords.new.forgot_your_password')) %>
+
+<%= simple_form_for([:admins, @contact]) do | f | %>
+
+  <%= f.input :name, required: true, autofocus: true %>
+  <%= f.input :email, required: true %>
+  <%= f.input :phone, required: false,
+              input_html: { 'data-mask' => '(00) 00000-0000', placeholder: '(00) 00000-0000' } %>
+  <%= f.association :institution, prompt: t('prompt.select.f', name: Institution.model_name.human),
+                    input_html: { class: 'apply-selectize' } %>
+
+  <div class="d-flex">
+    <%= link_to t('helpers.back'), admins_contacts_path, class: 'btn btn-secondary float-left' %>
+    <%= f.button :submit, class: 'btn-primary ml-auto' %>
+  </div>
+
+<% end %>
