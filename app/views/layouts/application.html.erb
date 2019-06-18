@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>
-      <%= full_title(yield(:head_title)) %>
-    </title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>
+    <%= full_title(yield(:head_title)) %>
+  </title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= render 'application/favicon' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-  <body id="<%= controller_name %>-<%= action_name %>">
-    <div class="page">
-      <div class="page-main">
-        <div class="container">
-          <%= render 'shared/flash_messages' %>
+  <%= render 'application/favicon' %>
+</head>
 
-          <%= yield %>
+<body id="<%= controller_name %>-<%= action_name %>">
+<div class="page">
+  <div class="page-main">
+    <div class="container">
+      <%= render 'shared/flash_messages' %>
 
-        </div> <!-- .container -->
-      </div>
-    </div>
+      <%= yield %>
 
-  </body>
+    </div> <!-- .container -->
+  </div>
+</div>
+
+</body>
 </html>

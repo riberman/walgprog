@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Admin:login', type: :feature do
+describe 'Admins::Session::login', type: :feature do
   let(:admin) { create(:admin) }
 
   before(:each) do

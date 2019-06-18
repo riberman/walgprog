@@ -1,0 +1,41 @@
+<% provide(:head_title, t('researchers.show')) %>
+<% provide(:page_title, t('researchers.show')) %>
+
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title"><%= @researcher.name %></h3>
+    <div class="card-options">
+      <%= link_to edit_admins_researcher_path(@researcher), class: 'btn btn-outline-primary btn-block' do %>
+        <%= icon('fas', 'edit', class: 'mr-2') %><%= t('contacts.edit') %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-6">
+        <p class="card-text">
+          <%= icon('fas', 'signature', class: 'mr-2') %> <%= @researcher.name %>
+        </p>
+
+        <p class="card-text">
+          <%= icon('fas', 'user-graduate', class: 'mr-2') %> <%= @researcher.scholarity.name %>
+        </p>
+
+        <p class="card-text">
+          <%= icon('fas', 'university', class: 'mr-2') %> <%= @researcher.institution.name %>
+        </p>
+
+        <p class="card-text">
+          <%= icon('fas', 'venus-mars', class: 'mr-2') %> <%= t("enums.genders.#{@researcher.gender}") %>
+        </p>
+      </div>
+
+      <div class="col-md-3 offset-md-3">
+        <img src="<%= @researcher.image %>">
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= link_to t('helpers.back'), admins_researchers_path, class: 'btn btn-secondary' %>

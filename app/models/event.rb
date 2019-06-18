@@ -4,6 +4,8 @@ class Event < ApplicationRecord
   include VirtualState::Model
 
   belongs_to :city
+  has_many :sponsor_events, dependent: :restrict_with_error
+  has_many :sponsors, through: :sponsor_events, source: :institution
 
   validates :name, :state_id, :city_id, :beginning_date, presence: true
   validates :color, :end_date, :initials, :local, :address, presence: true

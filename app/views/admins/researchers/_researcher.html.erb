@@ -1,0 +1,31 @@
+<tr>
+  <td class="text-center">
+    <div class="avatar d-block"  style="background-image: url('<%= researcher.image.url(:thumb) %>');"></div>
+  </td>
+  <td>
+    <div><%= researcher.name %></div>
+    <div class="small text-muted"><%= I18n.t('helpers.registered', date: l(researcher.created_at, format: :short_date)) %></div>
+  </td>
+  <td><%= researcher.scholarity.name %></td>
+  <td><%= researcher.institution.name %></td>
+  <td>
+    <div class="btn-group">
+      <%= link_to admins_researcher_path(researcher),
+                  class: 'icon ml-2' do %>
+        <%= icon('fas', 'search') %>
+      <% end %>
+
+      <%= link_to edit_admins_researcher_path(researcher),
+                  class: 'icon ml-2' do %>
+        <%= icon('fas', 'edit') %>
+      <% end %>
+
+      <%= link_to admins_researcher_path(researcher),
+                  method: :delete,
+                  class: 'icon text-danger ml-2 destroy',
+                  data: {confirm: t('prompt.confirm')} do %>
+        <%= icon('fas', 'trash') %>
+      <% end %>
+    </div>
+  </td>
+</tr>

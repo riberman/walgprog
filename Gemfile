@@ -49,14 +49,14 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '>= 2.15'
+  gem 'capybara', '>= 3.19.1'
   gem 'capybara-screenshot'
-  gem 'webdrivers'
+  gem 'webdrivers', '~> 4.0'
 
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false
   gem 'guard-rspec', require: false
-  gem 'shoulda-matchers', '~> 3.1'
+  gem 'shoulda-matchers', '~> 4.0'
   gem 'database_cleaner'
 end
 

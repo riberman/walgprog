@@ -17,6 +17,7 @@ AllCops:
     - 'config/initializers/devise.rb'
     - 'node_modules/**/*'
     - 'bin/webpack'
+    - 'bin/yarn'
     - 'bin/webpack-dev-server'
     - 'db/migrate/20190401222059_devise_create_admins.rb'
     - 'config/initializers/simple_form.rb'

@@ -8,5 +8,15 @@ FactoryBot.define do
     local { 'Parque' }
     address { 'testing' }
     city
+
+    transient do
+      institutions_count { 3 }
+    end
+
+    trait :with_sponsors do
+      after(:create) do |event, evaluator|
+        create_list(:sponsor_event, evaluator.institutions_count, event: event)
+      end
+    end
   end
 end

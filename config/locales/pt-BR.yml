@@ -8,6 +8,7 @@ pt-BR:
       short_hour: '%d/%m/%Y %H:%M'
       default: "%A, %d de %B de %Y, %H:%M h"
       long: "%A, %d de %B de %Y, %H:%M h"
+      short_date:  "%d de %B de %Y"
   activerecord:
     models:
       admin:
@@ -22,6 +23,17 @@ pt-BR:
       event:
         one: Evento
         other: Eventos
+      researcher:
+        one: Pesquisador
+        other: Pesquisadores
+      scholarity:
+        one: Titulo Acadêmico
+      sponsor:
+        one: Patrocinador
+        other: Patrocinadores
+      sponsor_event:
+        one: Patrocinador
+        other: Patrocinadores
     attributes:
       attribute_commons: &commons
         name: Nome
@@ -35,6 +47,7 @@ pt-BR:
         current_password: Senha atual
         password_confirmation: Confirmação de senha
         remember_me: Lembre-me
+        user_type: Tipo de Usuário
       institution:
         name: Nome
         city: Cidade
@@ -57,6 +70,13 @@ pt-BR:
         city_id: Cidade
         address: Endereço
         <<: *commons
+      researcher:
+        name: Nome
+        scholarity: Título Acadêmico
+        institution: Afiliação Institucional
+        image: Imagem
+        gender: Gênero
+        <<: *commons
   helpers:
     back: Voltar
     currently: Atualmente
@@ -69,6 +89,14 @@ pt-BR:
       'true': Sim
       'false': Não
     until: até
+    registered: 'Registrado: %{date}'
+  enums:
+    user_types:
+      administrator: 'Administrador'
+      collaborator: 'Colaborador'
+    genders:
+      male: 'Masculino'
+      female: 'Feminino'
   breadcrumbs:
     homepage: 'Página Inicial'
     action:
@@ -78,6 +106,9 @@ pt-BR:
         f: 'Nova %{resource_name}'
       show: 'Visualizar %{resource_name}'
       index: '%{resource_name}'
+      add: 'Adicionar %{resource_name}'
+    event:
+      detail: 'Detalhes do %{resource_name}'
   flash:
     actions:
       update:
@@ -89,6 +120,9 @@ pt-BR:
       destroy:
         m: '%{resource_name} removido com sucesso!'
         f: '%{resource_name} removida com sucesso!'
+      add:
+        m: '%{resource_name} adicionado com sucesso!'
+        f: '%{resource_name} adicionada com sucesso!'
       bond: Não é possível remover %{resource_name} com vínculos!'
       errors: 'Alguns erros foram encontrados, por favor verifique:'
     not_authorized: Acesso não autorizado!
@@ -112,6 +146,8 @@ pt-BR:
       label: Entidade não processável!
       message: A mudança que você queria foi rejeitada...
       details: Talvez você tentou alterar algo que você não possui acesso.
+    sponsors:
+      none_selected: 'Nenhum patrocianador selecionado'
   prompt:
     confirm: Você tem certeza?
     select:
@@ -131,6 +167,7 @@ pt-BR:
     new: Novo Evento
     show: Detalhes do Evento
     edit: Editar Evento
+    all: Todos Eventos
     dates: Datas
     location: Localização
     description: Descrição
@@ -139,3 +176,17 @@ pt-BR:
     errors:
       year_used: Já há um evento cadastrado nesse ano.
       invalid_dates: deve ser posterior ao início
+  admins:
+    index: Administradores
+    new: Novo Administrador
+    edit: Editar Administrador
+    show: Detalhes do Administrador
+  researchers:
+    index: Pesquisadores
+    new: Novo Pesquisador
+    show: Visualizar
+    edit: Editar Pesquisador
+    image_update: Clique na imagem para alterá-la
+  sponsors:
+    add: Adicionar Patrocinador
+    index: Patrocinadores
