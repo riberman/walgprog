@@ -4,5 +4,5 @@
 
 <p>Você pode se descadastrar clicando no link a baixo</p>
 
-<!--<a href="<%# admins_contact_unregister_url(@contact)%> ">Descadastar</a>-->
-<p><%= link_to 'Descadastrar', admins_contact_unregister_url(@contact), :method => 'patch'%></p>
+<p><%= link_to 'Atualizar dados', admins_contact_self_update_url(@contact, @contact.token), :method => 'patch'%></p>
+<p><%= link_to 'Descadastrar', admins_contact_unregister_url(@contact, @contact.token), :method => 'patch'%></p>

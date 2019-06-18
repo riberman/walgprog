@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_10_548796) do
+ActiveRecord::Schema.define(version: 2019_06_18_548753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,9 +42,12 @@ ActiveRecord::Schema.define(version: 2019_05_10_548796) do
     t.string "email"
     t.string "phone"
     t.bigint "institution_id"
+    t.string "token"
+    t.date "send_at"
+    t.boolean "unregistered", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "unregistered", default: false
+    t.datetime "sended"
     t.index ["institution_id"], name: "index_contacts_on_institution_id"
   end
 

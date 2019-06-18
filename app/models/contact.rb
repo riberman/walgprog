@@ -16,4 +16,10 @@ class Contact < ApplicationRecord
             length: { minimum: 14, maximum: 15 },
             format: { with: PHONE_REGEX, allow_blank: true }
 
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while Contact.exists?(column => self[column])
+  end
+
 end
