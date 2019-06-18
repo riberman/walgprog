@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2019_05_26_061008) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "image"
-    t.string "type", limit: 1
     t.string "user_type", limit: 1
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
