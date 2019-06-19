@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get '/contacts', to: 'contacts#new', as: :new_contact
   post '/contacts', to: 'contacts#create'
+  get '/contacts/:id/unregistered', to: 'contacts#unregistered', as: :unregistered_contact
+
 
   devise_for :admins
   authenticate :admin do

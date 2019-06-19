@@ -16,6 +16,13 @@ class ContactsController < ApplicationController
     end
   end
 
+  def unregistered
+    @contact = Contact.find(params[:id])
+    @contact.unregistered
+    flash[:success] = 'sucesso!'
+    redirect_to root_path
+  end
+
 protected
   def contact_params
     params.require(:contact).permit(:name, :email, :phone, :institution_id)

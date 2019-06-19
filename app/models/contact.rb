@@ -13,4 +13,8 @@ class Contact < ApplicationRecord
   presence: false,
   length: { minimum: 14, maximum: 15 },
   format: { with: PHONE_REGEX, allow_blank: true }
+
+  def unregistered
+    #fazer logica para marcar contato como unregistered
+  end
 end
