@@ -45,8 +45,9 @@ class Admins::ContactsController < Admins::BaseController
 
   def create
     @contact = Contact.new(params_contact)
-    @contact.generate_token(:token)
-    @contact.sended = Time.zone.now
+    @contact.generate_token(:unregister_token)
+    @contact.generate_token(:update_data_token)
+    @contact.update_data_send_at = Time.zone.now
     if @contact.save
       ContactMailer.with(contact: @contact).welcome_email.deliver
       flash[:success] = I18n.t('flash.actions.create.f', resource_name: I18n.t('activerecord.models.contact.one'))
@@ -71,32 +72,6 @@ class Admins::ContactsController < Admins::BaseController
     @contact.destroy
     flash[:success] = I18n.t('flash.actions.destroy.m', resource_name: contact_name)
     redirect_to admins_contacts_path
-  end
-
-  def unregister
-    if params[:token] == @contact.token
-      if Contact.update(params[:id], unregistered: true)
-        ContactMailer.with(contact: @contact).unregistered_contact.deliver
-        # redirect_to admins_contacts_path
-        render 'public/contact_unregistered'
-      end
-    else
-      redirect_to admins_institutions_path
-    end
-  end
-
-  def self_update
-    @contact = Contact.find(params[:id])
-    puts (@contact.sended < 20.seconds.ago)
-    if (params[:token].eql? (@contact.token)) && (@contact.sended < 20.seconds.ago)
-      if Contact.update(params[:id], unregistered: true)
-        ContactMailer.with(contact: @contact).self_update_contact.deliver
-        redirect_to admins_contacts_path
-        # render 'public/contact_unregistered'
-      end
-    else
-      redirect_to admins_institutions_path
-    end
   end
 
   private
