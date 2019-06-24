@@ -76,7 +76,7 @@ RSpec.describe 'Admins::active_link', type: :feature do
 
     it 'show active' do
       visit admins_event_path(event)
-      expect(page).to have_link(I18n.t('events.index'), class: active_class)
+      expect(page).to have_link(I18n.t('events.show'), class: active_class)
     end
   end
 
@@ -118,6 +118,39 @@ RSpec.describe 'Admins::active_link', type: :feature do
     it 'edit active' do
       visit edit_admins_admin_path(admin)
       expect(page).to have_link(I18n.t('admins.index'), class: active_class)
+    end
+  end
+
+  context 'when visit researchers' do
+    let!(:researcher) { create(:researcher) }
+
+    it 'index active' do
+      visit admins_researchers_path
+      expect(page).to have_link(I18n.t('researchers.index'), class: active_class)
+    end
+
+    it 'new active' do
+      visit new_admins_researcher_path
+      expect(page).to have_link(I18n.t('researchers.index'), class: active_class)
+    end
+
+    it 'edit active' do
+      visit edit_admins_researcher_path(researcher)
+      expect(page).to have_link(I18n.t('researchers.index'), class: active_class)
+    end
+
+    it 'show active' do
+      visit admins_researcher_path(researcher)
+      expect(page).to have_link(I18n.t('researchers.index'), class: active_class)
+    end
+  end
+
+  context 'when visit sponsors' do
+    let!(:event) { create(:event) }
+
+    it 'index active' do
+      visit admins_event_sponsors_path(event)
+      expect(page).to have_link(I18n.t('sponsors.index'), class: active_class)
     end
   end
 end

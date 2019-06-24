@@ -1,10 +1,9 @@
 class Admin < ApplicationRecord
   include Classifiable
+  include ProfileImage
 
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
-
-  mount_uploader :image, ProfileImageUploader
 
   validates :name, presence: true
   validates :user_type, presence: true

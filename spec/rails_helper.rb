@@ -19,6 +19,7 @@ require 'support/matchers/have_message'
 require 'support/matchers/have_selectize'
 require 'support/matchers/have_destroy_link'
 require 'support/matchers/have_breadcrumbs'
+require 'support/matchers/have_image'
 
 require 'support/helpers/form'
 require 'support/helpers/link'

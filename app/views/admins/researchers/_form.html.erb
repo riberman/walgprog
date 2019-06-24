@@ -1,0 +1,45 @@
+<%= simple_form_for [:admins, @researcher] do |f| %>
+
+  <div class="form-row">
+    <div class="col-sm-8">
+      <%= f.input :name, required: true, autofocus: true %>
+
+      <%= f.association :scholarity, collection: @scholarities,
+                  prompt: t('prompt.select.f', name: Scholarity.model_name.human),
+                  input_html: {class: 'apply-selectize'} %>
+
+      <%= f.input :gender, as: :radio_buttons_tabler,
+                  collection: Researcher.human_genders %>
+
+      <%= f.association :institution, collection: @institutions,
+                  prompt: t('prompt.select.f', name: Institution.model_name.human),
+                  label_method: :name, value_method: :id,
+                  input_html: {class: 'apply-selectize'} %>
+    </div>
+
+    <div class="col-4">
+      <%= content_tag :div, id: "box-image-preview", data_placement: "left", data_toggle: "tooltip",
+        title: t('researchers.image_update') do %>
+        <div class="input-field image_preview">
+          <div class="box-image center">
+            <%= image_tag @researcher.image.url, class: 'file_preview active' %>
+            <%= f.input :image, required: true, label: false, input_html: {accept: 'image/*'} %>
+            <%= f.hidden_field :image_cache %>
+          </div>
+        </div>
+        <div class="text-box text-center">
+          <p class="text-input"><%= t('researchers.image_update') %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <%= link_to admins_researchers_path, class: 'btn btn-secondary float-left', active: :exclusive do %>
+      <%= t('helpers.back') %>
+    <% end %>
+
+    <%= f.button :submit, class: 'btn-primary ml-auto' %>
+  </div>
+
+<% end %>
