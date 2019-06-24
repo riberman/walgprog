@@ -17,10 +17,10 @@ describe 'Admins::Section::create', type: :feature do
       attributes = attributes_for(:section)
 
       fill_in 'section_title', with: attributes[:title]
-      fill_in 'section_content', with: attributes[:content]
+      fill_in 'section_content_markdown', with: attributes[:content_markdown]
       select attributes[:icon], from: 'section_icon'
       selectize(active, from: 'section_status', normalize_id: false)
-      click_button
+      click_button('commit')
 
       expect(page).to have_current_path admins_event_sections_path(event)
 
@@ -40,7 +40,7 @@ describe 'Admins::Section::create', type: :feature do
 
   context 'when data are not valid' do
     it 'show errors', js: true do
-      click_button
+      click_button('commit')
 
       expect(page).to have_flash(:danger, text: I18n.t('flash.actions.errors'))
 
@@ -48,13 +48,13 @@ describe 'Admins::Section::create', type: :feature do
       expect(page).to have_message(message_blank_error, in: 'div.section_title')
       expect(page).to have_message(message_blank_error, in: 'div.section_icon')
       expect(page).to have_message(message_blank_error, in: 'div.section_status')
-      expect(page).to have_message(message_blank_error, in: 'div.section_content')
+      expect(page).to have_message(message_blank_error, in: 'div.section_content_markdown')
     end
 
     it 'with alternative_text', js: true do
       other = I18n.t('enums.status_types.other')
       selectize(other, from: 'section_status', normalize_id: false)
-      click_button
+      click_button('commit')
 
       expect(page).to have_flash(:danger, text: I18n.t('flash.actions.errors'))
 
@@ -62,7 +62,7 @@ describe 'Admins::Section::create', type: :feature do
       expect(page).to have_message(message_blank_error, in: 'div.section_alternative_text')
       expect(page).to have_message(message_blank_error, in: 'div.section_title')
       expect(page).to have_message(message_blank_error, in: 'div.section_icon')
-      expect(page).to have_message(message_blank_error, in: 'div.section_content')
+      expect(page).to have_message(message_blank_error, in: 'div.section_content_markdown')
     end
   end
 end

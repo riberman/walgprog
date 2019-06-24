@@ -13,7 +13,7 @@ describe 'Section:show', type: :feature do
     it 'showed' do
       expect(page).to have_content(I18n.t('sections.show', event: section.event.name))
       expect(page).to have_content(section.title)
-      expect(page).to have_content(section.content)
+      expect(page.body).to include(section.content)
       expect(page).to have_content(I18n.t("enums.status_types.#{section.status}"))
       expect(page).to have_content(section.index)
       expect(page).to have_css "p .fa-#{section.icon}"

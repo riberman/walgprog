@@ -17,7 +17,7 @@ describe 'Admins::Section::update', type: :feature do
       expect(page).to have_field('section_title', with: section.title)
       expect(page).to have_field('section_icon', with: section.icon)
       expect(page).to have_field('section_index', disabled: true, with: section.index)
-      expect(page).to have_field('section_content', with: section.content)
+      expect(page).to have_field('section_content_markdown', with: section.content_markdown)
 
       expect(page).to have_selectize('section_status', selected: status)
     end
@@ -27,10 +27,10 @@ describe 'Admins::Section::update', type: :feature do
     it 'update section with inactive status' do
       inactive = Section.human_status_types.keys.second
       fill_in 'section_title', with: 'new title'
-      fill_in 'section_content', with: 'new content'
+      fill_in 'section_content_markdown', with: 'new content'
       select 'glass', from: 'section_icon'
       selectize(inactive, from: 'section_status', normalize_id: false)
-      click_button
+      click_button('commit')
 
       expect(page).to have_current_path admins_event_sections_path(event)
 
@@ -48,11 +48,11 @@ describe 'Admins::Section::update', type: :feature do
     it 'update section with other status' do
       other = Section.human_status_types.keys.third
       fill_in 'section_title', with: 'new title'
-      fill_in 'section_content', with: 'new content'
+      fill_in 'section_content_markdown', with: 'new content'
       select 'glass', from: 'section_icon'
       selectize(other, from: 'section_status', normalize_id: false)
       fill_in 'section_alternative_text', with: 'other status'
-      click_button
+      click_button('commit')
 
       expect(page).to have_current_path admins_event_sections_path(event)
 
@@ -72,22 +72,22 @@ describe 'Admins::Section::update', type: :feature do
   context 'when data are not valid', js: true do
     it 'show errors' do
       fill_in 'section_title', with: ''
-      fill_in 'section_content', with: ''
+      fill_in 'section_content_markdown', with: ''
       selectize('', from: 'section_status', normalize_id: false)
-      click_button
+      click_button('commit')
 
       expect(page).to have_flash(:danger, text: I18n.t('flash.actions.errors'))
 
       message_blank_error = I18n.t('errors.messages.blank')
       expect(page).to have_message(message_blank_error, in: 'div.section_title')
-      expect(page).to have_message(message_blank_error, in: 'div.section_content')
+      expect(page).to have_message(message_blank_error, in: 'div.section_content_markdown')
       expect(page).to have_message(message_blank_error, in: 'div.section_status')
     end
 
     it 'not register with other status without text' do
       other = I18n.t('enums.status_types.other')
       selectize(other, from: 'section_status', normalize_id: false)
-      click_button
+      click_button('commit')
 
       message_blank_error = I18n.t('errors.messages.blank')
       expect(page).to have_message(message_blank_error, in: 'div.section_alternative_text')

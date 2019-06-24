@@ -38,9 +38,8 @@ RSpec.describe Section, type: :model do
   end
 
   describe '.content_markdown' do
-    section = create(:create)
-
     it 'parse markdown to html' do
+      section = create(:section)
       html = <<-HTML.chomp.strip_heredoc
         <h1>Effugiam erit cinerem tenuere concurrere</h1>
 
@@ -51,12 +50,6 @@ RSpec.describe Section, type: :model do
       HTML
 
       expect(section.content).to eql(html)
-    end
-
-    it 'create description short' do
-      short_description = "#{section.content_markdown[0...100].gsub!(/[^0-9A-Za-z]/, ' ')}..."
-
-      expect(section.description_short).to eql(short_description)
     end
   end
 
