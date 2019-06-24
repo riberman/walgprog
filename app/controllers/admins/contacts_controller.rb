@@ -30,12 +30,12 @@ class Admins::ContactsController < Admins::BaseController
   end
 
   def unregistered
-    @contacts = Contact.where(unregistered: false).includes(:institution)
+    @contacts = Contact.where(unregistered: true).includes(:institution)
     render :index
   end
 
   def registered
-    @contacts = Contact.where(unregistered: true).includes(:institution)
+    @contacts = Contact.where(unregistered: false).includes(:institution)
     render :index
   end
 
@@ -45,6 +45,9 @@ class Admins::ContactsController < Admins::BaseController
 
   def create
     @contact = Contact.new(params_contact)
+    @contact.generate_token(:unregister_token)
+    @contact.generate_token(:update_data_token)
+    @contact.update_data_send_at = Time.zone.now
     if @contact.save
       ContactMailer.with(contact: @contact).welcome_email.deliver
       flash[:success] = I18n.t('flash.actions.create.f', resource_name: I18n.t('activerecord.models.contact.one'))
@@ -69,13 +72,6 @@ class Admins::ContactsController < Admins::BaseController
     @contact.destroy
     flash[:success] = I18n.t('flash.actions.destroy.m', resource_name: contact_name)
     redirect_to admins_contacts_path
-  end
-
-  def unregister
-    if Contact.update(params[:id], unregistered: true)
-      ContactMailer.with(contact: @contact).unregistered_contact.deliver
-      redirect_to admins_contacts_path
-    end
   end
 
   private
