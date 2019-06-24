@@ -1,18 +1,25 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
-  get 'contact/:id/unregister/:token',
-      to: 'contact#unregister', as: :contact_unregister
+  get 'contacts/:id/unregister/:token',
+      to: 'contacts#unregister', as: :contact_unregister
 
-  get 'contact/:id/edit/:token',
-      to: 'contact#edit', as: :contact_edit
+  get 'contacts/:id/edit/:token',
+      to: 'contacts#edit', as: :contact_edit
 
-  resources :contact, only: [:update]
+  patch 'contacts/:id/update/:token',
+      to: 'contacts#update', as: :contact_update
 
   devise_for :admins
   authenticate :admin do
     namespace :admins do
       root to: 'dashboard#index'
+
+      get 'contacts/unregistered',
+          to: 'contacts#unregistered', as: :contacts_unregistered
+
+      get 'contacts/registered',
+          to: 'contacts#registered', as: :contacts_registered
 
       resources :contacts
       resources :institutions
@@ -21,11 +28,6 @@ Rails.application.routes.draw do
       get 'states/:id/cities',
           to: 'states#cities', as: :state_cities
 
-      get 'contact/unregistered',
-          to: 'contacts#unregistered', as: :contacts_unregistered
-
-      get 'contact/registered',
-          to: 'contacts#registered', as: :contacts_registered
     end
   end
 

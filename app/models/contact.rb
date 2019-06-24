@@ -21,5 +21,4 @@ class Contact < ApplicationRecord
       self[column] = SecureRandom.urlsafe_base64
     end while Contact.exists?(column => self[column])
   end
-
 end
