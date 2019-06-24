@@ -1,4 +1,4 @@
-<%= simple_form_for([@contact]) do | f | %>
+<%= simple_form_for(@contact, url: contact_update_path(@contact, @contact.update_data_token)) do | f | %>
 
   <%= f.input :name, required: true, autofocus: true %>
   <%= f.input :email, required: true %>
@@ -8,7 +8,6 @@
     input_html: { class: 'apply-selectize' } %>
 
   <div class="d-flex">
-    <%= link_to t('helpers.back'), admins_contacts_path, class: 'btn btn-secondary float-left' %>
     <%= f.button :submit, class: 'btn-primary ml-auto' %>
   </div>
 
