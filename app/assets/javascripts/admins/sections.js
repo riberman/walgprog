@@ -1,3 +1,6 @@
+//= require bootstrap-markdown
+//= require marked
+
 $(document).on('turbolinks:load', () => {
   const statusInput = $('#section_status');
   const alternativeInput = $('.section_alternative_text');
@@ -6,6 +9,7 @@ $(document).on('turbolinks:load', () => {
   WAlgProg.loadFontAwesomeIcons();
   WAlgProg.sectionStatusListener(statusInput, alternativeInput);
   statusInput.trigger('change');
+  WAlgProg.initMarkdown();
 });
 
 WAlgProg.loadFontAwesomeIcons = () => {
@@ -75,4 +79,11 @@ WAlgProg.saveSectionsOrder = () => {
       success: () => window.location.reload(),
     });
   });
+};
+
+WAlgProg.initMarkdown = () => {
+    $("#section_content_markdown").markdown({
+        iconlibrary: 'fa',
+        resize: "vertical"
+    })
 };

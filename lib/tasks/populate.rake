@@ -11,6 +11,7 @@ namespace :db do
     events
     researchers
     sponsors
+    section_event
   end
 
   def delete_all
@@ -86,6 +87,25 @@ namespace :db do
         event_id: event_ids.sample,
         institution_id: institution_ids.sample
       )
+    end
+  end
+
+  def section_event
+    status = %w[A I]
+
+    Event.all.each do |event|
+      rand = rand(1..10)
+      puts "created sections #{rand} by event name #{event.name} with id #{event.id}. . ."
+      rand.times do |index|
+        Section.create!(
+          title: Faker::DcComics.title,
+          content_markdown: Faker::Markdown.sandwich(6, 3),
+          icon: 'music',
+          index: index,
+          event: event,
+          status: status.sample
+        )
+      end
     end
   end
 end
