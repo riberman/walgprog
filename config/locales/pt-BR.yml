@@ -45,6 +45,7 @@ pt-BR:
         <<: *commons
       contact:
         institution: Instituição
+        unregistered: Desregistrado
       event:
         name: Nome
         initials: Iniciais
@@ -141,3 +142,12 @@ pt-BR:
     errors:
       year_used: Já há um evento cadastrado nesse ano.
       invalid_dates: deve ser posterior ao início
+  mail:
+    welcome_email:
+      subject: Você foi cadastrado no site do WAlgProg.
+  feedback:
+    unregistered: Você foi desregistrado
+    time_exceeded: O link não é mais valido
+    update_sucess: Seus dados foram atualizados
+
+

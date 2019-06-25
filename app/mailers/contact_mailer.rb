@@ -3,7 +3,7 @@ class ContactMailer < ApplicationMailer
   def welcome_email
     @contact = params[:contacts]
     email_with_name = %("#{@contact.name}" <#{@contact.email}>)
-    mail(to: email_with_name, subject: 'Welcome to My Awesome Site')
+    mail(to: email_with_name, subject: I18n.t('mail.welcome_email.subject'))
   end
 
   def unregistered_contact
