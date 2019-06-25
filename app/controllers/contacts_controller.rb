@@ -17,11 +17,19 @@ class ContactsController < ApplicationController
   end
 
   def unregistered
-    @contact = Contact.find(params[:id])
-    @contact.unregistered
-    flash[:success] = 'sucesso!'
-    redirect_to root_path
+    if params[:token].eql? @contact.unregister_token
+      if Contact.update(params[:id], unregistered: true)
+        @contact = Contact.find(params[:id])
+        #@contact.unregistered
+        flash[:success] = 'sucesso!'
+        redirect_to root_path
+      end
+    else
+      redirect_to new_contact_path
+    end
   end
+
+
 
 protected
   def contact_params

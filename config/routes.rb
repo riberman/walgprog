@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   get '/contacts', to: 'contacts#new', as: :new_contact
   post '/contacts', to: 'contacts#create'
-  get '/contacts/:id/unregistered', to: 'contacts#unregistered', as: :unregistered_contact
 
+  #get 'contact/:id/unregister/:token',
+  #  to: 'contact#unregister' as: :contacts_unregister
 
   devise_for :admins
   authenticate :admin do
@@ -21,6 +22,13 @@ Rails.application.routes.draw do
 
       get 'states/:id/cities',
           to: 'states#cities', as: :state_cities
+
+      get 'contacts/unregistered/:token',
+            to: 'contacts#unregistered', as: :contacts_unregistered
+
+      #get 'contact/registered',
+      #      to: 'contacts#registered', as: :contacts_registered
+
     end
   end
 
