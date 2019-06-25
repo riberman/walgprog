@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_26_061008) do
+ActiveRecord::Schema.define(version: 2019_06_25_022937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_05_26_061008) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "image"
+    t.string "type", limit: 1
     t.string "user_type", limit: 1
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
@@ -45,6 +46,10 @@ ActiveRecord::Schema.define(version: 2019_05_26_061008) do
     t.bigint "institution_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "unregister_token"
+    t.string "update_data_token"
+    t.datetime "update_data_send_at"
+    t.boolean "unregistered", default: false
     t.index ["institution_id"], name: "index_contacts_on_institution_id"
   end
 

@@ -2,8 +2,14 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   get '/contacts', to: 'contacts#new', as: :new_contact
+
   post '/contacts', to: 'contacts#create'
-  get '/contacts/:id/unregistered', to: 'contacts#unregistered', as: :unregistered_contact
+
+  get 'contacts/:id/edit/:update_data_token',
+      to: 'contacts#update', as: :update_contact
+  
+  get 'contacts/:id/unregister/:unregister_token',
+      to: 'contacts#unregister', as: :contact_unregister
 
 
   devise_for :admins

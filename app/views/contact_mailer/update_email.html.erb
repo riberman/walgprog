@@ -1,0 +1,3 @@
+<h1><%= @contact.name %>, você solicitou a atualização dos dados em WAlgProg?</h1>
+<p>Caso tenha solicitado alguma alteração em seu cadastro, acesse <%= link_to 'atualizar', update_contact_url(@contact, @contact.update_data_token), :method => 'put'%>.</p>
+
