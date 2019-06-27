@@ -23,7 +23,7 @@ class Admins::ContactsController < Admins::BaseController
                         resource_name: I18n.t('activerecord.models.contact.other')),
                  :admins_contacts_registered_path, only: :registered
 
-  before_action :set_contact, only: [:show, :edit, :update, :destroy, :unregister]
+  before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   def index
     @contacts = Contact.includes(:institution).order('contacts.name ASC')
@@ -51,7 +51,8 @@ class Admins::ContactsController < Admins::BaseController
     if @contact.save
       # ContactMailer.with(contacts: @contact).welcome_email.deliver
       @contact.send_welcome_email
-      flash[:success] = I18n.t('flash.actions.create.f', resource_name: I18n.t('activerecord.models.contact.one'))
+      flash[:success] = I18n.t('flash.actions.create.m',
+                               resource_name: I18n.t('activerecord.models.contact.one'))
       redirect_to admins_contacts_path
     else
       flash.now[:error] = I18n.t('flash.actions.errors')

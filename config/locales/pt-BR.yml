@@ -145,6 +145,10 @@ pt-BR:
   mail:
     welcome_email:
       subject: Você foi cadastrado no site do WAlgProg.
+    unregistered:
+      subject: Você esta desregistrado do site do WAlgProg.
+    updated:
+      subject: Seus dados foram atualizados.
   feedback:
     unregistered: Você foi desregistrado
     time_exceeded: O link não é mais valido

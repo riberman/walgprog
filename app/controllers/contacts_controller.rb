@@ -1,6 +1,5 @@
 class ContactsController < ApplicationController
-
-  before_action :set_contact, only: [:unregister, :update, :edit]
+  before_action :set_contact, only: [:unregister, :update, :edit, :confirm_unregister]
 
   def edit
     if @contact.valid_token(params)
@@ -12,7 +11,7 @@ class ContactsController < ApplicationController
 
   def unregister
     if @contact.update_by_token_to_unregister(params)
-      render 'contacts/contact_unregistered'
+      render :unregistered
     else
       redirect_to admins_institution_path
     end
@@ -21,6 +20,12 @@ class ContactsController < ApplicationController
   def update
     render @contact.update_by_token(params, params_contact)
   end
+
+  def confirm_unregister; end
+
+  def unregistered; end
+
+  def updated; end
 
   private
 

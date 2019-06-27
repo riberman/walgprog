@@ -3,7 +3,7 @@ class EmailUnregisteredValidator < ActiveModel::EachValidator
     contact = Contact.find_by email: value
 
     if contact && contact.unregistered?
-      record.errors[attribute] << "desregistrado";
+      record.errors[attribute] << 'desregistrado'
     end
   end
 end
