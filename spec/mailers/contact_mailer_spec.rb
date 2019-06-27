@@ -29,8 +29,7 @@ RSpec.describe ContactMailer, type: :mailer do
 
     it 'assigns @update_url' do
       expect(mail.body.encoded)
-          .to match(contact_edit_pa
-      th(contact, contact.update_data_token))
+          .to match(contact_edit_path(contact, contact.update_data_token))
     end
   end
 end

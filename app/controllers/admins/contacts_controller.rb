@@ -49,7 +49,8 @@ class Admins::ContactsController < Admins::BaseController
     @contact.generate_token(:update_data_token)
     @contact.update_data_send_at = Time.zone.now
     if @contact.save
-      ContactMailer.with(contacts: @contact).welcome_email.deliver
+      # ContactMailer.with(contacts: @contact).welcome_email.deliver
+      @contact.send_welcome_email
       flash[:success] = I18n.t('flash.actions.create.f', resource_name: I18n.t('activerecord.models.contact.one'))
       redirect_to admins_contacts_path
     else

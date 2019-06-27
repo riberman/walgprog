@@ -59,4 +59,7 @@ class Contact < ApplicationRecord
     false
   end
 
+  def send_welcome_email
+    ContactMailer.with(contacts: self).welcome_email.deliver
+  end
 end
