@@ -195,6 +195,8 @@ pt-BR:
     from_until: 'De %{beginning} até %{end}'
     edit_sections: Editar seções
     sections: Seções do evento
+    default_section: Organização
+    default_section_content: <p>Organizadores do evento</p>
     errors:
       year_used: Já há um evento cadastrado nesse ano.
       invalid_dates: deve ser posterior ao início
@@ -210,6 +212,7 @@ pt-BR:
     saved_order: Ordem das seções redefinida com sucesso!
     error:
       save_order: Deve haver ao menos uma
+      be_deleted: Essa seção não pode ser removida
   admins:
     index: Administradores
     new: Novo Administrador

@@ -52,6 +52,11 @@ RSpec.describe Event, type: :model do
       expect(event.beginning_date.formatted).to eq(I18n.l(event.beginning_date, format: :short))
       expect(event.end_date.formatted).to eq(I18n.l(event.end_date, format: :short))
     end
+
+    it 'create organization section' do
+      event.save
+      expect(event.sections.count).to eq(1)
+    end
   end
 
   describe '#full_address' do

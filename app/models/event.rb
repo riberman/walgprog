@@ -3,6 +3,8 @@ class Event < ApplicationRecord
   include DateFormatter
   include VirtualState::Model
 
+  after_create :create_organization_section
+
   belongs_to :city
   has_many :sponsor_events, dependent: :restrict_with_error
   has_many :sponsors, through: :sponsor_events, source: :institution
@@ -30,5 +32,14 @@ class Event < ApplicationRecord
 
   def sections_to_sort?
     sections.length > 1
+  end
+
+  def create_organization_section
+    sections.new(title: I18n.t('events.default_section'),
+                 status: 'A',
+                 can_be_deleted: false,
+                 content_markdown: I18n.t('events.default_section_content'),
+                 icon: 'star',
+                 index: 1)
   end
 end

@@ -19,10 +19,12 @@
         <%= icon('fas', 'edit', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.edit')) %>
       <% end %>
 
-      <%= link_to admins_event_section_path(@event, section),
-                  method: :delete,
-                  data: { confirm: t('prompt.confirm') } do %>
-        <%= icon('fa', 'trash', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.delete')) %>
+      <% if section.can_be_deleted %>
+        <%= link_to admins_event_section_path(@event, section),
+                    method: :delete,
+                    data: { confirm: t('prompt.confirm') } do %>
+          <%= icon('fa', 'trash', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.delete')) %>
+        <% end %>
       <% end %>
     </div>
   </td>

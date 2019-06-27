@@ -101,7 +101,7 @@ namespace :db do
           title: Faker::DcComics.title,
           content_markdown: Faker::Markdown.sandwich(6, 3),
           icon: 'music',
-          index: index,
+          index: index + 2,
           event: event,
           status: status.sample
         )

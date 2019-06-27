@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_16_181058) do
+ActiveRecord::Schema.define(version: 2019_06_26_021559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 2019_06_16_181058) do
     t.datetime "updated_at", null: false
     t.text "content_markdown"
     t.text "description_short"
+    t.boolean "can_be_deleted", default: true
     t.index ["event_id"], name: "index_sections_on_event_id"
   end
 
