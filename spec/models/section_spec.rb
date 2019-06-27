@@ -1,10 +1,45 @@
 require 'rails_helper'
 
 RSpec.describe Section, type: :model do
-  describe 'before save executing methods' do
-    let!(:section) { create(:section) }
+  describe 'validates' do
+    [:title,
+     :content_markdown,
+     :icon,
+     :index,
+     :status].each do |field|
+      it { is_expected.to validate_presence_of(field) }
+    end
 
+    context 'with status' do
+      it 'inactive' do
+        section = create(:section, :inactive)
+        expect(section.inactive?).to be true
+        expect(section).to be_valid
+      end
+
+      it 'active' do
+        section = create(:section)
+        expect(section.active?).to be true
+        expect(section).to be_valid
+      end
+
+      it 'other' do
+        section = create(:section, :other)
+        expect(section.other?).to be true
+        expect(section).to be_valid
+      end
+
+      it 'other without alternative_text' do
+        section = create(:section, :other)
+        section.alternative_text = nil
+        expect(section).not_to be_valid
+      end
+    end
+  end
+
+  describe '.content_markdown' do
     it 'parse markdown to html' do
+      section = create(:section)
       html = <<-HTML.chomp.strip_heredoc
         <h1>Effugiam erit cinerem tenuere concurrere</h1>
 
@@ -16,11 +51,23 @@ RSpec.describe Section, type: :model do
 
       expect(section.content).to eql(html)
     end
+  end
 
-    it 'create description short' do
-      short_description = "#{section.content_markdown[0...100].gsub!(/[^0-9A-Za-z]/, ' ')}..."
+  describe '.status_types' do
+    subject(:section) { Section.new }
 
-      expect(section.description_short).to eql(short_description)
+    it 'human enum' do
+      hash = { I18n.t('enums.status_types.active') => 'active',
+               I18n.t('enums.status_types.inactive') => 'inactive',
+               I18n.t('enums.status_types.other') => 'other' }
+
+      expect(Section.human_status_types).to include(hash)
     end
+  end
+
+  describe 'associations' do
+    let(:section) { create(:section) }
+
+    it { is_expected.to belong_to(:event) }
   end
 end

@@ -11,8 +11,8 @@ Rails.application.routes.draw do
       resources :admins, expect: :show
       resources :researchers
       resources :events do
-        resources :sponsors, only: [:index, :create, :destroy]
         resources :sections
+        resources :sponsors, only: [:index, :create, :destroy]
       end
 
       get 'states/:id/cities',

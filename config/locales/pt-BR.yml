@@ -23,6 +23,9 @@ pt-BR:
       event:
         one: Evento
         other: Eventos
+      section:
+        one: Seção
+        other: Seções
       researcher:
         one: Pesquisador
         other: Pesquisadores
@@ -34,9 +37,6 @@ pt-BR:
       sponsor_event:
         one: Patrocinador
         other: Patrocinadores
-      section:
-        one: Seção
-        other: Seções
     attributes:
       attribute_commons: &commons
         name: Nome
@@ -75,6 +75,13 @@ pt-BR:
         city_id: Cidade
         address: Endereço
         <<: *commons
+      researcher:
+        name: Nome
+        scholarity: Título Acadêmico
+        institution: Afiliação Institucional
+        image: Imagem
+        gender: Gênero
+        <<: *commons
       section:
         title: Título
         index: Índice
@@ -84,13 +91,6 @@ pt-BR:
         icon: Ícone
         status: Status
         alternative_text: Texto alternativo
-        <<: *commons
-      researcher:
-        name: Nome
-        scholarity: Título Acadêmico
-        institution: Afiliação Institucional
-        image: Imagem
-        gender: Gênero
         <<: *commons
   helpers:
     back: Voltar
@@ -109,14 +109,13 @@ pt-BR:
     user_types:
       administrator: 'Administrador'
       collaborator: 'Colaborador'
-    genders:
-      male: 'Masculino'
-      female: 'Feminino'
-  enums:
     status_types:
       active: 'Ativo'
       inactive: 'Inativo'
       other: 'Outro'
+    genders:
+      male: 'Masculino'
+      female: 'Feminino'
   breadcrumbs:
     homepage: 'Página Inicial'
     action:
@@ -194,9 +193,26 @@ pt-BR:
     description: Descrição
     beginning_end: Início/Término
     from_until: 'De %{beginning} até %{end}'
+    edit_sections: Editar seções
+    sections: Seções do evento
+    default_section: Organização
+    default_section_content: <p>Organizadores do evento</p>
     errors:
       year_used: Já há um evento cadastrado nesse ano.
       invalid_dates: deve ser posterior ao início
+  sections:
+    index: Seções
+    from: "Seções do evento: %{event}"
+    new: Nova Seção
+    show: "Detalhes da Seção do evento: %{event}"
+    edit: Editar Seção
+    description: Descrição
+    sortable_info: Clique e arraste nos ícones abaixo para selecionar a ordem das seções
+    save_order: Salvar ordem das seções
+    saved_order: Ordem das seções redefinida com sucesso!
+    error:
+      save_order: Deve haver ao menos uma
+      be_deleted: Essa seção não pode ser removida
   admins:
     index: Administradores
     new: Novo Administrador
@@ -211,13 +227,3 @@ pt-BR:
   sponsors:
     add: Adicionar Patrocinador
     index: Patrocinadores
-  sections:
-    index: Seções
-    from: "Seções do evento: %{event}"
-    new: Nova Seção
-    show: "Detalhes da Seção do evento: %{event}"
-    edit: Editar Seção
-    description: Descrição
-    sortable_info: Clique e arraste nos ícones abaixo para selecionar a ordem das seções
-    save_order: Salvar ordem das seções
-    saved_order: Ordem das seções redefinida com sucesso!

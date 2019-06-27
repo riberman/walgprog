@@ -4,7 +4,6 @@
   </td>
   <td class="id-td" id="<%= section.id %>"><%= section.id %></td>
   <td><%= section.title %></td>
-  <td><%= section.description_short %></td>
   <td><%= t("enums.status_types.#{section.status}") %></td>
   <td><%= section.alternative_text %></td>
   <td class="index-td"><%= section.index %></td>
@@ -20,10 +19,12 @@
         <%= icon('fas', 'edit', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.edit')) %>
       <% end %>
 
-      <%= link_to admins_event_section_path(@event, section),
-                  method: :delete,
-                  data: { confirm: t('prompt.confirm') } do %>
-        <%= icon('fa', 'trash', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.delete')) %>
+      <% if section.can_be_deleted %>
+        <%= link_to admins_event_section_path(@event, section),
+                    method: :delete,
+                    data: { confirm: t('prompt.confirm') } do %>
+          <%= icon('fa', 'trash', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.delete')) %>
+        <% end %>
       <% end %>
     </div>
   </td>

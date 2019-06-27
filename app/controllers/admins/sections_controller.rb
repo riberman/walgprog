@@ -2,10 +2,7 @@ class Admins::SectionsController < Admins::BaseController
   before_action :set_resource_name, only: [:create, :update, :destroy]
   before_action :set_section, only: [:show, :edit, :update, :destroy]
   before_action :set_event
-
-  add_breadcrumb I18n.t('breadcrumbs.action.index',
-                        resource_name: I18n.t('activerecord.models.event.one')),
-                 :admins_event_sections_path, except: :destroy
+  before_action :set_event_breadcrumb, except: :destroy
 
   add_breadcrumb I18n.t('breadcrumbs.action.index',
                         resource_name: I18n.t('activerecord.models.section.other')),
@@ -66,23 +63,16 @@ class Admins::SectionsController < Admins::BaseController
   end
 
   def update_index
-    if params[:list].present?
-      list = params[:list]
-      list.each do |_index, section|
-        @section = Section.find(section['id'])
-        @section.index = section['index']
-        @section.save
-      end
-    end
+    @list = params[:list]
 
-    respond_to do |format|  ## Add this
-      format.js { flash.now[:notice] = "Here is my flash notice" }
-      format.json {render json: { message: t('sections.saved_order') }}
-      ## Other format
-    end
+    return flash[:error] = t('sections.saved_order') if @list.empty?
 
-    render json: { message: t('sections.saved_order') }
-    # flash[:success] = t('flash.actions.destroy.m', resource_name: Section.model_name.human)
+    @list.each do |_index, section|
+      @section = Section.find(section['id'])
+      @section.index = section['index']
+      @section.save
+    end
+    flash[:success] = t('sections.saved_order')
   end
 
   private
@@ -108,5 +98,12 @@ class Admins::SectionsController < Admins::BaseController
 
   def max_index
     @section.index = @event.sections.count + 1 if @section.new_record?
+  end
+
+  def set_event_breadcrumb
+    path = admins_event_path(@event)
+    add_breadcrumb I18n.t('breadcrumbs.action.index',
+                          resource_name: I18n.t('activerecord.models.event.one')),
+                   path, except: :destroy
   end
 end
