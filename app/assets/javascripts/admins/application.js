@@ -29,6 +29,7 @@
 //= require config/sidebar_menu_collapse
 //= require config/jmask
 //= require config/selectize
+//= require config/simple_mde
 
 
 // Lib files
