@@ -21,5 +21,13 @@
     <%= active_link_to(admins_events_path, class: 'list-group-item list-group-item-action', active: :inclusive) do %>
       <span class="icon mr-3"><%= icon('fas', 'calendar') %></span><%= t('events.index') %>
     <% end %>
+
+    <%= active_link_to(admins_admins_path, class: 'list-group-item list-group-item-action', active: :inclusive) do %>
+      <span class="icon mr-3"><%= icon('fas', 'users') %></span><%= t('admins.index') %>
+    <% end %>
+
+    <%= active_link_to admins_researchers_path, class: 'list-group-item list-group-item-action', active: :inclusive do %>
+      <span class="icon mr-3"><%= icon('fas', 'graduation-cap') %></i></span><%= t('researchers.index') %>
+    <% end %>
   </div>
 </div>

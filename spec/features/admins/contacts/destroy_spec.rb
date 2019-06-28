@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Admin Contact Destroy', type: :feature do
+describe 'Admins::Contact::destroy', type: :feature do
   let(:admin) { create(:admin) }
   let(:resource_name) { Contact.model_name.human }
   let!(:contact) { create_list(:contact, 2).sample }
