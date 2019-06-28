@@ -51,6 +51,14 @@ WAlgProg.sectionsSortable = () => {
   });
 };
 
+WAlgProg.renderFlashMessage = (status, message) => {
+  $('.alert').remove('.alert');
+  $('.card-body').prepend(`<div class="alert alert-${status} alert-dismissible fade show" role="alert">
+    <button class="close" data-dismiss="alert" aria-label="Close"></button>
+        ${message}
+    </div>`);
+};
+
 WAlgProg.saveSectionsOrder = () => {
   const sections = [];
   $('#save-sections-order').click(() => {
@@ -64,14 +72,6 @@ WAlgProg.saveSectionsOrder = () => {
 
     const eventId = $('#event_id').val();
 
-    function renderFlashMessage(status, message) {
-      $('.alert').remove('.alert');
-      $('.card-body').prepend(`<div class="alert alert-${status} alert-dismissible fade show" role="alert">
-        <button class="close" data-dismiss="alert" aria-label="Close"></button>
-            ${message}
-        </div>`);
-    }
-
     fetch(`/admins/events/${eventId}/sections/index`, {
       method: 'post',
       body: JSON.stringify({ list: sections }),
@@ -81,7 +81,7 @@ WAlgProg.saveSectionsOrder = () => {
       },
       credentials: 'same-origin',
     }).then(response => response.json())
-      .then(success => renderFlashMessage('success', success.message))
-      .catch(error => renderFlashMessage('error', error.message));
+      .then(success => WAlgProg.renderFlashMessage('success', success.message))
+      .catch(error => WAlgProg.renderFlashMessage('error', error.message));
   });
 };
