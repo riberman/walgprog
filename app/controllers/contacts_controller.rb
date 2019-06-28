@@ -18,7 +18,13 @@ class ContactsController < ApplicationController
   end
 
   def update
-    render @contact.update_by_token(params, params_contact)
+    if @contact.update_by_token(params_contact)
+      render :updated
+    else
+      render :edit
+    end
+  rescue EmailUpdateValidator
+    flash[:error] = errors[:invalid_token]
   end
 
   def confirm_unregister; end

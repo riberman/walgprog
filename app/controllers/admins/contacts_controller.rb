@@ -24,6 +24,7 @@ class Admins::ContactsController < Admins::BaseController
                  :admins_contacts_registered_path, only: :registered
 
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :set_new_contact, only: :create
 
   def index
     @contacts = Contact.includes(:institution).order('contacts.name ASC')
@@ -44,12 +45,7 @@ class Admins::ContactsController < Admins::BaseController
   end
 
   def create
-    @contact = Contact.new(params_contact)
-    @contact.generate_token(:unregister_token)
-    @contact.generate_token(:update_data_token)
-    @contact.update_data_send_at = Time.zone.now
     if @contact.save
-      # ContactMailer.with(contacts: @contact).welcome_email.deliver
       @contact.send_welcome_email
       flash[:success] = I18n.t('flash.actions.create.m',
                                resource_name: I18n.t('activerecord.models.contact.one'))
@@ -90,6 +86,11 @@ class Admins::ContactsController < Admins::BaseController
 
   def set_contact
     @contact = Contact.find(params[:id])
+  end
+
+  def set_new_contact
+    @contact = Contact.new(params_contact)
+    @contact.assign_tokens
   end
 
   def params_contact

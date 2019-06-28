@@ -16,21 +16,23 @@ class Contact < ApplicationRecord
             length: { minimum: 14, maximum: 15 },
             format: { with: PHONE_REGEX, allow_blank: true }
 
-  def generate_token(column)
-    begin
-      self[column] = SecureRandom.urlsafe_base64
-    end while Contact.exists?(column => self[column])
+  def assign_tokens
+    generate_token(:unregister_token)
+    generate_token(:update_data_token)
+    self.update_data_send_at = Time.zone.now
   end
 
-  def update_by_token(params, params_contact)
-    if valid_token(params)
-      if update(params_contact)
-        ContactMailer.with(contacts: self).self_update_contact.deliver
-        return 'contacts/update_success'
-      end
-      'edit'
+  def generate_token(column)
+    self[column] = SecureRandom.urlsafe_base64 while Contact.exists?(column => self[column])
+  end
+
+  def update_by_token(params_contact)
+    if update(params_contact)
+      ContactMailer.with(contacts: self).self_update_contact.deliver
+      invalidate_token
+      return true
     end
-    'contacts/time_exceeded'
+    false
   end
 
   def update_by_token_to_unregister(params)
@@ -52,11 +54,13 @@ class Contact < ApplicationRecord
   def valid_token(params)
     final_valid_time = (update_data_send_at + 2.hours)
 
-    if (params[:token].eql? update_data_token) && (final_valid_time > Time.zone.now)
-      return true
-    end
+    return true if (params[:token].eql? update_data_token) && (final_valid_time > Time.zone.now)
 
     false
+  end
+
+  def invalidate_token
+    self.update_data_send_at = (update_data_send_at - 2.hours)
   end
 
   def send_welcome_email
