@@ -64,15 +64,24 @@ WAlgProg.saveSectionsOrder = () => {
 
     const eventId = $('#event_id').val();
 
-    $.ajax({
-      method: 'POST',
-      url: `/admins/events/${eventId}/sections/index`,
-      data: {
-        authenticity_token: $('[name="csrf-token"]')[0].content,
-        list: sections,
+    function renderFlashMessage(status, message) {
+      $('.alert').remove('.alert');
+      $('.card-body').prepend(`<div class="alert alert-${status} alert-dismissible fade show" role="alert">
+        <button class="close" data-dismiss="alert" aria-label="Close"></button>
+            ${message}
+        </div>`);
+    }
+
+    fetch(`/admins/events/${eventId}/sections/index`, {
+      method: 'post',
+      body: JSON.stringify({ list: sections }),
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': Rails.csrfToken(),
       },
-      error: () => {},
-      success: () => window.location.reload(),
-    });
+      credentials: 'same-origin',
+    }).then(response => response.json())
+      .then(success => renderFlashMessage('success', success.message))
+      .catch(error => renderFlashMessage('error', error.message));
   });
 };

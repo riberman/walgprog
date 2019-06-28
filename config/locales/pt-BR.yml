@@ -211,6 +211,7 @@ pt-BR:
     save_order: Salvar ordem das seções
     saved_order: Ordem das seções redefinida com sucesso!
     error:
+      error_order: Algo aconteceu a ordem da sessão não foi salva!
       save_order: Deve haver ao menos uma
       be_deleted: Essa seção não pode ser removida
   admins:

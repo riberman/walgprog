@@ -2,6 +2,7 @@ class Section < ApplicationRecord
   include ActiveModel::Validations
 
   before_save :markdown_to_html
+  before_destroy :not_remove_default_section
 
   belongs_to :event
 
@@ -29,5 +30,9 @@ class Section < ApplicationRecord
     markdown = Redcarpet::Markdown.new(renderer, config.extensions)
 
     self.content = markdown.render(content_markdown)
+  end
+
+  def not_remove_default_section
+    raise I18n.t('sections.error.be_deleted') if title.include? I18n.t('events.default_section')
   end
 end

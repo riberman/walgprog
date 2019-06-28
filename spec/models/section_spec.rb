@@ -70,4 +70,19 @@ RSpec.describe Section, type: :model do
 
     it { is_expected.to belong_to(:event) }
   end
+
+  describe '.not_remove_default_section' do
+    let(:event) { create(:event, :with_sections) }
+
+    it 'remove any except default section' do
+      event.sections.each do |section|
+        section.destroy unless section.title.include? I18n.t('events.default_section')
+      end
+    end
+
+    it 'throws exception when remove default section' do
+      section = event.sections.find_by(title: I18n.t('events.default_section'))
+      expect { section.destroy }.to raise_error RuntimeError, I18n.t('sections.error.be_deleted')
+    end
+  end
 end

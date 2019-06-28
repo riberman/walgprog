@@ -30,15 +30,14 @@ class Admins::SectionsController < Admins::BaseController
   end
 
   def create
-    @section = Section.new(section_params)
-    if @section.save
-      flash[:success] = t('flash.actions.create.f', resource_name: @resource_name)
-      redirect_to admins_event_sections_path
-    else
-      max_index
-      flash.now[:error] = I18n.t('flash.actions.errors')
-      render 'new'
-    end
+    options = {
+      redirect_to: :new,
+      path: admins_event_sections_path,
+      action: 'flash.actions.create.f',
+      model_name: @resource_name
+    }
+    @section = @event.sections.build(section_params)
+    action_success? @section.save, options
   end
 
   def show; end
@@ -46,36 +45,50 @@ class Admins::SectionsController < Admins::BaseController
   def edit; end
 
   def update
-    if @section.update section_params
-      flash[:success] = t('flash.actions.update.f', resource_name: @resource_name)
-      redirect_to admins_event_sections_path
-    else
-      flash.now[:error] = I18n.t('flash.actions.errors')
-      render 'edit'
-    end
+    options = {
+      redirect_to: :edit,
+      path: admins_event_sections_path,
+      action: 'flash.actions.update.f',
+      model_name: @resource_name
+    }
+    action_success? @section.update(section_params), options
   end
 
   def destroy
-    @section.destroy
-
-    flash[:success] = t('flash.actions.destroy.f', resource_name: @resource_name)
+    begin
+      @section.destroy
+      flash[:success] = t('flash.actions.destroy.f', resource_name: @resource_name)
+    rescue RuntimeError
+      flash[:error] = t('sections.error.be_deleted')
+    end
     redirect_to admins_event_sections_path
   end
 
   def update_index
-    @list = params[:list]
+    respond_to do |format|
+      sections = params[:list]
+      if sections.blank?
+        response_to(format, 'sections.error.error_order', :unprocessable_entity)
+      else
+        update_position_section sections
+        response_to(format, 'sections.saved_order', :accepted)
+      end
+    end
+  end
 
-    return flash[:error] = t('sections.saved_order') if @list.empty?
+  private
 
-    @list.each do |_index, section|
+  def update_position_section(list)
+    list.each do |section|
       @section = Section.find(section['id'])
       @section.index = section['index']
       @section.save
     end
-    flash[:success] = t('sections.saved_order')
   end
 
-  private
+  def response_to(format, message, status)
+    format.json { render json: { message: t(message) }, status: status }
+  end
 
   def section_params
     params.require(:section).permit(

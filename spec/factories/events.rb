@@ -11,11 +11,18 @@ FactoryBot.define do
 
     transient do
       institutions_count { 3 }
+      sections_count { 5 }
     end
 
     trait :with_sponsors do
       after(:create) do |event, evaluator|
         create_list(:sponsor_event, evaluator.institutions_count, event: event)
+      end
+    end
+
+    trait :with_sections do
+      after(:create) do |event, evaluator|
+        create_list(:section, evaluator.sections_count, event: event)
       end
     end
   end
