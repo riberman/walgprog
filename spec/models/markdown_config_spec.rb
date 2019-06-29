@@ -17,6 +17,7 @@ RSpec.describe MarkdownConfig, type: :Class do
 
     it 'get extension' do
       extensions = {
+        escape_html: true,
         space_after_headers: true,
         autolink: true
       }
