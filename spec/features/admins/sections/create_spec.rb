@@ -11,13 +11,14 @@ describe 'Admins::Section::create', type: :feature do
     visit new_admins_event_section_path(event)
   end
 
-  context 'when data is valid', js: true do
-    it 'create section' do
+  context 'when data is valid' do
+    it 'create section', js: true do
       active = Section.human_status_types.keys.first
       attributes = attributes_for(:section)
 
       fill_in 'section_title', with: attributes[:title]
-      fill_in 'section_content_markdown', with: attributes[:content_markdown]
+
+      page.execute_script("WAlgProg.simpleMDE.value('## This is test')")
       select attributes[:icon], from: 'section_icon'
       selectize(active, from: 'section_status', normalize_id: false)
       click_button('commit')

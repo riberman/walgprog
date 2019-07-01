@@ -17,7 +17,8 @@ describe 'Admins::Section::update', type: :feature do
       expect(page).to have_field('section_title', with: section.title)
       expect(page).to have_field('section_icon', with: section.icon)
       expect(page).to have_field('section_index', disabled: true, with: section.index)
-      expect(page).to have_field('section_content_markdown', with: section.content_markdown)
+      expect(page).to have_field('section_content_markdown',
+                                 with: section.content_markdown, visible: false)
 
       expect(page).to have_selectize('section_status', selected: status)
     end
@@ -27,7 +28,9 @@ describe 'Admins::Section::update', type: :feature do
     it 'update section with inactive status' do
       inactive = Section.human_status_types.keys.second
       fill_in 'section_title', with: 'new title'
-      fill_in 'section_content_markdown', with: 'new content'
+
+      page.execute_script("WAlgProg.simpleMDE.value('## It`s new content')")
+
       select 'glass', from: 'section_icon'
       selectize(inactive, from: 'section_status', normalize_id: false)
       click_button('commit')
@@ -48,7 +51,7 @@ describe 'Admins::Section::update', type: :feature do
     it 'update section with other status' do
       other = Section.human_status_types.keys.third
       fill_in 'section_title', with: 'new title'
-      fill_in 'section_content_markdown', with: 'new content'
+      page.execute_script("WAlgProg.simpleMDE.value('## This is test')")
       select 'glass', from: 'section_icon'
       selectize(other, from: 'section_status', normalize_id: false)
       fill_in 'section_alternative_text', with: 'other status'
@@ -72,7 +75,7 @@ describe 'Admins::Section::update', type: :feature do
   context 'when data are not valid', js: true do
     it 'show errors' do
       fill_in 'section_title', with: ''
-      fill_in 'section_content_markdown', with: ''
+      page.execute_script("WAlgProg.simpleMDE.value('')")
       selectize('', from: 'section_status', normalize_id: false)
       click_button('commit')
 
