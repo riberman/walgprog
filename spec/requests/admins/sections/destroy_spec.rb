@@ -11,7 +11,7 @@ describe 'Admins::Section::destroy', type: :request do
 
   describe 'not destroy default section' do
     it 'when success' do
-      section = event.sections.first;
+      section = event.sections.first
 
       delete "/admins/events/#{event.id}/sections/#{section.id}"
 
