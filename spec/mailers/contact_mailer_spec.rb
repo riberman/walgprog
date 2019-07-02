@@ -23,7 +23,7 @@ RSpec.describe ContactMailer, type: :mailer do
 
     it 'assigns @unregister_url' do
       expect(mail.body.encoded)
-        .to match(contact_unregister_path(contact, contact.unregister_token))
+        .to match(contact_confirm_unregister_path(contact, contact.unregister_token))
     end
 
     it 'assigns @update_url' do

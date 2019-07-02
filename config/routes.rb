@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   get 'contacts/time_exceeded',
       to: 'contacts#time_exceeded', as: :contact_time_exceeded
 
+  get 'contacts/unregistered',
+      to: 'contacts#unregistered', as: :contact_unregistered
+
   devise_for :admins
   authenticate :admin do
     namespace :admins do

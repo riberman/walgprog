@@ -11,15 +11,16 @@ class ContactsController < ApplicationController
 
   def unregister
     if @contact.update_by_token_to_unregister(params)
-      render :unregistered
+      redirect_to contact_unregistered_path
     else
+      # mudar redirect_to
       redirect_to admins_institution_path
     end
   end
 
   def update
     if @contact.update_by_token(params_contact)
-      render :updated
+      redirect_to contact_updated_path
     else
       render :edit
     end

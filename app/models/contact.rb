@@ -16,6 +16,8 @@ class Contact < ApplicationRecord
             length: { minimum: 14, maximum: 15 },
             format: { with: PHONE_REGEX, allow_blank: true }
 
+  after_create :send_welcome_email
+
   def assign_tokens
     generate_token(:unregister_token)
     generate_token(:update_data_token)

@@ -24,7 +24,7 @@ class Admins::ContactsController < Admins::BaseController
                  :admins_contacts_registered_path, only: :registered
 
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-  before_action :set_new_contact, only: :create
+  # before_action :set_new_contact, only: :create
 
   def index
     @contacts = Contact.includes(:institution).order('contacts.name ASC')
@@ -46,6 +46,7 @@ class Admins::ContactsController < Admins::BaseController
 
   def create
     @contact = Contact.new(params_contact)
+    @contact.assign_tokens
     options = {
       redirect_to: :new,
       path: admins_contacts_path,
@@ -81,11 +82,6 @@ class Admins::ContactsController < Admins::BaseController
 
   def set_contact
     @contact = Contact.find(params[:id])
-  end
-
-  def set_new_contact
-    @contact = Contact.new(params_contact)
-    @contact.assign_tokens
   end
 
   def params_contact

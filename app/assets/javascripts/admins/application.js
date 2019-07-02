@@ -16,8 +16,6 @@
 // Vendors
 //--------------------
 //= require sifter/sifter.min
-//= require microplugin/microplugin.min
-//= require selectize/selectize.min
 
 
 // Config files
@@ -28,8 +26,6 @@
 //= require config/datepicker
 //= require config/sidebar_menu_collapse
 //= require config/jmask
-//= require config/selectize
-
 
 // Lib files
 //--------------------
