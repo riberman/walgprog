@@ -1,11 +1,13 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:unregister, :update, :edit, :confirm_unregister]
 
+  layout 'layouts/contact'
+
   def edit
     if @contact.valid_token(params)
       render :edit
     else
-      flash[:error] = I18n.t('flash.actions.errors')
+      redirect_to contact_time_exceeded_path
     end
   end
 
@@ -13,19 +15,19 @@ class ContactsController < ApplicationController
     if @contact.update_by_token_to_unregister(params)
       redirect_to contact_unregistered_path
     else
-      # mudar redirect_to
-      redirect_to admins_institution_path
+      redirect_to contact_already_unregistered_path
     end
   end
 
   def update
     if @contact.update_by_token(params_contact)
+      flash[:success] = I18n.t('flash.actions.update.m',
+                               resource_name: I18n.t('activerecord.models.contact.one'))
       redirect_to contact_updated_path
     else
+      flash[:error] = I18n.t('flash.actions.errors')
       render :edit
     end
-  rescue EmailUpdateValidator
-    flash[:error] = errors[:invalid_token]
   end
 
   def confirm_unregister; end
@@ -33,6 +35,8 @@ class ContactsController < ApplicationController
   def unregistered; end
 
   def updated; end
+
+  def already_unregistered; end
 
   private
 

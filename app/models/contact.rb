@@ -25,7 +25,8 @@ class Contact < ApplicationRecord
   end
 
   def generate_token(column)
-    self[column] = SecureRandom.urlsafe_base64 while Contact.exists?(column => self[column])
+    time = Time.zone.now.to_f.to_s
+    self[column] = Digest::SHA1.hexdigest(email + time)
   end
 
   def update_by_token(params_contact)
@@ -62,7 +63,8 @@ class Contact < ApplicationRecord
   end
 
   def invalidate_token
-    self.update_data_send_at = (update_data_send_at - 2.hours)
+    self.update_data_send_at = update_data_send_at - 2.hours
+    save
   end
 
   def send_welcome_email

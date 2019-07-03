@@ -191,6 +191,7 @@ pt-BR:
     unregistered: Você foi desregistrado
     time_exceeded: O link não é mais valido
     update_sucess: Seus dados foram atualizados
+    already_unregistered: Você já está desregistrado
   admins:
     index: Administradores
     new: Novo Administrador

@@ -42,8 +42,6 @@ describe 'Contact::update', type: :feature do
       selectize '', from: 'contact_institution'
       click_button
 
-      expect(page).to have_flash(:danger, text: I18n.t('flash.actions.errors'))
-
       message_blank_error = I18n.t('errors.messages.blank')
       expect(page).to have_message(message_blank_error, in: 'div.contact_name')
       expect(page).to have_message(message_blank_error, in: 'div.contact_email')

@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   get 'contacts/unregistered',
       to: 'contacts#unregistered', as: :contact_unregistered
 
+  get 'contacts/already_unregistered',
+      to: 'contacts#already_unregistered', as: :contact_already_unregistered
+
   devise_for :admins
   authenticate :admin do
     namespace :admins do

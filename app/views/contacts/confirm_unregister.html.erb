@@ -1,6 +1,6 @@
 <%= simple_form_for(@contact, url: contact_unregister_path(@contact, @contact.unregister_token)) do | f | %>
 
-  <p>Você realmente deseja se desregistrar?</p>
+  <h4>Você realmente deseja se desregistrar?</h4>
   <div class="d-flex">
     <%= f.button :submit, class: 'btn-primary ml-auto' %>
   </div>
