@@ -1,14 +1,14 @@
-Rails.application.config.action_mailer.default_url_options = {host: ENV['mailer.host'],
-                                                              port: ENV['mailer.port']}
+Rails.application.config.action_mailer.default_url_options = { host: ENV['mailer.host'],
+                                                               port: ENV['mailer.port'] }
 
-Walgprog::Application.default_url_options = {host: ENV['mailer.host'],
-                                             port: ENV['mailer.port']}
+Walgprog::Application.default_url_options = { host: ENV['mailer.host'],
+                                              port: ENV['mailer.port'] }
 
 ActionMailer::Base.smtp_settings = {
-    address: ENV['mailer.smtp'],
-    port: ENV['mailer.smtp.port'],
-    domain: ENV['mailer.smtp.domain'],
-    user_name: ENV['mailer.smtp.username'],
-    password: ENV['mailer.smtp.password'],
-    authentication: ENV['mailer.smtp.authentication']
+  address: ENV['mailer.smtp'],
+  port: ENV['mailer.smtp.port'],
+  domain: ENV['mailer.smtp.domain'],
+  user_name: ENV['mailer.smtp.username'],
+  password: ENV['mailer.smtp.password'],
+  authentication: ENV['mailer.smtp.authentication']
 }

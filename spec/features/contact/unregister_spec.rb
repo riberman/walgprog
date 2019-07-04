@@ -7,7 +7,7 @@ describe 'Contact::unregister', type: :feature do
     visit contact_confirm_unregister_path(contact, contact[:unregister_token])
     click_button
 
-    puts contact.reload
+    contact.reload
     expect(contact.unregistered).to be true
     expect(page).to have_content(I18n.t('feedback.unregistered'))
   end
