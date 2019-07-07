@@ -81,13 +81,72 @@ RSpec.describe Contact, type: :model do
       }
     end
 
-    context 'with update_by_token_to_unregister' do
+    context 'with update_by_token_to_unregister successfully' do
       let(:contact) { create(:contact) }
 
       it {
         params = { id: contact.id, token: contact.unregister_token }
 
         expect(contact.update_by_token_to_unregister(params)).to eq(true)
+      }
+    end
+
+    context 'with update_by_token_to_unregister failure' do
+      let(:contact) { create(:contact) }
+
+      it {
+        params = { token: 'web5developer' }
+
+        expect(contact.update_by_token_to_unregister(params)).to eq(false)
+      }
+    end
+
+    context 'with equal_token successfully' do
+      let(:contact) { create(:contact) }
+
+      it {
+        param = { token: contact.unregister_token }
+
+        expect(contact.equal_token(param)).to eq(true)
+      }
+    end
+
+    context 'with equal_token failure' do
+      let(:contact) { create(:contact) }
+
+      it {
+        param = { token: 'web5developer' }
+
+        expect(contact.equal_token(param)).to eq(false)
+      }
+    end
+
+    context 'with valid_token successfully' do
+      let(:contact) { create(:contact) }
+
+      it {
+        param = { token: contact.update_data_token }
+
+        expect(contact.valid_token(param)).to eq(true)
+      }
+    end
+
+    context 'with valid_token failure' do
+      let(:contact) { create(:contact) }
+
+      it {
+        param = { token: 'web5developer' }
+
+        expect(contact.valid_token(param)).to eq(false)
+      }
+    end
+
+    context 'with invalidate_token' do
+      let(:contact) { create(:contact) }
+
+      it {
+        contact.invalidate_token
+        expect(contact).to be_valid
       }
     end
   end
