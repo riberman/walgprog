@@ -31,7 +31,7 @@ class Contact < ApplicationRecord
 
   def update_by_token(params_contact)
     if update(params_contact)
-      ContactMailer.with(contacts: self).self_update_contact.deliver
+      send_self_update
       invalidate_token
       return true
     end
@@ -41,7 +41,7 @@ class Contact < ApplicationRecord
   def update_by_token_to_unregister(params)
     if equal_token(params)
       if Contact.update(params[:id], unregistered: true)
-        ContactMailer.with(contacts: self).unregistered_contact.deliver
+        send_self_unregister
         return true
       end
     end
@@ -69,5 +69,13 @@ class Contact < ApplicationRecord
 
   def send_welcome_email
     ContactMailer.with(contacts: self).welcome_email.deliver
+  end
+
+  def send_self_update
+    ContactMailer.with(contacts: self).self_update_contact.deliver
+  end
+
+  def send_self_unregister
+    ContactMailer.with(contacts: self).unregistered_contact.deliver
   end
 end

@@ -38,5 +38,57 @@ RSpec.describe Contact, type: :model do
         }.by(1)
       }
     end
+
+    context 'when contact is updated with successfully' do
+      let(:contact) { create(:contact) }
+
+      it {
+        contact.send_self_update
+        expect { contact.send_self_update }.to change {
+          ActionMailer::Base.deliveries.count
+        }.by(1)
+      }
+    end
+
+    context 'when contact is unregistered' do
+      let(:contact) { create(:contact) }
+
+      it {
+        contact.send_self_unregister
+        expect { contact.send_self_unregister }.to change {
+          ActionMailer::Base.deliveries.count
+        }.by(1)
+      }
+    end
+  end
+
+  describe 'checking tokens' do
+    context 'with unregistered token' do
+      let(:contact) { create(:contact) }
+
+      it {
+        contact.generate_token(:unregister_token)
+        expect(contact).to be_valid
+      }
+    end
+
+    context 'with update token' do
+      let(:contact) { create(:contact) }
+
+      it {
+        contact.generate_token(:update_data_token)
+        expect(contact).to be_valid
+      }
+    end
+
+    context 'with update_by_token_to_unregister' do
+      let(:contact) { create(:contact) }
+
+      it {
+        params = { id: contact.id, token: contact.unregister_token }
+
+        expect(contact.update_by_token_to_unregister(params)).to eq(true)
+      }
+    end
   end
 end
