@@ -3,6 +3,9 @@ require 'rails_helper'
 describe 'Contact::update', type: :feature do
   let!(:institution) { create_list(:institution, 2).sample }
   let(:contact) { create(:contact) }
+  let(:contact_with_invalid_token) do
+    create(:contact, update_data_send_at: (Time.zone.now - 6.hours))
+  end
 
   before(:each) do
     visit contact_edit_path(contact, contact.update_data_token)
@@ -59,4 +62,23 @@ describe 'Contact::update', type: :feature do
       expect(page).to have_message(I18n.t('errors.messages.invalid'), in: 'div.contact_email')
     end
   end
+
+  context 'with invalid token' do
+    it 'update contact' do
+      visit contact_edit_path(contact_with_invalid_token,
+                              contact_with_invalid_token.update_data_token)
+
+      expect(page).to have_current_path contact_time_exceeded_path
+    end
+  end
+
+  # context 'when already unregistered' do
+  #   it 'update contact' do
+  #     token = 'df4d5f4d5d45fss5d4s5d4s5d45'
+  #     puts contact.unregister_token
+  #     patch contact_confirm_unregister_path(contact, token)
+  #
+  #     expect(page).to have_current_path contact_already_unregistered_path
+  #   end
+  # end
 end
