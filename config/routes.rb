@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
+  get '/institutions',
+      to: 'institutions#new', as: :new_institution
+
+  post '/institutions',
+       to: 'institutions#create'
+
   devise_for :admins
   authenticate :admin do
     namespace :admins do
