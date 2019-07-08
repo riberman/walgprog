@@ -24,19 +24,18 @@ class Admins::ContactsController < Admins::BaseController
                  :admins_contacts_registered_path, only: :registered
 
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-  # before_action :set_new_contact, only: :create
 
   def index
     @contacts = Contact.includes(:institution).order('contacts.name ASC')
   end
 
   def unregistered
-    @contacts = Contact.where(unregistered: true).includes(:institution)
+    @contacts = Contact.where(unregistered: true).includes(:institution).order('contacts.name ASC')
     render :index
   end
 
   def registered
-    @contacts = Contact.where(unregistered: false).includes(:institution)
+    @contacts = Contact.where(unregistered: false).includes(:institution).order('contacts.name ASC')
     render :index
   end
 

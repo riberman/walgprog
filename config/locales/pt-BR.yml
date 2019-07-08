@@ -162,6 +162,11 @@ pt-BR:
     edit: Editar Contato
     show: Detalhes do Contato
     updated: Dados atualizados
+    registered: Listar somente cadastrados
+    unregistered: Listar somente descadastrados
+    confirm_unregistered: Voce realmente deseja se desregistrar?
+    invalid_link: Link para atualizar invalido
+    success_update: Seus dados foram atualizados!
   institutions:
     index: Instituições de Ensino
     new: Nova Instituição de Ensino
