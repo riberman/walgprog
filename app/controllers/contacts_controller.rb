@@ -7,7 +7,7 @@ class ContactsController < ApplicationController
     if @contact.valid_token(params)
       render :edit
     else
-      redirect_to contact_time_exceeded_path
+      redirect_to contact_invalid_token_path
     end
   end
 
@@ -15,7 +15,7 @@ class ContactsController < ApplicationController
     if @contact.update_by_token_to_unregister(params)
       redirect_to contact_unregistered_path
     else
-      redirect_to contact_already_unregistered_path
+      redirect_to contact_invalid_token_path
     end
   end
 
@@ -36,7 +36,7 @@ class ContactsController < ApplicationController
 
   def updated; end
 
-  def already_unregistered; end
+  def invalid_token; end
 
   private
 

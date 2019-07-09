@@ -165,8 +165,6 @@ pt-BR:
     registered: Listar somente cadastrados
     unregistered: Listar somente descadastrados
     confirm_unregistered: Voce realmente deseja se desregistrar?
-    invalid_link: Link para atualizar invalido
-    success_update: Seus dados foram atualizados!
   institutions:
     index: Instituições de Ensino
     new: Nova Instituição de Ensino
@@ -194,9 +192,8 @@ pt-BR:
       subject: Seus dados foram atualizados.
   feedback:
     unregistered: Você foi desregistrado
-    time_exceeded: O link não é mais valido
-    update_sucess: Seus dados foram atualizados
-    already_unregistered: Você já está desregistrado
+    invalid_link: Link para atualizar invalido
+    success_update: Seus dados foram atualizados!
   admins:
     index: Administradores
     new: Novo Administrador

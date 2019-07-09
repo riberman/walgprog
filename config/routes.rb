@@ -16,14 +16,11 @@ Rails.application.routes.draw do
   get 'contacts/updated',
       to: 'contacts#updated', as: :contact_updated
 
-  get 'contacts/time_exceeded',
-      to: 'contacts#time_exceeded', as: :contact_time_exceeded
+  get 'contacts/invalid',
+      to: 'contacts#invalid_token', as: :contact_invalid_token
 
   get 'contacts/unregistered',
       to: 'contacts#unregistered', as: :contact_unregistered
-
-  get 'contacts/already_unregistered',
-      to: 'contacts#already_unregistered', as: :contact_already_unregistered
 
   devise_for :admins
   authenticate :admin do

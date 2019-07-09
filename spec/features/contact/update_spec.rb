@@ -68,17 +68,7 @@ describe 'Contact::update', type: :feature do
       visit contact_edit_path(contact_with_invalid_token,
                               contact_with_invalid_token.update_data_token)
 
-      expect(page).to have_current_path contact_time_exceeded_path
+      expect(page).to have_current_path contact_invalid_token_path
     end
   end
-
-  # context 'when already unregistered' do
-  #   it 'update contact' do
-  #     token = 'df4d5f4d5d45fss5d4s5d4s5d45'
-  #     puts contact.unregister_token
-  #     patch contact_confirm_unregister_path(contact, token)
-  #
-  #     expect(page).to have_current_path contact_already_unregistered_path
-  #   end
-  # end
 end
