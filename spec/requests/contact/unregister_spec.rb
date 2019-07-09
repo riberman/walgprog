@@ -10,7 +10,7 @@ describe 'Contact::unregister', type: :request do
 
       expect(response).to redirect_to contact_invalid_token_path
       follow_redirect!
-      expect(response.body).to include(I18n.t('contacts.invalid_link'))
+      expect(response.body).to include(I18n.t('feedback.invalid_link'))
     end
   end
 end
