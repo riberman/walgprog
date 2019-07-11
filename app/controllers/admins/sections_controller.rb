@@ -2,6 +2,11 @@ class Admins::SectionsController < Admins::BaseController
   before_action :set_resource_name, only: [:create, :update, :destroy]
   before_action :set_section, only: [:show, :edit, :update, :destroy]
   before_action :set_event
+
+  add_breadcrumb I18n.t('breadcrumbs.action.index',
+                        resource_name: I18n.t('activerecord.models.event.other')),
+                 :admins_events_path, except: :destroy
+
   before_action :set_event_breadcrumb, except: :destroy
 
   add_breadcrumb I18n.t('breadcrumbs.action.index',
@@ -31,10 +36,8 @@ class Admins::SectionsController < Admins::BaseController
 
   def create
     options = {
-      redirect_to: :new,
-      path: admins_event_sections_path,
-      action: 'flash.actions.create.f',
-      model_name: @resource_name
+      redirect_to: :new, path: admins_event_sections_path,
+      action: 'flash.actions.create.f', model_name: @resource_name
     }
     @section = @event.sections.build(section_params)
     action_success? @section.save, options
@@ -115,8 +118,8 @@ class Admins::SectionsController < Admins::BaseController
 
   def set_event_breadcrumb
     path = admins_event_path(@event)
-    add_breadcrumb I18n.t('breadcrumbs.action.index',
-                          resource_name: I18n.t('activerecord.models.event.one')),
+    name = "#{I18n.t('activerecord.models.event.one')} ##{@event.id}"
+    add_breadcrumb I18n.t('breadcrumbs.action.index', resource_name: name),
                    path, except: :destroy
   end
 end

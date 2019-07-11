@@ -90,12 +90,12 @@ RSpec.describe 'Admins::active_link', type: :feature do
 
     it 'new active' do
       visit new_admins_event_section_path(section.event)
-      expect(page).to have_link(I18n.t('events.index'), class: active_class)
+      expect(page).to have_link(I18n.t('events.sections'), class: active_class)
     end
 
     it 'edit active' do
       visit edit_admins_event_section_path(section.event, section)
-      expect(page).to have_link(I18n.t('events.index'), class: active_class)
+      expect(page).to have_link(I18n.t('events.sections'), class: active_class)
     end
 
     it 'show active' do

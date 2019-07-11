@@ -14,8 +14,9 @@ module ApplicationHelper
 
   def sidebar
     actions = %(new create edit update)
-    return 'layouts/admins/event_sidebar' if @event && !actions.include?(action_name)
+    condition = controller_name.eql?('events') && actions.include?(action_name)
+    return 'layouts/admins/sidebar' if @event.nil? || condition
 
-    'layouts/admins/sidebar'
+    'layouts/admins/event_sidebar'
   end
 end
