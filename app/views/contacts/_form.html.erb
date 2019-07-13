@@ -1,0 +1,14 @@
+<%= simple_form_for(@contact, url: contact_update_path(@contact, @contact.update_data_token)) do | f | %>
+
+  <%= f.input :name, required: true, autofocus: true %>
+  <%= f.input :email, required: true %>
+  <%= f.input :phone, required: false,
+    input_html: { 'data-mask' => '(00) 00000-0000', placeholder: '(00) 00000-0000' } %>
+  <%= f.association :institution, prompt: t('prompt.select.f', name: Institution.model_name.human),
+    input_html: { class: 'apply-selectize' } %>
+
+  <div class="d-flex">
+    <%= f.button :submit, class: 'btn-primary ml-auto' %>
+  </div>
+
+<% end %>

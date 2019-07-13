@@ -15,10 +15,28 @@ class Admins::ContactsController < Admins::BaseController
                         resource_name: I18n.t('activerecord.models.contact.one')),
                  :admins_contact_path, only: :show
 
+  add_breadcrumb I18n.t('breadcrumbs.action.unregistered',
+                        resource_name: I18n.t('activerecord.models.contact.other')),
+                 :admins_contacts_unregistered_path, only: :unregistered
+
+  add_breadcrumb I18n.t('breadcrumbs.action.registered',
+                        resource_name: I18n.t('activerecord.models.contact.other')),
+                 :admins_contacts_registered_path, only: :registered
+
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   def index
     @contacts = Contact.includes(:institution).order('contacts.name ASC')
+  end
+
+  def unregistered
+    @contacts = Contact.where(unregistered: true).includes(:institution).order('contacts.name ASC')
+    render :index
+  end
+
+  def registered
+    @contacts = Contact.where(unregistered: false).includes(:institution).order('contacts.name ASC')
+    render :index
   end
 
   def new
@@ -27,6 +45,7 @@ class Admins::ContactsController < Admins::BaseController
 
   def create
     @contact = Contact.new(params_contact)
+    @contact.assign_tokens
     options = {
       redirect_to: :new,
       path: admins_contacts_path,

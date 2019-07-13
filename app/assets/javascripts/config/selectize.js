@@ -1,3 +1,5 @@
+//= require microplugin/microplugin.min
+//= require sifter/sifter.min
 //= require selectize/selectize.min
 
 $(document).on('turbolinks:load', () => {

@@ -4,5 +4,9 @@ FactoryBot.define do
     sequence(:email) { |n| "admin#{n}@admin.com" }
     phone { '(55) 77777-8888' }
     institution
+    unregister_token { SecureRandom.urlsafe_base64 }
+    update_data_token { SecureRandom.urlsafe_base64 }
+    update_data_send_at { Time.zone.now }
+    unregistered { false }
   end
 end
