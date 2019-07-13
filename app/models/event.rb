@@ -7,6 +7,8 @@ class Event < ApplicationRecord
   has_many :sponsor_events, dependent: :restrict_with_error
   has_many :sponsors, through: :sponsor_events, source: :institution
 
+  has_many :sections, dependent: :delete_all
+
   validates :name, :state_id, :city_id, :beginning_date, presence: true
   validates :color, :end_date, :initials, :local, :address, presence: true
   validates_with EventDateValidator, on: :create

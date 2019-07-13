@@ -2,9 +2,15 @@
 <% provide(:page_title, t('events.show')) %>
 
 <div class="col-md-12">
-  <%= link_to edit_admins_event_path(@event), class: 'btn btn-outline-primary float-right' do %>
+
+  <%= link_to edit_admins_event_path(@event), class: 'btn btn-outline-primary float-right  ml-5' do %>
     <i class="fa fa-edit"></i>
     <%= t('helpers.edit') %>
+  <% end %>
+
+  <%= link_to admins_event_sections_path(@event), class: 'btn btn-outline-success float-right' do %>
+    <%= icon('fa', 'object-group') %>
+    <%= t('events.edit_sections') %>
   <% end %>
 
   <fieldset class="form-fieldset col-md-12">

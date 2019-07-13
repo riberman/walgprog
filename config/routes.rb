@@ -11,6 +11,9 @@ Rails.application.routes.draw do
       resources :admins, expect: :show
       resources :researchers
       resources :events do
+        resources :sections do
+          collection { patch :sort }
+        end
         resources :sponsors, only: [:index, :create, :destroy]
       end
 

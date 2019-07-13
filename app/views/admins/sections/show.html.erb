@@ -1,0 +1,61 @@
+<% provide(:head_title, t('sections.show', event: @event.name)) %>
+<% provide(:page_title, t('sections.show', event: @event.name)) %>
+
+<%= link_to edit_admins_event_section_path(@event, @section), class: 'btn btn-outline-primary float-right' do %>
+  <i class="fa fa-edit"></i>
+  <%= t('helpers.edit') %>
+<% end %>
+
+<fieldset class="form-fieldset col-md-12">
+  <legend class="w-auto"><%= t('events.description') %></legend>
+  <div class="row">
+
+    <div class="col-md-2">
+      <h4><%= t('activerecord.attributes.section.postion') %></h4>
+      <p><%= @section.position %></p>
+    </div>
+
+    <div class="col-md-2">
+      <h4><%= t('activerecord.attributes.section.icon') %></h4>
+      <p><i class="<%= @section.icon %>"></i></p>
+    </div>
+
+    <div class="col-md-4">
+      <h4><%= t('activerecord.attributes.attribute_commons.title') %></h4>
+      <p><%= @section.title %></p>
+    </div>
+
+    <div class="col-md-2">
+      <h4><%= t('activerecord.attributes.section.status') %></h4>
+      <p><%= t("enums.section_statuses.#{@section.status}") %></p>
+    </div>
+
+    <div class="col-md-2">
+      <h4><%= t('activerecord.attributes.attribute_commons.created_at') %></h4>
+      <p><%= l(@section.created_at, format: :short) %></p>
+    </div>
+  </div>
+</fieldset>
+
+<fieldset class="form-fieldset col-md-12">
+  <legend class="w-auto"><%= t('activerecord.attributes.section.content') %></legend>
+  <div class="row">
+    <div class="col-md-12">
+      <%= ERB::Util.html_escape @section.content.html_safe %>
+    </div>
+  </div>
+</fieldset>
+
+<fieldset class="form-fieldset col-md-12">
+  <legend class="w-auto"><%= t('activerecord.attributes.section.alternative_content') %></legend>
+  <div class="row">
+    <div class="col-md-12">
+      <%= ERB::Util.html_escape @section.alternative_content.html_safe %>
+    </div>
+  </div>
+</fieldset>
+
+<%= link_to admins_event_sections_path, class: 'btn btn-secondary float-left' do %>
+  <%= t('helpers.back') %>
+<% end %>
+

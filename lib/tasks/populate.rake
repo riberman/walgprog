@@ -11,10 +11,11 @@ namespace :db do
     events
     researchers
     sponsors
+    sections
   end
 
   def delete_all
-    [Contact, Researcher, Institution].each(&:delete_all)
+    [Contact, Researcher, Institution, Section, Event].each(&:delete_all)
     Admin.where.not(email: 'admin@admin.com').destroy_all
   end
 
@@ -86,6 +87,22 @@ namespace :db do
         event_id: event_ids.sample,
         institution_id: institution_ids.sample
       )
+    end
+  end
+
+  def sections
+    Event.all.each do |event|
+      rand = rand(3..10)
+
+      rand.times do
+        event.sections.create!(
+          title: Faker::DcComics.title,
+          content_md: Faker::Markdown.sandwich(6, 3),
+          alternative_content_md: Faker::Markdown.sandwich(6, 3),
+          icon: 'fas fa-drum',
+          status: Section.statuses.values.sample
+        )
+      end
     end
   end
 end
