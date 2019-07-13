@@ -1,20 +1,18 @@
 FactoryBot.define do
   factory :section do
     sequence(:title) { |n| "Title #{n}" }
-    content { 'Content' }
-    content_markdown { write_markdown }
-    status { 'A' }
-    icon { 'laptop' }
-    sequence(:index) { |n| n }
+    content_md { write_markdown }
+    alternative_text_md { write_markdown }
+    status { 'active' }
+    icon { 'fas fa-user' }
     event
 
     trait :inactive do
-      status { 'I' }
+      status { 'inactive' }
     end
 
-    trait :other do
-      status { 'O' }
-      alternative_text { 'other status' }
+    trait :alternative do
+      status { 'alternative_text' }
     end
   end
 end

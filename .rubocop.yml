@@ -131,3 +131,8 @@ Style/Lambda:
 Lint/UnusedBlockArgument:
   Exclude:
     - 'config/initializers/simple_form_bootstrap.rb'
+
+Rails/SkipsModelValidations:
+  Exclude:
+    - 'app/controllers/admins/sections_controller.rb'
+

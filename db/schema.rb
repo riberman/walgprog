@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_26_021559) do
+ActiveRecord::Schema.define(version: 2019_07_12_124229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,21 +95,8 @@ ActiveRecord::Schema.define(version: 2019_06_26_021559) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "sections", force: :cascade do |t|
-    t.string "title"
-    t.string "content"
-    t.bigint "event_id"
-    t.string "status"
-    t.string "icon"
-    t.string "alternative_text"
-    t.integer "index"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "content_markdown"
-    t.text "description_short"
-    t.boolean "can_be_deleted", default: true
-    t.index ["event_id"], name: "index_sections_on_event_id"
-  end
+# Could not dump table "sections" because of following StandardError
+#   Unknown type 'section_statuses' for column 'status'
 
   create_table "sponsor_events", force: :cascade do |t|
     t.bigint "event_id"

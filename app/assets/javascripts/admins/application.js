@@ -23,6 +23,7 @@
 // Config files
 //--------------------
 //= require config/namespace
+//= require config/ajax
 //= require config/selectize
 //= require config/colorpicker
 //= require config/datepicker
@@ -30,6 +31,7 @@
 //= require config/jmask
 //= require config/selectize
 //= require config/simple_mde
+//= require config/fontawesome_iconpicker
 
 
 // Lib files

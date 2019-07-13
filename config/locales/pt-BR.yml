@@ -86,11 +86,11 @@ pt-BR:
         title: Título
         index: Índice
         content: Conteúdo
-        content_markdown: Conteúdo
-        content_short: Conteúdo de visualização
+        content_md: Conteúdo
+        alternative_text: Texto Alternativo
+        alternative_text_md: Texto Alternativo
         icon: Ícone
         status: Status
-        alternative_text: Texto alternativo
         <<: *commons
   helpers:
     back: Voltar
@@ -109,10 +109,10 @@ pt-BR:
     user_types:
       administrator: 'Administrador'
       collaborator: 'Colaborador'
-    status_types:
+    section_statuses:
       active: 'Ativo'
       inactive: 'Inativo'
-      other: 'Outro'
+      alternative_text: 'Texto alternativo'
     genders:
       male: 'Masculino'
       female: 'Feminino'
@@ -201,10 +201,9 @@ pt-BR:
       year_used: Já há um evento cadastrado nesse ano.
       invalid_dates: deve ser posterior ao início
   sections:
-    index: Seções
-    from: "Seções do evento: %{event}"
+    index: "Seções do Evento: %{event}"
     new: Nova Seção
-    show: "Detalhes da Seção do evento: %{event}"
+    show: "Detalhes da Seção do Evento: %{event}"
     edit: Editar Seção
     description: Descrição
     sortable_info: Clique e arraste nos ícones abaixo para selecionar a ordem das seções
