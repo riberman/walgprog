@@ -34,7 +34,7 @@ describe 'Admins::Section::create', type: :feature do
       end
     end
 
-    it 'create section alternative_text', js: true do
+    it 'create section alternative_content', js: true do
       attributes = attributes_for(:section)
 
       fill_in 'section_icon', with: attributes[:icon]
@@ -45,9 +45,9 @@ describe 'Admins::Section::create', type: :feature do
       content_md = "WAlgProg.simpleMDEInstances['section_content_md'].value('# Test')"
       page.execute_script(content_md)
 
-      choose_radio(I18n.t('enums.section_statuses.alternative_text'), from: 'section_status')
+      choose_radio(I18n.t('enums.section_statuses.alternative_content'), from: 'section_status')
 
-      at_md = "WAlgProg.simpleMDEInstances['section_alternative_text_md'].value('# Test')"
+      at_md = "WAlgProg.simpleMDEInstances['section_alternative_content_md'].value('# Test')"
       page.execute_script(at_md)
 
       click_button
@@ -61,7 +61,7 @@ describe 'Admins::Section::create', type: :feature do
         expect(icon_class).to eq('fab fa-accessible-icon')
 
         expect(page).to have_content(attributes[:title])
-        expect(page).to have_content(I18n.t('enums.section_statuses.alternative_text'))
+        expect(page).to have_content(I18n.t('enums.section_statuses.alternative_content'))
       end
     end
   end
@@ -79,8 +79,8 @@ describe 'Admins::Section::create', type: :feature do
       expect(page).to have_message(message_blank_error, in: 'div.section_content_md')
     end
 
-    it 'with alternative_text', js: true do
-      choose_radio(I18n.t('enums.section_statuses.alternative_text'), from: 'section_status')
+    it 'with alternative_content', js: true do
+      choose_radio(I18n.t('enums.section_statuses.alternative_content'), from: 'section_status')
       click_button
 
       expect(page).to have_flash(:danger, text: I18n.t('flash.actions.errors'))
@@ -88,7 +88,7 @@ describe 'Admins::Section::create', type: :feature do
       expect(page).to have_message(message_blank_error, in: 'div.section_icon')
       expect(page).to have_message(message_blank_error, in: 'div.section_title')
       expect(page).to have_message(message_blank_error, in: 'div.section_content_md')
-      expect(page).to have_message(message_blank_error, in: 'div.section_alternative_text_md')
+      expect(page).to have_message(message_blank_error, in: 'div.section_alternative_content_md')
     end
   end
 end

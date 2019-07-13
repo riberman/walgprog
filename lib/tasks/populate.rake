@@ -98,7 +98,7 @@ namespace :db do
         event.sections.create!(
           title: Faker::DcComics.title,
           content_md: Faker::Markdown.sandwich(6, 3),
-          alternative_text_md: Faker::Markdown.sandwich(6, 3),
+          alternative_content_md: Faker::Markdown.sandwich(6, 3),
           icon: 'fas fa-drum',
           status: Section.statuses.values.sample
         )

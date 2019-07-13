@@ -11,8 +11,8 @@
   <div class="row">
 
     <div class="col-md-2">
-      <h4><%= t('activerecord.attributes.section.index') %></h4>
-      <p><%= @section.index %></p>
+      <h4><%= t('activerecord.attributes.section.postion') %></h4>
+      <p><%= @section.position %></p>
     </div>
 
     <div class="col-md-2">
@@ -47,10 +47,10 @@
 </fieldset>
 
 <fieldset class="form-fieldset col-md-12">
-  <legend class="w-auto"><%= t('activerecord.attributes.section.alternative_text') %></legend>
+  <legend class="w-auto"><%= t('activerecord.attributes.section.alternative_content') %></legend>
   <div class="row">
     <div class="col-md-12">
-      <%= ERB::Util.html_escape @section.alternative_text.html_safe %>
+      <%= ERB::Util.html_escape @section.alternative_content.html_safe %>
     </div>
   </div>
 </fieldset>

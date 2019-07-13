@@ -84,11 +84,11 @@ pt-BR:
         <<: *commons
       section:
         title: Título
-        index: Índice
+        position: Posição
         content: Conteúdo
         content_md: Conteúdo
-        alternative_text: Texto Alternativo
-        alternative_text_md: Texto Alternativo
+        alternative_content: Texto Alternativo
+        alternative_content_md: Texto Alternativo
         icon: Ícone
         status: Status
         <<: *commons
@@ -112,7 +112,7 @@ pt-BR:
     section_statuses:
       active: 'Ativo'
       inactive: 'Inativo'
-      alternative_text: 'Texto alternativo'
+      alternative_content: 'Texto alternativo'
     genders:
       male: 'Masculino'
       female: 'Feminino'

@@ -11,9 +11,9 @@ WAlgProg.sectionStatusListener = () => {
   status.on('change', () => {
     const selectedValue = page.find("input[name='section[status]']:checked").val();
 
-    const atMd = page.find('.section_alternative_text_md');
+    const atMd = page.find('.section_alternative_content_md');
 
-    if (selectedValue === 'alternative_text') {
+    if (selectedValue === 'alternative_content') {
       atMd.removeClass('hidden');
     } else {
       atMd.addClass('hidden');

@@ -17,13 +17,13 @@ RSpec.describe Section, type: :model do
         expect(section.active?).to be true
       end
 
-      it 'alternative_text' do
-        section = create(:section, :alternative)
-        expect(section.alternative_text?).to be true
+      it 'alternative_content' do
+        section = create(:section, :alternative_content)
+        expect(section.alternative_content?).to be true
       end
 
-      it 'other without alternative_text' do
-        section = build(:section, :alternative, alternative_text_md: nil)
+      it 'other without alternative_content' do
+        section = build(:section, :alternative_content, alternative_content_md: nil)
         expect(section.valid?).to be false
       end
     end
@@ -42,7 +42,7 @@ RSpec.describe Section, type: :model do
       HTML
 
       expect(section.content).to eql(html)
-      expect(section.alternative_text).to eql(html)
+      expect(section.alternative_content).to eql(html)
     end
   end
 
@@ -51,14 +51,15 @@ RSpec.describe Section, type: :model do
 
     it 'enum' do
       expect(section).to define_enum_for(:status)
-        .with_values(active: 'active', inactive: 'inactive', alternative_text: 'alternative_text')
+        .with_values(active: 'active', inactive: 'inactive',
+                     alternative_content: 'alternative_content')
         .backed_by_column_of_type(:enum)
     end
 
     it 'human enum' do
       hash = { I18n.t('enums.section_statuses.active') => 'active',
                I18n.t('enums.section_statuses.inactive') => 'inactive',
-               I18n.t('enums.section_statuses.alternative_text') => 'alternative_text' }
+               I18n.t('enums.section_statuses.alternative_content') => 'alternative_content' }
 
       expect(Section.human_statuses).to include(hash)
     end

@@ -13,7 +13,7 @@ describe 'Admins::Section::update', type: :feature do
 
   context 'when render edit' do
     it 'filled the fields' do
-      expect(page).to have_field('section_index', disabled: true, with: section.index)
+      expect(page).to have_field('section_position', disabled: true, with: section.position)
       expect(page).to have_field('section_icon', with: section.icon)
       expect(page).to have_field('section_title', with: section.title)
       expect(page).to have_field('section_content_md', with: section.content_md, visible: false)
@@ -23,18 +23,18 @@ describe 'Admins::Section::update', type: :feature do
     end
 
     it 'filled the alternative text' do
-      section.update(status: 'alternative_text')
+      section.update(status: 'alternative_content')
       visit edit_admins_event_section_path(event, section)
 
-      expect(page).to have_field('section_index', disabled: true, with: section.index)
+      expect(page).to have_field('section_position', disabled: true, with: section.position)
       expect(page).to have_field('section_icon', with: section.icon)
       expect(page).to have_field('section_title', with: section.title)
       expect(page).to have_field('section_content_md', with: section.content_md, visible: false)
 
       radio_button = "section_status_#{section.status}"
       expect(find_field(radio_button, visible: false).checked?).to be true
-      expect(page).to have_field('section_alternative_text_md', with: section.alternative_text_md,
-                                                                visible: false)
+      expect(page).to have_field('section_alternative_content_md',
+                                 with: section.alternative_content_md, visible: false)
     end
   end
 
@@ -58,7 +58,7 @@ describe 'Admins::Section::update', type: :feature do
       end
 
       within('.card-body') do
-        expect(page).to have_content(section.index)
+        expect(page).to have_content(section.position)
         icon_class = page.find('fieldset .row div:nth-child(2) i')[:class]
         expect(icon_class).to eq(section.icon)
         expect(page).to have_content(section.title)
@@ -66,11 +66,11 @@ describe 'Admins::Section::update', type: :feature do
         expect(page).to have_content(I18n.l(section.created_at, format: :short))
 
         expect(page.body).to include(section.content)
-        expect(page.body).to include(section.alternative_text)
+        expect(page.body).to include(section.alternative_content)
       end
     end
 
-    it 'update section with alternative_text', js: true do
+    it 'update section with alternative_content', js: true do
       attributes = attributes_for(:section)
 
       fill_in 'section_icon', with: attributes[:icon]
@@ -81,9 +81,9 @@ describe 'Admins::Section::update', type: :feature do
       content_md = "WAlgProg.simpleMDEInstances['section_content_md'].value('# Test')"
       page.execute_script(content_md)
 
-      choose_radio(I18n.t('enums.section_statuses.alternative_text'), from: 'section_status')
+      choose_radio(I18n.t('enums.section_statuses.alternative_content'), from: 'section_status')
 
-      at_md = "WAlgProg.simpleMDEInstances['section_alternative_text_md'].value('# Test')"
+      at_md = "WAlgProg.simpleMDEInstances['section_alternative_content_md'].value('# Test')"
       page.execute_script(at_md)
 
       click_button
@@ -98,7 +98,7 @@ describe 'Admins::Section::update', type: :feature do
       end
 
       within('.card-body') do
-        expect(page).to have_content(section.index)
+        expect(page).to have_content(section.position)
         icon_class = page.find(:css, 'fieldset .row div:nth-child(2) i')[:class]
         expect(icon_class).to eq(section.icon)
         expect(page).to have_content(section.title)
@@ -106,7 +106,7 @@ describe 'Admins::Section::update', type: :feature do
         expect(page).to have_content(I18n.l(section.created_at, format: :short))
 
         expect(page.body).to include(section.content)
-        expect(page.body).to include(section.alternative_text)
+        expect(page.body).to include(section.alternative_content)
       end
     end
   end
@@ -119,10 +119,11 @@ describe 'Admins::Section::update', type: :feature do
       content_md = "WAlgProg.simpleMDEInstances['section_content_md'].value('')"
       page.execute_script(content_md)
 
-      at_md = "WAlgProg.simpleMDEInstances['section_alternative_text_md'].value('')"
-      page.execute_script(at_md)
+      choose_radio(I18n.t('enums.section_statuses.alternative_content'), from: 'section_status')
 
-      choose_radio(I18n.t('enums.section_statuses.alternative_text'), from: 'section_status')
+      ac_md = "WAlgProg.simpleMDEInstances['section_alternative_content_md'].value('')"
+      page.execute_script(ac_md)
+      sleep 10
       click_button
 
       expect(page).to have_flash(:danger, text: I18n.t('flash.actions.errors'))
@@ -130,7 +131,7 @@ describe 'Admins::Section::update', type: :feature do
       expect(page).to have_message(message_blank_error, in: 'div.section_icon')
       expect(page).to have_message(message_blank_error, in: 'div.section_title')
       expect(page).to have_message(message_blank_error, in: 'div.section_content_md')
-      expect(page).to have_message(message_blank_error, in: 'div.section_alternative_text_md')
+      expect(page).to have_message(message_blank_error, in: 'div.section_alternative_content_md')
     end
   end
 end

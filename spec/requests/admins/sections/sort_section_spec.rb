@@ -19,7 +19,7 @@ describe 'Admins::Section::sort', type: :request do
       expect(response).to have_http_status(:accepted)
 
       event.reload
-      expect(event.sections.order(index: :asc).map(&:id)).to eq(params[:section])
+      expect(event.sections.order(position: :asc).map(&:id)).to eq(params[:section])
     end
   end
 end

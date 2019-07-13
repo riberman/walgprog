@@ -16,7 +16,7 @@ describe 'Section:show', type: :feature do
       end
 
       within('.card-body') do
-        expect(page).to have_content(section.index)
+        expect(page).to have_content(section.position)
         icon_class = page.find('fieldset:first .row div:nth-child(2) i')[:class]
         expect(icon_class).to eq(section.icon)
         expect(page).to have_content(section.title)
@@ -24,7 +24,7 @@ describe 'Section:show', type: :feature do
         expect(page).to have_content(I18n.l(section.created_at, format: :short))
 
         expect(page.body).to include(section.content)
-        expect(page.body).to include(section.alternative_text)
+        expect(page.body).to include(section.alternative_content)
       end
     end
   end

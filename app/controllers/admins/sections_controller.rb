@@ -26,7 +26,7 @@ class Admins::SectionsController < Admins::BaseController
                  :admins_event_section_path, only: [:show]
 
   def index
-    @sections = @event.sections.order(index: :asc)
+    @sections = @event.sections.order(position: :asc)
   end
 
   def new
@@ -64,8 +64,8 @@ class Admins::SectionsController < Admins::BaseController
   end
 
   def sort
-    params[:section].each_with_index do |id, index|
-      @event.sections.find(id).update_attribute(:index, index + 1)
+    params[:section].each_with_index do |id, position|
+      @event.sections.find(id).update_attribute(:position, position + 1)
     end
 
     head :accepted
@@ -75,7 +75,7 @@ class Admins::SectionsController < Admins::BaseController
 
   def section_params
     params.require(:section).permit(
-      :title, :status, :alternative_text_md,
+      :title, :status, :alternative_content_md,
       :icon, :content_md
     )
   end
