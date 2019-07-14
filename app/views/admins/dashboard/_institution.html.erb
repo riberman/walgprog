@@ -1,0 +1,9 @@
+<tr>
+  <td><%= institution.name %></td>
+  <td><%= institution.acronym %></td>
+  <td class="w-1">
+    <%= link_to edit_admins_institution_path(institution) do %>
+      <%= icon('fas', 'eye', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.show')) %>
+    <% end %>
+  </td>
+</tr>

@@ -1,4 +1,6 @@
 class Admins::InstitutionsController < Admins::BaseController
+  # nested_form
+
   before_action :set_resource_name, only: [:create, :update, :destroy]
   before_action :set_institution, only: [:edit, :update, :destroy]
 
@@ -17,7 +19,7 @@ class Admins::InstitutionsController < Admins::BaseController
                  :edit_admins_institution_path, only: [:edit, :update]
 
   def index
-    @institutions = Institution.includes(city: [:state]).order(name: :asc)
+    @institutions = Institution.includes(city: [:state]).order(name: :asc).where(approved: true)
   end
 
   def new

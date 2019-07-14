@@ -1,0 +1,49 @@
+<div class="col-lg-6">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title"><%= t('institutions.request_for_inclusion_new_institution') %></h3>
+    </div>
+    <div class="table-responsive">
+      <table class="table card-table table-striped table-vcenter">
+        <thead>
+        <tr>
+          <th><%= t('activerecord.attributes.institution.name') %></th>
+          <th><%= t('activerecord.attributes.institution.acronym') %></th>
+          <th><%= t('activerecord.attributes.attribute_commons.created_at') %></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <%= render(@institutions) ||
+                content_tag(:tr, content_tag(:td, t('institutions.no_request_for_inclusion_new_institution'), colspan: "11"))%>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body text-center">
+          <div class="h5">New feedback</div>
+          <div class="display-4 font-weight-bold mb-4">62</div>
+          <div class="progress progress-sm">
+            <div class="progress-bar bg-red" style="width: 28%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body text-center">
+          <div class="h5">Today profit</div>
+          <div class="display-4 font-weight-bold mb-4">$652</div>
+          <div class="progress progress-sm">
+            <div class="progress-bar bg-green" style="width: 84%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

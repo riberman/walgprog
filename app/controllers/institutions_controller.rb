@@ -11,7 +11,7 @@ class InstitutionsController < ApplicationController
   def create
     @institution = Institution.new(institution_params)
     if @institution.save
-      flash[:success] = I18n.t('flash.actions.create.f', resource_name: @resource_name)
+      flash[:success] = I18n.t('flash.new_institution', resource_name: @resource_name)
       redirect_to institutions_path
     else
       flash.now[:error] = I18n.t('flash.actions.errors')

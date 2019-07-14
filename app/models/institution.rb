@@ -6,8 +6,17 @@ class Institution < ApplicationRecord
   has_many :sponsor_events, dependent: :restrict_with_error
   has_many :events, through: :sponsor_events
 
+  enum approved: { yes: true, not: false }, _suffix: :approved
+
+  def self.human_approveds
+    hash = {}
+    approveds.each_key { |key| hash[I18n.t("enums.approved.#{key}")] = key }
+    hash
+  end
+
   validates :name, presence: true
   validates :acronym, presence: true
   validates :city_id, presence: true
   validates :state_id, presence: true
+  validates :approved, presence: true
 end

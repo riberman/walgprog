@@ -60,6 +60,7 @@ pt-BR:
         acronym: Sigla
         state_id: Estado
         city_id: Cidade
+        approved: Aprovado
         <<: *commons
       contact:
         institution: Instituição
@@ -116,6 +117,9 @@ pt-BR:
     genders:
       male: 'Masculino'
       female: 'Feminino'
+    approved:
+      'yes': 'Sim'
+      not: 'Não'
   breadcrumbs:
     homepage: 'Página Inicial'
     action:
@@ -146,6 +150,7 @@ pt-BR:
       bond: Não é possível remover %{resource_name} com vínculos!'
       errors: 'Alguns erros foram encontrados, por favor verifique:'
     not_authorized: Acesso não autorizado!
+    new_institution: A solicitação para incluir sua instituição foi concluída e enviada para analise.
   sessions:
     sign_in: Login
     sign_out: Sair
@@ -182,6 +187,8 @@ pt-BR:
     index: Instituições de Ensino
     new: Nova Instituição de Ensino
     edit: Editar Instituição de Ensino
+    request_for_inclusion_new_institution: Pedido de Inclusão de Instituições
+    no_request_for_inclusion_new_institution: Nenhum pedido para inclusão de Instituição encontrado
   events:
     index: Eventos
     new: Novo Evento

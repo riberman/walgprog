@@ -1,3 +1,5 @@
 class Admins::DashboardController < Admins::BaseController
-  def index; end
+  def index
+    @institutions = Institution.where(approved: false)
+  end
 end
