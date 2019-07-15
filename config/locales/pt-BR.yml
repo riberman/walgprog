@@ -2,6 +2,7 @@ pt-BR:
   views:
     sidebar:
       walgprog: 'WAlgProg'
+      contacts: 'Contatos'
   time:
     formats:
       short: '%d/%m/%Y'
@@ -63,6 +64,7 @@ pt-BR:
         <<: *commons
       contact:
         institution: Instituição
+        unregistered: Desregistrado
       event:
         name: Nome
         initials: Iniciais
@@ -125,7 +127,8 @@ pt-BR:
         f: 'Nova %{resource_name}'
       show: 'Visualizar %{resource_name}'
       index: '%{resource_name}'
-      parent_model: '%{parent_name}'
+      unregistered: '%{resource_name} descadastrados'
+      registered: '%{resource_name} cadastrados'
       add: 'Adicionar %{resource_name}'
     event:
       detail: 'Detalhes do %{resource_name}'
@@ -168,6 +171,8 @@ pt-BR:
       details: Talvez você tentou alterar algo que você não possui acesso.
     sponsors:
       none_selected: 'Nenhum patrocianador selecionado'
+    contacts:
+      unregistered: 'desregistrado'
   prompt:
     confirm: Você tem certeza?
     select:
@@ -178,6 +183,22 @@ pt-BR:
     new: Novo Contato
     edit: Editar Contato
     show: Detalhes do Contato
+    updated: Dados atualizados
+    registered: Cadastrados
+    unregistered: Descadastrados
+    all: Todos
+    messages:
+      success_update: 'Olá %{name}, seus dados foram atualizados!'
+      success_unregister: 'Olá %{name}, você foi descadastrado do WAlgProg!'
+      invalid_token: 'Operação não autorizada, token inválido!'
+    public:
+      feedback: 'Informação'
+      unregister:
+        confirm: Voce realmente deseja se desregistrar?
+        button: Desregistrar-me
+      update:
+        title: 'Editar meus dados'
+        button: 'Atualizar meus dados'
   institutions:
     index: Instituições de Ensino
     new: Nova Instituição de Ensino
@@ -213,6 +234,13 @@ pt-BR:
       error_order: Algo aconteceu a ordem da sessão não foi salva!
       save_order: Deve haver ao menos uma
       be_deleted: Essa seção não pode ser removida
+  mail:
+    welcome_email:
+      subject: Você foi cadastrado no site do WAlgProg.
+    unregistered:
+      subject: Você esta desregistrado do site do WAlgProg.
+    updated:
+      subject: Seus dados foram atualizados.
   admins:
     index: Administradores
     new: Novo Administrador

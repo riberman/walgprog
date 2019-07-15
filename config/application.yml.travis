@@ -1,4 +1,5 @@
 test:
+  mailer.host: 'localhost'
   mailer.port: '3000'
   mailer.from: 'walgprog@utfpr.edu.br'
   mailer.smtp: 'smtp.mailtrap.io'
