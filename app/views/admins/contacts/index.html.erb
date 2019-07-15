@@ -20,19 +20,6 @@
 </div>
 
 <div class="row">
-  <div class="col-md-4 col-sm-8">
-    <%= link_to admins_contacts_registered_path, class: 'btn btn-outline-secondary btn-block' do %>
-      <%= I18n.t('contacts.registered') %>
-    <% end %>
-  </div>
-  <div class="col-md-4 col-sm-8">
-    <%= link_to admins_contacts_unregistered_path, class: 'btn btn-outline-secondary btn-block' do %>
-      <%= I18n.t('contacts.unregistered') %>
-    <% end %>
-  </div>
-</div>
-
-<div class="row">
   <div class="col-12">
     <div class="table-responsive">
       <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
@@ -41,6 +28,7 @@
           <th><%= t('activerecord.attributes.attribute_commons.name') %></th>
           <th><%= t('activerecord.attributes.attribute_commons.email') %></th>
           <th><%= t('activerecord.attributes.contact.institution') %></th>
+          <th class="text-center"><%= t('activerecord.attributes.contact.unregistered') %></th>
           <th></th>
         </tr>
         </thead>

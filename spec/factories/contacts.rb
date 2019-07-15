@@ -5,8 +5,8 @@ FactoryBot.define do
     phone { '(55) 77777-8888' }
     institution
     unregister_token { SecureRandom.urlsafe_base64 }
-    update_data_token { SecureRandom.urlsafe_base64 }
-    update_data_send_at { Time.zone.now }
+    update_token { SecureRandom.urlsafe_base64 }
+    update_send_at { Time.zone.now }
     unregistered { false }
   end
 end

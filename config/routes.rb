@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
-  get 'contacts/:id/confirm_unregister/:token',
-      to: 'contacts#confirm_unregister', as: :contact_confirm_unregister
+  get 'contacts/:id/unregister_confirmation/:token',
+      to: 'contacts#unregister_confirmation', as: :contact_unregister_confirmation
 
   patch 'contacts/:id/unregister/:token',
         to: 'contacts#unregister', as: :contact_unregister
@@ -13,14 +13,8 @@ Rails.application.routes.draw do
   patch 'contacts/:id/update/:token',
         to: 'contacts#update', as: :contact_update
 
-  get 'contacts/updated',
-      to: 'contacts#updated', as: :contact_updated
-
-  get 'contacts/invalid',
-      to: 'contacts#invalid_token', as: :contact_invalid_token
-
-  get 'contacts/unregistered',
-      to: 'contacts#unregistered', as: :contact_unregistered
+  get 'contacts/feedback',
+      to: 'contacts#feedback', as: :contact_feedback
 
   devise_for :admins
   authenticate :admin do

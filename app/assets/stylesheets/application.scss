@@ -3,8 +3,6 @@
 **************************************************************/
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
-@import 'bootstrap';
-
 
 
 /*************************************************************
@@ -23,8 +21,8 @@
 /*************************************************************
 * Customizations
 **************************************************************/
-@import 'customizations/selectize';
-
+@import 'customizations/bootstrap';
+@import 'customizations/selectize'
 
 /*************************************************************
 * Apps stylesheets

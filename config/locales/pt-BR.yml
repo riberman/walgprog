@@ -2,6 +2,7 @@ pt-BR:
   views:
     sidebar:
       walgprog: 'WAlgProg'
+      contacts: 'Contatos'
   time:
     formats:
       short: '%d/%m/%Y'
@@ -170,6 +171,8 @@ pt-BR:
       details: Talvez você tentou alterar algo que você não possui acesso.
     sponsors:
       none_selected: 'Nenhum patrocianador selecionado'
+    contacts:
+      unregistered: 'desregistrado'
   prompt:
     confirm: Você tem certeza?
     select:
@@ -181,9 +184,21 @@ pt-BR:
     edit: Editar Contato
     show: Detalhes do Contato
     updated: Dados atualizados
-    registered: Listar somente cadastrados
-    unregistered: Listar somente descadastrados
-    confirm_unregistered: Voce realmente deseja se desregistrar?
+    registered: Cadastrados
+    unregistered: Descadastrados
+    all: Todos
+    messages:
+      success_update: 'Olá %{name}, seus dados foram atualizados!'
+      success_unregister: 'Olá %{name}, você foi descadastrado do WAlgProg!'
+      invalid_token: 'Operação não autorizada, token inválido!'
+    public:
+      feedback: 'Informação'
+      unregister:
+        confirm: Voce realmente deseja se desregistrar?
+        button: Desregistrar-me
+      update:
+        title: 'Editar meus dados'
+        button: 'Atualizar meus dados'
   institutions:
     index: Instituições de Ensino
     new: Nova Instituição de Ensino
@@ -226,10 +241,6 @@ pt-BR:
       subject: Você esta desregistrado do site do WAlgProg.
     updated:
       subject: Seus dados foram atualizados.
-  feedback:
-    unregistered: Você foi desregistrado
-    invalid_link: Link para atualizar invalido
-    success_update: Seus dados foram atualizados!
   admins:
     index: Administradores
     new: Novo Administrador

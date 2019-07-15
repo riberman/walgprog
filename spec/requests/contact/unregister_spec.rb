@@ -8,9 +8,10 @@ describe 'Contact::unregister', type: :request do
       token = 'df4d5f4d5d45fss5d4s5d4s5d45'
       patch contact_unregister_path(contact, token)
 
-      expect(response).to redirect_to contact_invalid_token_path
+      expect(response).to redirect_to contact_feedback_path
+
       follow_redirect!
-      expect(response.body).to include(I18n.t('feedback.invalid_link'))
+      expect(response.body).to include(I18n.t('contacts.messages.invalid_token'))
     end
   end
 end

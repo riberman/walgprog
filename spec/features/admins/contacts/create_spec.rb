@@ -28,6 +28,7 @@ describe 'Admins::Contact::create', type: :feature do
         expect(page).to have_content(attributes[:name])
         expect(page).to have_content(attributes[:email])
         expect(page).to have_content(institution.acronym)
+        expect(page).to have_content(I18n.t('helpers.boolean.false'))
       end
     end
   end

@@ -1,42 +1,39 @@
 class ContactsController < ApplicationController
-  before_action :set_contact, only: [:unregister, :update, :edit, :confirm_unregister]
+  before_action :set_contact, except: [:feedback]
 
-  layout 'layouts/contact'
+  layout 'layouts/contacts/update_unregister'
 
   def edit
-    if @contact.valid_token(params)
+    if @contact.valid_update_token?(params[:token])
       render :edit
     else
-      redirect_to contact_invalid_token_path
-    end
-  end
-
-  def unregister
-    if @contact.update_by_token_to_unregister(params)
-      redirect_to contact_unregistered_path
-    else
-      redirect_to contact_invalid_token_path
+      flash[:error] = I18n.t('contacts.messages.invalid_token')
+      redirect_to contact_feedback_path
     end
   end
 
   def update
-    if @contact.update_by_token(params_contact)
-      flash[:success] = I18n.t('flash.actions.update.m',
-                               resource_name: I18n.t('activerecord.models.contact.one'))
-      redirect_to contact_updated_path
+    if @contact.update_with_update_token(params[:token], params_contact)
+      flash[:success] = I18n.t('contacts.messages.success_update', name: @contact.name)
+      @contact.send_success_update_email
+      redirect_to contact_feedback_path
     else
-      flash[:error] = I18n.t('flash.actions.errors')
-      render :edit
+      update_errors
     end
   end
 
-  def confirm_unregister; end
+  def unregister
+    if @contact.update_with_unregister_token(params[:token], unregistered: true)
+      flash[:success] = I18n.t('contacts.messages.success_unregister', name: @contact.name)
+    else
+      flash[:error] = I18n.t('contacts.messages.invalid_token')
+    end
+    redirect_to contact_feedback_path
+  end
 
-  def unregistered; end
+  def feedback; end
 
-  def updated; end
-
-  def invalid_token; end
+  def unregister_confirmation; end
 
   private
 
@@ -46,5 +43,15 @@ class ContactsController < ApplicationController
 
   def params_contact
     params.require(:contact).permit(:name, :email, :phone, :institution_id)
+  end
+
+  def update_errors
+    if @contact.errors[:token].empty?
+      flash[:error] = I18n.t('flash.actions.errors')
+      render :edit
+    else
+      flash[:error] = I18n.t('contacts.messages.invalid_token')
+      redirect_to contact_feedback_path
+    end
   end
 end

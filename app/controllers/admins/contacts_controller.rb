@@ -26,16 +26,16 @@ class Admins::ContactsController < Admins::BaseController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contacts = Contact.includes(:institution).order('contacts.name ASC')
+    @contacts = Contact.with_relationships.order(name: :asc)
   end
 
   def unregistered
-    @contacts = Contact.where(unregistered: true).includes(:institution).order('contacts.name ASC')
+    @contacts = Contact.unregistered
     render :index
   end
 
   def registered
-    @contacts = Contact.where(unregistered: false).includes(:institution).order('contacts.name ASC')
+    @contacts = Contact.registered
     render :index
   end
 
@@ -45,14 +45,15 @@ class Admins::ContactsController < Admins::BaseController
 
   def create
     @contact = Contact.new(params_contact)
-    @contact.assign_tokens
-    options = {
-      redirect_to: :new,
-      path: admins_contacts_path,
-      action: 'flash.actions.create.m',
-      model_name: t('activerecord.models.contact.one')
-    }
-    action_success? @contact.save, options
+    if @contact.save
+      @contact.send_welcome_email
+      flash[:success] = I18n.t('flash.actions.create.m',
+                               resource_name: t('activerecord.models.contact.one'))
+      redirect_to admins_contacts_path
+    else
+      flash.now[:error] = I18n.t('flash.actions.errors')
+      render :new
+    end
   end
 
   def show; end

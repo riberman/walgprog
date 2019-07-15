@@ -10,10 +10,6 @@
       <span class="icon mr-3"><%= icon('fas', 'home') %></span><%= t('helpers.home') %>
     <% end %>
 
-    <%= active_link_to(admins_contacts_path, class: 'list-group-item list-group-item-action', active: :inclusive) do %>
-      <span class="icon mr-3"><%= icon('fas', 'address-book') %></span><%= t('contacts.index') %>
-    <% end %>
-
     <%= active_link_to(admins_institutions_path, class: 'list-group-item list-group-item-action', active: :inclusive) do %>
       <span class="icon mr-3"><%= icon('fas', 'university') %></span><%= t('institutions.index') %>
     <% end %>
@@ -29,5 +25,23 @@
     <%= active_link_to admins_researchers_path, class: 'list-group-item list-group-item-action', active: :inclusive do %>
       <span class="icon mr-3"><%= icon('fas', 'graduation-cap') %></i></span><%= t('researchers.index') %>
     <% end %>
+
+    <span class="sidebar-heading pl-0 pt-2 pb-2">
+      <%= icon('fas', 'address-book', class: 'mr-1') %>
+      <%= t('views.sidebar.contacts') %>
+    </span>
+
+    <%= active_link_to(admins_contacts_path, class: 'list-group-item list-group-item-action', active: [['admins/contacts'], ['index', 'new', 'create', 'edit', 'update', 'show']] ) do %>
+      <span class="icon mr-3"><%= icon('far', 'address-book') %></span><%= t('contacts.all') %>
+    <% end %>
+
+    <%= active_link_to(admins_contacts_registered_path, class: 'list-group-item list-group-item-action', active: :exact) do %>
+      <span class="icon mr-3"><%= icon('far', 'address-book') %></span><%= t('contacts.registered') %>
+    <% end %>
+
+    <%= active_link_to(admins_contacts_unregistered_path, class: 'list-group-item list-group-item-action', active: :exact) do %>
+      <span class="icon mr-3"><%= icon('far', 'address-book') %></span><%= t('contacts.unregistered') %>
+    <% end %>
+
   </div>
 </div>
