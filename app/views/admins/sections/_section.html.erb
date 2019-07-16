@@ -1,0 +1,24 @@
+<tr id="section_<%= section.id %>" class="section">
+  <td class="section-to-order"><%= icon('fas', 'arrows-alt') %></td>
+  <td><i class="<%= section.icon %>"></i></td>
+  <td><%= section.title %></td>
+  <td><%= t("enums.section_statuses.#{section.status}") %></td>
+  <td><%= I18n.l(section.created_at, format: :short) %></td>
+  <td>
+    <div class="btn-group">
+      <%= link_to admins_event_section_path(@event, section) do %>
+        <%= icon('fas', 'search', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.show')) %>
+      <% end %>
+
+      <%= link_to edit_admins_event_section_path(@event, section) do %>
+        <%= icon('fas', 'edit', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.edit')) %>
+      <% end %>
+
+      <%= link_to admins_event_section_path(@event, section),
+                  method: :delete,
+                  data: { confirm: t('prompt.confirm') } do %>
+        <%= icon('fa', 'trash', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.delete')) %>
+      <% end %>
+    </div>
+  </td>
+</tr>

@@ -18,22 +18,32 @@ RSpec.describe 'Admins::active_link', type: :feature do
 
     it 'index active' do
       visit admins_contacts_path
-      expect(page).to have_link(I18n.t('contacts.index'), class: active_class)
+      expect(page).to have_link(I18n.t('contacts.all'), class: active_class)
     end
 
     it 'new active' do
       visit new_admins_contact_path
-      expect(page).to have_link(I18n.t('contacts.index'), class: active_class)
+      expect(page).to have_link(I18n.t('contacts.all'), class: active_class)
     end
 
     it 'edit active' do
       visit edit_admins_contact_path(contact)
-      expect(page).to have_link(I18n.t('contacts.index'), class: active_class)
+      expect(page).to have_link(I18n.t('contacts.all'), class: active_class)
     end
 
     it 'show active' do
       visit admins_contact_path(contact)
-      expect(page).to have_link(I18n.t('contacts.index'), class: active_class)
+      expect(page).to have_link(I18n.t('contacts.all'), class: active_class)
+    end
+
+    it 'show active at unregister' do
+      visit admins_contacts_unregistered_path
+      expect(page).to have_link(I18n.t('contacts.unregistered'), class: active_class)
+    end
+
+    it 'show active at register' do
+      visit admins_contacts_registered_path
+      expect(page).to have_link(I18n.t('contacts.registered'), class: active_class)
     end
   end
 
@@ -77,6 +87,30 @@ RSpec.describe 'Admins::active_link', type: :feature do
     it 'show active' do
       visit admins_event_path(event)
       expect(page).to have_link(I18n.t('events.show'), class: active_class)
+    end
+  end
+
+  context 'when visit sections' do
+    let!(:section) { create(:section) }
+
+    it 'index active' do
+      visit admins_event_sections_path(section.event)
+      expect(page).to have_link(I18n.t('events.sections'), class: active_class)
+    end
+
+    it 'new active' do
+      visit new_admins_event_section_path(section.event)
+      expect(page).to have_link(I18n.t('events.sections'), class: active_class)
+    end
+
+    it 'edit active' do
+      visit edit_admins_event_section_path(section.event, section)
+      expect(page).to have_link(I18n.t('events.sections'), class: active_class)
+    end
+
+    it 'show active' do
+      visit admins_event_section_path(section.event, section)
+      expect(page).to have_link(I18n.t('events.sections'), class: active_class)
     end
   end
 

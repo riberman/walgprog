@@ -1,0 +1,54 @@
+<% provide(:head_title, t('sections.index', event: @event.name)) %>
+<% provide(:page_title, t('sections.index', event: @event.name)) %>
+
+<div class="row">
+  <div class="input-group col-md-8">
+    <input
+      type="text"
+      class="form-control btn-block"
+      placeholder="<%= t('helpers.search') %>"
+      aria-describedby="search-append">
+
+      <span
+        id="search-append"
+        class="input-group-append">
+
+        <span class="input-group-text">
+          <i class="fe fe-search text-info"></i>
+        </span>
+      </span>
+  </div>
+  <div class="col-md-4 col-sm-12">
+    <%= link_to new_admins_event_section_path, class: 'btn btn-outline-primary d-block' do %>
+      <i class="fe fe-plus mr-2"></i>
+      <%= t('sections.new') %>
+    <% end %>
+  </div>
+</div>
+
+<div class="table-striped mt-3 table-responsive w-100">
+  <table class="table table-hover table-outline table-vcenter card-table">
+    <thead>
+      <tr>
+        <th>
+          <i
+            data-toggle="tooltip"
+            title="<%= t('sections.sortable_info') %>"
+            class="fa fa-info-circle">
+          </i>
+        </th>
+        <th><%= t('activerecord.attributes.section.icon') %></th>
+        <th><%= t('activerecord.attributes.attribute_commons.title') %></th>
+        <th><%= t('activerecord.attributes.section.status') %></th>
+        <th><%= t('activerecord.attributes.attribute_commons.created_at') %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="sortable" data-sort-url="<%= sort_admins_event_sections_path %>">
+      <%= render partial: 'section', collection: @sections %>
+    </tbody>
+  </table>
+
+  <input type="hidden" id="event_id" value="<%= @event.id %>">
+</div>
+

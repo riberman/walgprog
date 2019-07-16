@@ -15,10 +15,28 @@ class Admins::ContactsController < Admins::BaseController
                         resource_name: I18n.t('activerecord.models.contact.one')),
                  :admins_contact_path, only: :show
 
+  add_breadcrumb I18n.t('breadcrumbs.action.unregistered',
+                        resource_name: I18n.t('activerecord.models.contact.other')),
+                 :admins_contacts_unregistered_path, only: :unregistered
+
+  add_breadcrumb I18n.t('breadcrumbs.action.registered',
+                        resource_name: I18n.t('activerecord.models.contact.other')),
+                 :admins_contacts_registered_path, only: :registered
+
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contacts = Contact.includes(:institution).order('contacts.name ASC')
+    @contacts = Contact.with_relationships.order(name: :asc)
+  end
+
+  def unregistered
+    @contacts = Contact.unregistered
+    render :index
+  end
+
+  def registered
+    @contacts = Contact.registered
+    render :index
   end
 
   def new
@@ -27,13 +45,15 @@ class Admins::ContactsController < Admins::BaseController
 
   def create
     @contact = Contact.new(params_contact)
-    options = {
-      redirect_to: :new,
-      path: admins_contacts_path,
-      action: 'flash.actions.create.m',
-      model_name: t('activerecord.models.contact.one')
-    }
-    action_success? @contact.save, options
+    if @contact.save
+      @contact.send_welcome_email
+      flash[:success] = I18n.t('flash.actions.create.m',
+                               resource_name: t('activerecord.models.contact.one'))
+      redirect_to admins_contacts_path
+    else
+      flash.now[:error] = I18n.t('flash.actions.errors')
+      render :new
+    end
   end
 
   def show; end

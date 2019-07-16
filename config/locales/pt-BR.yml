@@ -2,6 +2,7 @@ pt-BR:
   views:
     sidebar:
       walgprog: 'WAlgProg'
+      contacts: 'Contatos'
   time:
     formats:
       short: '%d/%m/%Y'
@@ -23,6 +24,9 @@ pt-BR:
       event:
         one: Evento
         other: Eventos
+      section:
+        one: Seção
+        other: Seções
       researcher:
         one: Pesquisador
         other: Pesquisadores
@@ -41,6 +45,8 @@ pt-BR:
         created_at: Criado em
         updated_at: Atualizado em
         phone: Celular
+        title: Título
+        id: ID
       admin:
         image: Imagem
         password: Senha
@@ -58,6 +64,7 @@ pt-BR:
         <<: *commons
       contact:
         institution: Instituição
+        unregistered: Desregistrado
       event:
         name: Nome
         initials: Iniciais
@@ -77,6 +84,16 @@ pt-BR:
         image: Imagem
         gender: Gênero
         <<: *commons
+      section:
+        title: Título
+        position: Posição
+        content: Conteúdo
+        content_md: Conteúdo
+        alternative_content: Texto Alternativo
+        alternative_content_md: Texto Alternativo
+        icon: Ícone
+        status: Status
+        <<: *commons
   helpers:
     back: Voltar
     currently: Atualmente
@@ -94,6 +111,10 @@ pt-BR:
     user_types:
       administrator: 'Administrador'
       collaborator: 'Colaborador'
+    section_statuses:
+      active: 'Ativo'
+      inactive: 'Inativo'
+      alternative_content: 'Texto alternativo'
     genders:
       male: 'Masculino'
       female: 'Feminino'
@@ -106,6 +127,8 @@ pt-BR:
         f: 'Nova %{resource_name}'
       show: 'Visualizar %{resource_name}'
       index: '%{resource_name}'
+      unregistered: '%{resource_name} descadastrados'
+      registered: '%{resource_name} cadastrados'
       add: 'Adicionar %{resource_name}'
     event:
       detail: 'Detalhes do %{resource_name}'
@@ -148,6 +171,8 @@ pt-BR:
       details: Talvez você tentou alterar algo que você não possui acesso.
     sponsors:
       none_selected: 'Nenhum patrocianador selecionado'
+    contacts:
+      unregistered: 'desregistrado'
   prompt:
     confirm: Você tem certeza?
     select:
@@ -158,6 +183,22 @@ pt-BR:
     new: Novo Contato
     edit: Editar Contato
     show: Detalhes do Contato
+    updated: Dados atualizados
+    registered: Cadastrados
+    unregistered: Descadastrados
+    all: Todos
+    messages:
+      success_update: 'Olá %{name}, seus dados foram atualizados!'
+      success_unregister: 'Olá %{name}, você foi descadastrado do WAlgProg!'
+      invalid_token: 'Operação não autorizada, token inválido!'
+    public:
+      feedback: 'Informação'
+      unregister:
+        confirm: Voce realmente deseja se desregistrar?
+        button: Desregistrar-me
+      update:
+        title: 'Editar meus dados'
+        button: 'Atualizar meus dados'
   institutions:
     index: Instituições de Ensino
     new: Nova Instituição de Ensino
@@ -173,9 +214,33 @@ pt-BR:
     description: Descrição
     beginning_end: Início/Término
     from_until: 'De %{beginning} até %{end}'
+    edit_sections: Editar seções
+    sections: Seções do evento
+    default_section: Organização
+    default_section_content: <p>Organizadores do evento</p>
     errors:
       year_used: Já há um evento cadastrado nesse ano.
       invalid_dates: deve ser posterior ao início
+  sections:
+    index: "Seções do Evento: %{event}"
+    new: Nova Seção
+    show: "Detalhes da Seção do Evento: %{event}"
+    edit: Editar Seção
+    description: Descrição
+    sortable_info: Clique e arraste nos ícones abaixo para selecionar a ordem das seções
+    save_order: Salvar ordem das seções
+    saved_order: Ordem das seções redefinida com sucesso!
+    error:
+      error_order: Algo aconteceu a ordem da sessão não foi salva!
+      save_order: Deve haver ao menos uma
+      be_deleted: Essa seção não pode ser removida
+  mail:
+    welcome_email:
+      subject: Você foi cadastrado no site do WAlgProg.
+    unregistered:
+      subject: Você esta desregistrado do site do WAlgProg.
+    updated:
+      subject: Seus dados foram atualizados.
   admins:
     index: Administradores
     new: Novo Administrador

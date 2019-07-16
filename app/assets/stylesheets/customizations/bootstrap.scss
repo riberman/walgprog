@@ -1,4 +1,4 @@
-body {
+body.has-child-fixed-top {
   margin-top: 80px;
 }
 
@@ -14,4 +14,8 @@ fieldset > legend {
   padding: 0 5px;
   font-size: 1rem;
   font-weight: bold;
+}
+
+.hidden {
+  display: none;
 }

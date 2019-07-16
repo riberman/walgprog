@@ -4,6 +4,10 @@ module Helpers
       I18n.t('breadcrumbs.homepage')
     end
 
+    def text_for(action, name)
+      I18n.t("breadcrumbs.action.#{action}", resource_name: name)
+    end
+
     def text_for_index
       I18n.t('breadcrumbs.action.index', resource_name: resource_name_plural)
     end

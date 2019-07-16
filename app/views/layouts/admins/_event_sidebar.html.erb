@@ -14,6 +14,10 @@
       <span class="icon mr-3"><%= icon('fas', 'th-list') %></span><%= t('events.show') %>
     <% end %>
 
+    <%= active_link_to(admins_event_sections_path(@event), class: 'list-group-item list-group-item-action', active: :inclusive) do %>
+      <span class="icon mr-3"><%= icon('fas', 'object-group') %></span><%= t('events.sections') %>
+    <% end %>
+
     <%= active_link_to(admins_event_sponsors_path(@event), class: 'list-group-item list-group-item-action', active: :inclusive) do %>
       <span class="icon mr-3"><%= icon('fas', 'university') %></span><%= t('sponsors.index') %>
     <% end %>

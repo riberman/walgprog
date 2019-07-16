@@ -14,6 +14,10 @@
           <%= icon('fas', 'search', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.show')) %>
         <% end %>
 
+        <%= link_to admins_event_sections_path(event) do %>
+          <%= icon('fas', 'object-group', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('sections.index')) %>
+        <% end %>
+
         <%= link_to edit_admins_event_path(event) do %>
           <%= icon('fas', 'edit', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.edit')) %>
         <% end %>

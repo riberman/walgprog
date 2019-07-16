@@ -38,7 +38,7 @@ WAlgProg.classes.StateAndCities = class {
 
       $.ajax({
         method: 'GET',
-        url: `/admins/states/${stateId}/cities`,
+        url: `/states/${stateId}/cities`,
         error: () => {
           this.citySelectize.disable();
           this.clearCity();

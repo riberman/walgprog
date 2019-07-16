@@ -2,6 +2,7 @@
   <td><%= contact.name %></td>
   <td><%= contact.email %></td>
   <td><%= contact.institution.acronym %></td>
+  <td class="text-center"><%= t("helpers.boolean.#{contact.unregistered?}") %></td>
   <td>
     <%= link_to admins_contact_path(contact) do %>
       <%= icon('fas', 'search', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.show')) %>
@@ -14,7 +15,7 @@
     <!-- bootbox.js bootboxjs.com -->
     <%= link_to admins_contact_path(contact),
                 method: :delete,
-                data: { confirm: t('flash.actions.destroy.confirm', resource_name: contact.name) } do %>
+                data: { confirm: t('prompt.confirm', resource_name: contact.name) } do %>
       <%= icon('fa', 'trash', class: 'icon ml-2', 'data-toggle' => 'tooltip', title: t('helpers.delete')) %>
     <% end %>
   </td>

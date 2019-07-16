@@ -7,7 +7,6 @@
 // Gems
 //--------------------
 //= require jquery3
-//= jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
 
@@ -21,6 +20,11 @@
 //= require config/namespace
 //= require config/jmask
 //= require config/selectize
+
+
+// Lib files
+//--------------------
+//= require city.js
 
 
 // App files
