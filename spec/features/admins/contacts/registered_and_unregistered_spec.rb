@@ -29,11 +29,13 @@ describe 'Admins::Contact::index', type: :feature do
     it 'not show' do
       visit admins_contacts_registered_path
       within('table tbody') do
-        unregistered_contacts.each do |contact|
+        unregistered_contacts.each_with_index do |contact, i|
           expect(page).not_to have_content(contact.name)
           expect(page).not_to have_content(contact.email)
           expect(page).not_to have_content(contact.institution.acronym)
-          expect(page).not_to have_content(I18n.t("helpers.boolean.#{contact.unregistered?}"))
+
+          td = page.find("tr:nth-child(#{i + 1}) td:nth-child(5)")
+          expect(td).not_to have_content(I18n.t("helpers.boolean.#{contact.unregistered?}"))
 
           expect(page).not_to have_link(href: admins_contact_path(contact))
           expect(page).not_to have_link(href: edit_admins_contact_path(contact))
@@ -63,11 +65,13 @@ describe 'Admins::Contact::index', type: :feature do
     it 'not show' do
       visit admins_contacts_unregistered_path
       within('table tbody') do
-        registered_contacts.each do |contact|
+        registered_contacts.each_with_index do |contact, i|
           expect(page).not_to have_content(contact.name)
           expect(page).not_to have_content(contact.email)
           expect(page).not_to have_content(contact.institution.acronym)
-          expect(page).not_to have_content(I18n.t("helpers.boolean.#{contact.unregistered?}"))
+
+          td = page.find("tr:nth-child(#{i + 1}) td:nth-child(4)")
+          expect(td).not_to have_content(I18n.t("helpers.boolean.#{contact.unregistered?}"))
 
           expect(page).not_to have_link(href: admins_contact_path(contact))
           expect(page).not_to have_link(href: edit_admins_contact_path(contact))

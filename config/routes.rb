@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
+  get '/contacts',  to: 'contacts#new', as: :new_contact
+  post '/contacts', to: 'contacts#create'
+  get 'contacts/:id/registration_confirmation/:token',
+      to: 'contacts#registration_confirmation', as: :contact_registration_confirmation
+
   get 'contacts/:id/unregister_confirmation/:token',
       to: 'contacts#unregister_confirmation', as: :contact_unregister_confirmation
 

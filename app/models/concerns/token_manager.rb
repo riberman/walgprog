@@ -4,7 +4,7 @@ module TokenManager
   extend ActiveSupport::Concern
 
   included do
-    EXPIRATION_TOKEN_TIME = 2.hours
+    EXPIRATION_TOKEN_TIME = 1.day
   end
 
   module ClassMethods
@@ -22,7 +22,6 @@ module TokenManager
         define_method_generate_token(token)
         define_method_valid_token(token)
         define_method_invalidate_token(token)
-        define_method_update_with_token(token)
       end
     end
 
@@ -55,21 +54,6 @@ module TokenManager
       class_eval <<-RUBY, __FILE__, __LINE__ + 1
         def invalidate_#{token}_token
           update(#{token}_send_at: #{token}_send_at - EXPIRATION_TOKEN_TIME)
-        end
-      RUBY
-    end
-
-    def define_method_update_with_token(token)
-      class_eval <<-RUBY, __FILE__, __LINE__ + 1
-        def update_with_#{token}_token(token, data)
-          unless valid_#{token}_token?(token)
-            errors.add(:token, "Token #{I18n.t('errors.messages.invalid')}")
-            return false
-          end
-
-          return false unless update(data)
-
-          invalidate_#{token}_token
         end
       RUBY
     end

@@ -1,4 +1,5 @@
 <% provide(:head_title, t('contacts.public.update.title')) %>
 <% provide(:page_title, t('contacts.public.update.title')) %>
 
-<%= render 'form'  %>
+<%= render 'form', path: contact_update_path(@contact, @contact.update_token),
+           button_name: t('contacts.public.update.button') %>

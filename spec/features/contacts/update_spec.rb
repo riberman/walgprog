@@ -34,7 +34,7 @@ describe 'Contact::update', type: :feature do
         click_button
 
         expect(page).to have_current_path contact_feedback_path
-        expect(page).to have_flash(:success, text: I18n.t('contacts.messages.success_update',
+        expect(page).to have_flash(:success, text: I18n.t('contacts.messages.updated',
                                                           name: local_name))
       end
     end

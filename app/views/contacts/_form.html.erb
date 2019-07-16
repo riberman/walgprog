@@ -1,4 +1,4 @@
-<%= simple_form_for(@contact, url: contact_update_path(@contact, @contact.update_token)) do |f| %>
+<%= simple_form_for(@contact, url: path) do |f| %>
 
   <%= f.input :name, autofocus: true %>
   <%= f.input :email %>
@@ -7,7 +7,7 @@
                     input_html: { class: 'apply-selectize' } %>
 
   <div class="d-flex mt-5">
-    <%= f.button :submit, t('contacts.public.update.button'), class: 'btn-primary ml-auto' %>
+    <%= f.button :submit, button_name, class: 'btn-primary ml-auto' %>
   </div>
 
 <% end %>
