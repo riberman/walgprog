@@ -22,5 +22,10 @@
 //= require config/selectize
 
 
+// Lib files
+//--------------------
+//= require city.js
+
+
 // App files
 //--------------------

@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   get 'contacts/feedback',
       to: 'contacts#feedback', as: :contact_feedback
 
+  get 'states/:id/cities',
+      to: 'states#cities', as: :state_cities
+
   devise_for :admins
   authenticate :admin do
     namespace :admins do
@@ -44,8 +47,6 @@ Rails.application.routes.draw do
         resources :sponsors, only: [:index, :create, :destroy]
       end
 
-      get 'states/:id/cities',
-          to: 'states#cities', as: :state_cities
     end
   end
 
