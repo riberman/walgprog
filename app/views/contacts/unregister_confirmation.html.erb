@@ -1,0 +1,6 @@
+<% provide(:head_title, t('contacts.public.unregister.confirm')) %>
+<% provide(:page_title, t('contacts.public.unregister.confirm')) %>
+
+<%= simple_form_for(@contact, url: contact_unregister_path(@contact, @contact.unregister_token)) do | f | %>
+  <%= f.button :submit, t('contacts.public.unregister.button') , class: 'btn btn-danger ml-auto' %>
+<% end %>

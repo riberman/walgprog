@@ -1,47 +1,41 @@
 <% provide(:head_title, t('contacts.index')) %>
 <% provide(:page_title, t('contacts.index')) %>
+<div class="row">
+  <div class="col-md-8 col-sm-12">
+    <div class="input-group mb-3">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Procurar...">
+        <span class="input-group-append">
+              <button class="btn btn-outline-info" type="button"><%= icon('fas', 'search') %></button>
+            </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-12">
+    <%= link_to new_admins_contact_path, class: 'btn btn-outline-primary btn-block' do %>
+      <%= icon('fas', 'plus', class: 'mr-2') %><%= t('contacts.new') %>
+    <% end %>
+  </div>
+</div>
 
 <div class="row">
   <div class="col-12">
-
-    <div class="row">
-      <div class="col-md-8 col-sm-12">
-        <div class="input-group mb-3">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Procurar...">
-            <span class="input-group-append">
-              <button class="btn btn-outline-info" type="button"><%= icon('fas', 'search') %></button>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-12">
-        <%= link_to new_admins_contact_path, class: 'btn btn-outline-primary btn-block' do %>
-          <%= icon('fas', 'plus', class: 'mr-2') %><%= t('contacts.new') %>
-        <% end %>
-      </div>
-
-    </div>
-
-    <div class="row">
-      <div class="col-12">
-        <div class="table-responsive">
-          <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
-            <thead>
-              <tr>
-                <th><%= t('activerecord.attributes.attribute_commons.name') %></th>
-                <th><%= t('activerecord.attributes.attribute_commons.email') %></th>
-                <th><%= t('activerecord.attributes.contact.institution') %></th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <%= render @contacts %>
-            </tbody>
-          </table>
-        </div>
-      </div>
+    <div class="table-responsive">
+      <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+        <thead>
+        <tr>
+          <th><%= t('activerecord.attributes.attribute_commons.name') %></th>
+          <th><%= t('activerecord.attributes.attribute_commons.email') %></th>
+          <th><%= t('activerecord.attributes.contact.institution') %></th>
+          <th class="text-center"><%= t('activerecord.attributes.contact.unregistered') %></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <%= render @contacts %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

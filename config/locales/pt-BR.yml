@@ -2,6 +2,7 @@ pt-BR:
   views:
     sidebar:
       walgprog: 'WAlgProg'
+      contacts: 'Contatos'
   time:
     formats:
       short: '%d/%m/%Y'
@@ -64,6 +65,7 @@ pt-BR:
         <<: *commons
       contact:
         institution: Instituição
+        unregistered: Desregistrado
       event:
         name: Nome
         initials: Iniciais
@@ -85,13 +87,13 @@ pt-BR:
         <<: *commons
       section:
         title: Título
-        index: Índice
+        position: Posição
         content: Conteúdo
-        content_markdown: Conteúdo
-        content_short: Conteúdo de visualização
+        content_md: Conteúdo
+        alternative_content: Texto Alternativo
+        alternative_content_md: Texto Alternativo
         icon: Ícone
         status: Status
-        alternative_text: Texto alternativo
         <<: *commons
   helpers:
     back: Voltar
@@ -110,10 +112,10 @@ pt-BR:
     user_types:
       administrator: 'Administrador'
       collaborator: 'Colaborador'
-    status_types:
+    section_statuses:
       active: 'Ativo'
       inactive: 'Inativo'
-      other: 'Outro'
+      alternative_content: 'Texto alternativo'
     genders:
       male: 'Masculino'
       female: 'Feminino'
@@ -129,7 +131,8 @@ pt-BR:
         f: 'Nova %{resource_name}'
       show: 'Visualizar %{resource_name}'
       index: '%{resource_name}'
-      parent_model: '%{parent_name}'
+      unregistered: '%{resource_name} descadastrados'
+      registered: '%{resource_name} cadastrados'
       add: 'Adicionar %{resource_name}'
     event:
       detail: 'Detalhes do %{resource_name}'
@@ -173,6 +176,8 @@ pt-BR:
       details: Talvez você tentou alterar algo que você não possui acesso.
     sponsors:
       none_selected: 'Nenhum patrocianador selecionado'
+    contacts:
+      unregistered: 'desregistrado'
   prompt:
     confirm: Você tem certeza?
     select:
@@ -183,6 +188,22 @@ pt-BR:
     new: Novo Contato
     edit: Editar Contato
     show: Detalhes do Contato
+    updated: Dados atualizados
+    registered: Cadastrados
+    unregistered: Descadastrados
+    all: Todos
+    messages:
+      success_update: 'Olá %{name}, seus dados foram atualizados!'
+      success_unregister: 'Olá %{name}, você foi descadastrado do WAlgProg!'
+      invalid_token: 'Operação não autorizada, token inválido!'
+    public:
+      feedback: 'Informação'
+      unregister:
+        confirm: Voce realmente deseja se desregistrar?
+        button: Desregistrar-me
+      update:
+        title: 'Editar meus dados'
+        button: 'Atualizar meus dados'
   institutions:
     index: Instituições de Ensino
     new: Nova Instituição de Ensino
@@ -208,10 +229,9 @@ pt-BR:
       year_used: Já há um evento cadastrado nesse ano.
       invalid_dates: deve ser posterior ao início
   sections:
-    index: Seções
-    from: "Seções do evento: %{event}"
+    index: "Seções do Evento: %{event}"
     new: Nova Seção
-    show: "Detalhes da Seção do evento: %{event}"
+    show: "Detalhes da Seção do Evento: %{event}"
     edit: Editar Seção
     description: Descrição
     sortable_info: Clique e arraste nos ícones abaixo para selecionar a ordem das seções
@@ -221,6 +241,13 @@ pt-BR:
       error_order: Algo aconteceu a ordem da sessão não foi salva!
       save_order: Deve haver ao menos uma
       be_deleted: Essa seção não pode ser removida
+  mail:
+    welcome_email:
+      subject: Você foi cadastrado no site do WAlgProg.
+    unregistered:
+      subject: Você esta desregistrado do site do WAlgProg.
+    updated:
+      subject: Seus dados foram atualizados.
   admins:
     index: Administradores
     new: Novo Administrador

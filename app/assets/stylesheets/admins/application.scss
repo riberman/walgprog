@@ -5,12 +5,15 @@
 @import 'font-awesome';
 @import 'bootstrap-datepicker';
 
+
 /*************************************************************
 * Vendors stylesheets
 **************************************************************/
 @import 'colorpicker/bootstrap-colorpicker.min';
 @import 'selectize/selectize.min';
 @import 'simpleMde/simplemde.min';
+@import 'fontawesome-iconpicker/fontawesome-iconpicker.min';
+
 
 /*************************************************************
 * Configurations
@@ -32,6 +35,7 @@
 @import 'customizations/selectize';
 @import 'customizations/colorpicker';
 @import 'customizations/simpleMde';
+@import 'customizations/fontawesome_iconpicker';
 
 
 /*************************************************************

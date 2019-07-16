@@ -1,38 +1,29 @@
 class Section < ApplicationRecord
-  include ActiveModel::Validations
-
-  before_save :markdown_to_html
-  before_destroy :not_remove_default_section
-
   belongs_to :event
 
-  validates :title, :content_markdown, :status, :icon, :index, :event_id, presence: true
-  validates :alternative_text, presence: true, if: :other_status?
+  validates :title, :content_md, :status, :icon, presence: true
+  validates :alternative_content_md, presence: true, if: -> { alternative_content? }
 
-  enum status: { active: 'A', inactive: 'I', other: 'O' }
+  before_create :set_position
+  before_save :md_to_html
 
-  def self.human_status_types
+  enum status: { active: 'active', inactive: 'inactive',
+                 alternative_content: 'alternative_content' }
+
+  def self.human_statuses
     hash = {}
-    statuses.each_key { |key| hash[I18n.t("enums.status_types.#{key}")] = key }
+    statuses.each_key { |key| hash[I18n.t("enums.section_statuses.#{key}")] = key }
     hash
-  end
-
-  def other_status?
-    status.eql?('other')
   end
 
   private
 
-  def markdown_to_html
-    config = MarkdownConfig.new
-
-    renderer = Redcarpet::Render::HTML.new(config.options)
-    markdown = Redcarpet::Markdown.new(renderer, config.extensions)
-
-    self.content = markdown.render(content_markdown)
+  def md_to_html
+    self.content = MarkdownRenders::HTML.render(content_md)
+    self.alternative_content = MarkdownRenders::HTML.render(alternative_content_md)
   end
 
-  def not_remove_default_section
-    raise I18n.t('sections.error.be_deleted') if title.include? I18n.t('events.default_section')
+  def set_position
+    self.position = Section.count + 1
   end
 end

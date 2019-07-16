@@ -1,4 +1,5 @@
 //= require simpleMde/simplemde.min
+WAlgProg.simpleMDEInstances = {};
 
 $(document).on('turbolinks:load', () => {
   WAlgProg.loadMarkdownEditor();
@@ -7,7 +8,7 @@ $(document).on('turbolinks:load', () => {
 WAlgProg.loadMarkdownEditor = () => {
   $('.markdown-editor').each((index, element) => {
     const id = $(element).attr('id');
-    WAlgProg.simpleMDE = new SimpleMDE({ element: document.getElementById(id) });
-    return WAlgProg.simpleMDE;
+    WAlgProg.simpleMDEInstances[id] = new SimpleMDE({ element: document.getElementById(id) });
+    return WAlgProg.simpleMDEInstances[id];
   });
 };

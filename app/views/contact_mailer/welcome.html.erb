@@ -1,0 +1,9 @@
+<h1>Seja Bem Vindo(a), <%= @contact.name %></h1>
+
+<p>Você foi cadastrado no site do WAlgProg</p>
+
+<p>Você pode se descadastrar clicando no link a baixo</p>
+
+<p><%= link_to 'Atualizar dados', contact_edit_url(@contact, @contact.update_token), target: '_blank' %></p>
+
+<p><%= link_to 'Descadastrar', contact_unregister_confirmation_url(@contact, @contact.unregister_token), target: '_blank' %></p>

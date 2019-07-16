@@ -1,45 +1,18 @@
 <%= simple_form_for [:admins, @event, @section] do |f| %>
 
-  <input type="hidden" id="section-icon" value="<%= @section.icon %>">
-
   <div class='row'>
-
-    <h3 class="col-md-12 text-center"><%= @event.name %></h3>
-
-    <%= f.hidden_field :event_id, value: @event.id %>
-
-
-    <%= f.input :title, required: true, autofocus: true, wrapper_html: { class: 'col-md-12' } %>
-
-    <%= f.input :index, disabled: true, wrapper_html: { class: 'col-md-1' } %>
-
-    <%= f.input(:icon,
-                collection: [],
-                prompt: t('prompt.select.m', name: t('activerecord.attributes.section.icon')),
-                input_html: { class: 'icon-select select fa'},
-                wrapper_html: { class: 'col-md-3' }) %>
-
-    <%= f.input(:status, collection: Section.human_status_types,
-                prompt: t('prompt.select.m',
-                          name: t('activerecord.attributes.section.status')),
-                wrapper_html: { class: 'col-lg-4 col-sm-12' },
-                input_html: { autocomplete: 'false', class: 'apply-selectize ' }) %>
-
-    <%= f.input :alternative_text, required: true, wrapper_html: { class: 'col-lg-4 col-sm-12' } %>
-
-    <%= f.hidden_field :index, value: @section.index %>
+    <%= f.input :position, disabled: true, wrapper_html: { class: 'col-md-1' } %>
+    <%= f.input :icon, as: :group, group_icon: @section.icon, input_html: { class: 'icon-picker' }, wrapper_html: { class: 'col-md-2' } %>
+    <%= f.input :title, autofocus: true, wrapper_html: { class: 'col-md-9' } %>
   </div>
 
-  <div class="row">
-    <%= f.input(:content_markdown, wrapper_html: { class: 'col-md-12' }, input_html: { class: 'markdown-editor' }) %>
-  </div>
+  <%= f.input :content_md, input_html: { class: 'markdown-editor' } %>
 
+  <%= f.input :status, as: :radio_buttons_tabler, collection: Section.human_statuses %>
+  <%= f.input :alternative_content_md, input_html: { class: 'markdown-editor' } %>
 
   <div class='d-flex'>
-    <%= link_to admins_event_sections_path, class: 'btn btn-secondary float-left' do %>
-      <%= t('helpers.back') %>
-    <% end %>
-
+    <%= link_to t('helpers.back'), admins_event_sections_path, class: 'btn btn-secondary float-left' %>
     <%= f.button :submit, class: 'btn-primary ml-auto' %>
   </div>
 

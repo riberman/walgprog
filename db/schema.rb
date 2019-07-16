@@ -42,6 +42,11 @@ ActiveRecord::Schema.define(version: 2019_07_13_153650) do
     t.string "name"
     t.string "email"
     t.string "phone"
+    t.boolean "unregistered", default: false
+    t.string "unregister_token"
+    t.datetime "unregister_send_at"
+    t.string "update_token"
+    t.datetime "update_send_at"
     t.bigint "institution_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -96,21 +101,8 @@ ActiveRecord::Schema.define(version: 2019_07_13_153650) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "sections", force: :cascade do |t|
-    t.string "title"
-    t.string "content"
-    t.bigint "event_id"
-    t.string "status"
-    t.string "icon"
-    t.string "alternative_text"
-    t.integer "index"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "content_markdown"
-    t.text "description_short"
-    t.boolean "can_be_deleted", default: true
-    t.index ["event_id"], name: "index_sections_on_event_id"
-  end
+# Could not dump table "sections" because of following StandardError
+#   Unknown type 'section_statuses' for column 'status'
 
   create_table "sponsor_events", force: :cascade do |t|
     t.bigint "event_id"

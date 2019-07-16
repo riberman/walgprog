@@ -1,7 +1,12 @@
 class Admins::SectionsController < Admins::BaseController
   before_action :set_resource_name, only: [:create, :update, :destroy]
-  before_action :set_section, only: [:show, :edit, :update, :destroy]
   before_action :set_event
+  before_action :set_section, only: [:show, :edit, :update, :destroy]
+
+  add_breadcrumb I18n.t('breadcrumbs.action.index',
+                        resource_name: I18n.t('activerecord.models.event.other')),
+                 :admins_events_path, except: :destroy
+
   before_action :set_event_breadcrumb, except: :destroy
 
   add_breadcrumb I18n.t('breadcrumbs.action.index',
@@ -21,22 +26,19 @@ class Admins::SectionsController < Admins::BaseController
                  :admins_event_section_path, only: [:show]
 
   def index
-    @sections = @event.sections.order(index: :desc)
+    @sections = @event.sections.order(position: :asc)
   end
 
   def new
-    @section = Section.new
-    max_index
+    @section = @event.sections.new
   end
 
   def create
     options = {
-      redirect_to: :new,
-      path: admins_event_sections_path,
-      action: 'flash.actions.create.f',
-      model_name: @resource_name
+      redirect_to: :new, path: admins_event_sections_path,
+      action: 'flash.actions.create.f', model_name: @resource_name
     }
-    @section = @event.sections.build(section_params)
+    @section = @event.sections.new(section_params)
     action_success? @section.save, options
   end
 
@@ -47,7 +49,7 @@ class Admins::SectionsController < Admins::BaseController
   def update
     options = {
       redirect_to: :edit,
-      path: admins_event_sections_path,
+      path: admins_event_section_path(@event, @section),
       action: 'flash.actions.update.f',
       model_name: @resource_name
     }
@@ -55,45 +57,26 @@ class Admins::SectionsController < Admins::BaseController
   end
 
   def destroy
-    begin
-      @section.destroy
-      flash[:success] = t('flash.actions.destroy.f', resource_name: @resource_name)
-    rescue RuntimeError
-      flash[:error] = t('sections.error.be_deleted')
-    end
+    @section.destroy
+    flash[:success] = t('flash.actions.destroy.f', resource_name: @resource_name)
+
     redirect_to admins_event_sections_path
   end
 
-  def update_index
-    respond_to do |format|
-      sections = params[:list]
-      if sections.blank?
-        response_to(format, 'sections.error.error_order', :unprocessable_entity)
-      else
-        update_position_section sections
-        response_to(format, 'sections.saved_order', :accepted)
-      end
+  def sort
+    params[:section].each_with_index do |id, position|
+      @event.sections.find(id).update_attribute(:position, position + 1)
     end
+
+    head :accepted
   end
 
   private
 
-  def update_position_section(list)
-    list.each do |section|
-      @section = Section.find(section['id'])
-      @section.index = section['index']
-      @section.save
-    end
-  end
-
-  def response_to(format, message, status)
-    format.json { render json: { message: t(message) }, status: status }
-  end
-
   def section_params
     params.require(:section).permit(
-      :title, :status, :alternative_text,
-      :icon, :index, :event_id, :content_markdown
+      :title, :status, :alternative_content_md,
+      :icon, :content_md
     )
   end
 
@@ -102,21 +85,17 @@ class Admins::SectionsController < Admins::BaseController
   end
 
   def set_section
-    @section = Section.find(params[:id])
+    @section = @event.sections.find(params[:id])
   end
 
   def set_event
     @event = Event.find(params[:event_id])
   end
 
-  def max_index
-    @section.index = @event.sections.count + 1 if @section.new_record?
-  end
-
   def set_event_breadcrumb
     path = admins_event_path(@event)
-    add_breadcrumb I18n.t('breadcrumbs.action.index',
-                          resource_name: I18n.t('activerecord.models.event.one')),
+    name = "#{I18n.t('activerecord.models.event.one')} ##{@event.id}"
+    add_breadcrumb I18n.t('breadcrumbs.action.index', resource_name: name),
                    path, except: :destroy
   end
 end

@@ -4,8 +4,9 @@ describe 'Admins::Section::Breadcrumbs', type: :feature do
   let(:admin) { create(:admin) }
   let(:section) { create(:section) }
   let(:resource_name) { Section.model_name.human }
-  let(:parent_name) { Event.model_name.human }
   let(:resource_name_plural) { Section.model_name.human count: 2 }
+  let(:event_plural_name) { Event.model_name.human count: 2 }
+  let(:event_current) { "#{Event.model_name.human} ##{section.event.id}" }
 
   before(:each) do
     login_as(admin, scope: :admin)
@@ -15,7 +16,8 @@ describe 'Admins::Section::Breadcrumbs', type: :feature do
     let(:breadcrumbs) do
       [
         { text: text_for_home, path: admins_root_path },
-        { text: text_for_parent, path: admins_event_path(section.event) },
+        { text: event_plural_name, path: admins_events_path },
+        { text: event_current, path: admins_event_path(section.event) },
         { text: text_for_index, path: admins_event_sections_path(section.event) }
       ]
     end
@@ -30,8 +32,8 @@ describe 'Admins::Section::Breadcrumbs', type: :feature do
     let(:breadcrumbs) do
       [
         { text: text_for_home, path: admins_root_path },
-        { text: text_for_parent, path: admins_event_path(section.event) },
-        { text: text_for_index, path: admins_event_sections_path(section.event) },
+        { text: event_plural_name, path: admins_events_path },
+        { text: event_current, path: admins_event_path(section.event) },
         { text: text_for_new_f, path: new_admins_event_section_path(section.event) }
       ]
     end
@@ -55,8 +57,8 @@ describe 'Admins::Section::Breadcrumbs', type: :feature do
     let(:breadcrumbs) do
       [
         { text: text_for_home, path: admins_root_path },
-        { text: text_for_parent, path: admins_event_path(section.event) },
-        { text: text_for_index, path: admins_event_sections_path(section.event) },
+        { text: event_plural_name, path: admins_events_path },
+        { text: event_current, path: admins_event_path(section.event) },
         { text: text_for_edit, path: edit_admins_event_section_path(section.event, section) }
       ]
     end

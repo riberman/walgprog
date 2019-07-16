@@ -16,6 +16,7 @@ describe 'Admins::Contact::index', type: :feature do
           expect(page).to have_content(contact.name)
           expect(page).to have_content(contact.email)
           expect(page).to have_content(contact.institution.acronym)
+          expect(page).to have_content(I18n.t("helpers.boolean.#{contact.unregistered}"))
 
           expect(page).to have_link(href: admins_contact_path(contact))
           expect(page).to have_link(href: edit_admins_contact_path(contact))
