@@ -9,7 +9,7 @@ describe 'Contact::unregister', type: :feature do
     click_button
 
     expect(page).to have_current_path(contact_feedback_path)
-    expect(page).to have_content(I18n.t('contacts.messages.success_unregister', name: contact.name))
+    expect(page).to have_content(I18n.t('contacts.messages.unregistered', name: contact.name))
   end
 
   it 'invalid token' do

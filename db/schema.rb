@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_12_124229) do
+ActiveRecord::Schema.define(version: 2019_07_16_150417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,9 @@ ActiveRecord::Schema.define(version: 2019_07_12_124229) do
     t.bigint "institution_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "confirmation_token"
+    t.datetime "confirmation_send_at"
+    t.datetime "confirmed_at"
     t.index ["institution_id"], name: "index_contacts_on_institution_id"
   end
 

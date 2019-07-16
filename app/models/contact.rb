@@ -1,7 +1,7 @@
 class Contact < ApplicationRecord
   include TokenManager
 
-  register_tokens :update, :unregister
+  register_tokens :update, :unregister, :confirmation
 
   PHONE_REGEX = /\A\(\d{2}\) \d{4,5}-\d{4}\z/.freeze
 
@@ -24,6 +24,23 @@ class Contact < ApplicationRecord
   scope :unregistered, -> { where(unregistered: true).with_relationships.order(name: :asc) }
   scope :with_relationships, -> { includes(:institution) }
 
+  def confirmed?
+    !confirmed_at.nil?
+  end
+
+  def confirm
+    update(confirmed_at: Time.zone.now)
+    invalidate_confirmation_token
+  end
+
+  def set_as_unregistered
+    update(unregistered: true)
+  end
+
+  def set_as_registered
+    update(unregistered: false)
+  end
+
   def email_with_name
     %("#{name}" <#{email}>)
   end
@@ -34,7 +51,17 @@ class Contact < ApplicationRecord
     ContactMailer.with(contact: self).welcome.deliver_later
   end
 
-  def send_success_update_email
-    ContactMailer.with(contact: self).success_update.deliver_later
+  def send_update_email
+    generate_update_token
+    ContactMailer.with(contact: self).update.deliver_later
+  end
+
+  def send_updated_email
+    ContactMailer.with(contact: self).updated.deliver_later
+  end
+
+  def send_confirmation_email
+    generate_confirmation_token
+    ContactMailer.with(contact: self).confirmation.deliver_later
   end
 end

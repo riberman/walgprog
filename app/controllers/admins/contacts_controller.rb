@@ -47,8 +47,7 @@ class Admins::ContactsController < Admins::BaseController
     @contact = Contact.new(params_contact)
     if @contact.save
       @contact.send_welcome_email
-      flash[:success] = I18n.t('flash.actions.create.m',
-                               resource_name: t('activerecord.models.contact.one'))
+      flash[:success] = I18n.t('flash.actions.create.m', resource_name: resource_name)
       redirect_to admins_contacts_path
     else
       flash.now[:error] = I18n.t('flash.actions.errors')
@@ -65,7 +64,7 @@ class Admins::ContactsController < Admins::BaseController
       redirect_to: :edit,
       path: admins_contacts_path,
       action: 'flash.actions.update.m',
-      model_name: t('activerecord.models.contact.one')
+      model_name: resource_name
     }
     action_success? @contact.update(params_contact), options
   end
@@ -86,5 +85,9 @@ class Admins::ContactsController < Admins::BaseController
 
   def params_contact
     params.require(:contact).permit(:name, :email, :phone, :institution_id)
+  end
+
+  def resource_name
+    t('activerecord.models.contact.one')
   end
 end

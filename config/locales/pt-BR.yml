@@ -63,8 +63,10 @@ pt-BR:
         city_id: Cidade
         <<: *commons
       contact:
+        <<: *commons
         institution: Instituição
         unregistered: Desregistrado
+        confirmed: Confirmado
       event:
         name: Nome
         initials: Iniciais
@@ -188,9 +190,13 @@ pt-BR:
     unregistered: Descadastrados
     all: Todos
     messages:
-      success_update: 'Olá %{name}, seus dados foram atualizados!'
-      success_unregister: 'Olá %{name}, você foi descadastrado do WAlgProg!'
+      updated: 'Olá %{name}, seus dados foram atualizados!'
+      created: 'Olá %{name}, seu registro foi realizado com sucesso! Por favor, acesse seu email para confirmar seu registro'
+      unregistered_create: 'Olá %{name}, este email já está registrado! Por favor, acesse seu email e atualize seus dados!'
+      unregistered: 'Olá %{name}, seu registro no WAlgProg foi cancelado!'
       invalid_token: 'Operação não autorizada, token inválido!'
+      not_confirmed: 'Olá %{name}, seu registro ainda não foi confirmado, é necessário acessar seu email e o confirme!'
+      confirmed: 'Olá %{name}, seu registro confirmado com sucesso!'
     public:
       feedback: 'Informação'
       unregister:
@@ -199,6 +205,9 @@ pt-BR:
       update:
         title: 'Editar meus dados'
         button: 'Atualizar meus dados'
+      new:
+        title: Cadastrar-me no WAlgProg
+        button: Cadastrar-me
   institutions:
     index: Instituições de Ensino
     new: Nova Instituição de Ensino
@@ -237,10 +246,16 @@ pt-BR:
   mail:
     welcome_email:
       subject: Você foi cadastrado no site do WAlgProg.
+    welcome_self_register:
+      subject: Confirmação de registro no site do WAlgProg.
     unregistered:
       subject: Você esta desregistrado do site do WAlgProg.
     updated:
       subject: Seus dados foram atualizados.
+    update:
+      subject: WAlgProg, Registro no site
+    confirmation:
+      subject: Confirmação de registro no WAlgProg
   admins:
     index: Administradores
     new: Novo Administrador

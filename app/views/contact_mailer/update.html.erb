@@ -1,0 +1,8 @@
+<h1>Olá <%= @contact.name %></h1>
+
+<p>Você tentou cadastrar-se no site do WAlgProg</p>
+
+<p>Indetificamos que seu email já está cdastrado, assim por favor atualize seu dados clicando no link abaixo</p>
+
+<p><%= link_to 'Atualizar dados', contact_edit_url(@contact, @contact.update_token), target: '_blank' %></p>
+

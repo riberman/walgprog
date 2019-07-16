@@ -1,0 +1,7 @@
+<h1>Seja Bem Vindo(a), <%= @contact.name %></h1>
+
+<p>Você se cadastradou no site do WAlgProg</p>
+
+<p>Confirme seu cadastro clicando no link abaixo</p>
+
+<p><%= link_to 'Confirmar cadastro', contact_registration_confirmation_url(@contact, @contact.confirmation_token), target: '_blank' %></p>

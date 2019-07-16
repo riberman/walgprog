@@ -30,7 +30,8 @@ namespace :db do
         name: Faker::Name.unique.name,
         email: Faker::Internet.email,
         phone: Faker::PhoneNumber.cell_phone,
-        institution: Institution.all.sample
+        institution: Institution.all.sample,
+        confirmed_at: [Time.zone.now, nil].sample
       )
     end
   end
