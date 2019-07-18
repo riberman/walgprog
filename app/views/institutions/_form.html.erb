@@ -1,0 +1,19 @@
+<%= simple_form_for(@institution, url: path) do |f| %>
+
+    <%= f.input :name %>
+    <%= f.input :acronym %>
+    <%= f.input :state_id, collection: @states,
+                prompt: t('prompt.select.m', name: t('activerecord.attributes.institution.state')),
+                label_method: :name, value_method: :id,
+                input_html: { autocomplete: 'false' } %>
+    <%= f.input :city_id, collection: @cities,
+                prompt: t('prompt.select.f', name: t('activerecord.attributes.institution.city')),
+                label_method: :name, value_method: :id,
+                input_html: { autocomplete: 'false' } %>
+
+    <div class="d-flex mt-5">
+      <%= link_to t('helpers.back'), root_path, class: 'btn btn-secondary mr-7' %>
+      <%= f.button :submit, class: 'btn-primary ml-auto' %>
+    </div>
+
+<% end %>

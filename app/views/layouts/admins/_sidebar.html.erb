@@ -10,10 +10,6 @@
       <span class="icon mr-3"><%= icon('fas', 'home') %></span><%= t('helpers.home') %>
     <% end %>
 
-    <%= active_link_to(admins_institutions_path, class: 'list-group-item list-group-item-action', active: :inclusive) do %>
-      <span class="icon mr-3"><%= icon('fas', 'university') %></span><%= t('institutions.index') %>
-    <% end %>
-
     <%= active_link_to(admins_events_path, class: 'list-group-item list-group-item-action', active: :inclusive) do %>
       <span class="icon mr-3"><%= icon('fas', 'calendar') %></span><%= t('events.index') %>
     <% end %>
@@ -24,6 +20,23 @@
 
     <%= active_link_to admins_researchers_path, class: 'list-group-item list-group-item-action', active: :inclusive do %>
       <span class="icon mr-3"><%= icon('fas', 'graduation-cap') %></i></span><%= t('researchers.index') %>
+    <% end %>
+
+    <span class="sidebar-heading pl-0 pt-2 pb-2">
+      <%= icon('fas', 'university', class: 'mr-1') %>
+      <%= t('views.sidebar.institutions') %>
+    </span>
+
+    <%= active_link_to(admins_institutions_path, class: 'list-group-item list-group-item-action', active: [['admins/institutions'], ['index', 'new', 'create', 'edit', 'update', 'show']] ) do %>
+      <span class="icon mr-3"><%= icon('fas', 'university') %></span><%= t('institutions.all') %>
+    <% end %>
+
+    <%= active_link_to(admins_institutions_approved_path, class: 'list-group-item list-group-item-action', active: :exact) do %>
+      <span class="icon mr-3"><%= icon('fas', 'university') %></span><%= t('institutions.approved') %>
+    <% end %>
+
+    <%= active_link_to(admins_institutions_not_approved_path, class: 'list-group-item list-group-item-action', active: :exact) do %>
+      <span class="icon mr-3"><%= icon('fas', 'university') %></span><%= t('institutions.not_approved') %>
     <% end %>
 
     <span class="sidebar-heading pl-0 pt-2 pb-2">

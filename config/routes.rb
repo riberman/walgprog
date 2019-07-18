@@ -7,6 +7,13 @@ Rails.application.routes.draw do
   post '/institutions',
        to: 'institutions#create'
 
+  get '/contacts',  to: 'contacts#new', as: :new_contact
+
+  post '/contacts', to: 'contacts#create'
+
+  get 'contacts/:id/registration_confirmation/:token',
+      to: 'contacts#registration_confirmation', as: :contact_registration_confirmation
+
   get 'contacts/:id/unregister_confirmation/:token',
       to: 'contacts#unregister_confirmation', as: :contact_unregister_confirmation
 
@@ -30,6 +37,12 @@ Rails.application.routes.draw do
     namespace :admins do
       root to: 'dashboard#index'
 
+      get 'institutions/approved',
+          to: 'institutions#approved', as: :institutions_approved
+
+      get 'institutions/not_approved',
+          to: 'institutions#not_approved', as: :institutions_not_approved
+
       get 'contacts/unregistered',
           to: 'contacts#unregistered', as: :contacts_unregistered
 
@@ -46,7 +59,6 @@ Rails.application.routes.draw do
         end
         resources :sponsors, only: [:index, :create, :destroy]
       end
-
     end
   end
 

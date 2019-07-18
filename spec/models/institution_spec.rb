@@ -77,9 +77,9 @@ RSpec.describe Institution, type: :model do
 
     it 'enum' do
       expect(institution).to define_enum_for(:approved)
-                                .with_values(yes: true, not: false)
-                                .backed_by_column_of_type(:boolean)
-                                .with_suffix(:approved)
+        .with_values(yes: true, not: false)
+        .backed_by_column_of_type(:boolean)
+        .with_suffix(:approved)
     end
 
     it 'human enum' do

@@ -18,8 +18,26 @@ class Admins::InstitutionsController < Admins::BaseController
                         resource_name: I18n.t('activerecord.models.institution.one')),
                  :edit_admins_institution_path, only: [:edit, :update]
 
+  add_breadcrumb I18n.t('breadcrumbs.action.approved',
+                        resource_name: I18n.t('activerecord.models.institution.other')),
+                 :admins_institutions_approved_path, only: :approved
+
+  add_breadcrumb I18n.t('breadcrumbs.action.not_approved',
+                        resource_name: I18n.t('activerecord.models.institution.other')),
+                 :admins_institutions_not_approved_path, only: :not_approved
+
   def index
-    @institutions = Institution.includes(city: [:state]).order(name: :asc).where(approved: true)
+    @institutions = Institution.includes(city: [:state]).order(name: :asc)
+  end
+
+  def approved
+    @institutions = Institution.approved
+    render :index
+  end
+
+  def not_approved
+    @institutions = Institution.not_approved
+    render :index
   end
 
   def new

@@ -32,9 +32,35 @@ RSpec.describe ContactMailer, type: :mailer do
     end
   end
 
+  describe 'send update email' do
+    let(:contact) { create(:contact) }
+    let(:mail) { described_class.with(contact: contact).update.deliver_now }
+
+    it 'renders the subject' do
+      expect(mail.subject).to eq(I18n.t('mail.update.subject'))
+    end
+
+    it 'renders the receiver email' do
+      expect(mail.to).to eq([contact.email])
+    end
+
+    it 'renders the sender email' do
+      expect(mail.from).to eq([ENV['mailer.from']])
+    end
+
+    it 'assigns @name' do
+      expect(mail.body.encoded).to match(contact.name)
+    end
+
+    it 'assigns @update_url' do
+      expect(mail.body.encoded)
+        .to match(contact_edit_path(contact, contact.update_token))
+    end
+  end
+
   describe 'send updated email' do
     let(:contact) { create(:contact) }
-    let(:mail) { described_class.with(contact: contact).success_update.deliver_now }
+    let(:mail) { described_class.with(contact: contact).updated.deliver_now }
 
     it 'renders the subject' do
       expect(mail.subject).to eq(I18n.t('mail.updated.subject'))
@@ -50,6 +76,32 @@ RSpec.describe ContactMailer, type: :mailer do
 
     it 'assigns @name' do
       expect(mail.body.encoded).to match(contact.name)
+    end
+  end
+
+  describe 'send confirmation email' do
+    let(:contact) { create(:contact) }
+    let(:mail) { described_class.with(contact: contact).confirmation.deliver_now }
+
+    it 'renders the subject' do
+      expect(mail.subject).to eq(I18n.t('mail.confirmation.subject'))
+    end
+
+    it 'renders the receiver email' do
+      expect(mail.to).to eq([contact.email])
+    end
+
+    it 'renders the sender email' do
+      expect(mail.from).to eq([ENV['mailer.from']])
+    end
+
+    it 'assigns @name' do
+      expect(mail.body.encoded).to match(contact.name)
+    end
+
+    it 'assigns @confirmation_url' do
+      expect(mail.body.encoded)
+        .to match(contact_registration_confirmation_path(contact, contact.confirmation_token))
     end
   end
 end

@@ -19,4 +19,7 @@ class Institution < ApplicationRecord
   validates :city_id, presence: true
   validates :state_id, presence: true
   validates :approved, presence: true
+
+  scope :approved, -> { where(approved: true).includes(city: [:state]).order(name: :asc) }
+  scope :not_approved, -> { where(approved: false).includes(city: [:state]).order(name: :asc) }
 end

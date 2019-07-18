@@ -11,6 +11,7 @@ describe 'Admins::Institution::index', type: :feature do
 
   context 'with data' do
     let(:unapproved) { build(:institution, :unapproved) }
+
     it 'showed only approved' do
       institutions.each do |institution|
         expect(page).to have_content(institution.name)
@@ -22,14 +23,6 @@ describe 'Admins::Institution::index', type: :feature do
         expect(page).to have_destroy_link(href: admins_institution_path(institution))
       end
     end
-
-    # TODO criar uma lista com um instituição não aprovada.
-    # it 'showed not approved' do
-    #   expect(page).to have_no_content(unapproved.name)
-    #   expect(page).to have_no_content(unapproved.acronym)
-    #   expect(page).to have_no_content(unapproved.city.name)
-    #   expect(page).to have_no_content(unapproved.city.state.acronym)
-    # end
   end
 
   context 'with links' do

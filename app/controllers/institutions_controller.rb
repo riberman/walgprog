@@ -1,6 +1,5 @@
 class InstitutionsController < ApplicationController
-
-  layout 'layouts/institution'
+  layout 'layouts/institutions/institution'
 
   include VirtualState::Controller
 
